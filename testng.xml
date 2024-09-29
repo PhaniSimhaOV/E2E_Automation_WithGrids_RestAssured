@@ -2,7 +2,7 @@
 <suite name="E2E Automation with Grids and RestAssured">
     <test name="Verify Ultimate QA Site">
         <classes>
-            <class name="com.autogrid.runner.TestRunner" />
+            <class name="com.autogrid.runner.CucumberRunnerTest" />
         </classes>
     </test>
 </suite>
