@@ -11,6 +11,6 @@ import io.cucumber.testng.CucumberOptions;
         monochrome = true,  // Makes the console output more readable
         tags = "@SmokeTest"  // Tags to control which scenarios to run
 )
-public class TestRunner extends AbstractTestNGCucumberTests {
+public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
 }
 
