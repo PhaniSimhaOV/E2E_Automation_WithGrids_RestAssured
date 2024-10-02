@@ -6,16 +6,12 @@ import io.cucumber.java.Before;
 
 public class Hooks {
 
-    public static LaunchDriver launchDriver;
-
     @Before
-    public static void initializeDriver(){
-        launchDriver.setUpDriver();
+    public void initializeDriver() {
+        LaunchDriver.setUpDriver();
     }
-
     @After
-    public static void killDriver(){
-        launchDriver.tearDown();
+    public void killDriver() {
+        LaunchDriver.tearDown();
     }
-
 }

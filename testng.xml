@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="E2E Automation with Grids and RestAssured">
+<suite name="E2E Automation with Grids and RestAssured" parallel="tests" thread-count="3">
     <test name="Verify Ultimate QA Site">
         <classes>
             <class name="com.autogrid.runner.CucumberRunnerTest" />

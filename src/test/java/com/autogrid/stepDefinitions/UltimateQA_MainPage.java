@@ -15,4 +15,8 @@ public class UltimateQA_MainPage {
     public void verify_the_presence_of_the_site_logo() {
         mainPage.verifyLogoIsPresent();
     }
+    @Then("Verify the presence of the fake landing link site")
+    public void verify_the_presence_of_the_fake_landing_link_site() {
+        mainPage.verifyFakeLandingPageLinkIsPresent();
+    }
 }
