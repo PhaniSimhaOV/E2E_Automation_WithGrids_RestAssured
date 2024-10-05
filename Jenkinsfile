@@ -1,10 +1,9 @@
-/* Requires the Docker Pipeline plugin */
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('Stage 1') {
             steps {
-                sh 'mvn --version'
+                echo 'Hello world!'
             }
         }
     }
