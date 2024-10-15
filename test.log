@@ -1,0 +1,428 @@
+838  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1932 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1932 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+4722 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+9648 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+9670 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+9809 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+9810 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+10059 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+10063 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+10079 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+10079 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+11617 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+16136 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer First & Last Name has been provided
+16583 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Email & Pwd has been taken
+17662 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Address has been Entered
+17721 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Registration Completed
+17722 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+19000 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+19007 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+841  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1789 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1789 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+4869 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+7846 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+7881 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+7913 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+7913 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+8098 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+8108 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+8124 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+8124 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+9974 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+13115 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+13497 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+13505 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+846  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1820 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1821 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+836  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1753 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1753 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+3764 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+8688 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+8722 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+8753 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+8754 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+9050 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+9089 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+9138 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+9139 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+11313 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+14697 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+15049 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+15058 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+831  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1642 [TestNG-test-Verify Ultimate QA Site-1] WARN  org.testng.internal.Utils -- The test method 'io.cucumber.testng.AbstractTestNGCucumberTests.runScenario' will be skipped since its data provider 'scenarios' returned an empty array or iterator. 
+905  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1733 [TestNG-test-Verify Ultimate QA Site-1] WARN  org.testng.internal.Utils -- The test method 'io.cucumber.testng.AbstractTestNGCucumberTests.runScenario' will be skipped since its data provider 'scenarios' returned an empty array or iterator. 
+835  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1696 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1697 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+3923 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+5852 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+5874 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+5894 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+5894 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+7428 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+10118 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+10133 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+1486 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1488 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+3563 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+5461 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+5472 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+5494 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+5494 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+6884 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+7346 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+7361 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+1537 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1540 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+3662 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+4174 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+4182 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+4204 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+4205 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+6210 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+8246 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+8261 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+863  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\AppData\Local\JetBrains\IdeaIC2023.2\temp-testng-customsuite.xml
+
+1692 [main] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1692 [main] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+4259 [main] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+4534 [main] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+4544 [main] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+4571 [main] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+4571 [main] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+6296 [main] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+8186 [main] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+8197 [main] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+915  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\AppData\Local\JetBrains\IdeaIC2023.2\temp-testng-customsuite.xml
+
+57286 [main] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+57286 [main] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+956  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+19582 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+19582 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+1967 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2031 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2035 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+2035 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+4146 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+9771 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+9808 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+9840 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+9840 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+10270 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+10277 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+10298 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+10301 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+10301 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+10302 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+11696 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+17547 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer First & Last Name has been provided
+17914 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Email & Pwd has been taken
+18587 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Address has been Entered
+18650 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Registration Completed
+18650 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+18795 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+18800 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+1610 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1612 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+3481 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+4107 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+4114 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+4133 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+4133 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+5502 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+5851 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+5865 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+845  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1872 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+1934 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+1940 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1940 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+4166 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+7521 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+7558 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+7592 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+7592 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+7808 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+7817 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+7830 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+7832 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+7832 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+7832 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+9190 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+13955 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer First & Last Name has been provided
+14338 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Email & Pwd has been taken
+15092 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Address has been Entered
+15146 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Registration Completed
+15146 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+16359 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+16367 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+846  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1896 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+1963 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+1968 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1969 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+4154 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+8130 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+8166 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+8194 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+8195 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+8715 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+8749 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+8798 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+8802 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+8804 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+8805 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+10654 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+14509 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer First & Last Name has been provided
+14875 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Email & Pwd has been taken
+15769 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Address has been Entered
+15825 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Registration Completed
+15825 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+15994 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+16028 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+844  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\AppData\Local\JetBrains\IdeaIC2023.2\temp-testng-customsuite.xml
+
+1701 [main] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1702 [main] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+3844 [main] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+4203 [main] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+4213 [main] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+4230 [main] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+4230 [main] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+6269 [main] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+8780 [main] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+8795 [main] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+851  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1961 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2041 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2046 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+2046 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+4780 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+7537 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+7575 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+7605 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+7606 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+7794 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+7803 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+7817 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+7819 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+7819 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+7819 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+10938 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+14826 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+15286 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+15318 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+845  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1874 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+1940 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+1944 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1944 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+4119 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+9488 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+9525 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+9541 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+9541 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+9798 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+9830 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+9877 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+9883 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+9883 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+9883 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+11456 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+15445 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+15732 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+15740 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+954  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+14420 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+14500 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+18400 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+20622 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+26406 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+27421 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+27481 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+27525 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+27525 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+28029 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+28039 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+32344 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+32349 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+38284 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+39993 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+45438 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+73446 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+982  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+10403 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+10403 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+966  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+17325 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+17325 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+953  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+7384 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+7458 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+10491 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+11826 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+18185 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+19415 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+19487 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+19520 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+19521 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+19810 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+19849 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+23893 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+23896 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+27612 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+30548 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+35820 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+57305 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+917  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+5370 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+5448 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+8047 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+9208 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+11401 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+12413 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+12434 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+13534 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+13535 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+17946 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+20898 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+23566 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+23832 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+23842 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+956  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+15512 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+15589 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+20676 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+20678 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+23982 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+26672 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+26733 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+26764 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+26765 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+26946 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+26955 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+32333 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+32334 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+46203 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+46204 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+48983 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+62710 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+64583 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+64596 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+955  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+2067 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2136 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2141 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+2141 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+4546 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+7888 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+7924 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+7950 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+7951 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+8514 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+8552 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+8574 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+8575 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+8576 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+8576 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+10636 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+14718 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+15169 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+15195 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+851  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1859 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+1920 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+1925 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+1925 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+4011 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+7891 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+7928 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+7953 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+7954 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+8310 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+8320 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+8333 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+8335 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+8336 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+8336 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+11034 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+15511 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+16243 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+16261 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+815  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1795 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+3053 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+3059 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+3059 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+6355 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+9679 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+9717 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+9751 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+9751 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+10348 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+10357 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+10372 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+10374 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+10374 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+10374 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver
+11834 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+15927 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer First & Last Name has been provided
+16310 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Email & Pwd has been taken
+17136 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Address has been Entered
+17198 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Registration Completed
+17199 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+17404 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+17411 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.

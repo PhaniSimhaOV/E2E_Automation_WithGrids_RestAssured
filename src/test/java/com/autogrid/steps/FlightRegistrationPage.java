@@ -1,7 +1,10 @@
 package com.autogrid.steps;
 
 
+import com.autogrid.hooks.Hooks;
+import com.autogrid.testData.FlightRegCustomerData;
 import com.autogrid.utils.CommonActions;
+import com.autogrid.utils.JsonReader;
 import com.autogrid.utils.LaunchDriver;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +13,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 public class FlightRegistrationPage {
     private static final Logger logger = LoggerFactory.getLogger(FlightRegistrationPage.class);
@@ -58,6 +63,7 @@ public class FlightRegistrationPage {
         this.launchDriver = launchDriver;
         this.commonActions = new CommonActions(driver);
         PageFactory.initElements(driver, this);
+
     }
 
     public void launchCustomerRegSiteSite(String url){
