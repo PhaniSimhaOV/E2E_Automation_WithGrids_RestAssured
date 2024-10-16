@@ -24,9 +24,9 @@ public class FlightRegistrationStepDefinitions {
         PageFactory.initElements(driver, flightRegistrationPage);
     }
 
-    @Given("I am on the Flight Registration site {string}")
-    public void i_am_on_the_flight_registration_site(String url) {
-        flightRegistrationPage.launchCustomerRegSiteSite(url);
+    @Given("I am on the Flight Registration site url")
+    public void i_am_on_the_flight_registration_site() {
+        flightRegistrationPage.launchCustomerRegSiteSite();
     }
 
     @Then("Verify the presence of the Site Logo")

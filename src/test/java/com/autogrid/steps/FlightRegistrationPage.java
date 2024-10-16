@@ -66,8 +66,8 @@ public class FlightRegistrationPage {
 
     }
 
-    public void launchCustomerRegSiteSite(String url){
-        launchDriver.launchSite(url);
+    public void launchCustomerRegSiteSite(){
+        launchDriver.launchSite();
     }
     public void verifyLogoIsPresent(){
         site_logo.isDisplayed();

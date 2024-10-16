@@ -6,10 +6,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.BeforeSuite;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -23,28 +23,29 @@ public class LaunchDriver {
     private static final int TIME_OUT = 50;
 
     private LaunchDriver() throws MalformedURLException {
+        Config.initialize();
         ChromeOptions options = new ChromeOptions();
         options.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
                 "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*"));
 
-        if(System.getProperty("browser").equalsIgnoreCase("chrome")
-                && System.getProperty("selenium.grid.enabled").equalsIgnoreCase("false")) {
+        if(Config.get("browser").equalsIgnoreCase("chrome")
+                && Config.get("selenium.grid.enabled").equalsIgnoreCase("false")) {
             logger.info("Initializing WebDriver & launching Chrome Locally");
 
             driver = new ChromeDriver(options);
-        }else if(System.getProperty("browser").equalsIgnoreCase("firefox")
-                && System.getProperty("selenium.grid.enabled").equalsIgnoreCase("false")){
+        }else if(Config.get("browser").equalsIgnoreCase("firefox")
+                && Config.get("selenium.grid.enabled").equalsIgnoreCase("false")){
             logger.info("Initializing WebDriver & launching Firefox Locally");
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             firefoxOptions.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
                     "--ignore-certificate-errors", "--disable-notifications"));
 
             driver = new FirefoxDriver(firefoxOptions);
-        }else if(System.getProperty("browser").equalsIgnoreCase("chrome")
-                && System.getProperty("selenium.grid.enabled").equalsIgnoreCase("true")){
+        }else if(Config.get("browser").equalsIgnoreCase("chrome")
+                && Config.get("selenium.grid.enabled").equalsIgnoreCase("true")){
             logger.info("Initializing WebDriver & launching Chrome on Grid");
 
-            URL gridUrl = new URL("http://localhost:4444/wd/hub");
+            URL gridUrl = new URL(Config.get("selenium.grid.urlFormat"));
             driver = new RemoteWebDriver(gridUrl, options);
             logger.info("Remote WebDriver launched on Grid");
         }
@@ -72,10 +73,10 @@ public class LaunchDriver {
         return driver;
     }
 
-    public static void launchSite(String url) {
+    public static void launchSite() {
         if (driver != null) {
-            logger.info("Launching site: " + url);
-            driver.get(url);
+            logger.info("Launching site: " + Config.get("flightReservation.url"));
+            driver.get(Config.get("flightReservation.url"));
         } else {
             logger.warn("Driver is not initialized. Cannot launch site.");
         }
