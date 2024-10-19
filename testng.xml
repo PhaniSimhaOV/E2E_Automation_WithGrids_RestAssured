@@ -1,5 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="E2E Automation with Grids and RestAssured" parallel="methods" thread-count="3">
+    <parameter name="testDataPath" value="C:\\Users\\mdsai\\eclipse-workspace\\testPlace\\E2E_Automation_withGrids\\src\\test\\resources\\test-data\\flight-cust-reg-data\\cust-data.json" />
     <test name="Verify Ultimate QA Site">
         <classes>
             <class name="com.autogrid.runner.CucumberRunnerTest" />

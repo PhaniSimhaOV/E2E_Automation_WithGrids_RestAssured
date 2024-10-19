@@ -1,4 +1,38 @@
 version: "3"
 services:
-  hello-world:
-    image: vinsdocker/hello-world
+  hub:
+    image: selenium/hub:4.20
+    ports:
+      - "4444:4444" # Hub exposed on port 4444
+    environment:
+      - GRID_MAX_SESSION=5  # Number of concurrent tests
+
+  chrome:
+    image: selenium/node-chrome:4.20
+    shm_size: "2g" # Required for Chrome and Firefox nodes in Docker
+    depends_on:
+      - hub
+    deploy:
+      replicas: 2
+    environment:
+      - SE_EVENT_BUS_HOST=hub # Hub hostname
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_OVERRIDE_MAX_SESSION=true
+      - SE_NODE_MAX_SESSIONS=3 # Maximum sessions for Chrome node
+      - SE_VNC_NO_PASSWORD=1
+
+  firefox:
+    image: selenium/node-firefox:4.20
+    shm_size: "2g"
+    depends_on:
+      - hub
+    deploy:
+      replicas: 2
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_OVERRIDE_MAX_SESSION=true
+      - SE_NODE_MAX_SESSIONS=3
+      - SE_VNC_NO_PASSWORD=1

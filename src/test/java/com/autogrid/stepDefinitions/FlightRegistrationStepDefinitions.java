@@ -1,7 +1,6 @@
 package com.autogrid.stepDefinitions;
 
 import com.autogrid.steps.FlightRegistrationPage;
-import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.LaunchDriver;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
@@ -9,22 +8,21 @@ import org.openqa.selenium.support.PageFactory;
 
 public class FlightRegistrationStepDefinitions {
 
-    private WebDriver driver;
+    final private WebDriver driver;
 
-    private FlightRegistrationPage flightRegistrationPage;
+    final private FlightRegistrationPage flightRegistrationPage;
 
     LaunchDriver launchDriver;
-    CommonActions commonActions;
 
     public FlightRegistrationStepDefinitions(){
         this.driver = LaunchDriver.getDriver();
-        this.flightRegistrationPage = new FlightRegistrationPage(driver, launchDriver, commonActions);
+        this.flightRegistrationPage = new FlightRegistrationPage(driver, launchDriver);
         PageFactory.initElements(driver, flightRegistrationPage);
     }
 
-    @Given("I am on the Flight Registration site {string}")
-    public void i_am_on_the_flight_registration_site(String url) {
-        flightRegistrationPage.launchCustomerRegSiteSite(url);
+    @Given("I am on the Flight Registration site url")
+    public void i_am_on_the_flight_registration_site() {
+        flightRegistrationPage.launchCustomerRegSiteSite();
     }
 
     @Then("Verify the presence of the Site Logo")
