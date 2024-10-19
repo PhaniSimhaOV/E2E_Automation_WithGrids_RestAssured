@@ -7,6 +7,8 @@ import com.autogrid.utils.LaunchDriver;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Parameters;
 
 public class FlightRegistrationStepDefinitions {
@@ -17,10 +19,11 @@ public class FlightRegistrationStepDefinitions {
 
     LaunchDriver launchDriver;
     CommonActions commonActions;
+    Wait<WebDriver> wait;
 
     public FlightRegistrationStepDefinitions(){
         this.driver = LaunchDriver.getDriver();
-        this.flightRegistrationPage = new FlightRegistrationPage(driver, launchDriver, commonActions);
+        this.flightRegistrationPage = new FlightRegistrationPage(driver, launchDriver, commonActions, wait);
         PageFactory.initElements(driver, flightRegistrationPage);
     }
 

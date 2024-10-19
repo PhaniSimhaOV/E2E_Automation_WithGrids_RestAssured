@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeTest;
@@ -21,6 +23,7 @@ public class FlightRegistrationPage {
     private WebDriver driver;
     private CommonActions commonActions;
     private LaunchDriver launchDriver;
+    private Wait<WebDriver> wait;
 
     @FindBy(xpath = "//*[@id='mainNav']//a[@class='navbar-brand']")
     private WebElement site_logo;
@@ -58,10 +61,10 @@ public class FlightRegistrationPage {
     @FindBy(xpath = "//*[@id='register-btn']")
     private WebElement form_RegButton;
 
-    public FlightRegistrationPage(WebDriver driver, LaunchDriver launchDriver, CommonActions commonActions){
+    public FlightRegistrationPage(WebDriver driver, LaunchDriver launchDriver, CommonActions commonActions, Wait<WebDriver> wait){
         this.driver = driver;
         this.launchDriver = launchDriver;
-        this.commonActions = new CommonActions(driver);
+        this.commonActions = new CommonActions(driver, wait);
         PageFactory.initElements(driver, this);
 
     }
@@ -70,42 +73,42 @@ public class FlightRegistrationPage {
         launchDriver.launchSite();
     }
     public void verifyLogoIsPresent(){
-        site_logo.isDisplayed();
+        commonActions.isElementPresent(site_logo);
         logger.info("Site Logo is Displayed");
     }
 
     public void verifySiteHeaderIsPresent(){
-        site_Header.isDisplayed();
+        commonActions.isElementPresent(site_Header);
         logger.info("Site Header is Present");
     }
 
     public void verifySiteDescriptionIsPresent(){
-        site_Description.isDisplayed();
+        commonActions.isElementPresent(site_Description);
         logger.info("Site Description is Present");
     }
 
     public void enterFirstAndLastNames(){
-        form_FirstName.sendKeys(new Faker().name().firstName());
-        form_LastName.sendKeys(new Faker().name().lastName());
+        commonActions.sendText(form_FirstName, new Faker().name().firstName());
+        commonActions.sendText(form_LastName, new Faker().name().lastName());
         logger.info("Customer First & Last Name has been provided");
     }
 
     public void enterEmailAndPassword(){
-        form_Email.sendKeys(new Faker().internet().emailAddress());
-        form_password.sendKeys("Broken#123");
+        commonActions.sendText(form_Email, new Faker().internet().emailAddress());
+        commonActions.sendText(form_password, "Broken#123");
         logger.info("Customer Email & Pwd has been taken");
     }
 
     public void enterUserAddress(){
-        form_Street.sendKeys(new Faker().address().streetName());
-        form_City.sendKeys(new Faker().address().city());
-        form_Zip.sendKeys(new Faker().address().zipCode());
+        commonActions.sendText(form_Street, new Faker().address().streetName());
+        commonActions.sendText(form_City, new Faker().address().city());
+        commonActions.sendText(form_Zip, new Faker().address().zipCode());
         commonActions.selectValue(form_State);
         logger.info("Customer Address has been Entered");
     }
 
     public void clickOnRegisterButton(){
-        form_RegButton.click();
+        commonActions.clickElement(form_RegButton);
         logger.info("Customer Registration Completed");
     }
 }
