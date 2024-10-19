@@ -20,6 +20,7 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - SE_NODE_OVERRIDE_MAX_SESSION=true
       - SE_NODE_MAX_SESSIONS=3 # Maximum sessions for Chrome node
+      - SE_VNC_NO_PASSWORD=1
 
   firefox:
     image: selenium/node-firefox:4.20
@@ -34,3 +35,4 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - SE_NODE_OVERRIDE_MAX_SESSION=true
       - SE_NODE_MAX_SESSIONS=3
+      - SE_VNC_NO_PASSWORD=1
