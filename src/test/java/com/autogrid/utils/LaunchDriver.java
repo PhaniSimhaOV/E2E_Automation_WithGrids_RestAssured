@@ -9,7 +9,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.BeforeSuite;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -104,7 +103,7 @@ public class LaunchDriver {
                         logger.info("WebDriver Killed successfully on others.");
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    logger.error("An exception has been thrown. Please review: {}", e);
                 }
             }
         } else {

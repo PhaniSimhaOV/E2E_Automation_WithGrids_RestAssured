@@ -1,29 +1,19 @@
 package com.autogrid.steps;
 
-
-import com.autogrid.hooks.Hooks;
-import com.autogrid.testData.FlightRegCustomerData;
 import com.autogrid.utils.CommonActions;
-import com.autogrid.utils.JsonReader;
 import com.autogrid.utils.LaunchDriver;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
 
 public class FlightRegistrationPage {
     private static final Logger logger = LoggerFactory.getLogger(FlightRegistrationPage.class);
-    private WebDriver driver;
-    private CommonActions commonActions;
-    private LaunchDriver launchDriver;
-    private Wait<WebDriver> wait;
+    final private CommonActions commonActions;
+    final private LaunchDriver launchDriver;
 
     @FindBy(xpath = "//*[@id='mainNav']//a[@class='navbar-brand']")
     private WebElement site_logo;
@@ -61,12 +51,10 @@ public class FlightRegistrationPage {
     @FindBy(xpath = "//*[@id='register-btn']")
     private WebElement form_RegButton;
 
-    public FlightRegistrationPage(WebDriver driver, LaunchDriver launchDriver, CommonActions commonActions, Wait<WebDriver> wait){
-        this.driver = driver;
+    public FlightRegistrationPage(WebDriver driver, LaunchDriver launchDriver){
         this.launchDriver = launchDriver;
-        this.commonActions = new CommonActions(driver, wait);
+        this.commonActions = new CommonActions(driver);
         PageFactory.initElements(driver, this);
-
     }
 
     public void launchCustomerRegSiteSite(){

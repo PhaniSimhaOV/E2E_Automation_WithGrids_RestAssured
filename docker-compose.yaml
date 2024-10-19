@@ -3,7 +3,7 @@ services:
   hub:
     image: selenium/hub:4.20
     ports:
-      - 4444:4444 # Hub exposed on port 4444
+      - "4444:4444" # Hub exposed on port 4444
     environment:
       - GRID_MAX_SESSION=5  # Number of concurrent tests
 

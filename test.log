@@ -218,3 +218,278 @@
 22290 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
 22800 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
 22800 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+841  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+1939 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2007 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2009 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+2010 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+2011 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- Test properties are:
+2011 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+2011 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://localhost:4444/wd/hub
+2011 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- browser=Chrome
+2011 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+2011 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- flightReservation.url=https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+2011 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+2011 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+2017 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver & launching Chrome Locally
+4660 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+10971 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+11015 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+11062 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+11062 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+11620 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+11633 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+11651 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+11655 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+11655 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+11655 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+11655 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- Test properties are:
+11655 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+11655 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://localhost:4444/wd/hub
+11655 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- browser=Chrome
+11655 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+11655 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- flightReservation.url=https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+11655 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+11655 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+11655 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver & launching Chrome Locally
+14325 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+22641 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer First & Last Name has been provided
+23166 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Email & Pwd has been taken
+24104 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Address has been Entered
+24235 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Registration Completed
+24235 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+26161 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+26161 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+916  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+2058 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2122 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+3193 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+3194 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+3195 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- Test properties are:
+3195 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+3195 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://localhost:4444/wd/hub
+3195 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- browser=Chrome
+3195 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+3195 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- flightReservation.url=https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+3195 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+3195 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+3202 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver & launching Chrome Locally
+5873 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+12246 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+12278 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+12325 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+12325 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+14662 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+14676 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- Test properties are:
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://localhost:4444/wd/hub
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- browser=Chrome
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- flightReservation.url=https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+14695 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver & launching Chrome Locally
+19195 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+26432 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer First & Last Name has been provided
+26982 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Email & Pwd has been taken
+27995 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Address has been Entered
+28127 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Registration Completed
+28127 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+28350 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+28374 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+1164 [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+2214 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2289 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2292 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+2293 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+2293 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- Test properties are:
+2293 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+2293 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://localhost:4444/wd/hub
+2293 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- browser=Chrome
+2293 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+2293 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- flightReservation.url=https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+2293 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+2293 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+2300 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver & launching Chrome Locally
+6278 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+11678 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- The required element is Present
+11678 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+11740 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- The required element is Present
+11740 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+11798 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- The required element is Present
+11799 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+11799 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+12038 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+12050 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+12066 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+12067 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+12068 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+12068 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+12069 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- Test properties are:
+12070 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+12070 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://localhost:4444/wd/hub
+12070 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- browser=Chrome
+12070 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+12070 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- flightReservation.url=https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+12070 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+12070 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+12070 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver & launching Chrome Locally
+14609 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+19981 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Garth value has been entered
+20174 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Boyle value has been entered
+20174 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer First & Last Name has been provided
+20512 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- roscoe.bechtelar@gmail.com value has been entered
+20671 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Broken#123 value has been entered
+20672 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Email & Pwd has been taken
+21063 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Tamie Ridge value has been entered
+21261 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- New Beauport value has been entered
+21409 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- 48613 value has been entered
+22199 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Dropdown value has been selected: Nebraska
+22199 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Address has been Entered
+22354 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- The required Button/Link has been clicked
+22355 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Registration Completed
+22355 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+22551 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+22557 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+1144 [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+2241 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2307 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2310 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+2310 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+2312 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- Test properties are:
+2312 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+2312 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://localhost:4444/wd/hub
+2312 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- browser=Chrome
+2312 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=true
+2312 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- flightReservation.url=https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+2312 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+2312 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+2318 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver & launching Chrome on Grid
+47875 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Remote WebDriver launched on Grid
+941  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+2325 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2402 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2404 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+2405 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+2406 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- Test properties are:
+2406 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+2406 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://localhost:4444/wd/hub
+2406 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- browser=Chrome
+2406 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=true
+2406 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- flightReservation.url=https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+2406 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+2406 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+2413 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver & launching Chrome on Grid
+7154 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Remote WebDriver launched on Grid
+7316 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+21550 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- The required element is Present
+21550 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+21677 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- The required element is Present
+21678 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+21817 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- The required element is Present
+21817 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+21818 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+22627 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+22659 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+22675 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+22677 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+22679 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+22679 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+22681 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- Test properties are:
+22681 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+22681 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://localhost:4444/wd/hub
+22681 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- browser=Chrome
+22681 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=true
+22681 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- flightReservation.url=https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+22681 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+22681 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+22681 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver & launching Chrome on Grid
+24973 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Remote WebDriver launched on Grid
+25047 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+36363 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Berry value has been entered
+36757 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Marks value has been entered
+36757 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer First & Last Name has been provided
+37237 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- derrick.mcglynn@hotmail.com value has been entered
+37818 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Broken#123 value has been entered
+37819 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Email & Pwd has been taken
+38718 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- O'Connell Spurs value has been entered
+39036 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Kuhlmanhaven value has been entered
+39323 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- 50915 value has been entered
+43945 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Dropdown value has been selected: Utah
+43946 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Address has been Entered
+44432 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- The required Button/Link has been clicked
+44432 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Registration Completed
+44555 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+45219 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+45245 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+918  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids\testng.xml
+
+2235 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2331 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+2334 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+2335 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+2336 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- Test properties are:
+2336 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+2336 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://localhost:4444/wd/hub
+2336 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- browser=Chrome
+2336 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+2336 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- flightReservation.url=https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+2336 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+2336 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+2344 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver & launching Chrome Locally
+5639 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+16274 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- The required element is Present
+16274 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Logo is Displayed
+16318 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- The required element is Present
+16318 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Header is Present
+16366 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- The required element is Present
+16366 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Site Description is Present
+16366 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+19518 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+19542 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.
+19561 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+19561 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.hooks.Hooks -- Test Data has been Loaded from: src/test/resources/test-data/flight-cust-reg-data/cust-data.json
+19561 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Setting up the WebDriver
+19561 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+19567 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- Test properties are:
+19567 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+19567 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://localhost:4444/wd/hub
+19567 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- browser=Chrome
+19567 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+19567 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- flightReservation.url=https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+19567 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+19567 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.Config -- ---------------------------------
+19567 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Initializing WebDriver & launching Chrome Locally
+26251 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Launching site: https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html
+33015 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Roderick value has been entered
+33247 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Heller value has been entered
+33248 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer First & Last Name has been provided
+33682 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- clark.kertzmann@hotmail.com value has been entered
+33864 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Broken#123 value has been entered
+33864 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Email & Pwd has been taken
+34101 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Torp View value has been entered
+34299 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- South Ricky value has been entered
+34470 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- 52643-6222 value has been entered
+35083 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- Dropdown value has been selected: Maine
+35561 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Address has been Entered
+35693 [TestNG-test-Verify Ultimate QA Site-1] INFO  com.autogrid.utils.CommonActions -- The required Button/Link has been clicked
+35693 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Customer Registration Completed
+35693 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- Tearing down the WebDriver.
+36489 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver closed successfully.
+36516 [TestNG-test-Verify Ultimate QA Site-1] INFO  c.a.steps.FlightRegistrationPage -- WebDriver Killed successfully on win.

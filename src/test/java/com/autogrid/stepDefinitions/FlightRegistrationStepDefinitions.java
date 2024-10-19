@@ -1,29 +1,22 @@
 package com.autogrid.stepDefinitions;
 
-import com.autogrid.hooks.Hooks;
 import com.autogrid.steps.FlightRegistrationPage;
-import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.LaunchDriver;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Parameters;
 
 public class FlightRegistrationStepDefinitions {
 
-    private WebDriver driver;
+    final private WebDriver driver;
 
-    private FlightRegistrationPage flightRegistrationPage;
+    final private FlightRegistrationPage flightRegistrationPage;
 
     LaunchDriver launchDriver;
-    CommonActions commonActions;
-    Wait<WebDriver> wait;
 
     public FlightRegistrationStepDefinitions(){
         this.driver = LaunchDriver.getDriver();
-        this.flightRegistrationPage = new FlightRegistrationPage(driver, launchDriver, commonActions, wait);
+        this.flightRegistrationPage = new FlightRegistrationPage(driver, launchDriver);
         PageFactory.initElements(driver, flightRegistrationPage);
     }
 
