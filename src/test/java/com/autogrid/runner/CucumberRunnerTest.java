@@ -12,5 +12,6 @@ import io.cucumber.testng.CucumberOptions;
         tags = "@SmokeTest"  // Tags to control which scenarios to run
 )
 public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
+
 }
 
