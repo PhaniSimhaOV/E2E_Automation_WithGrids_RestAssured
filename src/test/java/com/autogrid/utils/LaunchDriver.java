@@ -25,7 +25,7 @@ public class LaunchDriver {
         Config.initialize();
         ChromeOptions options = new ChromeOptions();
         options.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
-                "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*"));
+                "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*", "--headless"));
 
         if(Config.get("browser").equalsIgnoreCase("chrome")
                 && Config.get("selenium.grid.enabled").equalsIgnoreCase("false")) {

@@ -23,6 +23,7 @@
         <!-- output directory -->
         <package.directory>${project.build.directory}/docker-resources</package.directory>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -94,6 +95,7 @@
         </dependency>
 
     </dependencies>
+
     <build>
         <finalName>selenium-docker</finalName>
         <plugins>
@@ -106,6 +108,7 @@
                     <release>17</release>
                 </configuration>
             </plugin>
+
             <!-- To run the tests using specific parameters, change thread count, testng report output directory etc -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -118,12 +121,13 @@
                         <selenium.grid.enabled>false</selenium.grid.enabled>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
-                        <file>src/test/resources/test-suits/FlightReg.xml</file>
+                        <file>testng.xml</file>
                     </suiteXmlFiles>
                     <threadCount>4</threadCount>
                     <reportsDirectory>target/test-output</reportsDirectory>
                 </configuration>
             </plugin>
+
             <!-- To copy all the dependencies to run our tests as part of "mvn package" -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -187,6 +191,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <!-- To copy resources into the output directory -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -204,6 +209,34 @@
                             <resources>
                                 <resource>
                                     <directory>src/test/resources</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- New plugin to include files from root directory -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven.resources.plugin}</version>
+                <executions>
+                    <execution>
+                        <id>copy-root-files</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${package.directory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}</directory> <!-- Root directory -->
+                                    <includes>
+                                        <include>pom.xml</include>
+                                        <include>testng.xml</include><!-- Include all files in the root directory -->
+                                    </includes>
                                 </resource>
                             </resources>
                         </configuration>
