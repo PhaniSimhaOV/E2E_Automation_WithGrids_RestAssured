@@ -44,7 +44,7 @@ public class LaunchDriver {
                 && Config.get("selenium.grid.enabled").equalsIgnoreCase("true")){
             logger.info("Initializing WebDriver & launching Chrome on Grid");
 
-            URL gridUrl = new URL(Config.get("selenium.grid.urlFormat"));
+            URL gridUrl = new URL(String.format(Config.get("selenium.grid.urlFormat"), Config.get("selenium.grid.hubHost")));
             driver = new RemoteWebDriver(gridUrl, options);
             logger.info("Remote WebDriver launched on Grid");
         }
