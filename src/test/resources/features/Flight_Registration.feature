@@ -1,7 +1,7 @@
 Feature: Navigate to Ultimate QA Site 1
 
 
-  @BrokenTest
+  @SmokeTest
   Scenario: Verify Book Your Flight site UI
     Given I am on the Flight Registration site url
     Then Verify the presence of the Site Logo
