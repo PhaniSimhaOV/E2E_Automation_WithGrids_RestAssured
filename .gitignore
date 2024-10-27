@@ -30,6 +30,7 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
+output
 
 ### VS Code ###
 .vscode/
@@ -90,3 +91,6 @@ test.log
 **/mvnw
 **/mvnw.cmd
 **/node_modules/
+!/test.log
+!/test.log
+!/test.log
