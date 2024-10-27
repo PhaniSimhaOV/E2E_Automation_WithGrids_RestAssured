@@ -96,10 +96,12 @@ public class LaunchDriver {
                     if (System.getProperty("os.name").toLowerCase().contains("win")) {
                         // Windows: Kill chromedriver.exe using taskkill
                         Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe");
+                        Runtime.getRuntime().exec("taskkill /F /IM geckodriver.exe");
                         logger.info("WebDriver Killed successfully on win.");
                     } else {
                         // macOS/Linux: Kill chromedriver using killall
                         Runtime.getRuntime().exec("killall chromedriver");
+                        Runtime.getRuntime().exec("killall geckodriver");
                         logger.info("WebDriver Killed successfully on others.");
                     }
                 } catch (IOException e) {

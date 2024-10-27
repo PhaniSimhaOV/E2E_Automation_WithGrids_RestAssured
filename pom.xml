@@ -119,6 +119,7 @@
                     <systemPropertyVariables>
                         <browser>chrome</browser>
                         <selenium.grid.enabled>false</selenium.grid.enabled>
+                        <cucumber.options>--tags @SmokeTest</cucumber.options>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <file>testng.xml</file>
@@ -149,28 +150,28 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven.resources.plugin}</version>
-                <executions>
-                    <execution>
-                        <id>copy-classes</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${package.directory}/test-classes</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>target/test-classes</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-resources-plugin</artifactId>-->
+<!--                <version>${maven.resources.plugin}</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>copy-classes</id>-->
+<!--                        <phase>prepare-package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>copy-resources</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <outputDirectory>${package.directory}/test-classes</outputDirectory>-->
+<!--                            <resources>-->
+<!--                                <resource>-->
+<!--                                    <directory>target/test-classes</directory>-->
+<!--                                </resource>-->
+<!--                            </resources>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
 
             <!-- To package our page objects, test classes into jar -->
             <plugin>
@@ -185,9 +186,9 @@
                         <goals>
                             <goal>test-jar</goal>
                         </goals>
-<!--                        <configuration>-->
-<!--                            <includes>**/*.class</includes>-->
-<!--                        </configuration>-->
+                        <configuration>
+                            <includes>**/*.class</includes>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

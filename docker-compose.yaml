@@ -4,8 +4,6 @@ services:
     image: selenium/hub:4.20
     ports:
       - "4444:4444" # Hub exposed on port 4444
-    environment:
-      - GRID_MAX_SESSION=2  # Number of concurrent tests
 
   chrome:
     image: selenium/node-chrome:4.20
@@ -13,13 +11,13 @@ services:
     depends_on:
       - hub
     deploy:
-      replicas: 2
+      replicas: 1
     environment:
       - SE_EVENT_BUS_HOST=hub # Hub hostname
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - SE_NODE_OVERRIDE_MAX_SESSION=true
-      - SE_NODE_MAX_SESSIONS=3 # Maximum sessions for Chrome node
+      - SE_NODE_MAX_SESSIONS=1 # Maximum sessions for Chrome node
       - SE_VNC_NO_PASSWORD=1
 
 #  firefox:
@@ -36,3 +34,15 @@ services:
 #      - SE_NODE_OVERRIDE_MAX_SESSION=true
 #      - SE_NODE_MAX_SESSIONS=3
 #      - SE_VNC_NO_PASSWORD=1
+
+  flight-reservation:
+    image: lazysaif/seleniumtest
+    depends_on:
+      - hub
+      - chrome
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - CUCUMBER_TAG=@SmokeTest
+    volumes:
+      - ./output/report:/home/selenium-docker/test-output
