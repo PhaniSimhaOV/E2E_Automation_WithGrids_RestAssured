@@ -25,7 +25,7 @@ public class LaunchDriver {
         Config.initialize();
         ChromeOptions options = new ChromeOptions();
         options.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
-                "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*"));
+                "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*", "--headless"));
 
         if(Config.get("browser").equalsIgnoreCase("chrome")
                 && Config.get("selenium.grid.enabled").equalsIgnoreCase("false")) {
@@ -44,7 +44,7 @@ public class LaunchDriver {
                 && Config.get("selenium.grid.enabled").equalsIgnoreCase("true")){
             logger.info("Initializing WebDriver & launching Chrome on Grid");
 
-            URL gridUrl = new URL(Config.get("selenium.grid.urlFormat"));
+            URL gridUrl = new URL(String.format(Config.get("selenium.grid.urlFormat"), Config.get("selenium.grid.hubHost")));
             driver = new RemoteWebDriver(gridUrl, options);
             logger.info("Remote WebDriver launched on Grid");
         }
@@ -96,10 +96,12 @@ public class LaunchDriver {
                     if (System.getProperty("os.name").toLowerCase().contains("win")) {
                         // Windows: Kill chromedriver.exe using taskkill
                         Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe");
+                        Runtime.getRuntime().exec("taskkill /F /IM geckodriver.exe");
                         logger.info("WebDriver Killed successfully on win.");
                     } else {
                         // macOS/Linux: Kill chromedriver using killall
                         Runtime.getRuntime().exec("killall chromedriver");
+                        Runtime.getRuntime().exec("killall geckodriver");
                         logger.info("WebDriver Killed successfully on others.");
                     }
                 } catch (IOException e) {

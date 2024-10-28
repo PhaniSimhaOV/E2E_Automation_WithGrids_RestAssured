@@ -9,23 +9,22 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <selenium.java.version>4.23.0</selenium.java.version>
-        <logback.version>1.5.6</logback.version>
-        <webdriver.manager.version>5.9.2</webdriver.manager.version>
-        <testng.version>7.10.2</testng.version>
-        <jackson.version>2.17.2</jackson.version>
+        <selenium.java.version>LATEST</selenium.java.version>
+        <logback.version>LATEST</logback.version>
+        <webdriver.manager.version>LATEST</webdriver.manager.version>
+        <testng.version>LATEST</testng.version>
+        <jackson.version>LATEST</jackson.version>
         <!-- plugins versions -->
         <maven.compiler.version>3.11.0</maven.compiler.version>
         <maven.dependency.version>3.6.0</maven.dependency.version>
-        <maven.jar.version>3.3.0</maven.jar.version>
-        <maven.surefire.version>3.1.2</maven.surefire.version>
+        <maven.jar.version>3.4.0</maven.jar.version>
+        <maven.surefire.version>3.4.0</maven.surefire.version>
         <maven.resources.plugin>3.3.1</maven.resources.plugin>
         <!-- output directory -->
         <package.directory>${project.build.directory}/docker-resources</package.directory>
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -61,40 +60,9 @@
         </dependency>
 
         <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>5.3.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- JSONPath for handling JSON responses -->
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-path</artifactId>
-            <version>5.3.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- XMLPath for handling XML responses -->
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>xml-path</artifactId>
-            <version>5.3.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Hamcrest for assertions -->
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <version>2.2</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.13.0</version>
+            <version>LATEST</version>
             <scope>test</scope>
         </dependency>
 
@@ -102,27 +70,27 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>gherkin</artifactId>
-            <version>28.0.0</version>
+            <version>LATEST</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>7.17.0</version>
+            <version>LATEST</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/faker/faker -->
-            <dependency>
-                <groupId>com.github.javafaker</groupId>
-                <artifactId>javafaker</artifactId>
-                <version>1.0.2</version>
-            </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>LATEST</version>
+        </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.7</version>
+            <version>LATEST</version>
             <scope>test</scope>
         </dependency>
 
@@ -140,6 +108,7 @@
                     <release>17</release>
                 </configuration>
             </plugin>
+
             <!-- To run the tests using specific parameters, change thread count, testng report output directory etc -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -147,16 +116,17 @@
                 <version>${maven.surefire.version}</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <browser>Chrome</browser>
+                        <browser>chrome</browser>
                         <selenium.grid.enabled>false</selenium.grid.enabled>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <file>testng.xml</file>
                     </suiteXmlFiles>
-                    <threadCount>1</threadCount>
+                    <threadCount>4</threadCount>
                     <reportsDirectory>target/test-output</reportsDirectory>
                 </configuration>
             </plugin>
+
             <!-- To copy all the dependencies to run our tests as part of "mvn package" -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -177,22 +147,50 @@
                     </execution>
                 </executions>
             </plugin>
+
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-resources-plugin</artifactId>-->
+<!--                <version>${maven.resources.plugin}</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>copy-classes</id>-->
+<!--                        <phase>prepare-package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>copy-resources</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <outputDirectory>${package.directory}/test-classes</outputDirectory>-->
+<!--                            <resources>-->
+<!--                                <resource>-->
+<!--                                    <directory>target/test-classes</directory>-->
+<!--                                </resource>-->
+<!--                            </resources>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+
             <!-- To package our page objects, test classes into jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${maven.jar.version}</version>
                 <configuration>
-                    <outputDirectory>${package.directory}</outputDirectory>
+                    <outputDirectory>${package.directory}/libs</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>
                         <goals>
                             <goal>test-jar</goal>
                         </goals>
+                        <configuration>
+                            <includes>**/*.class</includes>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
+
             <!-- To copy resources into the output directory -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -216,7 +214,34 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- New plugin to include files from root directory -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven.resources.plugin}</version>
+                <executions>
+                    <execution>
+                        <id>copy-root-files</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${package.directory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}</directory> <!-- Root directory -->
+                                    <includes>
+                                        <include>pom.xml</include>
+                                        <include>testng.xml</include><!-- Include all files in the root directory -->
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-
 </project>
