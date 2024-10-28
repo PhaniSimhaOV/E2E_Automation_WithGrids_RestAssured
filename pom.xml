@@ -9,16 +9,16 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <selenium.java.version>4.23.0</selenium.java.version>
-        <logback.version>1.5.6</logback.version>
-        <webdriver.manager.version>5.9.2</webdriver.manager.version>
-        <testng.version>7.10.2</testng.version>
-        <jackson.version>2.17.2</jackson.version>
+        <selenium.java.version>LATEST</selenium.java.version>
+        <logback.version>LATEST</logback.version>
+        <webdriver.manager.version>LATEST</webdriver.manager.version>
+        <testng.version>LATEST</testng.version>
+        <jackson.version>LATEST</jackson.version>
         <!-- plugins versions -->
         <maven.compiler.version>3.11.0</maven.compiler.version>
         <maven.dependency.version>3.6.0</maven.dependency.version>
-        <maven.jar.version>3.3.0</maven.jar.version>
-        <maven.surefire.version>3.1.2</maven.surefire.version>
+        <maven.jar.version>3.4.0</maven.jar.version>
+        <maven.surefire.version>3.4.0</maven.surefire.version>
         <maven.resources.plugin>3.3.1</maven.resources.plugin>
         <!-- output directory -->
         <package.directory>${project.build.directory}/docker-resources</package.directory>
@@ -62,7 +62,7 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.13.0</version>
+            <version>LATEST</version>
             <scope>test</scope>
         </dependency>
 
@@ -70,27 +70,27 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>gherkin</artifactId>
-            <version>28.0.0</version>
+            <version>LATEST</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>7.17.0</version>
+            <version>LATEST</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/faker/faker -->
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
+            <version>LATEST</version>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.7</version>
+            <version>LATEST</version>
             <scope>test</scope>
         </dependency>
 
@@ -115,11 +115,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
                 <configuration>
-                    <!-- mvn clean test -Dbrowser=chrome -Dselenium.grid.enabled=true -->
                     <systemPropertyVariables>
                         <browser>chrome</browser>
                         <selenium.grid.enabled>false</selenium.grid.enabled>
-                        <cucumber.options>--tags @SmokeTest</cucumber.options>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <file>testng.xml</file>

@@ -43,6 +43,6 @@ services:
     environment:
       - BROWSER=${BROWSER}
       - HUB_HOST=hub
-      - CUCUMBER_TAG=@SmokeTest
+      - CUCUMBER_TAG=${CUCUMBER_TAG}
     volumes:
       - ./output/report:/home/selenium-docker/test-output

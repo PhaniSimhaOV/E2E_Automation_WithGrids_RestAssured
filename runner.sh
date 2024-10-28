@@ -35,7 +35,7 @@ done
 echo "Selenium Grid is up and running. Running the test...."
 
 # Start the java command
-java -cp "libs/*" -Dcucumber.options="--tags @SmokeTest" \
+java -cp "libs/*" -Dcucumber.filter.tags="${CUCUMBER_TAG}" \
                                 -Dselenium.grid.enabled=true \
                                 -Dselenium.grid.hubHost=${HUB_HOST} \
                                 -Dbrowser=${BROWSER} \
