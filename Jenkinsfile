@@ -1,22 +1,37 @@
 pipeline {
+
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build Jar') {
             steps {
-                echo 'Building..'
+                echo "Building Jar..."
+                bat "mvn clean package -DskipTests"
             }
         }
-        stage('Test') {
+        stage('Build Image') {
             steps {
-                echo 'Testing..'
+                echo "Building Image..."
+                bat "docker build -t=lazysaif/seleniumtest ."
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+        stage('Push Image') {
+            environment {
+                DOCKER_HUB = credentials('dockerhub-creds')
             }
+
+            steps {
+                echo 'Pushing Image....'
+                bat 'docker login -u %DOCKER_HUB_USR% -p %DOCKER_HUB_PSW%'
+                bat "docker push lazysaif/seleniumtest"
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "Logging out of Docker..."
+            bat "docker logout"
         }
     }
 }
