@@ -67,6 +67,7 @@ output
 
 ### Maven template
 test-output
+volumes
 results
 **/target/
 **/pom.xml.tag
