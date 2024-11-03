@@ -30,6 +30,7 @@ pipeline {
 
     post {
         always {
+            echo "Logging out of Docker..."
             bat "docker logout"
         }
     }
