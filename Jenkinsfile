@@ -1,21 +1,24 @@
 pipeline {
+
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build Jar') {
             steps {
-                echo 'Building..'
+                echo "Building Jar..."
+                bat "mvn clean package -DskipTests"
             }
         }
-        stage('Test') {
+        stage('Build Image') {
             steps {
-                echo 'Testing..'
+                echo "Building Image..."
+                bat "docker build -t=lazysaif/seleniumtest ."
             }
         }
-        stage('Deploy') {
+        stage('Push Image') {
             steps {
-                echo 'Deploying....'
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                echo 'Pushing Image....'
+                bat "docker push lazysaif/seleniumtest"
             }
         }
     }
