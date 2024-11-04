@@ -18,14 +18,17 @@ pipeline {
         stage('Push Image') {
             environment {
                 DOCKER_HUB = credentials('dockerhub-creds')
-            }
-
+        }
             steps {
                 echo 'Pushing Image....'
                 bat 'docker login -u %DOCKER_HUB_USR% -p %DOCKER_HUB_PSW%'
                 bat "docker push lazysaif/seleniumtest"
             }
         }
+
+        stage('Execute test cases') {
+                    bat 'run.bat'
+                }
     }
 
     post {
