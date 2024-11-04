@@ -13,6 +13,6 @@ ADD pom.xml ./
 ADD testng.xml ./
 ADD runner.sh runner.sh
 
-#RUN dos2unix runner.sh
+RUN dos2unix runner.sh
 
 ENTRYPOINT ["sh", "runner.sh"]
