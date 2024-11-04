@@ -27,8 +27,10 @@ pipeline {
         }
 
         stage('Execute test cases') {
+            steps {
                     bat 'run.bat'
                 }
+        }
     }
 
     post {
