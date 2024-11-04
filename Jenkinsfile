@@ -22,6 +22,8 @@ pipeline {
             echo "Stopping Docker..."
             bat "docker-compose -f grid.yaml down"
             bat "docker-compose -f docker-compose-tests.yaml down"
+            archiveArtifacts artifacts: "volumes/node/workspace/My_jenkinsProject/output/report/index.html", followSymlinks: false
+            archiveArtifacts artifacts: "volumes/node/workspace/My_jenkinsProject/output/report/emailable-report.html", followSymlinks: false
         }
     }
 }
