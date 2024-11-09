@@ -3,35 +3,27 @@ pipeline {
     agent any
 
     stages {
-        stage('Build Jar') {
+        stage('Start Grid') {
             steps {
-                echo "Building Jar..."
-                bat "mvn clean package -DskipTests"
+                echo "Starting Grid..."
+                bat "docker-compose -f grid.yaml up -d"
             }
         }
-        stage('Build Image') {
+        stage('Eun tests') {
             steps {
-                echo "Building Image..."
-                bat "docker build -t=lazysaif/seleniumtest ."
-            }
-        }
-        stage('Push Image') {
-            environment {
-                DOCKER_HUB = credentials('dockerhub-creds')
-            }
-
-            steps {
-                echo 'Pushing Image....'
-                bat 'docker login -u %DOCKER_HUB_USR% -p %DOCKER_HUB_PSW%'
-                bat "docker push lazysaif/seleniumtest"
+                echo "Starting Tests..."
+                bat "set BROWSER=chrome && set CUCUMBER_TAG=@BrokenTest && docker-compose -f docker-compose-tests.yaml up"
             }
         }
     }
 
     post {
         always {
-            echo "Logging out of Docker..."
-            bat "docker logout"
+            echo "Stopping Docker..."
+            bat "docker-compose -f grid.yaml down"
+            bat "docker-compose -f docker-compose-tests.yaml down"
+            archiveArtifacts artifacts: "output/report/index.html", followSymlinks: false
+            archiveArtifacts artifacts: "output/report/emailable-report.html", followSymlinks: false
         }
     }
 }
