@@ -191,7 +191,7 @@
                 </executions>
             </plugin>
 
-            <!-- To copy resources into the output directory -->
+            <!-- New plugin to include files from root directory -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -212,15 +212,6 @@
                             </resources>
                         </configuration>
                     </execution>
-                </executions>
-            </plugin>
-
-            <!-- New plugin to include files from root directory -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven.resources.plugin}</version>
-                <executions>
                     <execution>
                         <id>copy-root-files</id>
                         <phase>prepare-package</phase>

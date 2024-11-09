@@ -12,44 +12,44 @@ import org.slf4j.LoggerFactory;
 
 public class FlightRegistrationPage {
     private static final Logger logger = LoggerFactory.getLogger(FlightRegistrationPage.class);
-    final private CommonActions commonActions;
-    final private LaunchDriver launchDriver;
+    private final CommonActions commonActions;
+    private final LaunchDriver launchDriver;
 
     @FindBy(xpath = "//*[@id='mainNav']//a[@class='navbar-brand']")
-    private WebElement site_logo;
+    private WebElement siteLogo;
 
     @FindBy(xpath = "//*[@id='registration-section']//h2[text()='Customer Registration']")
-    private WebElement site_Header;
+    private WebElement siteHeader;
 
     @FindBy(xpath = "//*[@id='registration-section']//p[@class='mt-1']")
-    private WebElement site_Description;
+    private WebElement siteDescription;
 
     @FindBy(xpath = "//*[text()='First Name']/following-sibling::input")
-    private WebElement form_FirstName;
+    private WebElement formFirstName;
 
     @FindBy(xpath = "//*[text()='Last Name']/following-sibling::input")
-    private WebElement form_LastName;
+    private WebElement formLastName;
 
     @FindBy(xpath = "//*[text()='Email']/following-sibling::input")
-    private WebElement form_Email;
+    private WebElement formEmail;
 
     @FindBy(xpath = "//*[text()='Password']/following-sibling::input")
-    private WebElement form_password;
+    private WebElement formpassword;
 
     @FindBy(xpath = "//*[text()='Street']/following-sibling::input")
-    private WebElement form_Street;
+    private WebElement formStreet;
 
     @FindBy(xpath = "//*[text()='City']/following-sibling::input")
-    private WebElement form_City;
+    private WebElement formCity;
 
     @FindBy(xpath = "//*[text()='Zip']/following-sibling::input")
-    private WebElement form_Zip;
+    private WebElement formZip;
 
     @FindBy(xpath = "//*[text()='State']/following-sibling::select")
-    private WebElement form_State;
+    private WebElement formState;
 
     @FindBy(xpath = "//*[@id='register-btn']")
-    private WebElement form_RegButton;
+    private WebElement formRegButton;
 
     public FlightRegistrationPage(WebDriver driver, LaunchDriver launchDriver){
         this.launchDriver = launchDriver;
@@ -61,42 +61,42 @@ public class FlightRegistrationPage {
         launchDriver.launchSite();
     }
     public void verifyLogoIsPresent(){
-        commonActions.isElementPresent(site_logo);
+        commonActions.isElementPresent(siteLogo);
         logger.info("Site Logo is Displayed");
     }
 
     public void verifySiteHeaderIsPresent(){
-        commonActions.isElementPresent(site_Header);
+        commonActions.isElementPresent(siteHeader);
         logger.info("Site Header is Present");
     }
 
     public void verifySiteDescriptionIsPresent(){
-        commonActions.isElementPresent(site_Description);
+        commonActions.isElementPresent(siteDescription);
         logger.info("Site Description is Present");
     }
 
     public void enterFirstAndLastNames(){
-        commonActions.sendText(form_FirstName, new Faker().name().firstName());
-        commonActions.sendText(form_LastName, new Faker().name().lastName());
+        commonActions.sendText(formFirstName, new Faker().name().firstName());
+        commonActions.sendText(formLastName, new Faker().name().lastName());
         logger.info("Customer First & Last Name has been provided");
     }
 
     public void enterEmailAndPassword(){
-        commonActions.sendText(form_Email, new Faker().internet().emailAddress());
-        commonActions.sendText(form_password, "Broken#123");
+        commonActions.sendText(formEmail, new Faker().internet().emailAddress());
+        commonActions.sendText(formpassword, "Broken#123");
         logger.info("Customer Email & Pwd has been taken");
     }
 
     public void enterUserAddress(){
-        commonActions.sendText(form_Street, new Faker().address().streetName());
-        commonActions.sendText(form_City, new Faker().address().city());
-        commonActions.sendText(form_Zip, new Faker().address().zipCode());
-        commonActions.selectValue(form_State);
+        commonActions.sendText(formStreet, new Faker().address().streetName());
+        commonActions.sendText(formCity, new Faker().address().city());
+        commonActions.sendText(formZip, new Faker().address().zipCode());
+        commonActions.selectValue(formState);
         logger.info("Customer Address has been Entered");
     }
 
     public void clickOnRegisterButton(){
-        commonActions.clickElement(form_RegButton);
+        commonActions.clickElement(formRegButton);
         logger.info("Customer Registration Completed");
     }
 }
