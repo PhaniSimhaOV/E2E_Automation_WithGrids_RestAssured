@@ -12,7 +12,7 @@ pipeline {
             steps {
                echo "Starting build..."
                bat " mvn clean package -DskipTests"
-               bat "docker rmi -f $(docker images -f "dangling=true" -q --filter "label!=latest") $(docker images --filter "reference='lazy*'" --filter "label!=latest" -q)"
+               bat "docker rmi -f \$\(docker images -f \"dangling=true\" -q --filter \"label!=latest\"\) \$\(docker images --filter \"reference='lazy*'\" --filter \"label!=latest\" -q\)"
                bat "docker build -t=lazysaif/seleniumtest ."
             }
         }
