@@ -37,8 +37,8 @@ pipeline {
             steps {
                 echo "Starting Tests..."
                 bat "set BROWSER=${params.BROWSER} && set CUCUMBER_TAG=${params.CUCUMBER_TAG} && docker-compose -f docker-compose-tests.yaml up"
-                script{
-                    if(fileExists 'output/report/testng-failed.xml') {
+                script {
+                    if (fileExists('output/report/testng-failed.xml')) {
                         error('Failed test cases found...')
                     }
                 }
