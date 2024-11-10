@@ -33,7 +33,7 @@ pipeline {
                 bat "docker-compose -f grid.yaml up --scale ${params.BROWSER}=1 -d"
             }
         }
-        stage('Eun tests') {
+        stage('Run tests') {
             steps {
                 echo "Starting Tests..."
                 bat "set BROWSER=${params.BROWSER} && set CUCUMBER_TAG=${params.CUCUMBER_TAG} && docker-compose -f docker-compose-tests.yaml up"
