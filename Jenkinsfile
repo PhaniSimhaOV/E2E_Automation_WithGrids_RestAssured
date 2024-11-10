@@ -21,17 +21,6 @@ pipeline {
    }
 
     stages {
-        stage('Clear Workspace') {
-            steps{
-                dir('src') {
-                    deleteDir()
-                }
-                script {
-                    currentBuild.displayName = ${environment}/${BUILD_NUMBER}
-                }
-            }
-        }
-
         stage('Build on latest code') {
             steps {
                echo "Starting build..."
@@ -79,6 +68,7 @@ pipeline {
             bat "docker-compose -f docker-compose-tests.yaml down"
             archiveArtifacts artifacts: "output/report/index.html", followSymlinks: false
             archiveArtifacts artifacts: "output/report/emailable-report.html", followSymlinks: false
+            cleanWs()
         }
     }
 }
