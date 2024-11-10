@@ -1,13 +1,37 @@
+#!/bin/groovy
+def EMAIL_RECEIVERS = "md.saifansari@gmail.com"
+
 pipeline {
 
     agent any
 
+    environment{
+        JENKINS_TRIGGERED_BY = "${currentBuild.getBuildCauses()[0].shortDescription}"
+    }
+
     parameters {
+            choice(name: 'environment', choices: ['uat', 'dev'], description: 'Which env to select?')
             choice(name: 'BROWSER', choices: ['chrome', 'firefox'], description: 'Which browser to select to?')
             string(name: 'CUCUMBER_TAG', defaultValue: '@SmokeTest', description: 'Enter the tag/tags name.')
+            string(name: 'reportsMail', defaultValue: EMAIL_RECEIVERS, description: 'Send report to these people.')
         }
 
+   options {
+    timeout(time: 2, unit: 'HOURS')
+   }
+
     stages {
+        stage('Clear Workspace') {
+            steps{
+                dir('src') {
+                    deleteDir()
+                }
+                script {
+                    currentBuild.displayName = ${environment}/${BUILD_NUMBER}
+                }
+            }
+        }
+
         stage('Build on latest code') {
             steps {
                echo "Starting build..."
@@ -50,7 +74,6 @@ pipeline {
         always {
             echo "Logging out of docker ..."
             bat "docker logout"
-
             echo "Stopping Docker..."
             bat "docker-compose -f grid.yaml down"
             bat "docker-compose -f docker-compose-tests.yaml down"
