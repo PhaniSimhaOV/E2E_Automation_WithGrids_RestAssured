@@ -21,7 +21,26 @@ pipeline {
    }
 
     stages {
-        stage('Build on latest code') {
+        stage('Clean Workspace') {
+            steps {
+                script {
+                    // Delete the contents of the 'src' directory
+                    echo "Cleaning up the 'src' directory"
+                    // Make sure you use 'dir' to target the correct directory
+                    dir('src') {
+                        deleteDir()  // Deletes all files and subdirectories in 'src'
+                    }
+                }
+            }
+        }
+
+        stage('Checkout from Github') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Project') {
             steps {
                echo "Starting build..."
                bat " mvn clean package -DskipTests"
@@ -68,7 +87,6 @@ pipeline {
             bat "docker-compose -f docker-compose-tests.yaml down"
             archiveArtifacts artifacts: "output/report/index.html", followSymlinks: false
             archiveArtifacts artifacts: "output/report/emailable-report.html", followSymlinks: false
-            cleanWs()
         }
     }
 }
