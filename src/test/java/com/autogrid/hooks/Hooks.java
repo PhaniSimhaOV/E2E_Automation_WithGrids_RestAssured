@@ -1,6 +1,5 @@
 package com.autogrid.hooks;
 
-import com.autogrid.testData.FlightRegCustomerData;
 import com.autogrid.utils.LaunchDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -12,11 +11,7 @@ import java.net.MalformedURLException;
 public class Hooks {
 
     private static final Logger logger = LoggerFactory.getLogger(Hooks.class);
-    private FlightRegCustomerData flightRegCustomerData;
 
-    public FlightRegCustomerData getFlightRegCustomerData() {
-        return flightRegCustomerData;
-    }
     @Before
     public void initializeDriver() throws MalformedURLException {
         LaunchDriver.setUpDriver();

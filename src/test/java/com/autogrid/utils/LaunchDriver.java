@@ -1,6 +1,5 @@
 package com.autogrid.utils;
 
-import com.autogrid.steps.FlightRegistrationPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,39 +16,58 @@ import java.time.Duration;
 import java.util.Arrays;
 
 public class LaunchDriver {
-    private static final Logger logger = LoggerFactory.getLogger(FlightRegistrationPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(LaunchDriver.class);
     private static WebDriver driver;
     private static final int TIME_OUT = 50;
 
     private LaunchDriver() throws MalformedURLException {
         Config.initialize();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
-                "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*", "--headless"));
 
         if(Config.get("browser").equalsIgnoreCase("chrome")
-                && Config.get("selenium.grid.enabled").equalsIgnoreCase("false")) {
+                && Config.get("selenium.grid.enabled").equalsIgnoreCase("false")
+                && !Config.get("selenium.run.device").equalsIgnoreCase("mobile")) {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
+                    "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*", "--headless"));
             logger.info("Initializing WebDriver & launching Chrome Locally");
 
             driver = new ChromeDriver(options);
+            driver.manage().window().maximize();
         }else if(Config.get("browser").equalsIgnoreCase("firefox")
-                && Config.get("selenium.grid.enabled").equalsIgnoreCase("false")){
+                && Config.get("selenium.grid.enabled").equalsIgnoreCase("false")
+                && !Config.get("selenium.run.device").equalsIgnoreCase("mobile")){
             logger.info("Initializing WebDriver & launching Firefox Locally");
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             firefoxOptions.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
                     "--ignore-certificate-errors", "--disable-notifications"));
 
             driver = new FirefoxDriver(firefoxOptions);
+            driver.manage().window().maximize();
         }else if(Config.get("browser").equalsIgnoreCase("chrome")
-                && Config.get("selenium.grid.enabled").equalsIgnoreCase("true")){
+                && Config.get("selenium.grid.enabled").equalsIgnoreCase("true")
+                && !Config.get("selenium.run.device").equalsIgnoreCase("mobile")){
             logger.info("Initializing WebDriver & launching Chrome on Grid");
+
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
+                    "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*", "--headless"));
 
             URL gridUrl = new URL(String.format(Config.get("selenium.grid.urlFormat"), Config.get("selenium.grid.hubHost")));
             driver = new RemoteWebDriver(gridUrl, options);
             logger.info("Remote WebDriver launched on Grid");
+            driver.manage().window().maximize();
+        }else if(Config.get("browser").equalsIgnoreCase("chrome")
+                && Config.get("selenium.grid.enabled").equalsIgnoreCase("false")
+                && Config.get("selenium.run.device").equalsIgnoreCase("mobile")){
+            logger.info("Initializing WebDriver & launching Chrome locally on Mobile device");
+
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments(Arrays.asList("--no-sandbox", "--verbose",
+                    "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*"));
+            options.setExperimentalOption("mobileEmulation", createMobileEmulation());
+            driver = new ChromeDriver(options);
         }
 
-        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIME_OUT));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(TIME_OUT));
     }
@@ -74,8 +92,8 @@ public class LaunchDriver {
 
     public static void launchSite() {
         if (driver != null) {
-            logger.info("Launching site \"{}\"", Config.get("flightReservation.url"));
-            driver.get(Config.get("flightReservation.url"));
+            logger.info("Launching site \"{}\"", Config.get("site.url"));
+            driver.get(Config.get("site.url"));
         } else {
             logger.warn("Driver is not initialized. Cannot launch site.");
         }
@@ -111,6 +129,13 @@ public class LaunchDriver {
         } else {
             logger.warn("Driver is already null. Nothing to tear down.");
         }
+    }
+
+    private static java.util.Map<String, Object> createMobileEmulation() {
+        // Create a Map for mobile emulation (you can use predefined devices or custom configurations)
+        java.util.Map<String, Object> mobileEmulation = new java.util.HashMap<>();
+        mobileEmulation.put("deviceName", Config.get("selenium.device.name")); // Predefined device name
+        return mobileEmulation;
     }
 
 }
