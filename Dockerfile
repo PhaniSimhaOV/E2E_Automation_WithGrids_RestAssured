@@ -2,16 +2,16 @@
 FROM bellsoft/liberica-openjdk-alpine:17
 
 #to add utility
-RUN apk add curl jq
+RUN apk --no-cache add curl jq
 
 # Set the working directory inside the container
 WORKDIR /home/selenium-docker
 
 #ADD files
-ADD target/docker-resources ./
-ADD pom.xml ./
-ADD testng.xml ./
-ADD runner.sh runner.sh
+COPY target/docker-resources ./
+COPY pom.xml ./
+COPY testng.xml ./
+COPY runner.sh runner.sh
 
 RUN dos2unix runner.sh
 

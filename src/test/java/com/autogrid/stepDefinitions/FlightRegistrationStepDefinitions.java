@@ -8,9 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class FlightRegistrationStepDefinitions {
 
-    final private WebDriver driver;
+    private final WebDriver driver;
 
-    final private FlightRegistrationPage flightRegistrationPage;
+    private final FlightRegistrationPage flightRegistrationPage;
 
     LaunchDriver launchDriver;
 

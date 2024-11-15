@@ -74,7 +74,7 @@ public class LaunchDriver {
 
     public static void launchSite() {
         if (driver != null) {
-            logger.info("Launching site: " + Config.get("flightReservation.url"));
+            logger.info("Launching site \"{}\"", Config.get("flightReservation.url"));
             driver.get(Config.get("flightReservation.url"));
         } else {
             logger.warn("Driver is not initialized. Cannot launch site.");
@@ -89,7 +89,7 @@ public class LaunchDriver {
                 driver = null;
                 logger.info("WebDriver closed successfully.");
             } catch (Exception e) {
-                logger.warn("Error during WebDriver teardown: " + e);
+                logger.warn("Error during WebDriver teardown: \"{0}\"",  e);
             } finally {
                 driver = null;  // Ensure driver is set to null after quit
                 try {
@@ -105,7 +105,7 @@ public class LaunchDriver {
                         logger.info("WebDriver Killed successfully on others.");
                     }
                 } catch (IOException e) {
-                    logger.error("An exception has been thrown. Please review: {}", e);
+                    logger.error("An exception has been thrown. Please review: \"{0}\"", e);
                 }
             }
         } else {

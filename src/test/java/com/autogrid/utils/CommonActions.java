@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 public class CommonActions {
-    final private Wait<WebDriver> wait;
+    private final Wait<WebDriver> wait;
 
     private static final Logger logger = LoggerFactory.getLogger(CommonActions.class);
 
