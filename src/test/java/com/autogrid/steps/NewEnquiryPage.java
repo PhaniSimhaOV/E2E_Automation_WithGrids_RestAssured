@@ -165,7 +165,7 @@ public class NewEnquiryPage {
     @FindBy(xpath = "//*[@id='enquiry_info']/div[1]/div/label")
     private WebElement SMSOptCheckBox;
     
-    @FindBy(xpath = "//*[@name='q']")
+    @FindBy(xpath = "//*[@id='template']")
     private WebElement SuccessToast;
 
     @FindBy(xpath = "//*[@id='custName'][@data-name='Cust. Name']")
@@ -174,71 +174,88 @@ public class NewEnquiryPage {
     @FindBy(xpath = "//*[@id='template']")
     private WebElement CompanyNameValidation;
    
+    @FindBy(xpath = "//*[@id='activityName']")
+    private WebElement Activity;
+    
+    @FindBy(xpath = "//span[normalize-space()='Follow Up']")
+    private WebElement FollowUpTab;
+    
+    @FindBy(xpath = "//*[@id='eqryForm']/div/dl[4]/dd[1]/span/span/span[1]")
+    private WebElement FinanceReqYN;
+    
+    @FindBy(xpath = "//*[@id='template']")
+    private WebElement FinanceReqYNValidation;
+    
+    @FindBy(xpath = "//*[@id='eqryForm']/div/dl[4]/dd[2]/span/span/span[1]")
+    private WebElement Financier;
+    
+    @FindBy(xpath = "//input[@id='loanAmount']")
+    private WebElement LoanAmount;
+    
+    @FindBy(xpath = "//*[@id='eqryForm']/div/dl[6]/dd[1]/span/span/span[1]")
+    private WebElement TDOffer;
+    
+    @FindBy(xpath = "//*[@id='eqryForm']/div/dl[6]/dd[2]/span/span/span[1]")
+    private WebElement TDVIN;
 
-    @FindBy(xpath = "//a[normalize-space()='Lead']")
-    private WebElement LeadTab;
+    @FindBy(xpath = "//*[@id='eqryForm']/div/dl[6]/dd[3]/span/span/span[1]")
+    private WebElement CftOfDeposit;
     
-    @FindBy(xpath = "//a[normalize-space()='Appointed Enquiry']")
-    private WebElement AppointedEnquiryTab;
-
-    @FindBy(xpath = "//a[normalize-space()='Enquiry Follow Up']")
-    private WebElement EnquiryFollowupTab;
+    @FindBy(xpath = "//*[@id='template']")
+    private WebElement CftOfDepositValidation;
     
-    @FindBy(xpath = "//a[normalize-space()='Walk-in Enquiry']")
-    private WebElement WalkinEnquiryTab;
+    @FindBy(xpath = "//*[@id='eqryForm']/div/dl[7]/dd[1]/span/span/span[1]")
+    private WebElement FinanceOptions;
     
-    @FindBy(xpath = "//button[@id='btnAllocate']")
-    private WebElement AllocateButton;
+    @FindBy(xpath = "//*[@id='template']")
+    private WebElement FinanceOptionsValidation;
     
-    @FindBy(xpath = "//button[@id='btnSearch']")
-    private WebElement SearchButton;
+    @FindBy(xpath = "//*[@id='eqryForm']/div/dl[7]/dd[2]/span/span/span[1]")
+    private WebElement Expplan;
     
-    @FindBy(xpath = "//input[@id='custName']")
-    private WebElement CustNameSearchField;
+    @FindBy(xpath = "//*[@id='template']")
+    private WebElement ExpplanValidation;
     
-    @FindBy(xpath = "//input[@id='mobileNo']")
-    private WebElement MobileSearchField;
+    @FindBy(xpath = "//*[@id='eqryForm']/div/dl[7]/dd[4]/span/span/span[1]")
+    private WebElement VisitedFamily;
     
-    @FindBy(xpath = "//*[@id=\"divGrid1Param\"]/dl[1]/dd[3]/span/span/span[1]")
-    private WebElement EnqSourceSearchField;
+    @FindBy(xpath = "//*[@id='template']")
+    private WebElement VisitedFamilyValidation;
     
-    @FindBy(xpath = "//input[@id='eqryNo']")
-    private WebElement EnqNoSearchField;
+    @FindBy(xpath = "//*[@id='eqryForm']/div/dl[8]/dd/span/span/span[1]")
+    private WebElement ImmediateBook;
     
-    @FindBy(xpath = "//input[@id='eqryFromDate']")
-    private WebElement EnqFromDatePicker;
+    @FindBy(xpath = "//*[@id='template']")
+    private WebElement ImmediateBookValidation;
     
-    @FindBy(xpath = "//input[@id='eqryToDate']")
-    private WebElement EnqToDatePicker;
+    @FindBy(xpath = "//*[@id='followUpInfoForm']/div[2]/dl[1]/dd[2]/span/span/span[1]")
+    private WebElement FollowUpTypeSelection;
     
-    @FindBy(xpath = "//*[@name='q']")
-    private WebElement ModelSearchField;
+    @FindBy(xpath = "//textarea[@id='eqfuSchmeRmrks']")
+    private WebElement SchemeOffered;
     
-    @FindBy(xpath = "//*[@name='q']")
-    private WebElement ColorSearchField;
+    @FindBy(xpath = "//textarea[@id='eqfuRmrks']")
+    private WebElement FollowUpRemarks;
     
-    @FindBy(xpath = "//*[@name='q']")
-    private WebElement PersoninchargeSearchField;
+    @FindBy(xpath = "//input[@id='nextFollowUpDate']")
+    private WebElement NextFollowUpTime;    
     
-    @FindBy(xpath = "//*[@name='q']")
-    private WebElement CallAfterStartDatePicker;
+    @FindBy(xpath = "//*[@id='followUpInfoForm']/div[2]/dl[4]/dd[2]/span/span/span[1]")
+    private WebElement NextFollowUpType;
     
-    @FindBy(xpath = "//*[@name='q']")
-    private WebElement CallAfterEndDatePicker;
+    @FindBy(xpath = "//*[@id='followUpInfoForm']/div[2]/dl[5]/dd[2]/span/span/span[1]")
+    private WebElement Verification;
     
-    @FindBy(xpath = "//*[@name='q']")
-    private WebElement PanSearchField;
+    @FindBy(xpath = "//button[@id='btnFollowUpSave']")
+    private WebElement FollowUpSave;
     
-    @FindBy(xpath = "//*[@name='q']")
-    private WebElement EmailField;
+    @FindBy(xpath = "//*[@id='template']")
+    private WebElement FollowUpSuccessToast;
     
-    @FindBy(xpath = "//*[@name='q']")
-    private WebElement AllocatedCheckBox;
-    
-    @FindBy(xpath = "//*[@name='q']")
-    private WebElement ImmediatebookingValidation;
-    
-     
+    @FindBy(xpath = "//*[@id='template']")
+    private WebElement FollowUpValidation;
+   
+   
     public NewEnquiryPage(WebDriver driver){
         this.commonActions = new CommonActions(driver);
         PageFactory.initElements(driver, this);
