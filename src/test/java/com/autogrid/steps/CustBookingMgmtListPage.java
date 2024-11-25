@@ -2,10 +2,13 @@ package com.autogrid.steps;
 
 import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.LaunchDriver;
+import com.github.dockerjava.api.model.Driver;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,8 +28,11 @@ public class CustBookingMgmtListPage {
     @FindBy(xpath = "//a[normalize-space()='Sales Operation']")
     private WebElement SalesOperation;
     
+    @FindBy(xpath="//*[@id=\"gnb\"]/li[3]/div/ul/li[3]/ul/li[1]/a")
+    private WebElement CustomerBookingMgmtLink;
+    
     @FindBy(xpath="//span[contains(text(),'Customer Booking Mgt List')]")
-    private WebElement CustomerBookingMgmtTab; 
+    private WebElement CustomerBookingMgmtListTab ; 
     
     
     @FindBy(xpath="//*[@id=\"content\"]/section[1]/div[2]/dl[1]/dd[1]/span/span")
@@ -50,7 +56,7 @@ public class CustBookingMgmtListPage {
     private WebElement BasedOn;
     
     @FindBy(xpath="//input[@id='baseTxt']")
-    private WebElement BaseTest;
+    private WebElement BaseText;
     
     
     @FindBy(xpath="//*[@id=\"content\"]/section[1]/div[2]/dl[2]/dd[3]/span/span/span[1]")
@@ -68,5 +74,86 @@ public class CustBookingMgmtListPage {
      
     @FindBy(xpath="//button[@id='btnSearch']")
     private WebElement SearchBtn;
+    
+    
+    public void clickOnSalesMenu() {
+    	commonActions.clickElement(SalesMenu);;
+    }
+    
+    
+    public void clickOnSalesOperation() {
+    	commonActions.clickElement(SalesOperation);
+    	
+    }
+    
+    public void CustomerBookingMgmtLink() {
+    	commonActions.clickElement(CustomerBookingMgmtLink);
+    }
+   
+   
+    public void  CustomerBookingMgmtListTab() {
+    	
+    	commonActions.clickElement(CustomerBookingMgmtListTab);
+    }
+    
+    public void DateOf() {
+    	commonActions.clickElement(DateOf);
+    	Select Cat=new Select(BasedOn);
+    	Cat.selectByVisibleText("Enquiry");
+    }
+    public void StartDate()
+    {
+    	
+    }
+    public void EndDate() {
+    	
+    }
+    
+    
+    
+    public void Model() {
+    	
+    }
+    
+    public void EnquiryStatus () {
+    	
+    }
+    
+    public void BasedOn() {
+    	Select Cat=new Select(BasedOn);
+    	Cat.selectByVisibleText("Mobile No");
+    }
+    
+    
+    public void BaseText () 
+    {
+    	commonActions.clickElement(BaseText);
+    	BaseText.clear();
+    	BaseText.sendKeys("7489954647");
+    	
+    }
+    
+    public void DeliveryStatus () {
+    	
+    }
+    
+    public void TimePeriod () {
+    	
+    }
+    
+    public void BookingFIFOSkip () {
+    	
+    }
+    
+    public void SaveBtn () {
+    	commonActions.clickElement(SaveBtn);
+    	
+    }
+    
+    public void SearchBtn () {
+    	commonActions.clickElement(SearchBtn);
+    	
+    }
+    
     
 }

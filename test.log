@@ -2361,3 +2361,191 @@ PS C:\Users\mdsai\eclipse-workspace\testPlace\E2E_Automation_withGrids>
 12760 [TestNG-tests-1] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
 13714 [TestNG-tests-1] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
 13730 [TestNG-tests-1] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+415  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+420  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+457  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+457  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+457  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+457  [main] INFO  com.autogrid.utils.Config -- site.url=https://www.google.com
+458  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+458  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=mobile
+458  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+459  [main] INFO  com.autogrid.utils.Config -- selenium.device.name=iPhone X
+459  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+459  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+460  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome locally on Mobile device
+6201 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://www.google.com"
+7502 [main] INFO  com.autogrid.utils.CommonActions -- Whatever value has been entered
+7794 [main] INFO  com.autogrid.utils.CommonActions -- The required Button/Link has been clicked
+7795 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+8106 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+8120 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+352  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+355  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+358  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+359  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+359  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+359  [main] INFO  com.autogrid.utils.Config -- site.url=https://www.google.com
+359  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+359  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=mobile
+360  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+360  [main] INFO  com.autogrid.utils.Config -- selenium.device.name=iPhone X
+360  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+360  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+360  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome locally on Mobile device
+2934 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://www.google.com"
+3727 [main] INFO  com.autogrid.utils.CommonActions -- Whatever value has been entered
+4013 [main] INFO  com.autogrid.utils.CommonActions -- The required Button/Link has been clicked
+4014 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+4292 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+4309 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+341  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+344  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+350  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+351  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+351  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+351  [main] INFO  com.autogrid.utils.Config -- site.url=https://www.google.com
+352  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+352  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=mobile
+352  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+353  [main] INFO  com.autogrid.utils.Config -- selenium.device.name=iPhone X
+353  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+353  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+353  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome locally on Mobile device
+4067 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://www.google.com"
+4862 [main] INFO  com.autogrid.utils.CommonActions -- Whatever value has been entered
+5158 [main] INFO  com.autogrid.utils.CommonActions -- The required Button/Link has been clicked
+5159 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+5459 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+5485 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+324  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+327  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+330  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+331  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+331  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+332  [main] INFO  com.autogrid.utils.Config -- site.url=https://www.google.com
+332  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+332  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=mobile
+332  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+332  [main] INFO  com.autogrid.utils.Config -- selenium.device.name=iPhone X
+332  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+333  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+333  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome locally on Mobile device
+4088 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+4331 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+4352 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+367  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+369  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+404  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+404  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+405  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+405  [main] INFO  com.autogrid.utils.Config -- site.url=https://www.google.com
+405  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+405  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=mobile
+406  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+406  [main] INFO  com.autogrid.utils.Config -- selenium.device.name=iPhone X
+407  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+411  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+412  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome locally on Mobile device
+3547 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+3811 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+3825 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+324  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+327  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+330  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+330  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+331  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+331  [main] INFO  com.autogrid.utils.Config -- site.url=https://www.google.com
+331  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+331  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=mobile
+331  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+332  [main] INFO  com.autogrid.utils.Config -- selenium.device.name=iPhone X
+332  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+332  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+332  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome locally on Mobile device
+2787 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+3029 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+3039 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+263  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+265  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+268  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+268  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+268  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+269  [main] INFO  com.autogrid.utils.Config -- site.url=https://www.google.com
+269  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+270  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=mobile
+270  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+270  [main] INFO  com.autogrid.utils.Config -- selenium.device.name=iPhone X
+270  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+271  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+271  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome locally on Mobile device
+2448 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+2701 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+2720 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+326  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+329  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+333  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+334  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+334  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+335  [main] INFO  com.autogrid.utils.Config -- site.url=https://www.google.com
+335  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+335  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=mobile
+335  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+335  [main] INFO  com.autogrid.utils.Config -- selenium.device.name=iPhone X
+336  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+336  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+336  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome locally on Mobile device
+2662 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+2930 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+2951 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+338  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+340  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+344  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+344  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+344  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+345  [main] INFO  com.autogrid.utils.Config -- site.url=https://www.google.com
+345  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+345  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=mobile
+345  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+346  [main] INFO  com.autogrid.utils.Config -- selenium.device.name=iPhone X
+346  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+347  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+348  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome locally on Mobile device
+2697 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+2929 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+2952 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+335  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+340  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+344  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+344  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+344  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+344  [main] INFO  com.autogrid.utils.Config -- site.url=https://www.google.com
+345  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+345  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=mobile
+345  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+345  [main] INFO  com.autogrid.utils.Config -- selenium.device.name=iPhone X
+345  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+345  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+345  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome locally on Mobile device
+2609 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+2869 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+2891 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+327  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+329  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+334  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+335  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+335  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+335  [main] INFO  com.autogrid.utils.Config -- site.url=https://www.google.com
+335  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+335  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=mobile
+335  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+336  [main] INFO  com.autogrid.utils.Config -- selenium.device.name=iPhone X
+336  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+337  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+337  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome locally on Mobile device
+2534 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://www.google.com"
+3418 [main] INFO  com.autogrid.utils.CommonActions -- Whatever value has been entered
+3741 [main] INFO  com.autogrid.utils.CommonActions -- The required Button/Link has been clicked
+3742 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+4000 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+4019 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.

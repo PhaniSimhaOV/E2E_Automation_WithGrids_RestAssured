@@ -167,19 +167,7 @@ public class CustBookingMgmtPage {
     @FindBy(xpath="//input[@id='testDriveTakenFlag']")
     private WebElement TestDrive;
 
-    @FindBy(xpath="")
-    private WebElement 
-    
-    @FindBy(xpath="")
-    private WebElement 
-    
-    @FindBy(xpath="")
-    private WebElement 
-    
-    @FindBy(xpath="")
-    private WebElement 
-    
-    @FindBy(xpath="")
+   
     private WebElement 
     
    public void clickOnSalesMenu() {
@@ -192,18 +180,11 @@ public class CustBookingMgmtPage {
     	
     }
     
-    public void 
    
     public void launchSite() throws InterruptedException {
         LaunchDriver.launchSite();
     }
 
-    public void sendQueryToSearchBox(){
-        commonActions.sendText(searchBox, "Whatever");
-    }
-
-    public void clickOnSearchButton(){
-        commonActions.clickElement(searchButton);
-    }
+   
 
 }
