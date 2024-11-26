@@ -11,7 +11,7 @@ import com.autogrid.utils.LaunchDriver;
 
 public class DMSLoginPage {
 	WebDriver driver;
-	private static final Logger logger = LoggerFactory.getLogger(NewEnquiryPage.class);
+	private static final Logger logger = LoggerFactory.getLogger(DMSLoginPage.class);
     private final CommonActions commonActions;
     
     @FindBy(xpath = "//input[@id='usrId']")
@@ -63,14 +63,19 @@ public class DMSLoginPage {
         this.commonActions = new CommonActions(driver);
         PageFactory.initElements(driver, this);
     }
+
+    public void launchDMSSite() throws InterruptedException {
+        LaunchDriver.launchSite();
+    }
+
  // Method to get the page title
     public String getPageTitle() {
-        return driver.getTitle();
+        return LaunchDriver.getDriver().getTitle();
     }
     
  // Method to verify the page title
     public boolean verifyPageTitle(String expectedTitle) {
-        return driver.getTitle().equals(expectedTitle);
+        return LaunchDriver.getDriver().getTitle().equals(expectedTitle);
     }
     
     public void clickLoginButton() {
@@ -181,10 +186,6 @@ public class DMSLoginPage {
             System.err.println("Error retrieving Enter OTP validation message: " + e.getMessage());
             throw e;
         }   
-    }
-    
-        public void launchDMSSite() throws InterruptedException {
-            LaunchDriver.launchSite();
     }
 
 }

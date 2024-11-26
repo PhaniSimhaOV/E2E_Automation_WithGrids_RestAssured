@@ -1,11 +1,13 @@
 package com.autogrid.utils;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -94,6 +96,9 @@ public class LaunchDriver {
         if (driver != null) {
             logger.info("Launching site \"{}\"", Config.get("site.url"));
             driver.get(Config.get("site.url"));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> js.executeScript("return document.readyState").equals("complete"));
         } else {
             logger.warn("Driver is not initialized. Cannot launch site.");
         }

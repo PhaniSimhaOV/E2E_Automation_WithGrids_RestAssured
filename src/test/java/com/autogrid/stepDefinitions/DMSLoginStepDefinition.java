@@ -1,5 +1,6 @@
 package com.autogrid.stepDefinitions;
 
+import com.autogrid.steps.GoogleSitePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import com.autogrid.steps.DMSLoginPage;
@@ -16,9 +17,10 @@ public class DMSLoginStepDefinition {
 	
 	DMSLoginPage dMSLoginPage;
 
-    public DMSLoginStepDefinition(WebDriver driver){
-        this.commonActions = new CommonActions(driver);
-        PageFactory.initElements(driver, this);
+    public DMSLoginStepDefinition(){
+		WebDriver driver = LaunchDriver.getDriver();
+		this.dMSLoginPage = new DMSLoginPage(driver);
+		PageFactory.initElements(driver, dMSLoginPage);
     }
 	
 	@Given("launch browser and enter url")
@@ -35,7 +37,7 @@ public class DMSLoginStepDefinition {
 		try {
             String expectedTitle = "GDMS2.0";
             String actualTitle = dMSLoginPage.getPageTitle();
-            Assert.assertEquals("Login page title does not match!",actualTitle,expectedTitle);
+            Assert.assertEquals(actualTitle,expectedTitle,"Login page title does not match!");
             System.out.println("Login page is displayed.");
         } catch (Exception e) {
 			throw new Exception("Error occurred while navigating to DMS login page : " + e.getMessage());
@@ -47,7 +49,7 @@ public class DMSLoginStepDefinition {
 		try {
             String expectedTitle = "GDMS2.0";
             String actualTitle = dMSLoginPage.getPageTitle();
-            Assert.assertEquals("Login page title does not match!",actualTitle,expectedTitle);
+            Assert.assertEquals(actualTitle,expectedTitle, "Login page title does not match!");
             System.out.println("Login page is displayed.");
 		} catch (Exception e) {
 			throw new Exception("Error occurred while validating the DMS login page header :" + e.getMessage());

@@ -1,10 +1,13 @@
 Feature: User tries to verify the Signin functionality
 
+
   Scenario: DMS_Login_User tries to verify the DMS navigation
     Given launch browser and enter url
     Then user navigate to login page
 
+  @test
   Scenario: DMS_Login_User tries to click on login button without entering username
+    Given launch browser and enter url
     Given user is on login page
     When clicks on login
     Then user able to see validation message for UserID
