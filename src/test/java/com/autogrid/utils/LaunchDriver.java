@@ -28,7 +28,7 @@ public class LaunchDriver {
                 && !Config.get("selenium.run.device").equalsIgnoreCase("mobile")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
-                    "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*", "--headless"));
+                    "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*"));
             logger.info("Initializing WebDriver & launching Chrome Locally");
 
             driver = new ChromeDriver(options);
@@ -50,7 +50,7 @@ public class LaunchDriver {
 
             ChromeOptions options = new ChromeOptions();
             options.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
-                    "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*", "--headless"));
+                    "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*"));
 
             URL gridUrl = new URL(String.format(Config.get("selenium.grid.urlFormat"), Config.get("selenium.grid.hubHost")));
             driver = new RemoteWebDriver(gridUrl, options);
