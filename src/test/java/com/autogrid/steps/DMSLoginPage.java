@@ -26,8 +26,8 @@ public class DMSLoginPage {
     @FindBy(xpath = "//div[@id='errorMessageContext']")
     private WebElement PasswordValidation;   
     
-    @FindBy(xpath = "//input[@id='nextFollowUpDate']")
-    private WebElement LoginToast;  
+    @FindBy(xpath = "//span[normalize-space()='Home']")
+    private WebElement HomepageIcon;  
     
     @FindBy(xpath = "//h1[normalize-space()='NDMS New Dealer Management System']")
     private WebElement LoginHeader;
@@ -41,7 +41,7 @@ public class DMSLoginPage {
     @FindBy(xpath = "//button[@id='btnGenerateOtp']")
     private WebElement SendOTPButton;
     
-    @FindBy(xpath = "//input[@id='otpEnter']")
+    @FindBy(xpath = "//input[@placeholder='Enter OTP']")
     private WebElement EnterOTP;
     
     @FindBy(xpath = "//div[@id='errorMessageContext']")
@@ -53,11 +53,14 @@ public class DMSLoginPage {
     @FindBy(xpath = "//input[@id='rememberYn']")
     private WebElement SaveIDCheckBox;
     
-    @FindBy(xpath = "//button[@id='btnLoginClickGdmsNew']")
+    @FindBy(xpath = "//button[normalize-space()='Login']")
     private WebElement LoginButton;
     
     @FindBy(xpath = "//a[@id='passPopupOpen']")
     private WebElement ForgotPasswordLink;
+    
+    @FindBy(xpath = "//*[@id='otpVerificationPopup_wnd_title']")
+    private WebElement ForgotPasswordPopup;
        
     public DMSLoginPage(WebDriver driver){
         this.commonActions = new CommonActions(driver);
@@ -92,6 +95,23 @@ public class DMSLoginPage {
         	SendOTPButton.click();
         } catch (Exception e) {
             System.err.println("Error clicking Send OTP button: " + e.getMessage());
+            throw e;
+        }
+    }
+    public void ClicksForgotPasswordLink() {
+        try {
+        	ForgotPasswordLink.click();
+        } catch (Exception e) {
+            System.err.println("Error clicking Forgot Password Link: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+    public void ClicksSaveIDCheckBox() {
+        try {
+        	SaveIDCheckBox.click();
+        } catch (Exception e) {
+            System.err.println("Error clicking Save ID Check Box: " + e.getMessage());
             throw e;
         }
     }
@@ -187,5 +207,64 @@ public class DMSLoginPage {
             throw e;
         }   
     }
+ // Method to check if Homepage Icon is displayed
+    public boolean isHomepageIconDisplayed() {
+        try {
+            return HomepageIcon.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+ // Method to check if Forgot Password Link is displayed
+    public boolean isForgotPasswordLinkDisplayed() {
+        try {
+            return ForgotPasswordLink.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+ // Method to check if Save ID CheckBox is displayed
+    public boolean isSaveIDCheckBoxDisplayed() {
+        try {
+            return SaveIDCheckBox.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+ // Method to check Save ID checkbox
+    public void checkSaveIDCheckbox() {
+        try {
+            if (!SaveIDCheckBox.isSelected()) {
+            	SaveIDCheckBox.click();
+                System.out.println("Save ID checkbox is clicked.");
+            } else {
+                System.out.println("Save ID checkbox is already checked.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error interacting with Save ID checkbox: " + e.getMessage());
+            throw e;
+        }
+    }
 
+    // Method to verify if Save ID checkbox is checked
+    public boolean isSaveIDCheckboxChecked() {
+        try {
+            return SaveIDCheckBox.isSelected();
+        } catch (Exception e) {
+            System.err.println("Error verifying Save ID checkbox: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+ // Method to check if Forgot Password pop-up is displayed
+    public boolean isForgotPasswordPopupDisplayed() {
+        try {
+            return ForgotPasswordPopup.isDisplayed();
+        } catch (Exception e) {
+            System.err.println("Error checking Forgot Password pop-up visibility: " + e.getMessage());
+            return false;
+        }
+    }
 }
