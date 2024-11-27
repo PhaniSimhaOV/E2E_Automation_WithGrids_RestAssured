@@ -1,13 +1,11 @@
 package com.autogrid.utils;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +28,7 @@ public class LaunchDriver {
                 && !Config.get("selenium.run.device").equalsIgnoreCase("mobile")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
-                    "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*"));
+                    "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*", "--headless"));
             logger.info("Initializing WebDriver & launching Chrome Locally");
 
             driver = new ChromeDriver(options);
@@ -52,7 +50,7 @@ public class LaunchDriver {
 
             ChromeOptions options = new ChromeOptions();
             options.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
-                    "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*"));
+                    "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*", "--headless"));
 
             URL gridUrl = new URL(String.format(Config.get("selenium.grid.urlFormat"), Config.get("selenium.grid.hubHost")));
             driver = new RemoteWebDriver(gridUrl, options);
@@ -96,9 +94,6 @@ public class LaunchDriver {
         if (driver != null) {
             logger.info("Launching site \"{}\"", Config.get("site.url"));
             driver.get(Config.get("site.url"));
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(driver -> js.executeScript("return document.readyState").equals("complete"));
         } else {
             logger.warn("Driver is not initialized. Cannot launch site.");
         }
