@@ -1,9 +1,10 @@
-package com.autogrid.stepDefinitions;
+package stepDefinitions;
 
-import com.autogrid.steps.GoogleSitePage;
-import com.autogrid.utils.CommonActions;
-import com.autogrid.utils.LaunchDriver;
 import io.cucumber.java.en.*;
+import steps.GoogleSitePage;
+import utils.CommonActions;
+import utils.LaunchDriver;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 

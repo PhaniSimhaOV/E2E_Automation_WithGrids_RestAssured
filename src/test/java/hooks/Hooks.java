@@ -1,8 +1,9 @@
-package com.autogrid.hooks;
+package hooks;
 
-import com.autogrid.utils.LaunchDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import utils.LaunchDriver;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

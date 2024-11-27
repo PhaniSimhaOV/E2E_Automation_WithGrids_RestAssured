@@ -1,4 +1,4 @@
-package com.autogrid.steps;
+package steps;
 
 import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.LaunchDriver;

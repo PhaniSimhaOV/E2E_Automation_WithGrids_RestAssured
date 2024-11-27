@@ -1,10 +1,16 @@
-package com.autogrid.stepDefinitions;
+package stepDefinitions;
 
-import com.autogrid.steps.CustBookingMgmtListPage;
-import com.autogrid.steps.GoogleSitePage;
-import com.autogrid.utils.CommonActions;
+import org.testng.Assert;
 
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import steps.SearchCustBookingMgmtListPage;
+import steps.GoogleSitePage;
+import utils.CommonActions;
+
+
+
 
 public class SearchCustInBookingMgtListStepDef {
 	
@@ -12,8 +18,8 @@ public class SearchCustInBookingMgtListStepDef {
 
 	   public GoogleSitePage googleSitePage;
 
-	   public CustBookingMgmtListPage cbmlp;
-	
+	   public SearchCustBookingMgmtListPage cbmlp;
+		
 	
 @When("User click on Sales Menu Icon")
 public void user_click_on_sales_menu_icon() {
@@ -37,9 +43,19 @@ public void user_click_on_customer_booking_mgt_list_link() {
 
 @Then("Customer Booking Mgt List Page should display")
 public void customer_booking_mgt_list_page_should_display() {
+	try {
+		String expectedTitle="Customer Booking Mgt List";
+		String actualTitle=cbmlp.getPageTitle();
+		Assert.assertEquals(actualTitle, expectedTitle);
+		System.out.println("Search customer list page displayed");
+		
+	}
+	catch(Exception e) {
+		e.getMessage();
+
+	}
 	
-   
-    throw new io.cucumber.java.PendingException();
+   throw new io.cucumber.java.PendingException();
 }
 
 @When("User click on Date Of as {string}")
@@ -51,7 +67,7 @@ public void user_click_on_date_of_as(String string) {
 
 @When("User Click on Based On as {string}")
 public void user_click_on_based_on_as(String string) {
-
+	cbmlp.setBasedOn();
 
     throw new io.cucumber.java.PendingException();
 }
@@ -59,13 +75,15 @@ public void user_click_on_based_on_as(String string) {
 @When("Enter mobile no.as {string}")
 public void enter_mobile_no_as(String string) {
 
-
+	cbmlp.BaseText("7489954647");
     throw new io.cucumber.java.PendingException();
 }
 
 @When("Click on Search")
-public void click_on_search() {
+public void click_on_search() throws InterruptedException {
 
+	cbmlp.SearchBtn();
+	Thread.sleep(3000);
 
     throw new io.cucumber.java.PendingException();
 }
@@ -73,6 +91,9 @@ public void click_on_search() {
 @Then("Details of Customer should display in table")
 public void details_of_customer_should_display_in_table() {
 
+	boolean status=cbmlp.searchCustomerByPhoneNo("7489954647");
+	
+	Assert.assertEquals(status,true);
 
     throw new io.cucumber.java.PendingException();
 }
