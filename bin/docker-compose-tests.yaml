@@ -1,0 +1,10 @@
+version: "3"
+services:
+  flight-reservation:
+    image: lazysaif/seleniumtest:latest
+    environment:
+      - BROWSER=${BROWSER}
+      - HUB_HOST=hub
+      - CUCUMBER_TAG=${CUCUMBER_TAG}
+    volumes:
+      - ./output/report:/home/selenium-docker/test-output
