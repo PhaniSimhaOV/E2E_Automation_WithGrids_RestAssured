@@ -77,7 +77,7 @@ Feature: User tries to verify the Add New Enquiry functionality
 
   Scenario: Submit a valid enquiry
     Given user is in Sales Customer Enquiry Pop-up
-    And I enters valid data in Mobile No.
+    And I enters valid data in Mobile No
     And I enters valid data in E-mail
     And I selects valid data in Cust. Type
     And I enters valid data in Cust. Name
