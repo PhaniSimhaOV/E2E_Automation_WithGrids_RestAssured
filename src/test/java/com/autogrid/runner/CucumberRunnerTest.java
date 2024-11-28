@@ -7,7 +7,9 @@ import io.cucumber.testng.CucumberOptions;
         features = "src/test/resources/features",  // Relative path from the root directory
         glue = {"com.autogrid.stepDefinitions", "com.autogrid.hooks", "com.autogrid.utils"},
         plugin = {"pretty", "html:target/cucumber-reports.html"},
-        monochrome = true
+        monochrome = true,
+        tags="@test"
+
 )
 public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
 
