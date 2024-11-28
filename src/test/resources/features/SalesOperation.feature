@@ -20,4 +20,6 @@ And Enter mobile no.as "7489954647"
 And Click on Search 
 Then Details of Customer should display in table
 
+
+
  
