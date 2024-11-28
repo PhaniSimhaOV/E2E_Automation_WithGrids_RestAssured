@@ -15,7 +15,7 @@ public class NewEnquiryPage {
     private static final Logger logger = LoggerFactory.getLogger(NewEnquiryPage.class);
     private final CommonActions commonActions;
 
-    @FindBy(xpath = "//a[normalize-space()='Sales']")
+    @FindBy(xpath = "//*[@id='gnb']/li[3]/a")
     private WebElement SalesMenu;
     
     @FindBy(xpath = "//*[@id='gnb']/li[3]/div/ul/li[2]/a")
@@ -33,7 +33,7 @@ public class NewEnquiryPage {
     @FindBy(xpath = "//button[@id='btnNew']")
     private WebElement NewEnquiry;
     
-    @FindBy(xpath = "//span[@class='k-link']")
+    @FindBy(xpath = "//span[normalize-space()='Basic Info.']")
     private WebElement BasicInfoTab;
     
     @FindBy(xpath = "//input[@id='mobileNo']")
@@ -211,7 +211,7 @@ public class NewEnquiryPage {
     private WebElement SMSOptCheckBox;
     
     @FindBy(xpath = "//*[@id='template']")
-    private WebElement ToastMessage;
+    private WebElement EnquirySuccessToast;
 
     @FindBy(xpath = "//*[@id='custName'][@data-name='Cust. Name']")
     private WebElement CompanyName;
@@ -237,11 +237,11 @@ public class NewEnquiryPage {
     @FindBy(xpath = "//input[@id='loanAmount']")
     private WebElement LoanAmount;
     
-    @FindBy(xpath = "//*[@id='eqryForm']/div/dl[6]/dd[1]/span/span/span[1]")
-    private WebElement TDOffer;
+    @FindBy(xpath = "//*[@id='basicInfoForm']/div[5]/dl[6]/dd[1]/span/span/span[1]")
+    private WebElement TDOfferDropDown;
     
-    @FindBy(xpath = "//*[@id='eqryForm']/div/dl[6]/dd[2]/span/span/span[1]")
-    private WebElement TDVIN;
+    @FindBy(xpath = "//*[@id='basicInfoForm']/div[5]/dl[6]/dd[2]/span/span/span[1]")
+    private WebElement TDVINDropDown;
 
     @FindBy(xpath = "//*[@id='eqryForm']/div/dl[6]/dd[3]/span/span/span[1]")
     private WebElement CftOfDeposit;
@@ -260,6 +260,9 @@ public class NewEnquiryPage {
     
     @FindBy(xpath = "//*[@id='template']")
     private WebElement ExpplanValidation;
+    
+    @FindBy(xpath = "//*[@id='template']")
+    private WebElement EmptyEnquiryToast;
     
     @FindBy(xpath = "//*[@id='eqryForm']/div/dl[7]/dd[4]/span/span/span[1]")
     private WebElement VisitedFamily;
@@ -292,7 +295,10 @@ public class NewEnquiryPage {
     private WebElement Verification;
     
     @FindBy(xpath = "//button[@id='btnFollowUpSave']")
-    private WebElement FollowUpSave;
+    private WebElement FollowUpTabSaveButton;
+    
+    @FindBy(xpath = "//*[@id='btnBasicSave']")
+    private WebElement BasicInfoTabSaveButton;
     
     @FindBy(xpath = "//*[@id='template']")
     private WebElement FollowUpSuccessToast;
@@ -300,17 +306,77 @@ public class NewEnquiryPage {
     @FindBy(xpath = "//*[@id='template']")
     private WebElement FollowUpValidation;
     
+    @FindBy(xpath = "//*[@id='template']")
+    private WebElement EnquiryAddedToast;
+    
     @FindBy(xpath = "//*[@id='promotionGrid']//a[@role='button']")
     private WebElement PromotionCrossIcon;
     
-  //*[@id="promotionGrid"]//a[@role="button"]
-   
+    @FindBy(id = "//*[@id='cfd3d01a-750b-4e20-8c66-632854aae203']/div[1]")  
+    private WebElement leadTab;
+    
+    @FindBy(id = "//*[@id='btnSearch']")  
+    private WebElement leadTabSearchButton;
+    
+    @FindBy(id = "//*[@id='btnSearch']")  
+    private WebElement leadTabAllocateButton;
+    
+    @FindBy(id = "//*[@id='custName']")  
+    private WebElement CustNameFilter;
+    
+    @FindBy(id = "//*[@id='grid']/div[2]/table/tbody/tr[1]/td[2]")  
+    private WebElement leadEnquiryTable;
+    
+    @FindBy(id = "//*[@class='checkAll']")  
+    private WebElement leadEnquiryCheckBox;
+    
+    @FindBy(id = "//*[@class='checkAll']")  
+    private WebElement AllocatePopupHeader;
+    
+    @FindBy(id = "//*[@class='checkAll']")  
+    private WebElement AllocateSalesConsultantDropdown;
+    
+    @FindBy(id = "//*[@id='allocateBtn']")  
+    private WebElement AllocatePopupAllocateButton;
+    
+    
+    
+  //div[@class='k-window-titlebar k-header']
+  
    
     public NewEnquiryPage(WebDriver driver){
         this.commonActions = new CommonActions(driver);
         PageFactory.initElements(driver, this);
         
     }
+    
+    public void clickAllocatePopupAllocateButton() {
+        try {
+        	AllocatePopupAllocateButton.click();
+        } catch (Exception e) {
+            System.err.println("Error clicking Allocate Popup Allocate Button: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+    public void clickleadEnquiryCheckBox() {
+        try {
+        	leadEnquiryCheckBox.click();
+        } catch (Exception e) {
+            System.err.println("Error clicking lead Enquiry CheckBox: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+    public void clickleadTabAllocateButton() {
+        try {
+        	leadTabAllocateButton.click();
+        } catch (Exception e) {
+            System.err.println("Error clicking lead Tab Allocate Button: " + e.getMessage());
+            throw e;
+        }
+    }
+    
     public void clickSalesMenu() {
         try {
         	SalesMenu.click();
@@ -353,6 +419,36 @@ public class NewEnquiryPage {
             return SalesCustomerEnquiryPopupHeader.isDisplayed();
         } catch (Exception e) {
             System.err.println("Error checking Sales Customer Enquiry Pop-up visibility: " + e.getMessage());
+            return false;
+        }
+    }
+    
+ // Method to check if Basic Info Tab is displayed
+    public boolean isBasicInfoTabDisplayed() {
+        try {
+            return BasicInfoTab.isDisplayed();
+        } catch (Exception e) {
+            System.err.println("Error checking Basic InfoTab visibility: " + e.getMessage());
+            return false;
+        }
+    }
+    
+ // Method to check if Allocate Pop-up is displayed
+    public boolean isAllocatePopUpDisplayed() {
+        try {
+            return AllocatePopupHeader.isDisplayed();
+        } catch (Exception e) {
+            System.err.println("Error checking Allocate Pop-up visibility: " + e.getMessage());
+            return false;
+        }
+    }
+    
+ // Method to check if Lead Enquiry Table is displayed
+    public boolean isleadEnquiryTableDisplayed() {
+        try {
+            return leadEnquiryTable.isDisplayed();
+        } catch (Exception e) {
+            System.err.println("Error checking Lead Enquiry Table visibility: " + e.getMessage());
             return false;
         }
     }
@@ -432,6 +528,16 @@ public class NewEnquiryPage {
         }
     }
     
+    public void clickleadTabSearchButton() {
+        try {
+        	leadTabSearchButton.click();
+        } catch (Exception e) {
+            System.err.println("Error clicking lead Tab Search Button : " + e.getMessage());
+            throw e;
+        }
+    }
+    
+    
     public void clickAddSelectedButton() {
         try {
         	AddSelectedButton.click();
@@ -455,6 +561,40 @@ public class NewEnquiryPage {
             throw e;
         }
     }
+    
+ // Method to select a Sales Consultant from the Sales Consultant dropdown
+    public void selectAllocateSalesConsultant(String salesconsultant) {
+        try {
+            Select dropdown = new Select(AllocateSalesConsultantDropdown);
+            dropdown.selectByVisibleText(salesconsultant);
+        } catch (Exception e) {
+            System.err.println("An error occurred while selecting Sales Consultant: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+ // Method to select a TD Offer from the TD Offer dropdown
+    public void selectTDOfferDropDown(String TDOffer) {
+        try {
+            Select dropdown = new Select(TDOfferDropDown);
+            dropdown.selectByVisibleText(TDOffer);
+        } catch (Exception e) {
+            System.err.println("An error occurred while selecting TD Offer: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+ // Method to select a TD VIN from the TD VIN dropdown
+    public void selectTDVINDropDown(int TDVIN) {
+        try {
+            Select dropdown = new Select(TDVINDropDown);
+            dropdown.selectByIndex(TDVIN);
+        } catch (Exception e) {
+            System.err.println("An error occurred while selecting TD VIN: " + e.getMessage());
+            throw e;
+        }
+    }
+    
 
  // Method to select a District from the dropdown
     public void selectDistrict(String district) {
@@ -500,9 +640,18 @@ public class NewEnquiryPage {
         }
     }
     
-    public String getToastMessage() {
+    public String getEnquiryAddedToast() {
         try {
-            return ToastMessage.getText();
+            return EnquiryAddedToast.getText();
+        } catch (Exception e) {
+            System.err.println("Error fetching toast message: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+    public String getEmptyEnquiryToast() {
+        try {
+            return EmptyEnquiryToast.getText();
         } catch (Exception e) {
             System.err.println("Error fetching toast message: " + e.getMessage());
             throw e;
@@ -567,7 +716,24 @@ public class NewEnquiryPage {
             throw e;
         }
     }
+ 
+    public void clickFollowUpTabSaveButton() {
+        try {
+        	FollowUpTabSaveButton.click();
+        } catch (Exception e) {
+            System.err.println("Error clicking Follow Up Tab Save Button: " + e.getMessage());
+            throw e;
+        }
+    }
     
+	public void clickBasicInfoTabSaveButton() {
+        try {
+        	BasicInfoTabSaveButton.click();
+        } catch (Exception e) {
+            System.err.println("Error clicking Basic Info Tab Save Button: " + e.getMessage());
+            throw e;
+        }
+    }
  // Action to enter Cust Name
     public void enterCustName(String custname) {
         try {
@@ -804,6 +970,28 @@ public class NewEnquiryPage {
         } catch (Exception e) {
             System.err.println("Error selecting valid Sales Consultant: " + e.getMessage());
             throw new Exception("Failed to select valid Sales Consultant.", e);
+        }
+    }
+    
+ // Method to verify the user is in the Lead Tab
+    public boolean isInLeadTab() throws Exception {
+        try {
+            // Check if the Lead Tab is displayed
+            return leadTab.isDisplayed();
+        } catch (Exception e) {
+            System.err.println("Error verifying Lead Tab presence: " + e.getMessage());
+            throw new Exception("Failed to verify Lead Tab.", e);
+        }
+    }
+    
+ // Action to enter Cust Name Filter
+    public void enterCustNameFilter(String custnamefilter) {
+        try {
+        	CustNameFilter.clear(); // Clear the field if necessary
+        	CustNameFilter.sendKeys(custnamefilter);
+        } catch (Exception e) {
+            System.err.println("Error entering Cust Name Filter: " + e.getMessage());
+            throw e;
         }
     }
   

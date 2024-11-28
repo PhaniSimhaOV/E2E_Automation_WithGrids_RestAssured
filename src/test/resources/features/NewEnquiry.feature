@@ -39,8 +39,8 @@ Feature: User tries to verify the Add New Enquiry functionality
 
   Scenario: User tries to select Pincode from filters in Sales Customer Enquiry Pop-up
     When User clicks on New button
-    And User clicks on Pincode Seach from PIN field
-    Then User should be able to navigate to the Pin code search Screen
+    And User clicks on Pincode Search Icon from PIN field
+    Then User should be able to navigate to the Pincode search Screen
     And User tries to selects State from state field
     And User tries to selects District from District field
     And User tries to selects Taluka or Tehsil from Taluka or Tehsil field
@@ -53,7 +53,7 @@ Feature: User tries to verify the Add New Enquiry functionality
   Scenario: User tries to click on Save button without entering Mandatory fields
     When User clicks on New button
     And User click on Save button without entering mandatory fields
-    Then User should be able to see toast message
+    Then User should be able to see toast message in Sales Customer Enquiry Screen
 
   Scenario: User tries to click on Save button by entering mobile number consists of less than nine digits
     When User tries to enters mobile number consists of less than nine digits
@@ -81,7 +81,7 @@ Feature: User tries to verify the Add New Enquiry functionality
     And I enters valid data in E-mail
     And I selects valid data in Cust. Type
     And I enters valid data in Cust. Name
-    And I enters valid data in Residence Phone No.
+    And I enters valid data in Residence Phone No
     And I enters valid data in WhatsApp ID
     And I selects valid data Gender
     And I selects valid data in PIN
@@ -100,4 +100,77 @@ Feature: User tries to verify the Add New Enquiry functionality
     And I selects valid data in Int Color
     And I selects valid data in Sales Consultant
     When I click on the Save button
-    Then the enquiry is successfully submitted
+    Then User should be able to see a Toast Message as Successfully reflected Sales Customer Enquiry Popup
+    And User Should be able to navigate to the Lead Tab in the Sales Customer Enquiry screen
+
+  Scenario: User tries to Verify the Newly Added Enquiry Whether it was reflected in the Sales Customer Enquiry screen
+    Given User is in Lead Tab in the Sales Customer Enquiry screen
+    And User tries to enters the Customer Name in Customer Name filter
+    And User tries to clicks on the search button in Lead in the Sales Customer Enquiry screen
+    And User Should be able to see the Newly Added Enquiry in the Sales Customer Enquiry screen
+
+  Scenario: User tries to Allocate the Sales Consultant to Newly Added Enquiry
+    Given User is in Lead Tab in the Sales Customer Enquiry screen
+    And User tries to enters the Customer Name in Customer Name filter
+    And User tries to clicks on the search button in Lead in the Sales Customer Enquiry screen
+    And User tries to checks the checkbox of Newly Added Enquiry
+    And User tries to clicks on the Allocate button in Lead in the Sales Customer Enquiry screen
+    Then User should be able to navigate to the Allocate Pop-up
+    And User tries to Select the Sales Consultant from Sales Consultant field
+    And User tries to clicks on the Allocate button in the Allocate Pop-up
+    Then User Should be able to navigate to the Lead Tab in the Sales Customer Enquiry screen
+
+  Scenario: User tries to Update TD offer and TD VIN to the Newly Added Enquiry
+    Given User is in Lead Tab in the Sales Customer Enquiry screen
+    And User tries to double click on the Repective Enquiry
+    Then User Should be able to navigate to the Basic Info tab in the Sales Customer Enquiry Info screen
+    And User tries to selects valid data in TD Offer
+    And User tries to selects valid data in TD VIN
+    And User tries to clicks on Save button in the Basic Info tab in the Sales Customer Enquiry Info screen
+
+  Scenario: User tries to Update invalid Test Drive Appointment details for the Repective Enquiry
+    Given User is in the Basic Info tab in the Sales Customer Enquiry Info screen
+    And User tries to clicks on Test Drive Appointment button in the Basic Info tab in the Sales Customer Enquiry Info screen
+    Then User Should be able to navigate to the Test Drive Appointment Screen
+    And User Tries to clicks on the Any one of the Time Slot which was less than Current Time
+    Then User should be able to see a Toast Message as Selected time should be greater than current time
+
+  Scenario: User tries to Update Empty Test Drive Appointment details for the Repective Enquiry
+    Given User is in the Test Drive Appointment Screen
+    When User tries to clicks on Save button in the Test Drive Appointment Screen
+    Then User should be able to see a Toast Message as Please select Appointment
+
+  Scenario: User tries to Update valid Test Drive Appointment details for the Repective Enquiry
+    Given User is in the Test Drive Appointment Screen
+    When User tries to selects A valid Time solt Which was greater than the Current time
+    And User tries to clicks on Save button in the Test Drive Appointment Screen
+    Then User should be able to see a Toast Message as Successfully reflected in Test Drive Appointment Screen
+
+  Scenario: User tries to Save with Empty Follow Up details for the Repective Enquiry
+    Given User is in the Test Drive Appointment Screen
+    And User tries to clicks on the Close Icon on the Test Drive Appointment Tab
+    Then User Should be able to navigate to the Basic Info tab in the Sales Customer Enquiry Info screen
+    And User tries to clicks on the Follow Up tab in the Sales Customer Enquiry Info screen
+    Then User Should be able to navigate to the Follow Up tab in the Sales Customer Enquiry Info screen
+    And User tries to clicks on Save button in the Follow Up tab in the Sales Customer Enquiry Info screen
+    Then User should be able to see a Popup Message as Please select Next Follow Up Time
+    And User tries to selects valid data in Next Follow Up Time
+    And User tries to clicks on Save button in the Follow Up tab in the Sales Customer Enquiry Info screen
+    Then User should be able to see a Popup Message as Please select Next Follow Up Type
+    And User tries to selects valid data in Next Follow Up Type
+    And User tries to clicks on Save button in the Follow Up tab in the Sales Customer Enquiry Info screen
+    Then User should be able to see a Popup Message as Please select Enquiry Type
+    And User tries to selects valid data in Enquiry Type
+    And User tries to clicks on Save button in the Follow Up tab in the Sales Customer Enquiry Info screen
+    Then User should be able to see a Popup Message as Please select Verification
+    And User tries to selects valid data in Verification
+
+  Scenario: User tries to Save with valid Follow Up details for the Repective Enquiry
+    Given User is in the Follow Up tab with Valid data in the Sales Customer Enquiry Info screen
+    When User tries to enters valid data in Scheme Offered
+    And User tries to enters valid data in Follow Up Remarks
+    And User tries to clicks on Save button in the Follow Up tab in the Sales Customer Enquiry Info screen
+    Then User should be able to see a Toast Message as Successfully reflected in Follow Up tab
+
+  Scenario: Close Google Chrome Browser
+    Given user tries to close the google chrome browser

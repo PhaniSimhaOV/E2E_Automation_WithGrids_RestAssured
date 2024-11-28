@@ -89,3 +89,6 @@ Feature: User tries to verify the Login functionality
     And user enters a valid OTP
     And clicks on login
     Then user should be able to see Home Icon on the dashboard
+    
+    Scenario: DMS_Login_Close Google Chrome Browser
+    Given user try to close the google chrome browser
