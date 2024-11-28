@@ -1,7 +1,6 @@
 package steps;
 
-import com.autogrid.utils.CommonActions;
-import com.autogrid.utils.LaunchDriver;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,8 +8,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import utils.CommonActions;
+import utils.LaunchDriver;
+
 public class CustBookingMgmtPage {
-    private static final Logger logger = LoggerFactory.getLogger(CustomerBookingMgmtListPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(CustBookingMgmtPage.class);
     private final CommonActions commonActions;
     
     public CustBookingMgmtPage(WebDriver driver){
@@ -167,8 +169,7 @@ public class CustBookingMgmtPage {
     @FindBy(xpath="//input[@id='testDriveTakenFlag']")
     private WebElement TestDrive;
 
-   
-    private WebElement 
+  
     
    public void clickOnSalesMenu() {
     	commonActions.clickElement(SalesMenu);;

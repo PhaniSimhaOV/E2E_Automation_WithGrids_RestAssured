@@ -93,3 +93,4 @@ test.log
 **/mvnw.cmd
 **/node_modules/
 !/test.log
+/bin/

@@ -23,7 +23,7 @@ public class SearchCustBookingMgmtListPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//a[normalize-space()='Sales']")
+	@FindBy (xpath = "//a[normalize-space()='Sales']")
 	private WebElement SalesMenu;
 
 	@FindBy(xpath = "//a[normalize-space()='Sales Operation']")
@@ -155,9 +155,9 @@ public class SearchCustBookingMgmtListPage {
     
     
     
-    @FindBy(xpath="//*[@id=\"mainGrid\"]/div[2]/div/table")
+    @FindBy (xpath="//*[@id=\"mainGrid\"]/div[2]/div/table")
     
-    ////*[@id="content"]/section[2]/div[@class='table_grid']
+    ////*[@id="content"]/section[2]/div[@class='table_grid']*/
     private WebElement table;
 
 	@FindBy(xpath = "//*[@id=\"mainGrid\"]/div[3]/table/tbody/tr")
@@ -166,15 +166,14 @@ public class SearchCustBookingMgmtListPage {
 	@FindBy(xpath = "//*[@id=\"mainGrid\"]/div[3]/table/tbody/tr/td")
 	private List<WebElement> tableColumns;
 
-	@FindBy(xpath="")
-    private WebElement ;
+	
  
  
 
 
     
-    @FindBy(xpath="//*[@id=\"content\"]/section[1]/div[2]/dl[1]/dd[4]/span/span/span[1]")
-    private WebElement EnquiryStatus;
+	  @FindBy(xpath="//*[@id=\"content\"]/section[1]/div[2]/dl[1]/dd[4]/span/span/span[1]")
+	    private WebElement EnquiryStatus;
 
 	@FindBy(xpath = "//span[contains(text(),'Mobile No')]")
 	private WebElement BasedOn;
@@ -248,10 +247,6 @@ public class SearchCustBookingMgmtListPage {
 		Cat.selectByVisibleText("InvoiceConfirm");
 	}
 
-	
-	
-	
-	
 	public void setBasedOn() {
 		Select Cat = new Select(drpdwnBasedOn);
 		Cat.selectByVisibleText("Mobile No");
@@ -271,7 +266,7 @@ public class SearchCustBookingMgmtListPage {
 
 	}
 
-	// method to capture data for search customer
+	// method to capture  for validate customer
 
 	public void Table() {
 
