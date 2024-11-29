@@ -14,7 +14,6 @@ import io.cucumber.java.en.And;
 
 public class NewEnquiryStepDefinition {
 	CommonActions commonActions;
-
 	DMSLoginPage dMSLoginPage;
 	NewEnquiryPage newenquirypage;
 
@@ -27,6 +26,7 @@ public class NewEnquiryStepDefinition {
 	@When("User clicks Sales Menu Item")
 	public void user_clicks_sales_menu_item() {
 		try {
+			Thread.sleep(3000);
 			newenquirypage.clickSalesMenu();
 			System.out.println("Sales Menu clicked.");
 		} catch (Exception e) {
@@ -37,6 +37,7 @@ public class NewEnquiryStepDefinition {
 	@When("User clicks on the Customer Enquiry Sub Menu Item")
 	public void user_clicks_on_the_customer_enquiry_sub_menu_item() {
 		try {
+			Thread.sleep(3000);
 			newenquirypage.clickCustomerEnquirySubmenu();
 			System.out.println("Customer Enquiry Sub Menu Item clicked.");
 		} catch (Exception e) {
@@ -47,6 +48,7 @@ public class NewEnquiryStepDefinition {
 	@When("User clicks on the Customer Enquiry link")
 	public void user_clicks_on_the_customer_enquiry_link() {
 		try {
+			Thread.sleep(3000);
 			newenquirypage.clickCustomerEnquiryLink();
 			System.out.println("Customer Enquiry Link clicked.");
 		} catch (Exception e) {
@@ -54,9 +56,24 @@ public class NewEnquiryStepDefinition {
 		}
 	}
 
+	@Then("User should be able to navigate to the Customer Enquiry screen")
+	public void user_should_be_able_to_navigate_to_the_customer_enquiry_screen() {
+		try {
+			Thread.sleep(3000);
+			Assert.assertTrue(newenquirypage.isCustomerEnquiryScreenDisplayed(),
+					"Customer Enquiry Screen is not displayed.");
+			System.out.println("Customer Enquiry Screen is displayed.");
+		} catch (Exception e) {
+			System.err.println("Error verifying Customer Enquiry Screen pop-up: " + e.getMessage());
+			Assert.fail("Customer Enquiry Screen verification failed.");
+		}
+	}
+
 	@And("User clicks on New button")
 	public void user_clicks_on_new_button() {
 		try {
+			Thread.sleep(3000);
+			newenquirypage.interactWithIframeElement();
 			newenquirypage.clickNewEnquiryButton();
 			System.out.println("New Enquiry Button clicked.");
 		} catch (Exception e) {
@@ -95,18 +112,6 @@ public class NewEnquiryStepDefinition {
 			System.out.println("Close icon Button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Close icon click: " + e.getMessage());
-		}
-	}
-
-	@Then("User should be able to navigate to the Customer Enquiry screen")
-	public void user_should_be_able_to_navigate_to_the_customer_enquiry_screen() {
-		try {
-			Assert.assertTrue(newenquirypage.isCustomerEnquiryScreenDisplayed(),
-					"Customer Enquiry Screen is not displayed.");
-			System.out.println("Customer Enquiry Screen is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error verifying Customer Enquiry Screen pop-up: " + e.getMessage());
-			Assert.fail("Customer Enquiry Screen verification failed.");
 		}
 	}
 
@@ -702,7 +707,7 @@ public class NewEnquiryStepDefinition {
 	@Then("User Should be able to navigate to the Lead Tab in the Sales Customer Enquiry screen")
 	public void user_should_be_able_to_navigate_to_the_lead_tab_in_the_sales_customer_enquiry_screen() {
 		try {
-			Assert.assertTrue(newenquirypage.isInLeadTab(), "Lead Tab is not displayed.");
+			Assert.assertTrue(newenquirypage.isInLeadTabDisplayed(), "Lead Tab is not displayed.");
 			System.out.println("Lead Tab is displayed.");
 		} catch (Exception e) {
 			System.err.println("Error verifying Lead Tab: " + e.getMessage());
@@ -713,7 +718,7 @@ public class NewEnquiryStepDefinition {
 	@Given("User is in Lead Tab in the Sales Customer Enquiry screen")
 	public void user_is_in_lead_tab_in_the_sales_customer_enquiry_screen() {
 		try {
-			Assert.assertTrue(newenquirypage.isInLeadTab(), "Lead Tab is not displayed.");
+			Assert.assertTrue(newenquirypage.isInLeadTabDisplayed(), "Lead Tab is not displayed.");
 			System.out.println("Lead Tab is displayed.");
 		} catch (Exception e) {
 			System.err.println("Error verifying Lead Tab: " + e.getMessage());
@@ -765,8 +770,8 @@ public class NewEnquiryStepDefinition {
 		}
 	}
 
-	@Given("User tries to clicks on the Allocate button in the Sales Customer Enquiry screen")
-	public void user_tries_to_clicks_on_the_allocate_button_in_the_sales_customer_enquiry_screen() {
+	@Given("User tries to clicks on the Allocate button in Lead in the Sales Customer Enquiry screen")
+	public void user_tries_to_clicks_on_the_allocate_button_in_lead_in_the_sales_customer_enquiry_screen() {
 		try {
 			newenquirypage.clickleadTabAllocateButton();
 			System.out.println("lead Tab Allocate button clicked.");
@@ -809,8 +814,12 @@ public class NewEnquiryStepDefinition {
 
 	@Given("User tries to double click on the Repective Enquiry")
 	public void user_tries_to_double_click_on_the_repective_enquiry() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			// Perform double-click action
+			newenquirypage.doubleClickOnEnquiry();
+		} catch (Exception e) {
+			System.err.println("Error in double-clicking the respective enquiry: " + e.getMessage());
+		}
 	}
 
 	@Then("User Should be able to navigate to the Basic Info tab in the Sales Customer Enquiry Info screen")
@@ -859,172 +868,327 @@ public class NewEnquiryStepDefinition {
 	@Given("User is in the Basic Info tab in the Sales Customer Enquiry Info screen")
 	public void user_is_in_the_basic_info_tab_in_the_sales_customer_enquiry_info_screen() {
 		try {
-			Assert.assertTrue(newenquirypage.isInLeadTab(), "Lead Tab is not displayed.");
-			System.out.println("Lead Tab is displayed.");
+			Assert.assertTrue(newenquirypage.isBasicInfoTabDisplayed(), "Basic Info tab is not displayed.");
+			System.out.println("Basic Info tab is displayed.");
 		} catch (Exception e) {
-			System.err.println("Error verifying Lead Tab: " + e.getMessage());
-			Assert.fail("Lead Tab verification failed.");
+			System.err.println("Error verifying Basic Info tab: " + e.getMessage());
+			Assert.fail("Basic Info tab verification failed.");
 		}
 	}
 
 	@Given("User tries to clicks on Test Drive Appointment button in the Basic Info tab in the Sales Customer Enquiry Info screen")
 	public void user_tries_to_clicks_on_test_drive_appointment_button_in_the_basic_info_tab_in_the_sales_customer_enquiry_info_screen() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			newenquirypage.clickTestDriveAppointmentButton();
+			System.out.println("Test Drive Appointment Button clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during Test Drive Appointment Button click: " + e.getMessage());
+		}
 	}
 
 	@Then("User Should be able to navigate to the Test Drive Appointment Screen")
 	public void user_should_be_able_to_navigate_to_the_test_drive_appointment_screen() {
 		try {
-			Assert.assertTrue(newenquirypage.isInLeadTab(), "Lead Tab is not displayed.");
-			System.out.println("Lead Tab is displayed.");
+			Assert.assertTrue(newenquirypage.isTestDriveAppointmentScreenDisplayed(),
+					"Test Drive Appointment Screen is not displayed.");
+			System.out.println("Test Drive Appointment Screen is displayed.");
 		} catch (Exception e) {
-			System.err.println("Error verifying Lead Tab: " + e.getMessage());
-			Assert.fail("Lead Tab verification failed.");
+			System.err.println("Error verifying Test Drive Appointment Screen: " + e.getMessage());
+			Assert.fail("Test Drive Appointment Screen verification failed.");
 		}
 	}
 
 	@Then("User Tries to clicks on the Any one of the Time Slot which was less than Current Time")
 	public void user_tries_to_clicks_on_the_any_one_of_the_time_slot_which_was_less_than_current_time() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			newenquirypage.clickTestDriveAppointmentOldDateSlot();
+			newenquirypage.clickTestDriveAppointmentOldDateSlot();
+			System.out.println("Time Slot which was less than Current Time clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during Time Slot which was less than Current Time click: " + e.getMessage());
+		}
 	}
 
 	@Then("User should be able to see a Toast Message as Selected time should be greater than current time")
 	public void user_should_be_able_to_see_a_toast_message_as_selected_time_should_be_greater_than_current_time() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			String actualMessage = newenquirypage.getTestDriveAppointmentInvalidDateToast();
+			String expectedMessage = "Selected time should be greater than current time.";
+			// Validate that the actual message matches the expected message
+			Assert.assertEquals(actualMessage, expectedMessage, "Toast message mismatch!");
+
+			// Log success message
+			System.out.println("Toast message validated successfully: " + actualMessage);
+		} catch (Exception e) {
+			System.err.println("Error during toast message validation: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@Given("User is in the Test Drive Appointment Screen")
 	public void user_is_in_the_test_drive_appointment_screen() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			Assert.assertTrue(newenquirypage.isTestDriveAppointmentScreenDisplayed(),
+					"Test Drive Appointment Screen is not displayed.");
+			System.out.println("Test Drive Appointment Screen is displayed.");
+		} catch (Exception e) {
+			System.err.println("Error verifying Test Drive Appointment Screen: " + e.getMessage());
+			Assert.fail("Test Drive Appointment Screen verification failed.");
+		}
 	}
 
 	@When("User tries to clicks on Save button in the Test Drive Appointment Screen")
 	public void user_tries_to_clicks_on_save_button_in_the_test_drive_appointment_screen() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			newenquirypage.clickTestDriveAppointmentSaveButton();
+			System.out.println("Test Drive Appointment Save Button clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during Test Drive Appointment Save Button click: " + e.getMessage());
+		}
 	}
 
 	@Then("User should be able to see a Toast Message as Please select Appointment")
 	public void user_should_be_able_to_see_a_toast_message_as_please_select_appointment() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			String actualMessage = newenquirypage.getTestDriveAppointmentEmptyDateToast();
+			String expectedMessage = "Please select Appointment.";
+			// Validate that the actual message matches the expected message
+			Assert.assertEquals(actualMessage, expectedMessage, "Toast message mismatch!");
+
+			// Log success message
+			System.out.println("Toast message validated successfully: " + actualMessage);
+		} catch (Exception e) {
+			System.err.println("Error during toast message validation: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@When("User tries to selects A valid Time solt Which was greater than the Current time")
 	public void user_tries_to_selects_a_valid_time_solt_which_was_greater_than_the_current_time() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			newenquirypage.clickTestDriveAppointmentValidDateSlot();
+			newenquirypage.clickTestDriveAppointmentValidDateSlot();
+			System.out.println("Valid date Time Slot clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during Valid date Time Slot click: " + e.getMessage());
+		}
 	}
 
 	@Then("User should be able to see a Toast Message as Successfully reflected in Test Drive Appointment Screen")
 	public void user_should_be_able_to_see_a_toast_message_as_successfully_reflected_in_test_drive_appointment_screen() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			String actualMessage = newenquirypage.getTestDriveAppointmentEmptyDateToast();
+			String expectedMessage = "Successfully reflected.";
+			// Validate that the actual message matches the expected message
+			Assert.assertEquals(actualMessage, expectedMessage, "Toast message mismatch!");
+
+			// Log success message
+			System.out.println("Toast message validated successfully: " + actualMessage);
+		} catch (Exception e) {
+			System.err.println("Error during toast message validation: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@Given("User tries to clicks on the Close Icon on the Test Drive Appointment Tab")
 	public void user_tries_to_clicks_on_the_close_icon_on_the_test_drive_appointment_tab() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			newenquirypage.clickTestDriveAppointmentTabCloseIcon();
+			System.out.println("Test Drive Appointment Tab Close Icon clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during Test Drive Appointment Tab Close Icon click: " + e.getMessage());
+		}
 	}
 
 	@Then("User tries to clicks on the Follow Up tab in the Sales Customer Enquiry Info screen")
 	public void user_tries_to_clicks_on_the_follow_up_tab_in_the_sales_customer_enquiry_info_screen() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			newenquirypage.clickFollowUpTab();
+			System.out.println("Follow Up tab clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during Follow Up tab click: " + e.getMessage());
+		}
 	}
 
 	@Then("User Should be able to navigate to the Follow Up tab in the Sales Customer Enquiry Info screen")
 	public void user_should_be_able_to_navigate_to_the_follow_up_tab_in_the_sales_customer_enquiry_info_screen() {
 		try {
-			Assert.assertTrue(newenquirypage.isInLeadTab(), "Lead Tab is not displayed.");
-			System.out.println("Lead Tab is displayed.");
+			Assert.assertTrue(newenquirypage.isFollowUpTabScreenDisplayed(), "Follow Up tab is not displayed.");
+			System.out.println("Follow Up tab is displayed.");
 		} catch (Exception e) {
-			System.err.println("Error verifying Lead Tab: " + e.getMessage());
-			Assert.fail("Lead Tab verification failed.");
+			System.err.println("Error verifying Follow Up tab: " + e.getMessage());
+			Assert.fail("Follow Up tab verification failed.");
 		}
 	}
 
 	@Then("User tries to clicks on Save button in the Follow Up tab in the Sales Customer Enquiry Info screen")
 	public void user_tries_to_clicks_on_save_button_in_the_follow_up_tab_in_the_sales_customer_enquiry_info_screen() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			newenquirypage.clickFollowUpTabSaveButton();
+			System.out.println("Follow Up Tab Save Button clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during Follow Up Tab Save Button click: " + e.getMessage());
+		}
 	}
 
 	@Then("User should be able to see a Popup Message as Please select Next Follow Up Time")
 	public void user_should_be_able_to_see_a_popup_message_as_please_select_next_follow_up_time() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			String actualMessage = newenquirypage.getNextFollowUpTimeToast();
+			String expectedMessage = "Please select Next Follow Up Time.";
+			// Validate that the actual message matches the expected message
+			Assert.assertEquals(actualMessage, expectedMessage, "Toast message mismatch!");
+
+			// Log success message
+			System.out.println("Toast message validated successfully: " + actualMessage);
+		} catch (Exception e) {
+			System.err.println("Error during toast message validation: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@Then("User tries to selects valid data in Next Follow Up Time")
 	public void user_tries_to_selects_valid_data_in_next_follow_up_time() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			Thread.sleep(2000);
+			String nextfollowupdatetime = "28/12/2024 18:55";
+			newenquirypage.enterNextFollowUpDateTime(nextfollowupdatetime);
+			System.out.println("Entered Scheme Offered: " + nextfollowupdatetime);
+		} catch (Exception e) {
+			System.err.println("Error during entering Next Follow Up Time: " + e.getMessage());
+		}
 	}
 
 	@Then("User should be able to see a Popup Message as Please select Next Follow Up Type")
 	public void user_should_be_able_to_see_a_popup_message_as_please_select_next_follow_up_type() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			String actualMessage = newenquirypage.getNextFollowUpTypeToast();
+			String expectedMessage = "Please select Next Follow Up Type.";
+			// Validate that the actual message matches the expected message
+			Assert.assertEquals(actualMessage, expectedMessage, "Toast message mismatch!");
+
+			// Log success message
+			System.out.println("Toast message validated successfully: " + actualMessage);
+		} catch (Exception e) {
+			System.err.println("Error during toast message validation: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@Then("User tries to selects valid data in Next Follow Up Type")
 	public void user_tries_to_selects_valid_data_in_next_follow_up_type() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			newenquirypage.selectNextFollowUpType("Phone");
+			System.out.println("Next Follow Up Type successfully selected: + Phone");
+		} catch (Exception e) {
+			System.err.println("Error during Next Follow Up Type selection: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@Then("User should be able to see a Popup Message as Please select Enquiry Type")
 	public void user_should_be_able_to_see_a_popup_message_as_please_select_enquiry_type() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			String actualMessage = newenquirypage.getEnquiryTypeToast();
+			String expectedMessage = "Please select Enquiry Type.";
+			// Validate that the actual message matches the expected message
+			Assert.assertEquals(actualMessage, expectedMessage, "Toast message mismatch!");
+
+			// Log success message
+			System.out.println("Toast message validated successfully: " + actualMessage);
+		} catch (Exception e) {
+			System.err.println("Error during toast message validation: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@Then("User tries to selects valid data in Enquiry Type")
 	public void user_tries_to_selects_valid_data_in_enquiry_type() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			newenquirypage.selectNextFollowUpType("Phone");
+			System.out.println("Next Follow Up Type successfully selected: + Phone");
+		} catch (Exception e) {
+			System.err.println("Error during Next Follow Up Type selection: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@Then("User should be able to see a Popup Message as Please select Verification")
 	public void user_should_be_able_to_see_a_popup_message_as_please_select_verification() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			String actualMessage = newenquirypage.getVerificationToast();
+			String expectedMessage = "Please select Verification.";
+			// Validate that the actual message matches the expected message
+			Assert.assertEquals(actualMessage, expectedMessage, "Toast message mismatch!");
+
+			// Log success message
+			System.out.println("Toast message validated successfully: " + actualMessage);
+		} catch (Exception e) {
+			System.err.println("Error during toast message validation: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@Then("User tries to selects valid data in Verification")
 	public void user_tries_to_selects_valid_data_in_verification() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			newenquirypage.selectVerification("Y");
+			System.out.println("Verification successfully selected: + Y");
+		} catch (Exception e) {
+			System.err.println("Error during Verification selection: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@Given("User is in the Follow Up tab with Valid data in the Sales Customer Enquiry Info screen")
 	public void user_is_in_the_follow_up_tab_with_valid_data_in_the_sales_customer_enquiry_info_screen() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			Assert.assertTrue(newenquirypage.isFollowUpTabScreenDisplayed(), "Follow Up tab is not displayed.");
+			System.out.println("Follow Up tab is displayed.");
+		} catch (Exception e) {
+			System.err.println("Error verifying Follow Up tab: " + e.getMessage());
+			Assert.fail("Follow Up tab verification failed.");
+		}
 	}
 
 	@When("User tries to enters valid data in Scheme Offered")
 	public void user_tries_to_enters_valid_data_in_scheme_offered() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			Thread.sleep(2000);
+			String schemeoffered = "Bhamaka Bhonanja";
+			newenquirypage.enterSchemeOffered(schemeoffered);
+			System.out.println("Entered Scheme Offered: " + schemeoffered);
+		} catch (Exception e) {
+			System.err.println("Error during entering Scheme Offered: " + e.getMessage());
+		}
 	}
 
 	@When("User tries to enters valid data in Follow Up Remarks")
 	public void user_tries_to_enters_valid_data_in_follow_up_remarks() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			Thread.sleep(2000);
+			String followupremarks = "Everything was fine";
+			newenquirypage.enterFollowUpRemarks(followupremarks);
+			System.out.println("Entered Follow Up Remarks: " + followupremarks);
+		} catch (Exception e) {
+			System.err.println("Error during entering Follow Up Remarks: " + e.getMessage());
+		}
 	}
 
 	@Then("User should be able to see a Toast Message as Successfully reflected in Follow Up tab")
 	public void user_should_be_able_to_see_a_toast_message_as_successfully_reflected_in_follow_up_tab() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		try {
+			String actualMessage = newenquirypage.getTestDriveAppointmentEmptyDateToast();
+			String expectedMessage = "Successfully reflected.";
+			// Validate that the actual message matches the expected message
+			Assert.assertEquals(actualMessage, expectedMessage, "Toast message mismatch!");
+
+			// Log success message
+			System.out.println("Toast message validated successfully: " + actualMessage);
+		} catch (Exception e) {
+			System.err.println("Error during toast message validation: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@When("user tries to close the google chrome browser")
