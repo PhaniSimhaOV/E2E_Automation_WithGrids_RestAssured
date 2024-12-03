@@ -2,6 +2,9 @@ package com.autogrid.steps;
 
 import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.LaunchDriver;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -25,7 +28,7 @@ public class NewEnquiryPage {
 	@FindBy(xpath = "//li[@class='active']//ul//li//a[@class='menuItem'][normalize-space()='Customer Enquiry']")
 	private WebElement CustomerEnquiryLink;
 
-	@FindBy(xpath = "//*[@id='tabMenu']/ul/li[2]/span[2]")
+	@FindBy(xpath = "//span[contains(text(), 'Customer Enquiry')]")
 	private WebElement CustomerEnquiryscreenHeader;
 
 	@FindBy(xpath = "//span[@id='selectCustomerMeetingPopup_wnd_title']")
@@ -37,20 +40,20 @@ public class NewEnquiryPage {
 	@FindBy(xpath = "//span[normalize-space()='Basic Info.']")
 	private WebElement BasicInfoTab;
 
-	@FindBy(xpath = "//input[@id='mobileNo']")
+	@FindBy(xpath = "//div[@class=\"form_search form_search\"]//span//span//input[1]")
 	private WebElement MobileNumber;
 
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement InvalidMobileNumberToast;
 
 	@FindBy(xpath = "//a[@id='searchCustomer']")
-	private WebElement searchButton;
+	private WebElement MobileSearchIcon;
 
-	@FindBy(xpath = "//*[@id='template']/div/h3")
+	@FindBy(xpath = "//*[@id='template']/div/div/p")
 	private WebElement NewMobileToast;
 
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[2]/dl[1]/dd[1]/span/span/span[1]")
-	private WebElement CustTypeDropdown;
+	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[2]/dl[1]/dd[1]/span")
+	private WebElement CustTypeField;
 
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement CustTypeValidation;
@@ -73,8 +76,8 @@ public class NewEnquiryPage {
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement WhatsAppIdValidation;
 
-	@FindBy(xpath = "//*[@id='corp5']/span/span/span[1]")
-	private WebElement GenderDropdown;
+	@FindBy(xpath = "//*[@id='corp5']/span")
+	private WebElement GenderField;
 
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement GenderValidation;
@@ -85,38 +88,44 @@ public class NewEnquiryPage {
 	@FindBy(xpath = "///*[@id='template']")
 	private WebElement InvalidEmailToast;
 
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[2]/dl[3]/dd[1]/span/span/span[1]")
-	private WebElement LocationDropdown;
+	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[2]/dl[3]/dd[1]/span")
+	private WebElement LocationField;
 
-	@FindBy(xpath = "//*[@id='pin']")
+	@FindBy(xpath = "//input[@id='pin']")
 	private WebElement DisabledPincodeField;
 
 	@FindBy(xpath = "//a[@id='btnPinN']")
 	private WebElement PinCodeSearchIcon;
 
-	@FindBy(xpath = "//*[@id='pinCodeSearchPopup_wnd_title']")
+	@FindBy(xpath = "//span[contains(text(), 'Pin Code Search')]")
 	private WebElement PincodesearchScreenHeader;
 
-	@FindBy(xpath = "//*[@id='sPinCode']")
+	@FindBy(xpath = "//input[contains(@id, 'sPinCode')]")
 	private WebElement Pincode;
 
 	@FindBy(xpath = "//*[@id='btnSearch']")
 	private WebElement PinCodeSearchButton;
+	
+	@FindBy(xpath = "//input[contains(@id, 'searchCustomer')]")
+	private WebElement SearchIcon;
 
 	@FindBy(xpath = "//*[@id='grid']/div[2]/table/tbody/tr[1]")
 	private WebElement LocationSelection;
+	
+	@FindBy(xpath = "//*[@id='grid']/div[2]/table/tbody/tr")
+	private WebElement LocationSelection2;
 
 	@FindBy(xpath = "//button[@id='btnAddSelected']")
 	private WebElement AddSelectedButton;
 
 	@FindBy(xpath = "//*[@id='window']/div[2]/dl[1]/dd[1]/span")
-	private WebElement StateDropdown;
+	private WebElement StateField;
 
 	@FindBy(xpath = "//*[@id='window']/div[2]/dl[1]/dd[2]/span")
-	private WebElement DistrictDropdown;
+	private WebElement DistrictField;
 
 	@FindBy(xpath = "//*[@id='window']/div[2]/dl[1]/dd[3]/span")
-	private WebElement TalukaDropdown;
+	private WebElement TalukaField;
 
 	@FindBy(xpath = "//*[@id='sPostOfceName']")
 	private WebElement PostOfficeName;
@@ -127,17 +136,17 @@ public class NewEnquiryPage {
 	@FindBy(xpath = "//*[@id='addr']")
 	private WebElement Address;
 
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[1]/dd[1]/span/span/span[1]")
-	private WebElement EnquirySourceDropdown;
+	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[4]/dl[1]/dd[1]/span")
+	private WebElement EnquirySourceField;
 
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement EnquirySourceValidation;
 
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[1]/dd[2]/span/span/span[1]")
-	private WebElement EnquirySubSourceDropdown;
-
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[1]/dd[3]/span/span/span[1]")
-	private WebElement EnquiryCategoryDropdown;
+	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[1]/dd[2]/span")
+	private WebElement EnquirySubSourceField;
+	
+	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[1]/dd[3]/span")
+	private WebElement EnquiryCategoryField;
 
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement EnquiryCategoryValidation;
@@ -145,50 +154,50 @@ public class NewEnquiryPage {
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement EnquirySubSourceValidation;
 
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[1]/dd[4]/span/span/span[1]")
-	private WebElement PersonInChargeDropdown;
+	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[1]/dd[4]/span")
+	private WebElement PersonInChargeField;
 
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement PersonInChargeValidation;
 
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[2]/dd[1]/span/span/span[1]")
-	private WebElement ModelDropdown;
+	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[2]/dd[1]/span")
+	private WebElement ModelField;
 
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement ModelValidation;
 
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[2]/dd[2]/span/span/span[1]")
-	private WebElement FuelTypeDropdown;
+	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[2]/dd[2]/span")
+	private WebElement FuelTypeField;
 
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement FuelTypeValidation;
 
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[2]/dd[3]/span/span/span[1]")
-	private WebElement VariantDropdown;
+	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[2]/dd[3]/span")
+	private WebElement VariantField;
 
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement VariantValidation;
 
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[2]/dd[4]/span/span/span[1]")
-	private WebElement SubVariantDropdown;
+	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[2]/dd[4]/span")
+	private WebElement SubVariantField;
 
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement VariantSubTypeValidation;
 
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[3]/dd[1]/span/span/span[1]")
-	private WebElement ExtColorDropdown;
+	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[3]/dd[1]/span")
+	private WebElement ExtColorField;
 
 	@FindBy(xpath = "///*[@id='template']")
 	private WebElement ExtColorValidation;
 
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[3]/dd[2]/span/span/span[1]")
-	private WebElement IntColorDropdown;
+	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[3]/dd[2]/span")
+	private WebElement IntColorField;
 
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement IntColorValidation;
 
-	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[3]/dd[4]/span/span/span[1]")
-	private WebElement SalesConsultantDropdown;
+	@FindBy(xpath = "//*[@id='enquiry_info']/div[4]/dl[3]/dd[4]/span")
+	private WebElement SalesConsultantField;
 
 	@FindBy(xpath = "//*[@id='template']")
 	private WebElement SalesConsultantValidation;
@@ -245,10 +254,10 @@ public class NewEnquiryPage {
 	private WebElement LoanAmount;
 
 	@FindBy(xpath = "//*[@id='basicInfoForm']/div[5]/dl[6]/dd[1]/span/span/span[1]")
-	private WebElement TDOfferDropDown;
+	private WebElement TDOfferField;
 
 	@FindBy(xpath = "//*[@id='basicInfoForm']/div[5]/dl[6]/dd[2]/span/span/span[1]")
-	private WebElement TDVINDropDown;
+	private WebElement TDVINField;
 
 	@FindBy(xpath = "//*[@id='eqryForm']/div/dl[6]/dd[3]/span/span/span[1]")
 	private WebElement CftOfDeposit;
@@ -334,70 +343,91 @@ public class NewEnquiryPage {
 	@FindBy(xpath = "//*[@id='promotionGrid']//a[@role='button']")
 	private WebElement PromotionCrossIcon;
 
-	@FindBy(id = "//*[@id='cfd3d01a-750b-4e20-8c66-632854aae203']/div[1]")
+	@FindBy(xpath = "//*[@id='cfd3d01a-750b-4e20-8c66-632854aae203']/div[1]")
 	private WebElement leadTab;
 
-	@FindBy(id = "//*[@id='btnSearch']")
+	@FindBy(xpath = "//*[@id='btnSearch']")
 	private WebElement leadTabSearchButton;
 
-	@FindBy(id = "//*[@id='btnSearch']")
+	@FindBy(xpath = "//*[@id='btnSearch']")
 	private WebElement leadTabAllocateButton;
 
-	@FindBy(id = "//*[@id='custName']")
+	@FindBy(xpath = "//*[@id='custName']")
 	private WebElement CustNameFilter;
 
-	@FindBy(id = "//*[@id='grid']/div[2]/table/tbody/tr[1]/td[2]")
+	@FindBy(xpath = "//*[@id='grid']/div[2]/table/tbody/tr[1]/td[2]")
 	private WebElement leadEnquiryTable;
 
-	@FindBy(id = "//*[@class='checkAll']")
+	@FindBy(xpath = "//*[@class='checkAll']")
 	private WebElement leadEnquiryCheckBox;
 
-	@FindBy(id = "//*[@class='checkAll']")
+	@FindBy(xpath = "//*[@class='checkAll']")
 	private WebElement AllocatePopupHeader;
+	
+	@FindBy(xpath = "//span[@class=\"k-window-title\"][@id=\"customerInfoSearchPopupWin_wnd_title\"]")
+	private WebElement FindACustomerPopupHeader;
+	
+	@FindBy(xpath = "/html/body/div[14]/div[1]/div/a/span")
+	private WebElement FindACustomerPopupCloseIcon;
 
-	@FindBy(id = "//*[@class='checkAll']")
+	@FindBy(xpath = "//*[@class='checkAll']")
 	private WebElement AllocateSalesConsultantDropdown;
 
-	@FindBy(id = "//*[@id='allocateBtn']")
+	@FindBy(xpath = "//*[@id='allocateBtn']")
 	private WebElement AllocatePopupAllocateButton;
 
-	@FindBy(id = "//*[@id='btnTD']")
+	@FindBy(xpath = "//*[@id='btnTD']")
 	private WebElement TestDriveAppointmentButton;
 
-	@FindBy(id = "//h1[@class='title_basic']")
+	@FindBy(xpath = "//h1[@class='title_basic']")
 	private WebElement TestDriveAppointmentHeader;
 
-	@FindBy(id = "//*[@id='btnSave']")
+	@FindBy(xpath = "//*[@id='btnSave']")
 	private WebElement TestDriveAppointmentSaveButton;
 
-	@FindBy(id = "//*[@id='tabMenu']/ul/li[3]/button")
+	@FindBy(xpath = "//*[@id='tabMenu']/ul/li[3]/button")
 	private WebElement TestDriveAppointmentTabCloseIcon;
 
-	@FindBy(id = "//*[@id='schedulerIn']/table/tbody/tr[2]/td[2]/div/table/tbody/tr[1]/td[1]")
+	@FindBy(xpath = "//*[@id='schedulerIn']/table/tbody/tr[2]/td[2]/div/table/tbody/tr[1]/td[1]")
 	private WebElement TestDriveAppointmentOldDateSlot;
 
-	@FindBy(id = "//a[@title='Next']")
+	@FindBy(xpath = "//a[@title='Next']")
 	private WebElement TestDriveAppointmentNextdateIcon;
 
-	@FindBy(id = "//*[@id='schedulerIn']/table/tbody/tr[2]/td[2]/div/table/tbody/tr[1]/td[1]")
+	@FindBy(xpath = "//*[@id='schedulerIn']/table/tbody/tr[2]/td[2]/div/table/tbody/tr[1]/td[1]")
 	private WebElement TestDriveAppointmentValidDateSlot;
 
-	@FindBy(id = "//*[@id='template']/div/div/p")
+	@FindBy(xpath = "//*[@id='template']/div/div/p")
 	private WebElement TestDriveAppointmentInvalidDateToast;
 
-	@FindBy(id = "//*[@id='template']/div/div/p")
+	@FindBy(xpath = "//*[@id='template']/div/div/p")
 	private WebElement TestDriveAppointmentSuccessToast;
 
-	@FindBy(id = "//*[@id='template']/div/div/p")
+	@FindBy(xpath = "//*[@id='template']/div/div/p")
 	private WebElement TestDriveAppointmentEmptyDateToast;
 
 	// Locator for iframe
 	@FindBy(xpath = "(//*[starts-with(@id, 'tabMenuFrame')])[2]")
 	private WebElement NewEnquiryiframe;
 
+	@FindBy(xpath = "//iframe[contains(@class, 'k-content-frame')]")
+	private WebElement CustomerEnquiryPopupiframe;
+
+	@FindBy(xpath = "//iframe[contains(@title, 'Pin Code Search')]")
+	private WebElement PincodeSearchiframe;
+
 	public NewEnquiryPage(WebDriver driver) {
 		this.commonActions = new CommonActions(driver);
 		PageFactory.initElements(driver, this);
+	}
+
+	public void interactWithincodeSearchIframeElement() {
+		try {
+			LaunchDriver.getDriver().switchTo().frame(PincodeSearchiframe);
+			System.out.println("Successfully interacted with the element inside the Pincode Search iframe.");
+		} catch (Exception e) {
+			System.err.println("Error interacting with Pincode Search iframe: " + e.getMessage());
+		}
 	}
 
 	public void interactWithIframeElement() {
@@ -407,6 +437,15 @@ public class NewEnquiryPage {
 			System.out.println("Successfully interacted with the element inside the iframe.");
 		} catch (Exception e) {
 			System.err.println("Error interacting with iframe: " + e.getMessage());
+		}
+	}
+
+	public void interactWithCustomerEnquiryPopupIframeElement() {
+		try {
+			LaunchDriver.getDriver().switchTo().frame(CustomerEnquiryPopupiframe);
+			System.out.println("Successfully interacted with the element inside the iframe in Customer Enquiry Popup.");
+		} catch (Exception e) {
+			System.err.println("Error interacting with iframe in Customer Enquiry Popup: " + e.getMessage());
 		}
 	}
 
@@ -462,6 +501,15 @@ public class NewEnquiryPage {
 			TestDriveAppointmentOldDateSlot.click();
 		} catch (Exception e) {
 			System.err.println("Error clicking Test Drive Appointment Old Date slot: " + e.getMessage());
+			throw e;
+		}
+	}
+	
+	public void clickMobileSearchIcon() {
+		try {
+			MobileSearchIcon.click();
+		} catch (Exception e) {
+			System.err.println("Error clicking Mobile Search Icon: " + e.getMessage());
 			throw e;
 		}
 	}
@@ -592,6 +640,16 @@ public class NewEnquiryPage {
 			return false;
 		}
 	}
+	
+	// Method to check if Find A customer Info Pop-up is displayed
+		public boolean isFindACustomerInfoPopupDisplayed() {
+			try {
+				return FindACustomerPopupHeader.isDisplayed();
+			} catch (Exception e) {
+				System.err.println("Error checking Find A customer Info Pop-up visibility: " + e.getMessage());
+				return false;
+			}
+		}
 
 	// Method to check if Follow Up Tab Screen is displayed
 	public boolean isFollowUpTabScreenDisplayed() {
@@ -636,6 +694,14 @@ public class NewEnquiryPage {
 	public void clickCloseIcon() {
 		try {
 			CloseIcon.click();
+		} catch (Exception e) {
+			System.err.println("Error clicking Close Icon: " + e.getMessage());
+			throw e;
+		}
+	}
+	public void clickFindaCustomerCloseIcon() {
+		try {
+			FindACustomerPopupCloseIcon.click();
 		} catch (Exception e) {
 			System.err.println("Error clicking Close Icon: " + e.getMessage());
 			throw e;
@@ -726,6 +792,15 @@ public class NewEnquiryPage {
 			throw e;
 		}
 	}
+	
+	public void clickLocationSelectionAfterFilters() {
+		try {
+			LocationSelection2.click();
+		} catch (Exception e) {
+			System.err.println("Error clicking Location Selection from Pincodes List : " + e.getMessage());
+			throw e;
+		}
+	}
 
 	public void clickleadTabSearchButton() {
 		try {
@@ -756,14 +831,21 @@ public class NewEnquiryPage {
 
 	// Method to retrieve the text or value from the Pincode field
 	public String getPincode() {
-		return DisabledPincodeField.getText(); // Use getAttribute("value") for input fields
+		try {
+			return DisabledPincodeField.getAttribute("value");
+		} catch (Exception e) {
+			System.err.println("Error retrieving Pincode field value: " + e.getMessage());
+			throw e;
+		}
 	}
 
-	// Method to select a state from the dropdown
-	public void selectState(String state) {
+	// Method to select a state from the Field
+	public void selectState(String stateName) throws Exception {
 		try {
-			Select dropdown = new Select(StateDropdown);
-			dropdown.selectByVisibleText(state);
+			StateField.click();
+			Thread.sleep(5000);
+			StateField.sendKeys(stateName); // Enter the desired state name
+			StateField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
 			System.err.println("An error occurred while selecting state: " + e.getMessage());
 			throw e;
@@ -804,45 +886,51 @@ public class NewEnquiryPage {
 	}
 
 	// Method to select a TD Offer from the TD Offer dropdown
-	public void selectTDOfferDropDown(String TDOffer) {
+	public void selectTDOfferField(String TDOffer) {
 		try {
-			Select dropdown = new Select(TDOfferDropDown);
-			dropdown.selectByVisibleText(TDOffer);
+			TDOfferField.click();
+			Thread.sleep(5000);
+			TDOfferField.sendKeys(TDOffer); // Enter the desired TD Offer
+			TDOfferField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
 			System.err.println("An error occurred while selecting TD Offer: " + e.getMessage());
-			throw e;
 		}
 	}
 
 	// Method to select a TD VIN from the TD VIN dropdown
-	public void selectTDVINDropDown(int TDVIN) {
+	public void selectTDVINField(String TDVIN) {
 		try {
-			Select dropdown = new Select(TDVINDropDown);
-			dropdown.selectByIndex(TDVIN);
+			TDVINField.click();
+			Thread.sleep(5000);
+			TDVINField.sendKeys(TDVIN); // Enter the desired TD VIN
+			TDVINField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
 			System.err.println("An error occurred while selecting TD VIN: " + e.getMessage());
-			throw e;
 		}
 	}
 
-	// Method to select a District from the dropdown
-	public void selectDistrict(String district) {
+	// Method to select a District from the Field
+	public void selectDistrict(String DistrictName) throws Exception {
 		try {
-			Select dropdown = new Select(DistrictDropdown);
-			dropdown.selectByVisibleText(district);
+			DistrictField.click();
+			Thread.sleep(5000);
+			DistrictField.sendKeys(DistrictName); // Enter the desired state name
+			DistrictField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
 			System.err.println("An error occurred while selecting District: " + e.getMessage());
 			throw e;
 		}
 	}
 
-	// Method to select a Taluka from the dropdown
-	public void selectTaluka(String taluka) {
+	// Method to select a Taluka from the Field
+	public void selectTaluka(String TalukaName) throws Exception {
 		try {
-			Select dropdown = new Select(TalukaDropdown);
-			dropdown.selectByVisibleText(taluka);
+			TalukaField.click();
+			Thread.sleep(5000);
+			TalukaField.sendKeys(TalukaName); // Enter the desired state name
+			TalukaField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("An error occurred while selecting taluka : " + e.getMessage());
+			System.err.println("An error occurred while selecting Taluka: " + e.getMessage());
 			throw e;
 		}
 	}
@@ -947,21 +1035,34 @@ public class NewEnquiryPage {
 		}
 	}
 
-	// Action to enter Mobile Number
-	public void enterMobileNumber(String mobilenumber) {
+	 // Action to enter Mobile Number
+	public void enterMobileNumber(String mobilenumber) throws Exception {
 		try {
-			MobileNumber.clear();
+			Thread.sleep(3000);		
 			MobileNumber.sendKeys(mobilenumber);
 		} catch (Exception e) {
 			System.err.println("Error entering MobileNumber: " + e.getMessage());
 			throw e;
 		}
 	}
-
+	 
+//	public void enterMobileNumber(String mobileNumber) {
+//        try {
+//        	MobileNumber.click();
+//		    MobileNumber.clear();
+//            JavascriptExecutor js = (JavascriptExecutor) driver;
+//            js.executeScript("arguments[0].value=arguments[1];", MobileNumber, mobileNumber);
+//            System.out.println("Successfully entered mobile number: " + mobileNumber);
+//        } catch (Exception e) {
+//            System.err.println("Error entering mobile number using JavaScript: " + e.getMessage());
+//            throw new RuntimeException("Failed to enter mobile number.", e);
+//        }
+//    }
+	
 	// Action to enter Email Id
-	public void enterEmail(String email) {
+	public void enterEmail(String email) throws Exception {
 		try {
-			Email.clear();
+			Thread.sleep(5000);
 			Email.sendKeys(email);
 		} catch (Exception e) {
 			System.err.println("Error entering Email: " + e.getMessage());
@@ -1060,185 +1161,172 @@ public class NewEnquiryPage {
 		}
 	}
 
-	public void selectValidCustType(String CustType) throws Exception {
+	public void selectCustTypeField(String CustType) throws Exception {
+			try {
+				CustTypeField.click();
+				Thread.sleep(5000);
+				CustTypeField.sendKeys(CustType); // Enter the desired Cust Type
+				CustTypeField.sendKeys(Keys.ENTER);
+			} catch (Exception e) {
+				System.err.println("An error occurred while selecting Cust Type: " + e.getMessage());
+				throw e;
+			}
+		}
+
+	public void selectGender(String Gender) throws Exception {
 		try {
+			    GenderField.click();
+				Thread.sleep(5000);
+				GenderField.sendKeys(Gender); // Enter the desired Gender
+				GenderField.sendKeys(Keys.ENTER);
+			} catch (Exception e) {
+				System.err.println("An error occurred while selecting Gender: " + e.getMessage());
+				throw e;
+			}
+		}
 
-			Select dropdown = new Select(CustTypeDropdown);
-			dropdown.selectByVisibleText(CustType);
 
-			System.out.println("Valid customer type selected: " + CustType);
+	public void selectLocation(String Location) throws Exception {
+		try {
+			LocationField.click();
+			Thread.sleep(5000);
+			LocationField.sendKeys(Location); // Enter the desired Location
+			LocationField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("Error selecting valid customer type: " + e.getMessage());
-			throw new Exception("Failed to select valid customer type.", e);
+			System.err.println("An error occurred while selecting Gender: " + e.getMessage());
+			throw e;
 		}
 	}
 
-	public void selectValidGender(String Gender) throws Exception {
+	public void selectEnquirySource(String EnquirySource) throws Exception {
 		try {
-
-			Select dropdown = new Select(GenderDropdown);
-			dropdown.selectByVisibleText(Gender);
-
-			System.out.println("Valid Gender selected: " + Gender);
+			EnquirySourceField.click();
+			Thread.sleep(5000);
+			EnquirySourceField.sendKeys(EnquirySource); // Enter the desired Enquiry Source
+			EnquirySourceField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("Error selecting valid Gender: " + e.getMessage());
-			throw new Exception("Failed to select valid Gender.", e);
+			System.err.println("An error occurred while selecting Enquiry Source: " + e.getMessage());
+			throw e;
 		}
 	}
 
-	public void selectValidLocation(String Location) throws Exception {
+	public void selectEnquirySubSource(String EnquirySubSource) throws Exception {
 		try {
-
-			Select dropdown = new Select(LocationDropdown);
-			dropdown.selectByVisibleText(Location);
-
-			System.out.println("Valid Location selected: " + Location);
+			EnquirySubSourceField.click();
+			Thread.sleep(5000);
+			EnquirySubSourceField.sendKeys(EnquirySubSource); // Enter the desired Enquiry Sub Source
+			EnquirySubSourceField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("Error selecting valid Location: " + e.getMessage());
-			throw new Exception("Failed to select valid Location.", e);
+			System.err.println("An error occurred while selecting Enquiry Sub Source: " + e.getMessage());
+			throw e;
 		}
 	}
 
-	public void selectValidEnquirySource(String EnquirySource) throws Exception {
+	public void selectEnquiryCategory(String EnquiryCategory) throws Exception {
 		try {
-
-			Select dropdown = new Select(EnquirySourceDropdown);
-			dropdown.selectByVisibleText(EnquirySource);
-
-			System.out.println("Valid Enquiry Source selected: " + EnquirySource);
+			EnquiryCategoryField.click();
+			Thread.sleep(5000);
+			EnquiryCategoryField.sendKeys(EnquiryCategory); // Enter the desired Enquiry Category
+			EnquiryCategoryField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("Error selecting valid Enquiry Source: " + e.getMessage());
-			throw new Exception("Failed to select valid Enquiry Source.", e);
+			System.err.println("An error occurred while selecting Enquiry Category: " + e.getMessage());
+			throw e;
 		}
 	}
 
-	public void selectValidEnquirySubSource(String EnquirySubSource) throws Exception {
+	public void selectPersonInCharge(String PersonInCharge) throws Exception {
 		try {
-
-			Select dropdown = new Select(EnquirySubSourceDropdown);
-			dropdown.selectByVisibleText(EnquirySubSource);
-
-			System.out.println("Valid Enquiry Sub Source selected: " + EnquirySubSource);
+			PersonInChargeField.click();
+			Thread.sleep(5000);
+			PersonInChargeField.sendKeys(PersonInCharge); // Enter the desired Person In Charge
+			PersonInChargeField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("Error selecting valid Enquiry Sub Source: " + e.getMessage());
-			throw new Exception("Failed to select valid Enquiry Sub Source.", e);
+			System.err.println("An error occurred while selecting Person In Charge: " + e.getMessage());
+			throw e;
 		}
 	}
 
-	public void selectValidEnquiryCategory(String EnquiryCategory) throws Exception {
+	public void selectModel(String Model) throws Exception {
 		try {
-
-			Select dropdown = new Select(EnquiryCategoryDropdown);
-			dropdown.selectByVisibleText(EnquiryCategory);
-
-			System.out.println("Valid Enquiry Category selected: " + EnquiryCategory);
+			ModelField.click();
+			Thread.sleep(5000);
+			ModelField.sendKeys(Model); // Enter the desired Model
+			ModelField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("Error selecting valid Enquiry Category: " + e.getMessage());
-			throw new Exception("Failed to select valid Enquiry Category.", e);
+			System.err.println("An error occurred while selecting Model: " + e.getMessage());
+			throw e;
 		}
 	}
 
-	public void selectValidPersonInCharge(String PersonInCharge) throws Exception {
+	public void selectFuelType(String FuelType) throws Exception {
 		try {
-
-			Select dropdown = new Select(PersonInChargeDropdown);
-			dropdown.selectByVisibleText(PersonInCharge);
-
-			System.out.println("Valid Enquiry Source selected: " + PersonInCharge);
+			FuelTypeField.click();
+			Thread.sleep(5000);
+			FuelTypeField.sendKeys(FuelType); 
+			FuelTypeField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("Error selecting valid Person In Charge: " + e.getMessage());
-			throw new Exception("Failed to select valid Person In Charge.", e);
+			System.err.println("An error occurred while selecting Fuel Type: " + e.getMessage());
+			throw e;
 		}
 	}
 
-	public void selectValidModel(String Model) throws Exception {
+	public void selectVariant(String Variant) throws Exception {
 		try {
-
-			Select dropdown = new Select(ModelDropdown);
-			dropdown.selectByVisibleText(Model);
-
-			System.out.println("Valid Model selected: " + Model);
+			VariantField.click();
+			Thread.sleep(5000);
+			VariantField.sendKeys(Variant); 
+			VariantField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("Error selecting valid Model: " + e.getMessage());
-			throw new Exception("Failed to select valid Model.", e);
+			System.err.println("An error occurred while selecting Variant: " + e.getMessage());
+			throw e;
+		}
+	}
+	
+	public void selectSubVariant(String SubVariant) throws Exception {
+		try {
+			SubVariantField.click();
+			Thread.sleep(5000);
+			SubVariantField.sendKeys(SubVariant); 
+			SubVariantField.sendKeys(Keys.ENTER);
+		} catch (Exception e) {
+			System.err.println("An error occurred while selecting Sub Variant: " + e.getMessage());
+			throw e;
 		}
 	}
 
-	public void selectValidFuelType(String FuelType) throws Exception {
+	public void selectExtColor(String ExtColor) throws Exception {
 		try {
-
-			Select dropdown = new Select(FuelTypeDropdown);
-			dropdown.selectByVisibleText(FuelType);
-
-			System.out.println("Valid Enquiry Source selected: " + FuelType);
+			ExtColorField.click();
+			Thread.sleep(5000);
+			ExtColorField.sendKeys(ExtColor); 
+			ExtColorField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("Error selecting valid Fuel Type: " + e.getMessage());
-			throw new Exception("Failed to select valid Fuel Type.", e);
+			System.err.println("An error occurred while selecting ExtColor: " + e.getMessage());
+			throw e;
 		}
 	}
 
-	public void selectValidVariant(String Variant) throws Exception {
+	public void selectIntColor(String IntColor) throws Exception {
 		try {
-
-			Select dropdown = new Select(VariantDropdown);
-			dropdown.selectByVisibleText(Variant);
-
-			System.out.println("Valid Enquiry Source selected: " + Variant);
+			IntColorField.click();
+			Thread.sleep(5000);
+			IntColorField.sendKeys(IntColor); 
+			IntColorField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("Error selecting valid Variant: " + e.getMessage());
-			throw new Exception("Failed to select valid Variant.", e);
+			System.err.println("An error occurred while selecting Int Color: " + e.getMessage());
+			throw e;
 		}
 	}
-
-	public void selectValidSubVariant(String SubVariant) throws Exception {
+	
+	public void selectSalesConsultant(String SalesConsultant) throws Exception {
 		try {
-
-			Select dropdown = new Select(SubVariantDropdown);
-			dropdown.selectByVisibleText(SubVariant);
-
-			System.out.println("Valid Sub Variant selected: " + SubVariant);
+			SalesConsultantField.click();
+			Thread.sleep(5000);
+			SalesConsultantField.sendKeys(SalesConsultant); 
+			SalesConsultantField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("Error selecting valid Sub Variant: " + e.getMessage());
-			throw new Exception("Failed to select valid Sub Variant.", e);
-		}
-	}
-
-	public void selectValidExtColor(String ExtColor) throws Exception {
-		try {
-
-			Select dropdown = new Select(ExtColorDropdown);
-			dropdown.selectByVisibleText(ExtColor);
-
-			System.out.println("Valid Ext Color selected: " + ExtColor);
-		} catch (Exception e) {
-			System.err.println("Error selecting valid Ext Color: " + e.getMessage());
-			throw new Exception("Failed to select valid Ext Color.", e);
-		}
-	}
-
-	public void selectValidIntColor(String IntColor) throws Exception {
-		try {
-
-			Select dropdown = new Select(IntColorDropdown);
-			dropdown.selectByVisibleText(IntColor);
-
-			System.out.println("Valid Int Color selected: " + IntColor);
-		} catch (Exception e) {
-			System.err.println("Error selecting valid Int Color: " + e.getMessage());
-			throw new Exception("Failed to select valid Int Color.", e);
-		}
-	}
-
-	public void selectValidSalesConsultant(String SalesConsultant) throws Exception {
-		try {
-
-			Select dropdown = new Select(SalesConsultantDropdown);
-			dropdown.selectByVisibleText(SalesConsultant);
-
-			System.out.println("Valid Sales Consultant selected: " + SalesConsultant);
-		} catch (Exception e) {
-			System.err.println("Error selecting valid Sales Consultant: " + e.getMessage());
-			throw new Exception("Failed to select valid Sales Consultant.", e);
+			System.err.println("An error occurred while selecting Sales Consultant: " + e.getMessage());
+			throw e;
 		}
 	}
 

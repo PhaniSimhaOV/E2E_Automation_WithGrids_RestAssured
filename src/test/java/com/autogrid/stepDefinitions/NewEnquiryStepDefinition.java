@@ -104,6 +104,18 @@ public class NewEnquiryStepDefinition {
 			Assert.fail("Sales Customer Enquiry pop-up verification failed.");
 		}
 	}
+	
+	@And("User tries to clicks on New button")
+	public void user_tries_to_clicks_on_new_button() {
+		try {
+			Thread.sleep(3000);
+			newenquirypage.interactWithIframeElement();
+			newenquirypage.clickNewEnquiryButton();
+			System.out.println("New Enquiry Button clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during New Enquiry Button click: " + e.getMessage());
+		}
+	}
 
 	@When("User clicks on Close icon")
 	public void user_clicks_on_close_icon() {
@@ -114,10 +126,26 @@ public class NewEnquiryStepDefinition {
 			System.err.println("Error during Close icon click: " + e.getMessage());
 		}
 	}
+	
+	@Then("User should be able to navigate back to the Customer Enquiry screen")
+	public void user_should_be_able_to_navigate_back_to_the_customer_enquiry_screen() {
+		try {
+			Thread.sleep(3000);
+			LaunchDriver.getDriver().switchTo().defaultContent();
+			Assert.assertTrue(newenquirypage.isCustomerEnquiryScreenDisplayed(),
+					"Customer Enquiry Screen is not displayed.");
+			System.out.println("Customer Enquiry Screen is displayed.");
+		} catch (Exception e) {
+			System.err.println("Error verifying Customer Enquiry Screen pop-up: " + e.getMessage());
+			Assert.fail("Customer Enquiry Screen verification failed.");
+		}
+	}
 
 	@When("User should be able to view the Cross Mark in Sales Customer Enquiry Pop-up")
 	public void user_should_be_able_to_view_the_cross_mark_in_sales_customer_enquiry_pop_up() {
 		try {
+			Thread.sleep(3000);
+			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
 			Assert.assertTrue(newenquirypage.isPromotionCrossIconDisplayed(), "Promotion Cross Icon is not displayed.");
 			System.out.println("Promotion Cross Icon is displayed.");
 		} catch (Exception e) {
@@ -151,6 +179,7 @@ public class NewEnquiryStepDefinition {
 	@When("User clicks on Pincode Search Icon from PIN field")
 	public void user_clicks_on_pincode_search_icon_from_pin_field() {
 		try {
+			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
 			newenquirypage.clickPincodeSearchIcon();
 			System.out.println("Pincode Search Icon clicked.");
 		} catch (Exception e) {
@@ -161,8 +190,10 @@ public class NewEnquiryStepDefinition {
 	@Then("User should be able to navigate to the Pincode search Screen")
 	public void user_should_be_able_to_navigate_to_the_pincode_search_screen() {
 		try {
+			Thread.sleep(3000);
+			newenquirypage.interactWithIframeElement();
 			Assert.assertTrue(newenquirypage.isPincodeSearchScreenDisplayed(),
-					"Promotion Cross Icon is not displayed.");
+					"Pincode search Screen is not displayed.");
 			System.out.println("Pincode search Screen is displayed.");
 		} catch (Exception e) {
 			System.err.println("Error verifying Pincode search Screen : " + e.getMessage());
@@ -174,6 +205,7 @@ public class NewEnquiryStepDefinition {
 	public void user_tries_to_enter_pincode_in_pincode_field() {
 		try {
 			Thread.sleep(2000);
+			newenquirypage.interactWithincodeSearchIframeElement();
 			String pincode = "500018";
 			newenquirypage.enterPincode(pincode);
 			System.out.println("Entered Pincode: " + pincode);
@@ -215,6 +247,103 @@ public class NewEnquiryStepDefinition {
 	@Then("User should be able to see Selected Pincode displayed in the Pincode Field")
 	public void user_should_be_able_to_see_selected_pincode_displayed_in_the_pincode_field() {
 		try {
+			newenquirypage.interactWithIframeElement();
+			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
+			String expectedPincode = "500018";
+			String actualPincode = newenquirypage.getPincode();
+			Assert.assertEquals(actualPincode, expectedPincode, "Pincode mismatch!");
+			System.out.println("Verification successful: Pincode is displayed correctly.");
+		} catch (Exception e) {
+			System.err.println("An error occurred during Pincode verification: " + e.getMessage());
+			e.printStackTrace();
+		}LaunchDriver.getDriver().switchTo().defaultContent();
+	}
+	
+	@When("User clicks on Pincode Search Icon beside PIN field")
+	public void user_clicks_on_pincode_search_icon_beside_pin_field() {
+		try {
+			newenquirypage.interactWithIframeElement();
+			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
+			newenquirypage.clickPincodeSearchIcon();
+			System.out.println("Pincode Search Icon clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during Pincode Search Icon click: " + e.getMessage());
+		}
+	}
+	
+	@When("User clicks on Pincode Search Icon beside the PIN field")
+	public void user_clicks_on_pincode_search_icon_beside_the_pin_field() {
+		try {
+			newenquirypage.clickPincodeSearchIcon();
+			System.out.println("Pincode Search Icon clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during Pincode Search Icon click: " + e.getMessage());
+		}
+	}
+	
+	@Then("User should be able to navigate to Pincode Search Screen")
+	public void user_should_be_able_to_navigate_to_pincode_search_screen() {
+		try {
+			Thread.sleep(3000);
+			newenquirypage.interactWithIframeElement();
+			Assert.assertTrue(newenquirypage.isPincodeSearchScreenDisplayed(),
+					"Pincode search Screen is not displayed.");
+			System.out.println("Pincode search Screen is displayed.");
+		} catch (Exception e) {
+			System.err.println("Error verifying Pincode search Screen : " + e.getMessage());
+			Assert.fail("Pincode search Screen verification failed.");
+		}
+	}
+
+	@Then("User tries to selects State from State field")
+	public void user_tries_to_selects_state_from_state_field() {
+		try {
+			Thread.sleep(4000);
+			newenquirypage.interactWithincodeSearchIframeElement();
+			newenquirypage.selectState("TELANGANA");
+		} catch (Exception e) {
+			System.err.println("Error during entering & selecting state Name: " + e.getMessage());
+		}
+	}
+		
+
+	@Then("User tries to selects District from District field")
+	public void user_tries_to_selects_district_from_district_field() {
+		try {
+			Thread.sleep(5000);
+			newenquirypage.selectDistrict("K.V.Rangareddy");
+		} catch (Exception e) {
+			System.err.println("Error during entering & selecting District Name: " + e.getMessage());
+		}
+	}
+
+	@Then("User tries to selects Taluka or Tehsil from Taluka or Tehsil field")
+	public void user_tries_to_selects_taluka_or_tehsil_from_taluka_or_tehsil_field() {
+		try {
+			Thread.sleep(5000);
+			newenquirypage.selectTaluka("Balanagar");
+		} catch (Exception e) {
+			System.err.println("Error during entering & selecting Taluka Name: " + e.getMessage());
+		}
+	}
+
+	@Then("User tries to enters Post Office Name from Post Office Name field")
+	public void user_tries_to_enters_post_office_name_from_post_office_name_field() {
+		try {
+			Thread.sleep(5000);
+			String postofficename = "Bharat Nagar Colony S.O";
+			newenquirypage.enterPostOfficeName(postofficename);
+			System.out.println("Entered Post Office Name: " + postofficename);
+		} catch (Exception e) {
+			System.err.println("Error during entering Post Office Name: " + e.getMessage());
+		}
+	}
+	
+	@Then("User should be able to see the Selected Pincode displayed in the Pincode Field")
+	public void user_should_be_able_to_see_the_selected_pincode_displayed_in_the_pincode_field() {
+		try {
+			newenquirypage.interactWithIframeElement();
+			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
 			String expectedPincode = "500018";
 			String actualPincode = newenquirypage.getPincode();
 			Assert.assertEquals(actualPincode, expectedPincode, "Pincode mismatch!");
@@ -224,49 +353,15 @@ public class NewEnquiryStepDefinition {
 			e.printStackTrace();
 		}
 	}
-
-	@Then("User tries to selects State from state field")
-	public void user_tries_to_selects_state_from_state_field() {
+	
+	@Then("User tries to select one pincode from the list after applying filters")
+	public void user_tries_to_select_one_pincode_from_the_list_after_applying_filters() {
 		try {
-			newenquirypage.selectState("TELANGANA");
-			System.out.println("state successfully selected: + TELANGANA");
+			Thread.sleep(3000);
+			newenquirypage.clickLocationSelectionAfterFilters();
+			System.out.println("Location Selection clicked.");
 		} catch (Exception e) {
-			System.err.println("Error during state selection: " + e.getMessage());
-			e.printStackTrace();
-		}
-	}
-
-	@Then("User tries to selects District from District field")
-	public void user_tries_to_selects_district_from_district_field() {
-		try {
-			newenquirypage.selectDistrict("K.V.Rangareddy");
-			System.out.println("District successfully selected: + K.V.Rangareddy");
-		} catch (Exception e) {
-			System.err.println("Error during District selection: " + e.getMessage());
-			e.printStackTrace();
-		}
-	}
-
-	@Then("User tries to selects Taluka or Tehsil from Taluka or Tehsil field")
-	public void user_tries_to_selects_taluka_or_tehsil_from_taluka_or_tehsil_field() {
-		try {
-			newenquirypage.selectTaluka("Ameerpet");
-			System.out.println("Taluka or Tehsil successfully selected: + Ameerpet");
-		} catch (Exception e) {
-			System.err.println("Error during Taluka or Tehsil selection: " + e.getMessage());
-			e.printStackTrace();
-		}
-	}
-
-	@Then("User tries to enters Post Office Name from Post Office Name field")
-	public void user_tries_to_enters_post_office_name_from_post_office_name_field() {
-		try {
-			Thread.sleep(2000);
-			String postofficename = "Bharat Nagar Colony S.O";
-			newenquirypage.enterPincode(postofficename);
-			System.out.println("Entered Post Office Name: " + postofficename);
-		} catch (Exception e) {
-			System.err.println("Error during entering Post Office Name: " + e.getMessage());
+			System.err.println("Error during Location Selection click: " + e.getMessage());
 		}
 	}
 
@@ -339,6 +434,9 @@ public class NewEnquiryStepDefinition {
 	public void user_tries_to_enters_mobile_number_which_was_already_registered() {
 		try {
 			Thread.sleep(2000);
+			newenquirypage.interactWithIframeElement();
+			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
+			Thread.sleep(2000);
 			String mobilenumber = "9640884870";
 			newenquirypage.enterMobileNumber(mobilenumber);
 			System.out.println("Entered Mobile Number: " + mobilenumber);
@@ -346,16 +444,41 @@ public class NewEnquiryStepDefinition {
 			System.err.println("Error during entering Mobile Number: " + e.getMessage());
 		}
 	}
-
+	
+	@When("User clicks on mobile number search Icon")
+	public void user_clicks_on_mobile_number_search_icon() {
+		try {
+			Thread.sleep(6000);
+			newenquirypage.clickMobileSearchIcon();
+			System.out.println("Mobile number search Icon clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during Mobile number search Icon click: " + e.getMessage());
+		}
+	}
+	
 	@Then("User should be able to navigate to the Find A Customer Info Screen")
 	public void user_should_be_able_to_navigate_to_the_find_a_customer_info_screen() {
 		try {
-			Assert.assertTrue(newenquirypage.isPincodeSearchScreenDisplayed(),
-					"Promotion Cross Icon is not displayed.");
-			System.out.println("Pincode search Screen is displayed.");
+			Thread.sleep(3000);
+			LaunchDriver.getDriver().switchTo().defaultContent();
+			newenquirypage.interactWithIframeElement();
+			Assert.assertTrue(newenquirypage.isFindACustomerInfoPopupDisplayed(),
+					"Find A Customer Info Screen is not displayed.");
+			System.out.println("Find A Customer Info Screen is displayed.");
 		} catch (Exception e) {
-			System.err.println("Error verifying Pincode search Screen : " + e.getMessage());
-			Assert.fail("Pincode search Screen verification failed.");
+			System.err.println("Error verifying Find A Customer Info Screen Screen : " + e.getMessage());
+			Assert.fail("Find A Customer Info Screen verification failed.");
+		}
+	}
+	
+	@Given("User tries to clcik on Close icon in the Find A Customer Info Screen")
+	public void user_tries_to_click_on_the_close_icon_in_the_find_a_customer_info_screen() {
+		try {
+			Thread.sleep(3000);
+			newenquirypage.clickFindaCustomerCloseIcon();
+			System.out.println("Find A Customer Info ScreenClose Icon clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during Find A Customer Info Screen Close Icon click: " + e.getMessage());
 		}
 	}
 
@@ -363,7 +486,9 @@ public class NewEnquiryStepDefinition {
 	public void user_tries_to_enters_mobile_number_which_not_registered() {
 		try {
 			Thread.sleep(2000);
-			String mobilenumber = "9640885655";
+			newenquirypage.interactWithIframeElement();
+			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
+			String mobilenumber = "9640841265";
 			newenquirypage.enterMobileNumber(mobilenumber);
 			System.out.println("Entered Mobile Number: " + mobilenumber);
 		} catch (Exception e) {
@@ -387,11 +512,11 @@ public class NewEnquiryStepDefinition {
 		}
 	}
 
-	@When("User tries to enters Invalid Email id")
-	public void user_tries_to_enters_invalid_email_id() {
+	@When("I enters valid data in Email id")
+	public void i_enters_valid_data_in_email_id() {
 		try {
-			Thread.sleep(2000);
-			String email = "9640885655";
+			Thread.sleep(5000);
+			String email = "Jeevanwe@gmail.com";
 			newenquirypage.enterEmail(email);
 			System.out.println("Entered Email: " + email);
 		} catch (Exception e) {
@@ -428,10 +553,10 @@ public class NewEnquiryStepDefinition {
 	}
 
 	@Given("I enters valid data in Mobile No")
-	public void i_enters_valid_data_in_mobile_no() {
+	public void i_enters_valid_data_in_mobile_no(String mobileNumber) {
 		try {
 			Thread.sleep(2000);
-			String mobilenumber = "9640866655";
+			String mobilenumber = "9640845321";
 			newenquirypage.enterMobileNumber(mobilenumber);
 			System.out.println("Entered Mobile Number: " + mobilenumber);
 		} catch (Exception e) {
@@ -454,14 +579,13 @@ public class NewEnquiryStepDefinition {
 	@Given("I selects valid data in Cust. Type")
 	public void i_selects_valid_data_in_cust_type() {
 		try {
-			newenquirypage.selectValidCustType("Individual");
-			System.out.println("Cust Type successfully selected: + Individual");
-		} catch (Exception e) {
-			System.err.println("Error during Cust Type selection: " + e.getMessage());
-			e.printStackTrace();
+				Thread.sleep(2000);
+				newenquirypage.selectCustTypeField("Individual");
+			} catch (Exception e) {
+				System.err.println("Error during entering & selecting Cust Type: " + e.getMessage());
+			}
 		}
-	}
-
+			
 	@Given("I enters valid data in Cust. Name")
 	public void i_enters_valid_data_in_cust_name() {
 		try {
@@ -501,24 +625,23 @@ public class NewEnquiryStepDefinition {
 	@Given("I selects valid data Gender")
 	public void i_selects_valid_data_gender() {
 		try {
-			newenquirypage.selectValidGender("Male");
-			System.out.println("Gender successfully selected: + Male");
+			Thread.sleep(2000);
+			newenquirypage.selectGender("Male");
 		} catch (Exception e) {
 			System.err.println("Error during Gender selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
-
+	
 	@Given("I selects valid data in PIN")
 	public void i_selects_valid_data_in_pin() {
 		try {
-			user_clicks_on_pincode_search_icon_from_pin_field();
+			user_clicks_on_pincode_search_icon_beside_the_pin_field();
 			user_tries_to_enter_pincode_in_pincode_field();
 			user_tries_to_clicks_on_search_button_in_pincode_search_screen();
 			user_tries_to_select_one_pincode_from_the_list();
 			user_tries_to_clicks_on_add_selected_button_in_pincode_search_screen();
 		} catch (Exception e) {
-			System.err.println("Error during entering Pincode: " + e.getMessage());
+			System.err.println("Error during selecting a Pincode: " + e.getMessage());
 		}
 	}
 
@@ -549,132 +672,120 @@ public class NewEnquiryStepDefinition {
 	@Given("I selects valid data in Location")
 	public void i_selects_valid_data_in_location() {
 		try {
-			newenquirypage.selectValidLocation("HYDERABAD");
-			System.out.println("Location successfully selected: + HYDERABAD");
+			Thread.sleep(2000);
+			newenquirypage.selectLocation("HYDERABAD");
 		} catch (Exception e) {
 			System.err.println("Error during Location selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
 	@Given("I selects valid data Enquiry Source")
 	public void i_selects_valid_data_enquiry_source() {
 		try {
-			newenquirypage.selectValidEnquirySource("Field Generation");
-			System.out.println("Enquiry Source successfully selected: + Field Generation");
+			Thread.sleep(2000);
+			newenquirypage.selectEnquirySource("Field Generation");
 		} catch (Exception e) {
 			System.err.println("Error during Enquiry Source selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
-
+	
 	@Given("I selects valid data Enquiry Sub Source")
 	public void i_selects_valid_data_enquiry_sub_source() {
 		try {
-			newenquirypage.selectValidEnquirySubSource("Mega Exchange Camp");
-			System.out.println("Enquiry Sub Source successfully selected: + Mega Exchange Camp");
+			Thread.sleep(2000);
+			newenquirypage.selectEnquirySubSource("Mega Exchange Camp");
 		} catch (Exception e) {
 			System.err.println("Error during Enquiry Sub Source selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
 	@Given("I selects valid data Enquiry Category")
 	public void i_selects_valid_data_enquiry_category() {
 		try {
-			newenquirypage.selectValidEnquiryCategory("Individual");
-			System.out.println("Enquiry Category successfully selected: + Individual");
+			Thread.sleep(2000);
+			newenquirypage.selectEnquiryCategory("Individual");
 		} catch (Exception e) {
 			System.err.println("Error during Enquiry Category selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
 	@Given("I selects valid data Person In Charge")
 	public void i_selects_valid_data_person_in_charge() {
 		try {
-			newenquirypage.selectValidPersonInCharge("ABHINAY CHARY TANKARA");
-			System.out.println("Person In Charge successfully selected: + ABHINAY CHARY TANKARA");
+			Thread.sleep(2000);
+			newenquirypage.selectPersonInCharge("ABHINAY CHARY TANKARA");
 		} catch (Exception e) {
 			System.err.println("Error during Person In Charge selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
 	@Given("I selects valid data in Model")
 	public void i_selects_valid_data_in_model() {
 		try {
-			newenquirypage.selectValidModel("Grand i10 NIOS");
-			System.out.println("Model successfully selected: + Grand i10 NIOS");
+			Thread.sleep(2000);
+			newenquirypage.selectModel("Grand i10 NIOS");
 		} catch (Exception e) {
 			System.err.println("Error during Model selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
 	@Given("I selects valid data Fuel Type")
 	public void i_selects_valid_data_fuel_type() {
 		try {
-			newenquirypage.selectValidFuelType("Petrol");
-			System.out.println("Fuel Type successfully selected: + Petrol");
+			Thread.sleep(2000);
+			newenquirypage.selectFuelType("Petrol");
 		} catch (Exception e) {
 			System.err.println("Error during Fuel Type selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
 	@Given("I selects valid data in Variant")
 	public void i_selects_valid_data_in_variant() {
 		try {
-			newenquirypage.selectValidVariant("GL");
-			System.out.println("Variant successfully selected: + GL");
+			Thread.sleep(2000);
+			newenquirypage.selectVariant("GL");
 		} catch (Exception e) {
 			System.err.println("Error during Variant selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
 	@Given("I selects valid data in Sub Variant")
 	public void i_selects_valid_data_in_sub_variant() {
 		try {
-			newenquirypage.selectValidSubVariant("Grand i10 NIOS 1.2AMT Corporate(HQS6K361L D0QL)");
-			System.out.println("Sub Variant successfully selected: + Grand i10 NIOS 1.2AMT Corporate(HQS6K361L D0QL)");
+			Thread.sleep(2000);
+			newenquirypage.selectSubVariant("Grand i10 NIOS 1.2AMT Corporate(HQS6K361L D0QL)");
 		} catch (Exception e) {
 			System.err.println("Error during Sub Variant selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
 	@Given("I selects valid data in Ext Color")
 	public void i_selects_valid_data_in_ext_color() {
 		try {
-			newenquirypage.selectValidExtColor("AMAZON GRAY");
-			System.out.println("Ext Color successfully selected: + AMAZON GRAY");
+			Thread.sleep(2000);
+			newenquirypage.selectExtColor("AMAZON GRAY");
 		} catch (Exception e) {
 			System.err.println("Error during Ext Color selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
 	@Given("I selects valid data in Int Color")
 	public void i_selects_valid_data_in_int_color() {
 		try {
-			newenquirypage.selectValidIntColor("LIGHT SHALE GRAY");
-			System.out.println("Int Color successfully selected: + LIGHT SHALE GRAY");
+			Thread.sleep(2000);
+			newenquirypage.selectIntColor("LIGHT SHALE GRAY");
 		} catch (Exception e) {
 			System.err.println("Error during Int Color selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
 	@Given("I selects valid data in Sales Consultant")
 	public void i_selects_valid_data_in_sales_consultant() {
 		try {
-			newenquirypage.selectValidSalesConsultant("BEHARA ARUN KUMAR [ES52370151]");
-			System.out.println("Sales Consultant successfully selected: + BEHARA ARUN KUMAR [ES52370151]");
+			Thread.sleep(2000);
+			newenquirypage.selectSalesConsultant("BEHARA ARUN KUMAR [ES52370151]");
 		} catch (Exception e) {
 			System.err.println("Error during Sales Consultant selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
@@ -794,11 +905,10 @@ public class NewEnquiryStepDefinition {
 	@Then("User tries to Select the Sales Consultant from Sales Consultant field")
 	public void user_tries_to_select_the_sales_consultant_from_sales_consultant_field() {
 		try {
+			Thread.sleep(2000);
 			newenquirypage.selectAllocateSalesConsultant("BHAVIKA MEGHAVATH");
-			System.out.println("Allocate Sales Consultant successfully selected: + BHAVIKA MEGHAVATH");
 		} catch (Exception e) {
 			System.err.println("Error during Allocate Sales Consultant selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
@@ -836,22 +946,21 @@ public class NewEnquiryStepDefinition {
 	@Then("User tries to selects valid data in TD Offer dropdown")
 	public void user_tries_to_selects_valid_data_in_td_offer_dropdown() {
 		try {
-			newenquirypage.selectTDOfferDropDown("Yes");
-			System.out.println("TD Offer successfully selected: + Yes");
+			Thread.sleep(2000);
+			newenquirypage.selectTDOfferField("Yes");
 		} catch (Exception e) {
 			System.err.println("Error during TD Offer selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
+
 
 	@Then("User tries to selects valid data in TD VIN dropdown")
 	public void user_tries_to_selects_valid_data_in_td_vin_dropdown() {
 		try {
-			newenquirypage.selectTDVINDropDown(1);
-			System.out.println("TD VIN successfully selected: + 1");
+			Thread.sleep(2000);
+			newenquirypage.selectTDVINField("Yes");
 		} catch (Exception e) {
 			System.err.println("Error during TD VIN selection: " + e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
