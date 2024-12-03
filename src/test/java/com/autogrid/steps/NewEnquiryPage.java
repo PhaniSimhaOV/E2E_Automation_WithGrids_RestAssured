@@ -1045,19 +1045,6 @@ public class NewEnquiryPage {
 			throw e;
 		}
 	}
-	 
-//	public void enterMobileNumber(String mobileNumber) {
-//        try {
-//        	MobileNumber.click();
-//		    MobileNumber.clear();
-//            JavascriptExecutor js = (JavascriptExecutor) driver;
-//            js.executeScript("arguments[0].value=arguments[1];", MobileNumber, mobileNumber);
-//            System.out.println("Successfully entered mobile number: " + mobileNumber);
-//        } catch (Exception e) {
-//            System.err.println("Error entering mobile number using JavaScript: " + e.getMessage());
-//            throw new RuntimeException("Failed to enter mobile number.", e);
-//        }
-//    }
 	
 	// Action to enter Email Id
 	public void enterEmail(String email) throws Exception {

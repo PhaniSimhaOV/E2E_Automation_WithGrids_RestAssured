@@ -792,6 +792,8 @@ public class NewEnquiryStepDefinition {
 	@When("I click on the Save button")
 	public void i_click_on_the_save_button() {
 		try {
+			newenquirypage.interactWithIframeElement();
+			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
 			newenquirypage.clickSaveButton();
 			System.out.println("Save button clicked.");
 		} catch (Exception e) {

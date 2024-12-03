@@ -69,8 +69,13 @@ Feature: User tries to verify the New Enquiry functionality
     And I selects valid data in Ext Color
     And I selects valid data in Int Color
     And I selects valid data in Sales Consultant
-    And I selects valid data in PIN
-    When I click on the Save button
+    And User clicks on Pincode Search Icon from PIN field
+    Then User should be able to navigate to the Pincode search Screen
+    And User tries to enter Pincode in pincode field
+    And User tries to clicks on search button in Pincode search Screen
+    And User tries to select one pincode from the list
+    And User tries to clicks on Add Selected button in Pincode search Screen
+    And I click on the Save button
     Then User should be able to see a Toast Message as Successfully reflected Sales Customer Enquiry Popup
     And User Should be able to navigate to the Lead Tab in the Sales Customer Enquiry screen
 
