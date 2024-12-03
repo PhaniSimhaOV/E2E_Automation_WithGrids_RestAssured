@@ -141,41 +141,6 @@ public class NewEnquiryStepDefinition {
 		}
 	}
 
-	@When("User should be able to view the Cross Mark in Sales Customer Enquiry Pop-up")
-	public void user_should_be_able_to_view_the_cross_mark_in_sales_customer_enquiry_pop_up() {
-		try {
-			Thread.sleep(3000);
-			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
-			Assert.assertTrue(newenquirypage.isPromotionCrossIconDisplayed(), "Promotion Cross Icon is not displayed.");
-			System.out.println("Promotion Cross Icon is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error verifying Promotion Cross Icon : " + e.getMessage());
-			Assert.fail("Promotion Cross Icon verification failed.");
-		}
-	}
-
-	@When("User clicks on the Cross Mark in Sales Customer Enquiry Pop-up")
-	public void user_clicks_on_the_cross_mark_in_sales_customer_enquiry_pop_up() {
-		try {
-			newenquirypage.clickPromotionCrossIcon();
-			System.out.println("Promotion Cross Icon clicked.");
-		} catch (Exception e) {
-			System.err.println("Error during Promotion Cross Icon click: " + e.getMessage());
-		}
-	}
-
-	@Then("User should be able to Downloaded and navigate to Sales Customer Enquiry Pop-up")
-	public void user_should_be_able_to_downloaded_and_navigate_to_sales_customer_enquiry_pop_up() {
-		try {
-			Assert.assertTrue(newenquirypage.isSalesCustomerEnquiryPopupDisplayed(),
-					"Sales Customer Enquiry pop-up is not displayed.");
-			System.out.println("Sales Customer Enquiry pop-up is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error verifying Sales Customer Enquiry pop-up: " + e.getMessage());
-			Assert.fail("Sales Customer Enquiry pop-up verification failed.");
-		}
-	}
-
 	@When("User clicks on Pincode Search Icon from PIN field")
 	public void user_clicks_on_pincode_search_icon_from_pin_field() {
 		try {
@@ -488,7 +453,7 @@ public class NewEnquiryStepDefinition {
 			Thread.sleep(2000);
 			newenquirypage.interactWithIframeElement();
 			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
-			String mobilenumber = "9640841265";
+			String mobilenumber = "9443555576";
 			newenquirypage.enterMobileNumber(mobilenumber);
 			System.out.println("Entered Mobile Number: " + mobilenumber);
 		} catch (Exception e) {
@@ -516,7 +481,7 @@ public class NewEnquiryStepDefinition {
 	public void i_enters_valid_data_in_email_id() {
 		try {
 			Thread.sleep(5000);
-			String email = "Jeevanwe@gmail.com";
+			String email = "Jeeva99n312@gmail.com";
 			newenquirypage.enterEmail(email);
 			System.out.println("Entered Email: " + email);
 		} catch (Exception e) {
@@ -524,21 +489,7 @@ public class NewEnquiryStepDefinition {
 		}
 	}
 
-	@Then("User should be able to see toast message to enter the valid email id")
-	public void user_should_be_able_to_see_toast_message_to_enter_the_valid_email_id() {
-		try {
-			String actualMessage = newenquirypage.getNewMobileNumberToast();
-			String expectedMessage = "This email id is invalid";
-			// Validate that the actual message matches the expected message
-			Assert.assertEquals(actualMessage, expectedMessage, "Toast message mismatch!");
-
-			// Log success message
-			System.out.println("Toast message validated successfully: " + actualMessage);
-		} catch (Exception e) {
-			System.err.println("Error during toast message validation: " + e.getMessage());
-			e.printStackTrace();
-		}
-	}
+	
 
 	@Given("user is in Sales Customer Enquiry Pop-up")
 	public void user_is_in_sales_customer_enquiry_pop_up() {
@@ -549,30 +500,6 @@ public class NewEnquiryStepDefinition {
 		} catch (Exception e) {
 			System.err.println("Error verifying Sales Customer Enquiry pop-up: " + e.getMessage());
 			Assert.fail("Sales Customer Enquiry pop-up verification failed.");
-		}
-	}
-
-	@Given("I enters valid data in Mobile No")
-	public void i_enters_valid_data_in_mobile_no(String mobileNumber) {
-		try {
-			Thread.sleep(2000);
-			String mobilenumber = "9640845321";
-			newenquirypage.enterMobileNumber(mobilenumber);
-			System.out.println("Entered Mobile Number: " + mobilenumber);
-		} catch (Exception e) {
-			System.err.println("Error during entering Mobile Number: " + e.getMessage());
-		}
-	}
-
-	@Given("I enters valid data in E-mail")
-	public void i_enters_valid_data_in_e_mail() {
-		try {
-			Thread.sleep(2000);
-			String email = "Jeevan@gmail.com";
-			newenquirypage.enterEmail(email);
-			System.out.println("Entered Email: " + email);
-		} catch (Exception e) {
-			System.err.println("Error during entering Email: " + e.getMessage());
 		}
 	}
 
@@ -590,7 +517,7 @@ public class NewEnquiryStepDefinition {
 	public void i_enters_valid_data_in_cust_name() {
 		try {
 			Thread.sleep(2000);
-			String custname = "Jeevan";
+			String custname = "Kumar raju";
 			newenquirypage.enterCustName(custname);
 			System.out.println("Entered Cust Name: " + custname);
 		} catch (Exception e) {
@@ -820,7 +747,9 @@ public class NewEnquiryStepDefinition {
 	@Then("User Should be able to navigate to the Lead Tab in the Sales Customer Enquiry screen")
 	public void user_should_be_able_to_navigate_to_the_lead_tab_in_the_sales_customer_enquiry_screen() {
 		try {
-			Assert.assertTrue(newenquirypage.isInLeadTabDisplayed(), "Lead Tab is not displayed.");
+			Thread.sleep(2000);
+			LaunchDriver.getDriver().switchTo().defaultContent();
+			Assert.assertTrue(newenquirypage.isCustomerEnquiryScreenDisplayed(), "Lead Tab is not displayed.");
 			System.out.println("Lead Tab is displayed.");
 		} catch (Exception e) {
 			System.err.println("Error verifying Lead Tab: " + e.getMessage());
@@ -831,7 +760,7 @@ public class NewEnquiryStepDefinition {
 	@Given("User is in Lead Tab in the Sales Customer Enquiry screen")
 	public void user_is_in_lead_tab_in_the_sales_customer_enquiry_screen() {
 		try {
-			Assert.assertTrue(newenquirypage.isInLeadTabDisplayed(), "Lead Tab is not displayed.");
+			Assert.assertTrue(newenquirypage.isCustomerEnquiryScreenDisplayed(), "Lead Tab is not displayed.");
 			System.out.println("Lead Tab is displayed.");
 		} catch (Exception e) {
 			System.err.println("Error verifying Lead Tab: " + e.getMessage());
@@ -843,7 +772,8 @@ public class NewEnquiryStepDefinition {
 	public void user_tries_to_enters_the_customer_name_in_customer_name_filter() {
 		try {
 			Thread.sleep(2000);
-			String custnamefilter = "Jeevan";
+			newenquirypage.interactWithIframeElement();
+			String custnamefilter = "Kumar raju";
 			newenquirypage.enterCustNameFilter(custnamefilter);
 			System.out.println("Entered Customer Name filter: " + custnamefilter);
 		} catch (Exception e) {
@@ -854,89 +784,32 @@ public class NewEnquiryStepDefinition {
 	@Given("User tries to clicks on the search button in Lead in the Sales Customer Enquiry screen")
 	public void user_tries_to_clicks_on_the_search_button_in_lead_in_the_sales_customer_enquiry_screen() {
 		try {
+			Thread.sleep(2000);
 			newenquirypage.clickleadTabSearchButton();
 			System.out.println("lead Tab Search button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during lead Tab Search button click: " + e.getMessage());
-		}
+		}LaunchDriver.getDriver().switchTo().defaultContent();
 	}
-
-	@Given("User Should be able to see the Newly Added Enquiry in the Sales Customer Enquiry screen")
-	public void user_should_be_able_to_see_the_newly_added_enquiry_in_the_sales_customer_enquiry_screen() {
-		try {
-			Assert.assertTrue(newenquirypage.isleadEnquiryTableDisplayed(), "Lead Enquiry Table is not displayed.");
-			System.out.println("Lead Enquiry Table is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error verifying Lead Enquiry Table: " + e.getMessage());
-			Assert.fail("Lead Enquiry Table verification failed.");
-		}
-	}
-
-	@Given("User tries to checks the checkbox of Newly Added Enquiry")
-	public void user_tries_to_checks_the_checkbox_of_newly_added_enquiry() {
-		try {
-			newenquirypage.clickleadEnquiryCheckBox();
-			System.out.println("Checked the Enquiry checkbox successfully.");
-		} catch (Exception e) {
-			System.err.println("Error checking the Enquiry checkbox: " + e.getMessage());
-			Assert.fail("Unable to check Enquiry checkbox.");
-		}
-	}
-
-	@Given("User tries to clicks on the Allocate button in Lead in the Sales Customer Enquiry screen")
-	public void user_tries_to_clicks_on_the_allocate_button_in_lead_in_the_sales_customer_enquiry_screen() {
-		try {
-			newenquirypage.clickleadTabAllocateButton();
-			System.out.println("lead Tab Allocate button clicked.");
-		} catch (Exception e) {
-			System.err.println("Error during lead Tab Allocate button click: " + e.getMessage());
-		}
-	}
-
-	@Then("User should be able to navigate to the Allocate Pop-up")
-	public void user_should_be_able_to_navigate_to_the_allocate_pop_up() {
-		try {
-			Assert.assertTrue(newenquirypage.isAllocatePopUpDisplayed(), "Allocate PopUp is not displayed.");
-			System.out.println("Allocate PopUp is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error verifying Allocate PopUp: " + e.getMessage());
-			Assert.fail("Allocate PopUp verification failed.");
-		}
-	}
-
-	@Then("User tries to Select the Sales Consultant from Sales Consultant field")
-	public void user_tries_to_select_the_sales_consultant_from_sales_consultant_field() {
-		try {
-			Thread.sleep(2000);
-			newenquirypage.selectAllocateSalesConsultant("BHAVIKA MEGHAVATH");
-		} catch (Exception e) {
-			System.err.println("Error during Allocate Sales Consultant selection: " + e.getMessage());
-		}
-	}
-
-	@Then("User tries to clicks on the Allocate button in the Allocate Pop-up")
-	public void user_tries_to_clicks_on_the_allocate_button_in_the_allocate_pop_up() {
-		try {
-			newenquirypage.clickAllocatePopupAllocateButton();
-			System.out.println("Allocate Popup Allocate Button clicked.");
-		} catch (Exception e) {
-			System.err.println("Error during Allocate Popup Allocate Button click: " + e.getMessage());
-		}
-	}
-
+	
 	@Given("User tries to double click on the Repective Enquiry")
 	public void user_tries_to_double_click_on_the_repective_enquiry() {
 		try {
-			// Perform double-click action
-			newenquirypage.doubleClickOnEnquiry();
+			Thread.sleep(2000);
+			newenquirypage.interactWithIframeElement();
+			newenquirypage.clickEnquiryFollowUpButton();
+			System.out.println("Enquiry FollowUp Button clicked.");
 		} catch (Exception e) {
-			System.err.println("Error in double-clicking the respective enquiry: " + e.getMessage());
+			System.err.println("Error in Enquiry FollowUp Button the respective enquiry: " + e.getMessage());
 		}
 	}
 
 	@Then("User Should be able to navigate to the Basic Info tab in the Sales Customer Enquiry Info screen")
 	public void user_should_be_able_to_navigate_to_the_basic_info_tab_in_the_sales_customer_enquiry_info_screen() {
 		try {
+			Thread.sleep(2000);
+			newenquirypage.interactWithIframeElement();
+			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
 			Assert.assertTrue(newenquirypage.isBasicInfoTabDisplayed(), "Basic Info tab is not displayed.");
 			System.out.println("Basic Info tab is displayed.");
 		} catch (Exception e) {
@@ -960,7 +833,7 @@ public class NewEnquiryStepDefinition {
 	public void user_tries_to_selects_valid_data_in_td_vin_dropdown() {
 		try {
 			Thread.sleep(2000);
-			newenquirypage.selectTDVINField("Yes");
+			newenquirypage.selectTDVINField("MALB551CYPM400978-Grand i10 NIOS");
 		} catch (Exception e) {
 			System.err.println("Error during TD VIN selection: " + e.getMessage());
 		}

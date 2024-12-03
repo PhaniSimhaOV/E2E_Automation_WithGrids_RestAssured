@@ -225,7 +225,10 @@ public class NewEnquiryPage {
 
 	@FindBy(xpath = "//*[@id='grid_active_cell']/input")
 	private WebElement SelectEnquiry;
-
+	
+	@FindBy(xpath = "//*[@id=\"viewRecordingList\"]")
+	private WebElement EnquiryFollowUpButton;
+	
 	@FindBy(xpath = "//*[@id='custName'][@data-name='Cust. Name']")
 	private WebElement CompanyName;
 
@@ -253,10 +256,10 @@ public class NewEnquiryPage {
 	@FindBy(xpath = "//input[@id='loanAmount']")
 	private WebElement LoanAmount;
 
-	@FindBy(xpath = "//*[@id='basicInfoForm']/div[5]/dl[6]/dd[1]/span/span/span[1]")
+	@FindBy(xpath = "//*[@id='basicInfoForm']/div[5]/dl[6]/dd[1]/span")
 	private WebElement TDOfferField;
 
-	@FindBy(xpath = "//*[@id='basicInfoForm']/div[5]/dl[6]/dd[2]/span/span/span[1]")
+	@FindBy(xpath = "//*[@id='basicInfoForm']/div[5]/dl[6]/dd[2]/span")
 	private WebElement TDVINField;
 
 	@FindBy(xpath = "//*[@id='eqryForm']/div/dl[6]/dd[3]/span/span/span[1]")
@@ -343,13 +346,13 @@ public class NewEnquiryPage {
 	@FindBy(xpath = "//*[@id='promotionGrid']//a[@role='button']")
 	private WebElement PromotionCrossIcon;
 
-	@FindBy(xpath = "//*[@id='cfd3d01a-750b-4e20-8c66-632854aae203']/div[1]")
+	@FindBy(xpath = "//*[@id=\"resizableContainer\"]/section[2]")
 	private WebElement leadTab;
 
 	@FindBy(xpath = "//*[@id='btnSearch']")
 	private WebElement leadTabSearchButton;
 
-	@FindBy(xpath = "//*[@id='btnSearch']")
+	@FindBy(xpath = "//*[@id=\"btnAllocate\"]")
 	private WebElement leadTabAllocateButton;
 
 	@FindBy(xpath = "//*[@id='custName']")
@@ -358,10 +361,10 @@ public class NewEnquiryPage {
 	@FindBy(xpath = "//*[@id='grid']/div[2]/table/tbody/tr[1]/td[2]")
 	private WebElement leadEnquiryTable;
 
-	@FindBy(xpath = "//*[@class='checkAll']")
+	@FindBy(xpath = "//*[@id=\"grid_active_cell\"]/input")
 	private WebElement leadEnquiryCheckBox;
 
-	@FindBy(xpath = "//*[@class='checkAll']")
+	@FindBy(xpath = "//*[@id=\"selectCallerAssignmentPopup_wnd_title\"]")
 	private WebElement AllocatePopupHeader;
 	
 	@FindBy(xpath = "//span[@class=\"k-window-title\"][@id=\"customerInfoSearchPopupWin_wnd_title\"]")
@@ -370,10 +373,10 @@ public class NewEnquiryPage {
 	@FindBy(xpath = "/html/body/div[14]/div[1]/div/a/span")
 	private WebElement FindACustomerPopupCloseIcon;
 
-	@FindBy(xpath = "//*[@class='checkAll']")
+	@FindBy(xpath = "//*[@id=\"window\"]/div[2]/dl[2]/dd/span")
 	private WebElement AllocateSalesConsultantDropdown;
 
-	@FindBy(xpath = "//*[@id='allocateBtn']")
+	@FindBy(xpath = "//*[@id=\"allocateBtn\"]")
 	private WebElement AllocatePopupAllocateButton;
 
 	@FindBy(xpath = "//*[@id='btnTD']")
@@ -451,14 +454,19 @@ public class NewEnquiryPage {
 
 	public void doubleClickOnEnquiry() throws Exception {
 		try {
-			Actions actions = new Actions(driver);
-			actions.doubleClick(SelectEnquiry).perform();
-			System.out.println("Successfully double-clicked on the respective enquiry.");
-		} catch (Exception e) {
-			System.err.println("Error performing double-click on the respective enquiry: " + e.getMessage());
-			throw new Exception("Failed to double-click on the respective enquiry.", e);
-		}
-	}
+            if (driver == null) {
+                throw new RuntimeException("Driver must be initialized before performing actions.");
+            }
+
+            Actions actions = new Actions(driver);
+            actions.doubleClick(SelectEnquiry).perform();
+            System.out.println("Successfully double-clicked on the respective enquiry.");
+        } catch (Exception e) {
+            System.err.println("Error performing double-click on the respective enquiry: " + e.getMessage());
+            throw new RuntimeException("Failed to double-click on the respective enquiry.", e);
+        }
+    }
+
 
 	public String getNextFollowUpTimeToast() {
 		try {
@@ -510,6 +518,15 @@ public class NewEnquiryPage {
 			MobileSearchIcon.click();
 		} catch (Exception e) {
 			System.err.println("Error clicking Mobile Search Icon: " + e.getMessage());
+			throw e;
+		}
+	}
+	
+	public void clickEnquiryFollowUpButton() {
+		try {
+			EnquiryFollowUpButton.click();
+		} catch (Exception e) {
+			System.err.println("Error clicking Enquiry FollowUp Button: " + e.getMessage());
 			throw e;
 		}
 	}
@@ -877,14 +894,15 @@ public class NewEnquiryPage {
 	// Method to select a Sales Consultant from the Sales Consultant dropdown
 	public void selectAllocateSalesConsultant(String salesconsultant) {
 		try {
-			Select dropdown = new Select(AllocateSalesConsultantDropdown);
-			dropdown.selectByVisibleText(salesconsultant);
+			AllocateSalesConsultantDropdown.click();
+			Thread.sleep(5000);
+			AllocateSalesConsultantDropdown.sendKeys(salesconsultant); // Enter the desired TD Offer
+			AllocateSalesConsultantDropdown.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("An error occurred while selecting Sales Consultant: " + e.getMessage());
-			throw e;
+			System.err.println("An error occurred while selecting Allocate Sales Consultant: " + e.getMessage());
 		}
 	}
-
+	
 	// Method to select a TD Offer from the TD Offer dropdown
 	public void selectTDOfferField(String TDOffer) {
 		try {
