@@ -1,12 +1,13 @@
 Feature: User tries to register Customer after Enquiry Stage
 
+@test
   Scenario: User tries to navigate to the Customer Booking Mananagement List Screen
-    Given launch browser and enter url
-    When user enters a valid username
-    And user enter a valid password
-    And clicks on Send OTP
-    And user enters a valid OTP
-    And clicks on login
+    #Given launch browser and enter url
+    #When user enters a valid username
+    #And user enter a valid password
+    #And clicks on Send OTP
+    #And user enters a valid OTP
+    #And clicks on login
     When User clicks Sales Icon on the left
     And User clicks on the  Sales Operation Sub Menu Item
     And User clicks on the  Customer Booking Mgt List link
@@ -14,7 +15,7 @@ Feature: User tries to register Customer after Enquiry Stage
 
   Scenario: User tries to click save without entering any data in Customer Booking Mananagement List Screen
     When User click save button in  Customer Booking Mananagement List Screen
-    Then User get toast msg when clicked save button in Customer Booking Mananagement List Screen
+    Then User get toast msg when clicked save button in Customer Booking Mananagement List Screen  
 
   Scenario: User tries to navigate to Customer Booking Management Screen
     When User should be able to navigate Customer Booking Management Screen
@@ -28,16 +29,11 @@ Feature: User tries to register Customer after Enquiry Stage
   Scenario: User tries to click on Modify button in Customer Booking Management Screen
     When User tries to click on Modify button
     Then User should be able to see modify pop up screen asking for confirmation
-    Then User close modify pop screen
-
-  Scenario: User tries to click on Enquiry cancellation button in Customer Booking Management Screen
-    When User tries to click on Enquiry cancellation button
-    Then User should be able to see Sales Customer Enquiry Info
-    Then User close Sales Customer Enquiry Info
+    Then User close modify pop screen    
 
   Scenario: User tries to register without adding mandatory field Customer Booking Management Screen
     When User tries to click on Register Button
-    Then Alert info window appear and dont allow to register
+    Then Alert info window appear and dont allow to register  
 
   Scenario: User tries to register by adding all mandatory field
     #BasicInfo
@@ -53,19 +49,18 @@ Feature: User tries to register Customer after Enquiry Stage
     And User select a valid Ext Color
     And User select a valid Int Color
     #Bookinginfo
-    And User select a valid booking date
-    And User enter a valid DSA Name
-    And User enter a valid approved loan amount
+    And User select mode Of purchase
     #Reginfo
     And User enter a valid Registration name
     And User select a valid cust income
     And User select a valid title
+    And User select Cust Income
+    And User select title
     And User enter a valid PAN
     And User enter a valid Address in regInfo
     And User Set a Pin by filtering based on PIN in PIN Code Search
     And User enter a valid village
-    And User select a valid W/O S/O D/O
-    When User click on Register Button
-    Then Pop Message " appear asking for confirmation"
-    When Click confirm
-    Then Booking No should generate
+    And User select Preferred No Plate
+    When User click on Register Button     
+    Then User confirm to register
+    Then Booking No should generate  
