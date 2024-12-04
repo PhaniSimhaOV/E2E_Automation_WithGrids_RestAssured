@@ -2,7 +2,7 @@ Feature: User tries to verify the Invoice functionality
 
 @test
   Scenario: User tries to verify the Invoice functionality
-    Given launch Chrome browser and enter url
+    Given launch browser and enter url
     When user enters a valid username
     And user enter a valid password
     And clicks on Send OTP
@@ -36,9 +36,20 @@ Feature: User tries to verify the Invoice functionality
     Then User should be able to see a Toast Message as Successfully reflected in Scheme Popup screen
     And User tries to clicks on Close button in Scheme Popup screen
     Then User should be able to navigate to the Customer Booking Management Screen
-    And User tries to selects valid data in Vehicle usage Type field in customer info Section in the Customer Booking Management Screen 
     
-    When User tries to clicks on the Register button in invoice tab in the Customer Booking Management Screen
+    When User tries to clicks on the More Promotions button in Basic info Section in the Customer Booking Management Screen
+    Then User should be able to see Promotions Section in the Customer Booking Management Screen
+    And User tries to clicks on the Plus icon in Promotions Section in the Customer Booking Management Screen
+    Then User should be able to navigate to the Promotion Pop-up
+    And User tries to Checks the All the promotions from promotions table in the Promotion Pop-up
+    And User tries to clicks on Add Selected button in the Promotion Pop-up
+    When User tries to click on the Modify button in Basic info Section in the Customer Booking Management Screen
+    And User should be able to see Do you want to Modify it? Popup
+    And User tries to clicks on Confirm button in Do you want to Modify it? Popup 
+    Then User should be able to see a Toast Message as Successfully reflected in the Customer Booking Management Screen 
+    
+    When User tries to selects valid data in Vehicle usage Type field in customer info Section in the Customer Booking Management Screen 
+    And User tries to clicks on the Register button in invoice tab in the Customer Booking Management Screen
     And User should be able to see Do you want to register? Popup
     And User tries to clicks on Confirm button in Do you want to save it? Popup 
     Then User should be able to see a Toast Message as Successfully reflected in the Customer Booking Management Screen 
@@ -53,4 +64,4 @@ Feature: User tries to verify the Invoice functionality
     And User tries to clicks on Confirm button in Do you want to confirm it? Popup 
     Then User should be able to see a Toast Message as Successfully reflected in the Customer Booking Management Screen 
     
-    Given user tries to close the google chrome browser
+    Given user tries to close the chrome browser
