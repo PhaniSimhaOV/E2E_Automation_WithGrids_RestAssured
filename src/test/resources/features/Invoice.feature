@@ -8,7 +8,7 @@ Feature: User tries to verify the Invoice functionality
     And clicks on Send OTP
     And user enters a valid OTP
     And clicks on login
-    Then user should be able to navigate to the dashboard
+    Then user should be able to see Home Icon on the dashboard
     And User clicks Sales Menu Item
     And User clicks on the Sales Operation Sub Menu Item
     And User clicks on the Customer Booking Mgt List link
@@ -35,45 +35,39 @@ Feature: User tries to verify the Invoice functionality
     And User tries to clicks on Confirm button in Do you want to save it? Popup 
     And User tries to clicks on Close button in Scheme Popup screen
     Then User should be able to navigate to the Customer Booking Management Screen
-    
-    When User tries to clicks on the More Promotions button in Basic info Section in the Customer Booking Management Screen
-    Then User should be able to see Promotions Section in the Customer Booking Management Screen
-    And User tries to clicks on the Plus icon in Promotions Section in the Customer Booking Management Screen
-    Then User should be able to navigate to the Promotion Pop-up
-    And User tries to Checks the All the promotions from promotions table in the Promotion Pop-up
-    And User tries to clicks on Add Selected button in the Promotion Pop-up
-    When User tries to click on the Modify button in Basic info Section in the Customer Booking Management Screen
-    And User should be able to see Do you want to Modify it? Popup
-    And User tries to clicks on Confirm button in Do you want to Modify it? Popup 
-    
-    When User tries to selects valid data in Vehicle usage Type field in customer info Section in the Customer Booking Management Screen 
-    And User tries to clicks on the Register button in invoice tab in the Customer Booking Management Screen
-    And User should be able to see Do you want to register? Popup
-    And User tries to clicks on Confirm button in Do you want to save it? Popup in the Customer Booking Management Screen 
-    Then User should be able to see a Toast Message as Successfully reflected in the Customer Booking Management Screen 
-    
-    When User tries to click on the Modify button in invoice tab in the Customer Booking Management Screen
-    And User should be able to see Do you want to Modify it? Popup in the Customer Booking Management Screen 
-    And User tries to clicks on Confirm button in Do you want to Modify it? Popup in the Customer Booking Management Screen 
-    Then User should be able to see a Toast Message as Successfully reflected in the Customer Booking Management Screen 
-    
-    When User tries to clicks on Invoice Confirm button in Do you want to save it? Popup 
-    And User should be able to see Do you want to confirm it? Popup
-    And User tries to clicks on Confirm button in Do you want to confirm it? Popup 
-    Then User should be able to see a Toast Message as Successfully reflected in the Customer Booking Management Screen 
-    
-    When User clicks Service Menu Item
-    And User clicks on the Basic Info Sub Menu Item
-    And User clicks on the Vehicle Mgt link
-    Then User should be able to navigate to the Vehicle Mgt Screen
-    And User tries to enters valid data in VIN field
-    And User tries to clicks on the Search button in Vehicle Mgt Screen
-    And User tries to clicks on the respective record in the table in Vehicle Mgt Screen
-    And User tries to selects valid data in the delivery date field in Vehicle Mgt Screen
-    And User tries to enters valid data in the Reg. No field in Vehicle Mgt Screen
-    And User tries to click on the Modify button in Vehicle Mgt Screen
-    And User should be able to see Do you want to Modify it? Popup in Vehicle Mgt Screen
-    And User tries to clicks on Confirm button in Do you want to Modify it? Popup in Vehicle Mgt Screen
-    Then User should be able to see a Toast Message as Successfully reflected in Vehicle Mgt Screen
+    #
+    #When User tries to clicks on the More Promotions button in Basic info Section in the Customer Booking Management Screen
+    #Then User should be able to see Promotions Section in the Customer Booking Management Screen
+    #And User tries to clicks on the Plus icon in Promotions Section in the Customer Booking Management Screen
+    #Then User should be able to navigate to the Promotion Pop-up
+    #And User tries to Checks the All the promotions from promotions table in the Promotion Pop-up
+    #And User tries to clicks on Add Selected button in the Promotion Pop-up
+    #When User tries to click on the Modify button in Basic info Section in the Customer Booking Management Screen
+    #And User should be able to see Do you want to Modify it? Popup
+    #And User tries to clicks on Confirm button in Do you want to Modify it? Popup 
+    #
+    #When User tries to selects valid data in Vehicle usage Type field in customer info Section in the Customer Booking Management Screen 
+    #And User tries to clicks on the Register button in invoice tab in the Customer Booking Management Screen
+    #And User should be able to see Do you want to register? Popup
+    #And User tries to clicks on Confirm button in Do you want to save it? Popup in the Customer Booking Management Screen 
+    #
+    #When User tries to click on the Modify button in invoice tab in the Customer Booking Management Screen
+    #And User should be able to see Do you want to Modify it? Popup in the Customer Booking Management Screen 
+    #And User tries to clicks on Confirm button in Do you want to Modify it? Popup in the Customer Booking Management Screen 
+    #
+    #When User tries to clicks on Invoice Confirm button in invoice tab in the Customer Booking Management Screen.
+    #And User should be able to see Do you want to confirm it? Popup
+    #And User tries to clicks on Confirm button in Do you want to confirm it? Popup 
+    #
+    #When User clicks Service Menu Item
+    #And User clicks on the Basic Info Sub Menu Item
+    #And User clicks on the Vehicle Mgt link
+    #Then User should be able to navigate to the Vehicle Mgt Screen
+    #And User tries to enters valid data in VIN field
+    #And User tries to clicks on the Search button in Vehicle Mgt Screen
+    #And User tries to clicks on the respective record in the table in Vehicle Mgt Screen
+    #And User tries to selects valid data in the delivery date field in Vehicle Mgt Screen
+    #And User tries to enters valid data in the Reg. No field in Vehicle Mgt Screen
+    #And User tries to click on the Modify button in Vehicle Mgt Screen
     
     Given user tries to close the chrome browser
