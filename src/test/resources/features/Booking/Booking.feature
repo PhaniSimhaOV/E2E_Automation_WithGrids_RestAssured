@@ -20,5 +20,6 @@ Feature: User navigates to booking section
       And User passed the start date and end date in the page
       Then User clicks on the search button
      When The enquiry will be populated then user as to select it
+     Then User fills the fields in the Customer Booking MGT
 
 

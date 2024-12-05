@@ -65,4 +65,9 @@ public class BookingSalesOperationStepDefinition {
     public void theEnquiryWillBePopulatedThenUserAsToSelectIt() {
         bookingPage.SalesTable();
     }
+
+    @Then("User fills the fields in the Customer Booking MGT")
+    public void userFillsTheFieldsInTheCustomerBookingMGT() {
+        bookingPage.fillfieldsBookingPage();
+    }
 }

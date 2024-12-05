@@ -129,4 +129,7 @@ public void SalesTable(){
             throw e;
         }
     }
+    public void fillfieldsBookingPage(){
+
+    }
 }
