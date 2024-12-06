@@ -2,6 +2,10 @@ package com.autogrid.steps;
 
 import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.LaunchDriver;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -59,7 +63,7 @@ public class InvoicePage {
 	@FindBy(xpath = "/html/body/div[1]/section/div[3]/div/div[2]/table/tbody/tr/td[5]")
 	private WebElement PayableByDealerAmountField;
 
-	@FindBy(xpath = "//*[@class='table_grid']/div/div[2]/table/tbody/tr/td[7]]")
+	@FindBy(xpath = "/html/body/div[1]/section/div[3]/div/div[2]/table/tbody/tr/td[7]")
 	private WebElement AdjustmentCreditNoteAmountField;
 
 	@FindBy(xpath = "//*[@class='table_grid no_thead']/div/div[2]/table/tbody/tr[2]/td[7]")
@@ -101,7 +105,7 @@ public class InvoicePage {
 	@FindBy(xpath = "//*[@id='btnPromoAdd']")
 	private WebElement PromotionsSectionPlusIcon;
 
-	@FindBy(xpath = "//*[@id='grid_active_cell']/input[@class='checkAll']")
+	@FindBy(xpath = "//*[@id='grid_active_cell']/input")
 	private WebElement PromotionCheckBoxAll;
 
 	@FindBy(xpath = "//*[@id='btnAddSelected']")
@@ -463,121 +467,97 @@ public class InvoicePage {
 		}
 	}
 
-//		public void clickPayableByDealerAmountField() {
-//			try {
-//				SchemeButton.click();
-//			} catch (Exception e) {
-//				System.err.println("Error clicking Scheme Button : " + e.getMessage());
-//				throw e;
-//			}
-//		}
-//		
-//		public void clickAdjustmentCreditNoteField() {
-//			try {
-//				SchemeButton.click();
-//			} catch (Exception e) {
-//				System.err.println("Error clicking Scheme Button : " + e.getMessage());
-//				throw e;
-//			}
-//		}
+	// Action to enter Payable By Dealer Amount
+	public void enterPayableByDealerAmountField(String PayableByDealerAmount) throws Exception {
+		try {
+        	Thread.sleep(2000);
+            Actions actions = new Actions(LaunchDriver.getDriver());
+            actions.click(PayableByDealerAmountField).sendKeys(PayableByDealerAmount).build().perform();
+            Thread.sleep(2000);
+            System.out.println("Successfully entered text: " + PayableByDealerAmount);
+        } catch (Exception e) {
+            System.err.println("Error while entering text using Actions: " + e.getMessage());
+            throw new RuntimeException("Failed to enter text using Actions.", e);
+        }
+    }
 	
-	public void enterPayableByDealerAmountField(String payableByDealerAmount) throws Exception {
-		try {
-			PayableByDealerAmountField.clear();
-			Thread.sleep(5000);
-			PayableByDealerAmountField.sendKeys(payableByDealerAmount); // Enter the desired state name
-			PayableByDealerAmountField.sendKeys(Keys.ENTER);
-		} catch (Exception e) {
-			System.err.println("An error occurred while selecting state: " + e.getMessage());
-			throw e;
-		}
-	}
-//	// Action to enter Payable By Dealer Amount
-//	public void enterPayableByDealerAmountField(String PayableByDealerAmount) throws Exception {
-//		try {
-//			Thread.sleep(2000);
-//			Actions actions = new Actions(LaunchDriver.getDriver());
-//			actions.doubleClick(PayableByDealerAmountField).perform();
-//			Thread.sleep(2000);
-//			PayableByDealerAmountField.sendKeys(PayableByDealerAmount);
-//		} catch (Exception e) {
-//			System.err.println("Error entering Payable By Dealer Amount: " + e.getMessage());
-//			throw e;
-//		}
-//	}
-
-	// Action to enter Adjustment Credit Note Amount
-	public void enterAdjustmentCreditNoteField(String AdjustmentCreditNoteAmount) throws Exception {
-		try {
-			Thread.sleep(1000);
-			AdjustmentCreditNoteAmountField.click();
-			Thread.sleep(2000);
-			AdjustmentCreditNoteAmountField.sendKeys(AdjustmentCreditNoteAmount);
-		} catch (Exception e) {
-			System.err.println("Error entering Adjustment Credit Note Amount: " + e.getMessage());
-			throw e;
-		}
-	}
+	public void enterAdjustmentCreditNoteField(String AdjustmentCreditNoteAmount) {
+        try {
+        	Thread.sleep(2000);
+            Actions actions = new Actions(LaunchDriver.getDriver());
+            actions.click(AdjustmentCreditNoteAmountField).sendKeys(AdjustmentCreditNoteAmount).build().perform();
+            Thread.sleep(2000);
+            System.out.println("Successfully entered text: " + AdjustmentCreditNoteAmount);
+        } catch (Exception e) {
+            System.err.println("Error while entering text using Actions: " + e.getMessage());
+            throw new RuntimeException("Failed to enter text using Actions.", e);
+        }
+    }
 
 	// Action to enter Basic Insurance Amount
 	public void enterBasicInsuranceAmountField(String BasicInsuranceAmount) throws Exception {
 		try {
-			Thread.sleep(1000);
-			BasicInsuranceAmountField.click();
-			BasicInsuranceAmountField.sendKeys(BasicInsuranceAmount);
-		} catch (Exception e) {
-			System.err.println("Error entering Basic Insurance Amount: " + e.getMessage());
-			throw e;
-		}
-	}
+        	Thread.sleep(2000);
+            Actions actions = new Actions(LaunchDriver.getDriver());
+            actions.click(BasicInsuranceAmountField).sendKeys(BasicInsuranceAmount).build().perform();
+            System.out.println("Successfully entered text: " + BasicInsuranceAmount);
+        } catch (Exception e) {
+            System.err.println("Error while entering text using Actions: " + e.getMessage());
+            throw new RuntimeException("Failed to enter text using Actions.", e);
+        }
+    }
 
 	// Action to enter RTO Amount
 	public void enterRTOAmountField(String RTOAmount) throws Exception {
 		try {
-			Thread.sleep(1000);
-			RTOAmountField.click();
-			RTOAmountField.sendKeys(RTOAmount);
-		} catch (Exception e) {
-			System.err.println("Error entering RTO Amount: " + e.getMessage());
-			throw e;
-		}
-	}
+        	Thread.sleep(2000);
+            Actions actions = new Actions(LaunchDriver.getDriver());
+            actions.click(RTOAmountField).sendKeys(RTOAmount).build().perform();
+            System.out.println("Successfully entered text: " + RTOAmount);
+        } catch (Exception e) {
+            System.err.println("Error while entering text using Actions: " + e.getMessage());
+            throw new RuntimeException("Failed to enter text using Actions.", e);
+        }
+    }
 
-	// Action to enter Payable By Road Tax Amount
+	// Action to enter Road Tax Amount
 	public void enterRoadTaxAmountField(String RoadTaxAmount) throws Exception {
 		try {
-			Thread.sleep(1000);
-			RoadTaxAmountField.click();
-			RoadTaxAmountField.sendKeys(RoadTaxAmount);
-		} catch (Exception e) {
-			System.err.println("Error entering Payable By Road Tax Amount: " + e.getMessage());
-			throw e;
-		}
-	}
+        	Thread.sleep(2000);
+            Actions actions = new Actions(LaunchDriver.getDriver());
+            actions.click(RoadTaxAmountField).sendKeys(RoadTaxAmount).build().perform();
+            System.out.println("Successfully entered text: " + RoadTaxAmount);
+        } catch (Exception e) {
+            System.err.println("Error while entering text using Actions: " + e.getMessage());
+            throw new RuntimeException("Failed to enter text using Actions.", e);
+        }
+    }
 
 	// Action to enter Other Charges Amount
 	public void enterOtherChargesAmountField(String OtherChargesAmount) throws Exception {
 		try {
-			Thread.sleep(1000);
-			OtherChargesAmountField.click();
-			OtherChargesAmountField.sendKeys(OtherChargesAmount);
-		} catch (Exception e) {
-			System.err.println("Error entering Other Charges Amount: " + e.getMessage());
-			throw e;
-		}
-	}
+        	Thread.sleep(2000);
+            Actions actions = new Actions(LaunchDriver.getDriver());
+            actions.click(OtherChargesAmountField).sendKeys(OtherChargesAmount).build().perform();
+            System.out.println("Successfully entered text: " + OtherChargesAmount);
+        } catch (Exception e) {
+            System.err.println("Error while entering text using Actions: " + e.getMessage());
+            throw new RuntimeException("Failed to enter text using Actions.", e);
+        }
+    }
 
 	// Action to enter Life Tax Amount
 	public void enterLifeTaxAmountField(String LifeTaxAmount) throws Exception {
 		try {
-			Thread.sleep(1000);
-			LifeTaxAmountField.click();
-			LifeTaxAmountField.sendKeys(LifeTaxAmount);
-		} catch (Exception e) {
-			System.err.println("Error entering Life Tax Amount: " + e.getMessage());
-			throw e;
-		}
-	}
+        	Thread.sleep(2000);
+            Actions actions = new Actions(LaunchDriver.getDriver());
+            actions.click(LifeTaxAmountField).sendKeys(LifeTaxAmount).build().perform();
+            System.out.println("Successfully entered text: " + LifeTaxAmount);
+        } catch (Exception e) {
+            System.err.println("Error while entering text using Actions: " + e.getMessage());
+            throw new RuntimeException("Failed to enter text using Actions.", e);
+        }
+    }
 
 	public void selectVehicleUsageType(String VehicleUsageType) throws Exception {
 		try {
