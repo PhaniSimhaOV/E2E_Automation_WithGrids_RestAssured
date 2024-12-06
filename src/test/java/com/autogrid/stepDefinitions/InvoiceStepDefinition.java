@@ -144,13 +144,14 @@ public class InvoiceStepDefinition {
 		} catch (Exception e) {
 			System.err.println("Error during Scheme button click: " + e.getMessage());
 		}
+		LaunchDriver.getDriver().switchTo().defaultContent();
+
 	}
 
 	@Then("User should be able to navigate to the Scheme Popup screen")
 	public void user_should_be_able_to_navigate_to_the_scheme_popup_screen() {
 		try {
-			Thread.sleep(3000);
-			LaunchDriver.getDriver().switchTo().defaultContent();
+			Thread.sleep(1000);
 			invoicepage.interactWithIframeElement2();
 			Assert.assertTrue(invoicepage.isSchemePopupDisplayed(), "Scheme Popup is not displayed.");
 			System.out.println("Scheme Popup is displayed.");
@@ -164,8 +165,11 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_enters_valid_data_in_the_payable_by_dealer_amount_in_tax_adjustment_allowed_table() {
 		try {
 			Thread.sleep(2000);
+			LaunchDriver.getDriver().switchTo().defaultContent();
+			invoicepage.interactWithIframeElement2();
 			invoicepage.interactWithIframeElement3();
-			String PayableByDealerAmount = "30011";
+			String PayableByDealerAmount = "33333";
+			Thread.sleep(3000);
 			invoicepage.enterPayableByDealerAmountField(PayableByDealerAmount);
 			System.out.println("Entered Payable By Dealer Amount: " + PayableByDealerAmount);
 		} catch (Exception e) {
@@ -176,8 +180,8 @@ public class InvoiceStepDefinition {
 	@Then("User tries to enters valid data in the Adjustment Credit Note Amount in TAX Adjustment Allowed Table")
 	public void user_tries_to_enters_valid_data_in_the_adjustment_credit_note_amount_in_tax_adjustment_allowed_table() {
 		try {
-			Thread.sleep(2000);
-			String AdjustmentCreditNoteAmount = "30000";
+			Thread.sleep(3000);
+			String AdjustmentCreditNoteAmount = "33333";
 			invoicepage.enterAdjustmentCreditNoteField(AdjustmentCreditNoteAmount);
 			System.out.println("Entered Adjustment Credit Note Amount : " + AdjustmentCreditNoteAmount);
 		} catch (Exception e) {
@@ -189,8 +193,9 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_enters_valid_data_in_the_basic_insurance_amount_in_chargeable_sharing_table() {
 		try {
 			Thread.sleep(2000);
-			String BasicInsuranceAmount = "110543";
+			String BasicInsuranceAmount = "2345";
 			invoicepage.enterBasicInsuranceAmountField(BasicInsuranceAmount);
+			Thread.sleep(3000);
 			System.out.println("Entered Basic Insurance Amount: " + BasicInsuranceAmount);
 		} catch (Exception e) {
 			System.err.println("Error during entering Basic Insurance Amount: " + e.getMessage());
@@ -201,8 +206,9 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_enters_valid_data_in_the_rto_amount_in_chargeable_sharing_table() {
 		try {
 			Thread.sleep(2000);
-			String RTOAmount = "5000";
+			String RTOAmount = "12111";
 			invoicepage.enterRTOAmountField(RTOAmount);
+			Thread.sleep(3000);
 			System.out.println("Entered RTO Amount: " + RTOAmount);
 		} catch (Exception e) {
 			System.err.println("Error during entering RTO Amount: " + e.getMessage());
@@ -215,6 +221,7 @@ public class InvoiceStepDefinition {
 			Thread.sleep(2000);
 			String RoadTaxAmount = "12018";
 			invoicepage.enterRoadTaxAmountField(RoadTaxAmount);
+			Thread.sleep(3000);
 			System.out.println("Entered Road Tax Amount: " + RoadTaxAmount);
 		} catch (Exception e) {
 			System.err.println("Error during entering Road Tax Amount: " + e.getMessage());
@@ -225,8 +232,9 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_enters_valid_data_in_the_other_charges_amount_in_chargeable_sharing_table() {
 		try {
 			Thread.sleep(2000);
-			String OtherChargesAmount = "2018";
+			String OtherChargesAmount = "12018";
 			invoicepage.enterOtherChargesAmountField(OtherChargesAmount);
+			Thread.sleep(3000);
 			System.out.println("Entered Other Charges Amount: " + OtherChargesAmount);
 		} catch (Exception e) {
 			System.err.println("Error during entering Other Charges Amount: " + e.getMessage());
@@ -238,6 +246,7 @@ public class InvoiceStepDefinition {
 		try {
 			Thread.sleep(2000);
 			String LifeTaxAmount = "10018";
+			Thread.sleep(3000);
 			invoicepage.enterLifeTaxAmountField(LifeTaxAmount);
 			System.out.println("Entered Life Tax Amount: " + LifeTaxAmount);
 		} catch (Exception e) {
@@ -254,6 +263,7 @@ public class InvoiceStepDefinition {
 		} catch (Exception e) {
 			System.err.println("Error during Save button in Scheme Popup screen click: " + e.getMessage());
 		}
+		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
 
 	@Then("User should be able to see Do you want to save it? Popup")
@@ -328,12 +338,15 @@ public class InvoiceStepDefinition {
 		} catch (Exception e) {
 			System.err.println("Error during Plus icon in Promotions Section click: " + e.getMessage());
 		}
+		LaunchDriver.getDriver().switchTo().defaultContent();
+
 	}
 
 	@Then("User should be able to navigate to the Promotion Pop-up")
 	public void user_should_be_able_to_navigate_to_the_promotion_pop_up() {
 		try {
 			Thread.sleep(3000);
+			invoicepage.interactWithIframeElement2();
 			Assert.assertTrue(invoicepage.isPromotionsPopupDisplayed(), "Promotion Pop-up is not displayed.");
 			System.out.println("Promotion Pop-up is displayed.");
 		} catch (Exception e) {
@@ -346,7 +359,9 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_checks_the_all_the_promotions_from_promotions_table_in_the_promotion_pop_up() {
 		try {
 			Thread.sleep(2000);
+			LaunchDriver.getDriver().switchTo().defaultContent();
 			invoicepage.interactWithIframeElement2();
+			invoicepage.interactWithIframeElement3();
 			invoicepage.clickPromotionCheckBoxAll();
 			System.out.println("Checks the All the promotions clicked.");
 		} catch (Exception e) {
@@ -425,12 +440,14 @@ public class InvoiceStepDefinition {
 		} catch (Exception e) {
 			System.err.println("Error during Register button click: " + e.getMessage());
 		}
+		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
 
 	@When("User should be able to see Do you want to register? Popup")
 	public void user_should_be_able_to_see_do_you_want_to_register_popup() {
 		try {
 			Thread.sleep(3000);
+			invoicepage.interactWithIframeElement2();
 			Assert.assertTrue(invoicepage.isRegisterConfirmationPopupDisplayed(),
 					"Do you want to register? Popup is not displayed.");
 			System.out.println("Do you want to register? Popup is displayed.");
@@ -444,7 +461,6 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_save_it_popup_in_the_customer_booking_management_screen() {
 		try {
 			Thread.sleep(2000);
-			invoicepage.interactWithIframeElement2();
 			invoicepage.clickRegisterConfirmationPopupConfirmButton();
 			System.out.println("Confirm button clicked.");
 		} catch (Exception e) {
@@ -468,6 +484,7 @@ public class InvoiceStepDefinition {
 	public void user_should_be_able_to_see_do_you_want_to_modify_it_popup_in_the_customer_booking_management_screen() {
 		try {
 			Thread.sleep(3000);
+			invoicepage.interactWithIframeElement2();
 			Assert.assertTrue(invoicepage.isInvoiceModifyConfirmationPopupDisplayed(),
 					"Do you want to Modify it? Popup is not displayed.");
 			System.out.println("Do you want to Modify it? Popup is displayed.");
@@ -481,7 +498,6 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_modify_it_popup_in_the_customer_booking_management_screen() {
 		try {
 			Thread.sleep(2000);
-			invoicepage.interactWithIframeElement2();
 			invoicepage.clickInvoiceModifyConfirmationPopupConfirmButton();
 			System.out.println("Confirm button clicked.");
 		} catch (Exception e) {
@@ -506,6 +522,7 @@ public class InvoiceStepDefinition {
 	public void user_should_be_able_to_see_do_you_want_to_confirm_it_popup() {
 		try {
 			Thread.sleep(3000);
+			invoicepage.interactWithIframeElement2();
 			Assert.assertTrue(invoicepage.isInvoiceConfirmConfirmationPopupDisplayed(),
 					"Do you want to confirm it? Popup is not displayed.");
 			System.out.println("Do you want to confirm it? Popup is displayed.");
@@ -519,7 +536,6 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_confirm_it_popup() {
 		try {
 			Thread.sleep(2000);
-			invoicepage.interactWithIframeElement2();
 			invoicepage.clickInvoiceConfirmConfirmationPopupConfirmButton();
 			System.out.println("Confirm button clicked.");
 		} catch (Exception e) {
