@@ -8,21 +8,26 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import static com.autogrid.utils.LaunchDriver.getDriver;
 
 public class BookingSalesOperationStepDefinition {
     CommonActions commonActions;
 
     BookingSalesOperationPage bookingPage;
 
-    public BookingSalesOperationStepDefinition(){
-        WebDriver driver = LaunchDriver.getDriver();
+    public BookingSalesOperationStepDefinition() {
+        WebDriver driver = getDriver();
         this.bookingPage = new BookingSalesOperationPage(driver);
         PageFactory.initElements(driver, bookingPage);
     }
+
     @Given("User clicks on the Sales icon")
-    public void userClicksOnTheSalesIcon() {
+    public void userClicksOnTheSalesIcon() throws InterruptedException {
         bookingPage.SalesIconButton();
     }
 
@@ -58,7 +63,7 @@ public class BookingSalesOperationStepDefinition {
 
     @And("User passed the start date and end date in the page")
     public void userPassedTheStartDateAndEndDateInThePage() {
-   bookingPage.SelectDates();
+        bookingPage.SelectDates();
     }
 
     @When("The enquiry will be populated then user as to select it")
@@ -69,5 +74,46 @@ public class BookingSalesOperationStepDefinition {
     @Then("User fills the fields in the Customer Booking MGT")
     public void userFillsTheFieldsInTheCustomerBookingMGT() {
         bookingPage.fillfieldsBookingPage();
+    }
+
+    @And("After successful registration user clicks on Quotation")
+    public void afterSuccessfulRegistrationUserClicksOnQuotation() {
+        bookingPage.QuotationPage();
+
+    }
+
+    @Then("User clicks on the receipt icon")
+    public void userClicksOnTheReceiptIcon() {
+        bookingPage.ReceiptTab();
+
+    }
+
+    @When("user enters a valid username for account")
+    public void userEntersAValidUsernameForAccount() {
+    getDriver().findElement(By.xpath("//input[@id='usrId']")).sendKeys("ACCOUNTS37");
+    }
+
+    @And("user enter a valid password for account")
+    public void userEnterAValidPasswordForAccount() {
+        getDriver().findElement(By.xpath("//input[@id='usrPswdNo']")).sendKeys("Creta@2023");
+    }
+
+    @And("User as to add the amount in the receipt section")
+    public void userAsToAddTheAmountInTheReceiptSection() {
+        bookingPage.AmountReceiptPage();
+
+    }
+
+    @Then("User clicks on Send Customer consent link")
+    public void userClicksOnSendCustomerConsentLink() {
+        getDriver().findElement(By.xpath("//*[text()='Send Customer Consent Link']")).click();
+        getDriver().findElement(By.xpath("/html/body/div[116]/div[2]/p[2]/button[1]")).click();
+    }
+
+    @Then("Verify the status in the Customer booking list should be pending")
+    public void verifyTheStatusInTheCustomerBookingListShouldBePending() {
+        getDriver().findElement(By.xpath("//*[text()=\"Customer Booking Mgt List\" and @class='k-link']")).click();
+        String statusValue=getDriver().findElement(By.xpath("//*[@id=\"mainGrid\"]/div[3]/table/tbody/tr/td[24]")).getText();
+        Assert.assertEquals(statusValue,"Pending");
     }
 }
