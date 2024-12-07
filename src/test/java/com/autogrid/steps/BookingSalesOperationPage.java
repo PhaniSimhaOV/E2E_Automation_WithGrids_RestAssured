@@ -1,7 +1,9 @@
 package com.autogrid.steps;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +11,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.autogrid.utils.CommonActions;
+
+import java.time.Duration;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
 
@@ -22,7 +26,7 @@ public class BookingSalesOperationPage {
     private WebElement SalesIcon;
     @FindBy(xpath = "//a[text()='Sales Operation']")
     private WebElement SalesOperationButton;
-    @FindBy(xpath = "//a[@data-url='/sal/salg/selectCustomerBookingMgtListMain.dms']")
+    @FindBy(xpath = "//*[@id=\"gnb\"]/li[3]/div/ul/li[3]/ul/li[1]")
     private WebElement selectCustomerBookingMgtListMainLinks;
     @FindBy(xpath = "//*[@id=\"content\"]/section[1]/div[2]/dl[1]/dd[1]/span/span")
     private WebElement dropdownDateOf;
@@ -51,6 +55,7 @@ public class BookingSalesOperationPage {
     public void SalesIconButton() throws InterruptedException {
         try {
             Thread.sleep(15000);
+
             SalesIcon.click();
         } catch (Exception e) {
             System.err.println("Error in Clicking the Sales Icon : " + e.getMessage());

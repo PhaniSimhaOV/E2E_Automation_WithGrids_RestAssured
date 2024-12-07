@@ -28,6 +28,7 @@ public class BookingSalesOperationStepDefinition {
 
     @Given("User clicks on the Sales icon")
     public void userClicksOnTheSalesIcon() throws InterruptedException {
+
         bookingPage.SalesIconButton();
     }
 
