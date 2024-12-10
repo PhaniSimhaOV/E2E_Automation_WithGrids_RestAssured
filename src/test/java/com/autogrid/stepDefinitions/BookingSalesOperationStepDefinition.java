@@ -91,7 +91,7 @@ public class BookingSalesOperationStepDefinition {
 
     @When("user enters a valid username for account")
     public void userEntersAValidUsernameForAccount() {
-    getDriver().findElement(By.xpath("//input[@id='usrId']")).sendKeys("ACCOUNTS37");
+        getDriver().findElement(By.xpath("//input[@id='usrId']")).sendKeys("ACCOUNTS37");
     }
 
     @And("user enter a valid password for account")
@@ -114,7 +114,44 @@ public class BookingSalesOperationStepDefinition {
     @Then("Verify the status in the Customer booking list should be pending")
     public void verifyTheStatusInTheCustomerBookingListShouldBePending() {
         getDriver().findElement(By.xpath("//*[text()=\"Customer Booking Mgt List\" and @class='k-link']")).click();
-        String statusValue=getDriver().findElement(By.xpath("//*[@id=\"mainGrid\"]/div[3]/table/tbody/tr/td[24]")).getText();
-        Assert.assertEquals(statusValue,"Pending");
+        String statusValue = getDriver().findElement(By.xpath("//*[@id=\"mainGrid\"]/div[3]/table/tbody/tr/td[24]")).getText();
+        Assert.assertEquals(statusValue, "Pending");
+    }
+
+    @Then("User clicks on Order and stock")
+    public void userClicksOnOrderAndStock() {
+        getDriver().findElement(By.xpath("//a[text()='Order/Stock']")).click();
+    }
+
+    @Then("user selects Dealer Vechile Stock MGT")
+    public void userSelectsDealerVechileStockMGT() {
+        getDriver().findElement(By.xpath("//*[@id=\"gnb\"]/li[3]/div/ul/li[4]/ul/li[4]/a")).click();
+    }
+
+    @And("User passes the VIN number into the field")
+    public void userPassesTheVINNumberIntoTheField() {
+        getDriver().findElement(By.xpath("//*[@id=\"sVin\"]")).click();
+
+    }
+
+    @And("Searches for the Vin number")
+    public void searchesForTheVinNumber() {
+        getDriver().findElement(By.xpath("//*[@class=\"btn_m btn_search k-button\"]")).click();
+    }
+
+    @When("Verify the data in the table with the customer booking values")
+    public void verifyTheDataInTheTableWithTheCustomerBookingValues() {
+        String VariantValue = getDriver().findElement(By.xpath("//*[@id=\"grid\"]/div[3]/table/tbody/tr/td[11]")).getText();
+        String ExteriorColor = getDriver().findElement(By.xpath("//*[@id=\"grid\"]/div[3]/table/tbody/tr/td[15]")).getText();
+        String InteriorColor = getDriver().findElement(By.xpath("//*[@id=\"grid\"]/div[3]/table/tbody/tr/td[17]")).getText();
+        getDriver().findElement(By.xpath("//span[text()='Customer Booking Mgt']")).click();
+        String CustExtColor = getDriver().findElement(By.xpath("//span[@aria-owns='extColorCd_listbox']")).getText();
+        String CustIntColor = getDriver().findElement(By.xpath("//span[@aria-owns='intColorCd_listbox']")).getText();
+        String CustVariant = getDriver().findElement(By.xpath("//span[@aria-owns='subVariantCd_listbox']")).getText();
+        Assert.assertEquals(VariantValue, CustVariant.contains(VariantValue));
+        Assert.assertEquals(ExteriorColor, CustExtColor);
+        Assert.assertEquals(InteriorColor, CustIntColor);
     }
 }
+
+

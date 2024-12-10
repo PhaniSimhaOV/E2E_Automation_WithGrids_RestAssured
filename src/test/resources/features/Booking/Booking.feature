@@ -10,7 +10,7 @@ Feature: User navigates to booking section
     And clicks on Send OTP
     #And user enters a valid OTP
     #And clicks on login
-   Given User clicks on the Sales icon
+    Given User clicks on the Sales icon
     Then User selects the Sales Operation tab
     When User selects Customer Booking Mgt List under sales Operation
     Then User need to select the enquiry option in the dropdown
@@ -22,6 +22,13 @@ Feature: User navigates to booking section
     Then User fills the fields in the Customer Booking MGT
     And After successful registration user clicks on Quotation
     Then User clicks on the receipt icon
+    Given User clicks on the Sales icon
+    Then User clicks on Order and stock
+    Then user selects Dealer Vechile Stock MGT
+    And User passes the VIN number into the field
+    And Searches for the Vin number
+    When Verify the data in the table with the customer booking values
+
 
   @Booking02
   Scenario: To validate the Page using Accounts details
@@ -41,6 +48,9 @@ Feature: User navigates to booking section
     And User as to add the amount in the receipt section
     Then User clicks on Send Customer consent link
     Then Verify the status in the Customer booking list should be pending
+
+
+
 
 
 

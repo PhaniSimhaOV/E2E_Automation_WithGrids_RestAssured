@@ -1,5 +1,6 @@
 package com.autogrid.steps;
 
+import com.autogrid.utils.LaunchDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -18,7 +19,7 @@ import java.util.List;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
 
-public class BookingSalesOperationPage{
+public class BookingSalesOperationPage {
 
     WebDriver driver;
     private static final Logger logger = LoggerFactory.getLogger(DMSLoginPage.class);
@@ -28,7 +29,7 @@ public class BookingSalesOperationPage{
     private WebElement SalesIcon;
     @FindBy(xpath = "//a[text()='Sales Operation']")
     private WebElement SalesOperationButton;
-    @FindBy(xpath = "//*[@id=\"gnb\"]/li[2]/div/ul/li[3]/ul/li[1]")
+    @FindBy(xpath = "//*[@id=\"gnb\"]/li[3]/div/ul/li[3]/ul/li[1]")
     private WebElement selectCustomerBookingMgtListMainLinks;
     @FindBy(xpath = "/html/body/section/div/section/section[1]/div[2]/dl[1]/dd[1]")
     private WebElement dropdownDateOf;
@@ -48,7 +49,8 @@ public class BookingSalesOperationPage{
     private WebElement SearchButton;
     @FindBy(xpath = "//*[@id=\"mainGrid\"]/div[3]/table/tbody")
     private WebElement SalesTable;
-    WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
     public BookingSalesOperationPage(WebDriver driver) {
         this.commonActions = new CommonActions(driver);
         PageFactory.initElements(driver, this);
@@ -57,7 +59,7 @@ public class BookingSalesOperationPage{
 
     public void SalesIconButton() throws InterruptedException {
         try {
-            Thread.sleep(15000*4);
+            Thread.sleep(15000 * 4);
 
             SalesIcon.click();
         } catch (Exception e) {
@@ -98,7 +100,10 @@ public class BookingSalesOperationPage{
 
     public void selectDateOFDropdown() throws InterruptedException {
         try {
-            driver.switchTo().frame("tabMenuFrame2");
+            WebElement iframename = getDriver().findElement(By.xpath("tabMenuFrame2"));
+            LaunchDriver.getDriver().switchTo().defaultContent();
+            LaunchDriver.getDriver().switchTo().frame(iframename);
+            System.out.println("Successfully interacted with the element inside the iframe.");
             dropdownDateOf.click();
             List<WebElement> options = driver.findElements(By.xpath("//ul[@id='dSearchCd_listbox']/li"));  // Replace with the actual XPath or locator
             WebElement selectedOption = options.get(0);
@@ -111,8 +116,10 @@ public class BookingSalesOperationPage{
         } catch (Exception e) {
             System.err.println("Error in Selecting the enquiry from the dropdown: " + e.getMessage());
             throw e;
+
         }
     }
+
 
     public void MobileNumberTextBox() {
         try {
@@ -209,7 +216,7 @@ public class BookingSalesOperationPage{
             getDriver().findElement(By.xpath("//button[@id='btnBookingRegister']")).click();
             getDriver().findElement(By.xpath("/html/body/div[117]/div[2]/p[2]/button[1]")).click();
 
-            String SuccesMessage=getDriver().findElement(By.xpath("//*[@id=\"template\"]/div/div/p")).getText();
+            String SuccesMessage = getDriver().findElement(By.xpath("//*[@id=\"template\"]/div/div/p")).getText();
             System.out.println(SuccesMessage);
 
         } catch (Exception e) {
@@ -217,7 +224,8 @@ public class BookingSalesOperationPage{
             throw e;
         }
     }
-    public void QuotationPage(){
+
+    public void QuotationPage() {
         getDriver().findElement(By.xpath("//*[text()=\"Quotation\"]")).click();
         getDriver().findElement(By.xpath("//*[@id=\"basicInsurance\"]")).sendKeys("150000");
         getDriver().findElement(By.xpath("//*[@id=\"exWarrantyAmount\"]")).sendKeys("1");
@@ -225,13 +233,15 @@ public class BookingSalesOperationPage{
         getDriver().findElement(By.xpath("//*[@id=\"btnFinanceModify\"]")).click();
 
     }
-    public void ReceiptTab(){
+
+    public void ReceiptTab() {
         getDriver().findElement(By.xpath("//*[@id=\"receiptTab\"]")).click();
         getDriver().findElement(By.xpath("//*[@id=\"btnPayAdd\"]")).click();
     }
-    public void AmountReceiptPage(){
+
+    public void AmountReceiptPage() {
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[2]")).sendKeys("11000");
-       getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[3]")).click();
+        getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[3]")).click();
         getDriver().findElement(By.xpath("/html/body/div[115]/div/div[2]/ul/li[2]")).click();
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[4]")).click();
         getDriver().findElement(By.xpath("/html/body/div[115]/div/div[2]/ul/li[4]")).click();
@@ -241,4 +251,5 @@ public class BookingSalesOperationPage{
         getDriver().findElement(By.xpath("//*[@id='paymentGrid']/div[3]/table/tbody/tr/td[7]")).sendKeys("12345678000");
         getDriver().findElement(By.xpath("//*[@id=\"btnPaySave\"]")).click();
     }
+
 }
