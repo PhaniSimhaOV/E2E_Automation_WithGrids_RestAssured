@@ -28,7 +28,7 @@ public class BookingSalesOperationStepDefinition {
 
     @Given("User clicks on the Sales icon")
     public void userClicksOnTheSalesIcon() throws InterruptedException {
-
+//getDriver().navigate().to("//https://ndms.hmil.net/cmm/cmmd/selectHome.dms");
         bookingPage.SalesIconButton();
     }
 
@@ -43,7 +43,7 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @Then("User need to select the enquiry option in the dropdown")
-    public void userNeedToSelectTheEnquiryOptionInTheDropdown() {
+    public void userNeedToSelectTheEnquiryOptionInTheDropdown() throws InterruptedException {
         bookingPage.selectDateOFDropdown();
     }
 

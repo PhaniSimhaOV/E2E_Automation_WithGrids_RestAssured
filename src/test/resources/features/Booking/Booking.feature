@@ -10,7 +10,7 @@ Feature: User navigates to booking section
     And clicks on Send OTP
     #And user enters a valid OTP
     #And clicks on login
-    Given User clicks on the Sales icon
+   Given User clicks on the Sales icon
     Then User selects the Sales Operation tab
     When User selects Customer Booking Mgt List under sales Operation
     Then User need to select the enquiry option in the dropdown

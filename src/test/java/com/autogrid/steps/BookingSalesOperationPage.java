@@ -13,26 +13,28 @@ import org.openqa.selenium.support.PageFactory;
 import com.autogrid.utils.CommonActions;
 
 import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
 
-public class BookingSalesOperationPage {
+public class BookingSalesOperationPage{
 
     WebDriver driver;
-    private static final Logger logger = LoggerFactory.getLogger(com.autogrid.steps.DMSLoginPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(DMSLoginPage.class);
     private final CommonActions commonActions;
 
     @FindBy(xpath = "//a[text()='Sales']")
     private WebElement SalesIcon;
     @FindBy(xpath = "//a[text()='Sales Operation']")
     private WebElement SalesOperationButton;
-    @FindBy(xpath = "//*[@id=\"gnb\"]/li[3]/div/ul/li[3]/ul/li[1]")
+    @FindBy(xpath = "//*[@id=\"gnb\"]/li[2]/div/ul/li[3]/ul/li[1]")
     private WebElement selectCustomerBookingMgtListMainLinks;
-    @FindBy(xpath = "//*[@id=\"content\"]/section[1]/div[2]/dl[1]/dd[1]/span/span")
+    @FindBy(xpath = "/html/body/section/div/section/section[1]/div[2]/dl[1]/dd[1]")
     private WebElement dropdownDateOf;
     @FindBy(xpath = "//li[text()=\"Enquiry\"]")
     private WebElement SelectEnqiryDropdown;
-    @FindBy(xpath = "//input[@id=\"baseTxt\"]")
+    @FindBy(id = "baseTxt")
     private WebElement MobileNoTextField;
     @FindBy(xpath = "//*[@id=\"content\"]/section[1]/div[2]/dl[2]/dd[1]/span/span")
     private WebElement BasedOnDropdown;
@@ -46,15 +48,16 @@ public class BookingSalesOperationPage {
     private WebElement SearchButton;
     @FindBy(xpath = "//*[@id=\"mainGrid\"]/div[3]/table/tbody")
     private WebElement SalesTable;
-
+    WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
     public BookingSalesOperationPage(WebDriver driver) {
         this.commonActions = new CommonActions(driver);
         PageFactory.initElements(driver, this);
+
     }
 
     public void SalesIconButton() throws InterruptedException {
         try {
-            Thread.sleep(15000);
+            Thread.sleep(15000*4);
 
             SalesIcon.click();
         } catch (Exception e) {
@@ -93,9 +96,16 @@ public class BookingSalesOperationPage {
         }
     }
 
-    public void selectDateOFDropdown() {
+    public void selectDateOFDropdown() throws InterruptedException {
         try {
+            driver.switchTo().frame("tabMenuFrame2");
             dropdownDateOf.click();
+            List<WebElement> options = driver.findElements(By.xpath("//ul[@id='dSearchCd_listbox']/li"));  // Replace with the actual XPath or locator
+            WebElement selectedOption = options.get(0);
+            selectedOption.click();
+
+            // Optionally, you can verify the selection
+            System.out.println("Selected Option: " + selectedOption.getText());
             SelectEnqiryDropdown.click();
 
         } catch (Exception e) {
@@ -106,7 +116,7 @@ public class BookingSalesOperationPage {
 
     public void MobileNumberTextBox() {
         try {
-            MobileNoTextField.sendKeys("7799222422");
+            getDriver().findElement(By.xpath("//input[@class=\"form_input\"]")).sendKeys("7799222422");
         } catch (Exception e) {
             System.err.println("Error in passing the mobile number to the text field: " + e.getMessage());
             throw e;
