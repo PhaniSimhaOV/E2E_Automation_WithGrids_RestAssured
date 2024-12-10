@@ -87,8 +87,6 @@ Feature: User tries to verify the New Enquiry functionality
     And User tries to selects valid data in TD VIN dropdown
     And User tries to clicks on Save button in the Basic Info tab in the Sales Customer Enquiry Info screen
 
-
-
     Given User is in the Test Drive Appointment Screen
     When User tries to selects A valid Time solt Which was greater than the Current time
     And User tries to clicks on Save button in the Test Drive Appointment Screen

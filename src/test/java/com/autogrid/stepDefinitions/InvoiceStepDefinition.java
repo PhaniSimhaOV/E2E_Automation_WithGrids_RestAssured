@@ -168,7 +168,7 @@ public class InvoiceStepDefinition {
 			LaunchDriver.getDriver().switchTo().defaultContent();
 			invoicepage.interactWithIframeElement2();
 			invoicepage.interactWithIframeElement3();
-			String PayableByDealerAmount = "33333";
+			String PayableByDealerAmount = "44444";
 			Thread.sleep(3000);
 			invoicepage.enterPayableByDealerAmountField(PayableByDealerAmount);
 			System.out.println("Entered Payable By Dealer Amount: " + PayableByDealerAmount);
@@ -181,7 +181,7 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_enters_valid_data_in_the_adjustment_credit_note_amount_in_tax_adjustment_allowed_table() {
 		try {
 			Thread.sleep(3000);
-			String AdjustmentCreditNoteAmount = "33333";
+			String AdjustmentCreditNoteAmount = "44444";
 			invoicepage.enterAdjustmentCreditNoteField(AdjustmentCreditNoteAmount);
 			System.out.println("Entered Adjustment Credit Note Amount : " + AdjustmentCreditNoteAmount);
 		} catch (Exception e) {
