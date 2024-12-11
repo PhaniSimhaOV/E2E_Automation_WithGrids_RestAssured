@@ -20,7 +20,7 @@ public class BookingSalesOperationStepDefinition {
 
     BookingSalesOperationPage bookingPage;
 
-    public BookingSalesOperationStepDefinition() {
+    public BookingSalesOperationStepDefinition() throws Exception {
         WebDriver driver = getDriver();
         this.bookingPage = new BookingSalesOperationPage(driver);
         PageFactory.initElements(driver, bookingPage);
@@ -49,11 +49,12 @@ public class BookingSalesOperationStepDefinition {
 
     @And("User enters the mobile number in the text box")
     public void userEntersTheMobileNumberInTheTextBox() {
+
         bookingPage.MobileNumberTextBox();
     }
 
     @And("User selects the mobile number option from the dropdown")
-    public void userSelectsTheMobileNumberOptionFromTheDropdown() {
+    public void userSelectsTheMobileNumberOptionFromTheDropdown() throws InterruptedException {
         bookingPage.BasedOnDropdown();
     }
 
@@ -63,7 +64,7 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @And("User passed the start date and end date in the page")
-    public void userPassedTheStartDateAndEndDateInThePage() {
+    public void userPassedTheStartDateAndEndDateInThePage() throws InterruptedException {
         bookingPage.SelectDates();
     }
 
@@ -73,7 +74,7 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @Then("User fills the fields in the Customer Booking MGT")
-    public void userFillsTheFieldsInTheCustomerBookingMGT() {
+    public void userFillsTheFieldsInTheCustomerBookingMGT() throws InterruptedException {
         bookingPage.fillfieldsBookingPage();
     }
 
