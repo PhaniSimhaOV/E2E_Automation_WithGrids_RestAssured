@@ -20,13 +20,14 @@ public class DatabaseConnectionStepDefinition {
 
 	@Given("User connects to MySQL Workbench database")
 	public void user_connects_to_mysql_workbench_database() {
-
-		String url = "jdbc:mysql://localhost:3306/pentesting-db.chvrsbdweoe1.ap-south-1.rds.amazonaws.com/salesDataSetup";
-		String username = "dualPunch";
-		String password = "Cyepro@123";
 		try {
+			String url = "jdbc:mysql://localhost:3306/salesDataSetup?connectTimeout=5000&socketTimeout=5000";
+			String username = "dualPunch";
+			String password = "Cyepro@123";
+
 			connection = DriverManager.getConnection(url, username, password);
 			System.out.println("Database connection successful!");
+			mysqlDatabaseConnectionPage = new MysqlDatabaseConnectionPage(connection); // Initialize
 		} catch (SQLException e) {
 			System.err.println("Error connecting to the database: " + e.getMessage());
 			e.printStackTrace();
