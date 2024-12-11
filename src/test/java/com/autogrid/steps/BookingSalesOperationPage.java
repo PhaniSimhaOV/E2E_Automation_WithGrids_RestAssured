@@ -2,6 +2,7 @@ package com.autogrid.steps;
 
 import com.autogrid.utils.LaunchDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -59,7 +60,7 @@ public class BookingSalesOperationPage {
 
     public void SalesIconButton() throws InterruptedException {
         try {
-            Thread.sleep(15000*2);
+            Thread.sleep(15000*3);
 
             SalesIcon.click();
         } catch (Exception e) {
@@ -133,11 +134,11 @@ public class BookingSalesOperationPage {
         try {
 
             BasedOnDropdown.click();
-            List<WebElement> options = getDriver().findElements(By.xpath("//*[@id=\"baseStatCd_listbox\"]/li"));  // Replace with the actual XPath or locator
-            WebElement BasedOnMobileDropdown = options.get(3);
+            List<WebElement> options = getDriver().findElements(By.xpath("//ul[@id=\"baseStatCd_listbox\"]/li"));
             Thread.sleep(2000);
+           WebElement BasedOnMobileDropdown=options.get(3);
             BasedOnMobileDropdown.click();
-            System.out.println("Selected Option: " + BasedOnMobileDropdown.getText());
+                    System.out.println("Selected value: " + BasedOnMobileDropdown);
 
         } catch (Exception e) {
             System.err.println("Error in selecting the BasedOnDropdown : " + e.getMessage());
@@ -170,11 +171,11 @@ public class BookingSalesOperationPage {
 
     public void fillfieldsBookingPage() throws InterruptedException {
         try {
-            //WebElement iframename = getDriver().findElement(By.xpath("//iframe[@id=\"tabMenuFrame3\"]"));
             LaunchDriver.getDriver().switchTo().defaultContent();
             LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
             System.out.println("Successfully interacted with the element inside the iframe.");
             Thread.sleep(3000);
+            getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).clear();
             getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).sendKeys("34512678");
             System.out.println("The GST number as been passed" +getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).getText());
             //EnquiryType:
@@ -183,8 +184,11 @@ public class BookingSalesOperationPage {
             System.out.println("The Enquiry type as being selected");
             Thread.sleep(3000);
             //EnquiryCategory
+
             getDriver().findElement(By.xpath("//*[@id=\"basicInfo\"]/div[3]/dl[2]/dd[2]")).click();
-            getDriver().findElement(By.xpath("//*[text()='Corporate Company']")).click();
+            List<WebElement> optionsCategory = getDriver().findElements(By.xpath("//ul[@id=\"enCategory_listbox\"]/li"));  // Replace with the actual XPath or locator
+            WebElement Enquirycategory=optionsCategory.get(3);
+            Enquirycategory.click();
             System.out.println("The Enquiry Category as being selected");
             Thread.sleep(3000);
             //SalesConsultant
@@ -205,70 +209,93 @@ public class BookingSalesOperationPage {
 //            WebElement iframenamePop = getDriver().findElement(By.xpath("//*[@id="corporateInfoSearchPopup"]/iframe"));
 //            LaunchDriver.getDriver().switchTo().defaultContent();
 //            LaunchDriver.getDriver().switchTo().frame(iframenamePop);
-//
-//            String mainWindowHandle = getDriver().getWindowHandle();
-//            // Wait for the new window and get all window handles
-//            Set<String> allWindowHandles = getDriver().getWindowHandles();
-//            // Identify the new window handle
-//            String popupWindowHandle = null;
-//            for (String handle : allWindowHandles) {
-//                if (!handle.equals(mainWindowHandle)) {
-//                    popupWindowHandle = handle;
-//                    break;
-//                }
-//            }
-//
-//            // Switch to the popup window
-//            if (popupWindowHandle != null) {
-//                getDriver().switchTo().window(popupWindowHandle);
-//                // Perform actions in the popup window
 //                getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[2]/dl/dd[1]/span/span")).click();
 //                getDriver().findElement(By.xpath("//li[text()=\"Classic\"]")).click();
 //                getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[1]/div")).click();
 //                //Select a coulumn from the search table
 //                getDriver().findElement(By.xpath("//*[@id=\"gridBody\"]/div[2]/table/tbody/tr[1]/td[1]")).click();
 //                getDriver().findElement(By.xpath("//*[@id=\"gridBody\"]/div[2]/table/tbody/tr[1]/td[1]")).click();
-//
-//                getDriver().close();
-//            } else {
-//                System.out.println("Popup window not found!");
-//            }
-//            getDriver().switchTo().window(mainWindowHandle);
-//            System.out.println("Returned to main window.");
+
             //ModeOfPurchase
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[2]/dd[1]/span/span/span[1]")).click();
             getDriver().findElement(By.xpath("//*[@id=\"purchaseType_listbox\"]/li[4]")).click();
             System.out.println("The Purchase Type as being selected");
             //Title
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[2]/div[2]/dl[2]/dd[1]/span/span")).click();
-            List<WebElement> optionsTitle = getDriver().findElements(By.xpath("//ul[@id=\"enSaleEmpNo_listbox\"]/li"));  // Replace with the actual XPath or locator
-            WebElement selectedOptionTitle = optionsTitle.get(1);
-            selectedOptionTitle.click();
-            System.out.println("Selected Option: " + selectedOptionTitle.getText());
+            List<WebElement> optionsTitle = getDriver().findElements(By.xpath("//*[@id=\"titleType_listbox\"]"));  // Replace with the actual XPath or locator
+            String valueToSelect = "Mr.";
+            boolean valueFound = false;
+            for (WebElement item : optionsTitle) {
+                if (item.getText().equals(valueToSelect)) {
+                    item.click();
+                    valueFound = true;
+                    System.out.println("Selected value: " + valueToSelect);
+                    break;
+                }
+            }
             System.out.println("Title is selected");
             //Pan
             getDriver().findElement(By.xpath("//*[@id=\"pan\"]")).sendKeys("sdfghj345");
             System.out.println("The Pan as being selected" +getDriver().findElement(By.xpath("//*[@id=\"pan\"]")).getText());
             //BillingAddress
             getDriver().findElement(By.xpath("//a[@href='javascript:fn_pinCodeSearch();']")).click();
+            WebElement iframenameBilling = getDriver().findElement(By.xpath("//iframe[@class='k-content-frame']"));
+            LaunchDriver.getDriver().switchTo().defaultContent();
+            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+            LaunchDriver.getDriver().switchTo().frame(iframenameBilling);
+            System.out.println("Successfully interacted with the element inside the iframe. for billing address");
             getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[2]/dl[1]/dd[1]/span/span")).click();
-            getDriver().findElement(By.xpath("//*[@id=\"sStcdName_listbox\"]/li[4]")).click();
+            Thread.sleep(2000);
+            List<WebElement> ShippingAddress= getDriver().findElements(By.xpath("//ul[@id=\"sStcdName_listbox\"]/li"));
+            ShippingAddress.get(1).click();
             getDriver().findElement(By.xpath("//*[@id='window']/div[1]/div/button[2]")).click();
-            getDriver().findElement(By.xpath("//*[@id=\"grid\"]/div[2]/table/tbody/tr[1]")).click();
-            getDriver().findElement(By.xpath("//*[@id=\"grid\"]/div[2]/table/tbody/tr[1]")).click();
+            WebElement SalesTable = getDriver().findElement(By.xpath("//*[@id='grid']/div[2]/table/tbody/tr[1]"));
+            Actions actions = new Actions(getDriver());
+            actions.doubleClick(SalesTable).perform();
+            Thread.sleep(2000);
             System.out.println("Billing address is updated");
+            LaunchDriver.getDriver().switchTo().defaultContent();
+            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+            JavascriptExecutor js = (JavascriptExecutor) getDriver();
+            js.executeScript("window.scrollBy(0,1000)");
+            System.out.println("Scrolled down successfully.");
             //Shipping address
+            getDriver().findElement(By.xpath("//*[@id=\"bkngShipToName\"]")).clear();
             getDriver().findElement(By.xpath("//*[@id=\"bkngShipToName\"]")).sendKeys("Srujan");
+            System.out.println("Name is updated");
+            Thread.sleep(2000);
+            getDriver().findElement(By.xpath("//*[@id=\"bkngShipToAddr\"]")).clear();
             getDriver().findElement(By.xpath("//*[@id=\"bkngShipToAddr\"]")).sendKeys("Assam");
+            System.out.println("Address is updated");
             getDriver().findElement(By.xpath("//a[@href=\"javascript:fn_pinCodeSearch2('Ship');\"]")).click();
+            Thread.sleep(2000);
+            WebElement iframenameShipping = getDriver().findElement(By.xpath("//iframe[@class='k-content-frame']"));
+            LaunchDriver.getDriver().switchTo().defaultContent();
+            Thread.sleep(2000);
+            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+            LaunchDriver.getDriver().switchTo().frame(iframenameShipping);
+            Thread.sleep(2000);
             getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[2]/dl[1]/dd[1]/span/span")).click();
             getDriver().findElement(By.xpath("//*[@id=\"sStcdName_listbox\"]/li[4]")).click();
             getDriver().findElement(By.xpath("//*[@id='window']/div[1]/div/button[2]")).click();
-            getDriver().findElement(By.xpath("//*[@id=\"grid\"]/div[2]/table/tbody/tr[1]")).click();
-            System.out.println("Shipping address is updated");
+            WebElement ShippingTable = getDriver().findElement(By.xpath("//*[@id='grid']/div[2]/table/tbody/tr[1]"));
+            actions.doubleClick(ShippingTable).perform();
+            Thread.sleep(2000);
+            System.out.println("Shipping Table address is updated");
+            Thread.sleep(2000);
+            LaunchDriver.getDriver().switchTo().defaultContent();
+            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+//Registered Loan amount
+            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).clear();
+            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).sendKeys("1500000");
             //Register
-            getDriver().findElement(By.xpath("//button[@id='btnBookingRegister']")).click();
+
+//            getDriver().findElement(By.xpath("//button[@id='btnBookingRegister']")).click();
+
+            //modify
+            getDriver().findElement(By.xpath("//*[@id=\"btnBookingModify\"]")).click();
             getDriver().findElement(By.xpath("/html/body/div[117]/div[2]/p[2]/button[1]")).click();
+            Thread.sleep(2000);
 
             String SuccesMessage = getDriver().findElement(By.xpath("//*[@id=\"template\"]/div/div/p")).getText();
             System.out.println(SuccesMessage);
@@ -281,9 +308,12 @@ public class BookingSalesOperationPage {
 
     public void QuotationPage() {
         getDriver().findElement(By.xpath("//*[text()=\"Quotation\"]")).click();
-        getDriver().findElement(By.xpath("//*[@id=\"basicInsurance\"]")).sendKeys("150000");
-        getDriver().findElement(By.xpath("//*[@id=\"exWarrantyAmount\"]")).sendKeys("1");
-        getDriver().findElement(By.xpath("//*[@id=\"rtoCharges\"]")).sendKeys("106450");
+        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]")).clear();
+        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]")).sendKeys("150000");
+       getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span")).clear();
+        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span")).sendKeys("1");
+        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span")).clear();
+        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span")).sendKeys("106450");
         getDriver().findElement(By.xpath("//*[@id=\"btnFinanceModify\"]")).click();
 
     }
