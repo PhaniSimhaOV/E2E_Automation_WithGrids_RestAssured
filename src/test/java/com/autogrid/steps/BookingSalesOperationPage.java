@@ -1,16 +1,13 @@
 package com.autogrid.steps;
 
 import com.autogrid.utils.LaunchDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.autogrid.utils.CommonActions;
@@ -287,6 +284,7 @@ public class BookingSalesOperationPage {
             LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
 //Registered Loan amount
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).clear();
+            Thread.sleep(4000);
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).sendKeys("1500000");
             //Register
 
@@ -294,7 +292,10 @@ public class BookingSalesOperationPage {
 
             //modify
             getDriver().findElement(By.xpath("//*[@id=\"btnBookingModify\"]")).click();
-            getDriver().findElement(By.xpath("/html/body/div[117]/div[2]/p[2]/button[1]")).click();
+            Alert alert = getDriver().switchTo().alert();
+            System.out.println("Popup message: " + alert.getText());
+            alert.accept();
+            //getDriver().findElement(By.xpath("/html/body/div[117]/div[2]/p[2]/button[1]")).click();
             Thread.sleep(2000);
 
             String SuccesMessage = getDriver().findElement(By.xpath("//*[@id=\"template\"]/div/div/p")).getText();
