@@ -2,8 +2,6 @@ package com.autogrid.steps;
 
 import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.LaunchDriver;
-
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
