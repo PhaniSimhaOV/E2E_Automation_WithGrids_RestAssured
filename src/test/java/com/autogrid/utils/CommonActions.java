@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
+import org.openqa.selenium.By;
 
 public class CommonActions {
     private final Wait<WebDriver> wait;
@@ -49,6 +50,10 @@ public class CommonActions {
         wait.until(ExpectedConditions.visibilityOf(element));
         assert element.isDisplayed() : "The element is not Present. Please check";
         logger.info("The required element is Present");
+    }
+    public void explicitWait(String locatorValue) {
+        WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locatorValue)));
     }
 
 }
