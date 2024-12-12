@@ -1,5 +1,6 @@
 package com.autogrid.utils;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -44,11 +45,19 @@ public class CommonActions {
         element.click();
         logger.info("The required Button/Link has been clicked");
     }
-
+    
     public void isElementPresent(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
         assert element.isDisplayed() : "The element is not Present. Please check";
         logger.info("The required element is Present");
     }
+    
+    public void explicitWait(String locatorValue) {
+    	WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
+    	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locatorValue)));
+    }
+    
+    
+    
 
 }

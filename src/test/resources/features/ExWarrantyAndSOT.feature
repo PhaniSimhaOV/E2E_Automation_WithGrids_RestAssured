@@ -5,8 +5,8 @@ Feature: Extended Warranty Punching and Sot
     Given launch browser and enter url
     When user enters a valid username
     And user enter a valid password
-    And clicks on Send OTP
-    And user enters a valid OTP
+   # And clicks on Send OTP
+    #And user enters a valid OTP
     And clicks on login
     When User clicks on Service Icon
     And User clicks on Extended Warranty Sub Menu
@@ -22,7 +22,7 @@ Feature: Extended Warranty Punching and Sot
     
     #SOT Functionality
     When User clicks on Service Icon
-    And User clicks on Extended Warranty Sub Menu
+    #And User clicks on Extended Warranty Sub Menu
     And User clicks on Hyundai Shield of Trust Package Register link
     Then User should be able to navigate to Hyundai Shield ot Trust Package Register Screen
     When User enter VIN number in SOT

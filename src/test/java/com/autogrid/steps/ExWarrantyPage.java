@@ -48,7 +48,7 @@ public class ExWarrantyPage {
     @FindBy(xpath="//input[@id='sKeyword']")
     private WebElement VIN;
     
-    @FindBy(xpath="//input[@class='k-formatted-value form_numeric ar k-input']")     // (//input[@aria-valuemax='9999999'])[1] , //*[@id='odometerReading']
+    @FindBy(xpath="//input[@class='k-formatted-value form_numeric ar k-input']")     // (// input[@aria-valuemax='9999999'])[1] , //*[@id='odometerReading']
     private WebElement OdometerReading;
     
     @FindBy(xpath="//*[@id='frm1']/div[2]/dl[8]/dd[1]/span/span[1]")    

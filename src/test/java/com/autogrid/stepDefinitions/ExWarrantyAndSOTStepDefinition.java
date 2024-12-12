@@ -90,7 +90,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		try {
 			Thread.sleep(2000);
 			exWarranty.interactWithIframeExtW();
-			String vin="MALFC81BLRM670505";
+			String vin="MALPC812TRM101723";
 			exWarranty.enterVIN(vin);
 			System.out.println("Entered VIN " +vin);
 		} catch (Exception e) {
@@ -117,7 +117,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	@When("User enter Current Odometer reading")
 	public void user_enter_current_odometer_reading() {
 		try {
-			String odoMtrReading= "110";
+			String odoMtrReading= "90";
 			exWarranty.enterCurrentOdoMtrReading(odoMtrReading);
 			System.out.println("Entered Current Odometer Reading" + odoMtrReading);
 		} catch (Exception e) {
@@ -131,7 +131,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	@When("User select Employee Name")
 	public void user_select_employee_name() {
 		try {
-			String employeeName="GUNDAARAPU PRASHANTH";
+			String employeeName="K BICHAPPA";
 			exWarranty.selectEmployeeName(employeeName);
 			System.out.println("Selected Employee Name " +employeeName);
 		} catch (Exception e) {
@@ -198,11 +198,13 @@ public class ExWarrantyAndSOTStepDefinition {
 	}
 	
 	*/
+	
 
 	@When("User clicks on Hyundai Shield of Trust Package Register link")
 	public void user_clicks_on_hyundai_shield_of_trust_package_register_link() {
 		
 	  try {
+		  Thread.sleep(3000);
 		sot.clickHyundaiShieldOfTrustPackageRegisterLink();
 		System.out.println("Clicked Hyundai SOT Package Register Link ");
 	} catch (Exception e) {
@@ -228,7 +230,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		try {
 			Thread.sleep(2000);
 			sot.interactWithIframeSOT();
-			String vin="MALFC81BLRM670505";
+			String vin="MALPC812TRM101723";
 			sot.enterVIN(vin);
 			System.out.println("Entered VIN in SOT "+vin);
 		} catch (Exception e) {
@@ -251,7 +253,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	public void user_enter_current_odometer_reading_in_sot() throws Throwable {
 		Thread.sleep(2000);
 		try {
-			String odoMtrReading= "110";
+			String odoMtrReading= "90";
 			sot.enterCurrentOdoMtrReading(odoMtrReading);
 			System.out.println("Entered Current Odometer reading in SOT "+odoMtrReading);
 		} catch (Exception e) {
@@ -265,7 +267,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	public void user_select_employee_name_in_sot() throws Throwable {
 		Thread.sleep(2000);
 		try {
-			String employeeName="GUNDAARAPU PRASHANTH";
+			String employeeName="K BICHAPPA";
 			sot.selectEmployeeName(employeeName);
 			System.out.println("Employee Name selected in SOT "+employeeName);
 		} catch (Exception e) {

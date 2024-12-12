@@ -36,7 +36,7 @@ public class SOTPage {
     @FindBy(xpath="//*[text()='Extended Warranty']")
     private WebElement ExtendedWarrantySubMenu ;
     
-    @FindBy(xpath="(//a[text()='Hyundai Shield of Trust Package Register'])[2]")
+    @FindBy(xpath="//a[text()='Hyundai Shield of Trust Package Register']") 
     private WebElement HyundaiShieldOfTrustPackageRegLink;            
     
     @FindBy(xpath="//span[text()='Hyundai Shield of Trust Package Register']") 
@@ -84,6 +84,7 @@ public class SOTPage {
 	
 public void clickExtWarrantySubMenu() {
 	try {
+		commonActions.explicitWait("//*[text()='Extended Warranty']");
 		ExtendedWarrantySubMenu.click();
 	} catch (Exception e) {
 		System.err.println("Failed to click Extended Warranty Sub Menu"+e.getMessage());
@@ -92,11 +93,11 @@ public void clickExtWarrantySubMenu() {
     
     public void  clickHyundaiShieldOfTrustPackageRegisterLink() {
     	try {
-    		commonActions.explicitWait("(//a[text()='Hyundai Shield of Trust Package Register'])[2]");
-    		//HyundaiShieldOfTrustPackageRegLink.click();
+    		commonActions.explicitWait("(//a[text()='Hyundai Shield of Trust Package Register'])");
+    		HyundaiShieldOfTrustPackageRegLink.click();
     		
-    		JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-            js.executeScript("arguments[0].click();", HyundaiShieldOfTrustPackageRegLink);
+    		//JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
+          //  js.executeScript("arguments[0].click();", HyundaiShieldOfTrustPackageRegLink);
             
 		} catch (Exception e) {
 			System.err.println("Failed to click HyundaiShieldOfTrustPackageRegLink "+e.getMessage());
