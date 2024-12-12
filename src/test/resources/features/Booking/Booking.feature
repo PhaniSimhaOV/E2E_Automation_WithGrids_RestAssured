@@ -7,13 +7,13 @@ Feature: User navigates to booking section
     Given launch browser and enter url
     When user enters a valid username
     And user enter a valid password
-    And clicks on Send OTP
+    #And clicks on Send OTP
     #And user enters a valid OTP
-    #And clicks on login
+    And clicks on login
     Given User clicks on the Sales icon
     Then User selects the Sales Operation tab
     When User selects Customer Booking Mgt List under sales Operation
-    Then User need to select the enquiry option in the dropdown
+    #Then User need to select the enquiry option in the dropdown
     And User enters the mobile number in the text box
     And User selects the mobile number option from the dropdown
     And User passed the start date and end date in the page
@@ -30,10 +30,11 @@ Feature: User navigates to booking section
     Given launch browser and enter url
     When user enters a valid username for account
     And user enter a valid password for account
-    And clicks on Send OTP
+    #And clicks on Send OTP
+    And clicks on login
     Given User clicks on the Sales icon
     Then User selects the Sales Operation tab
-    When User selects Customer Booking Mgt List under sales Operation
+    When User selects Customer Booking Mgt List under sales Operation in accounts
     Then User need to select the enquiry option in the dropdown
     And User enters the mobile number in the text box
     And User passed the start date and end date in the page
@@ -44,12 +45,23 @@ Feature: User navigates to booking section
     Then User clicks on Send Customer consent link
     Then Verify the status in the Customer booking list should be pending
 
-    Given User clicks on the Sales icon
+
+
+    @Booking3
+    Scenario: To verify the allocation for the booking
+      Given launch browser and enter url
+      When user enters a valid username
+      And user enter a valid password
+    #And clicks on Send OTP
+    #And user enters a valid OTP
+      And clicks on login
+      Given User clicks on the Sales icon
     Then User clicks on Order and stock
     Then user selects Dealer Vechile Stock MGT
     And User passes the VIN number into the field
     And Searches for the Vin number
     When Verify the data in the table with the customer booking values
+      Then verifies the value from the customer link
 
 
 

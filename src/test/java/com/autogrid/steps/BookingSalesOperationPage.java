@@ -57,7 +57,7 @@ public class BookingSalesOperationPage {
 
     public void SalesIconButton() throws InterruptedException {
         try {
-            Thread.sleep(15000*3);
+            //Thread.sleep(15000*3);
 
             SalesIcon.click();
         } catch (Exception e) {
@@ -320,20 +320,34 @@ public class BookingSalesOperationPage {
     }
 
     public void ReceiptTab() {
+        LaunchDriver.getDriver().switchTo().defaultContent();
+        LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
         getDriver().findElement(By.xpath("//*[@id=\"receiptTab\"]")).click();
         getDriver().findElement(By.xpath("//*[@id=\"btnPayAdd\"]")).click();
     }
 
-    public void AmountReceiptPage() {
-        getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[2]")).sendKeys("11000");
+    public void AmountReceiptPage() throws InterruptedException {
+        getDriver().findElement(By.xpath(" //*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[2]")).click();
+        getDriver().findElement(By.xpath("//*[@id=\"paymentGrid_active_cell\"]/span/span/span[2]/span[1]/span")).click();
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[3]")).click();
-        getDriver().findElement(By.xpath("/html/body/div[115]/div/div[2]/ul/li[2]")).click();
+        getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[3]")).click();
+        getDriver().findElement(By.xpath("/html/body/div[115]/div/div[2]/ul/li[3]")).click();
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[4]")).click();
+        getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[4]")).click();
+        Thread.sleep(3000);
         getDriver().findElement(By.xpath("/html/body/div[115]/div/div[2]/ul/li[4]")).click();
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[5]")).click();
+        getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[5]")).click();
+        Thread.sleep(3000);
         getDriver().findElement(By.xpath("/html/body/div[115]/div/div[2]/ul/li[3]")).click();
-        getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[6]")).sendKeys("03/12/2024");
-        getDriver().findElement(By.xpath("//*[@id='paymentGrid']/div[3]/table/tbody/tr/td[7]")).sendKeys("12345678000");
+        getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[6]")).click();
+        getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[6]")).click();
+        Thread.sleep(3000);
+        getDriver().findElement(By.xpath("//input[@data-format='dd/MM/yyyy']")).sendKeys("03/12/2024");
+        getDriver().findElement(By.xpath("//*[@id='paymentGrid']/div[3]/table/tbody/tr/td[7]")).click();
+        getDriver().findElement(By.xpath("//*[@id='paymentGrid']/div[3]/table/tbody/tr/td[7]")).click();
+        Thread.sleep(3000);
+        getDriver().findElement(By.xpath("//input[@name='chqNo']")).sendKeys("12345678000");
         getDriver().findElement(By.xpath("//*[@id=\"btnPaySave\"]")).click();
     }
 

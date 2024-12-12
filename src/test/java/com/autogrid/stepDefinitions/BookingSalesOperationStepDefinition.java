@@ -10,8 +10,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+
+import java.util.List;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
 
@@ -28,8 +31,8 @@ public class BookingSalesOperationStepDefinition {
 
     @Given("User clicks on the Sales icon")
     public void userClicksOnTheSalesIcon() throws InterruptedException {
-//getDriver().navigate().to("//https://ndms.hmil.net/cmm/cmmd/selectHome.dms");
         bookingPage.SalesIconButton();
+        Thread.sleep(3000);
     }
 
     @Then("User selects the Sales Operation tab")
@@ -101,7 +104,7 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @And("User as to add the amount in the receipt section")
-    public void userAsToAddTheAmountInTheReceiptSection() {
+    public void userAsToAddTheAmountInTheReceiptSection() throws InterruptedException {
         bookingPage.AmountReceiptPage();
 
     }
@@ -131,7 +134,10 @@ public class BookingSalesOperationStepDefinition {
 
     @And("User passes the VIN number into the field")
     public void userPassesTheVINNumberIntoTheField() {
-        getDriver().findElement(By.xpath("//*[@id=\"sVin\"]")).click();
+        WebElement iframename = getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame2']"));
+        getDriver().switchTo().defaultContent();
+        getDriver().switchTo().frame(iframename);
+        getDriver().findElement(By.xpath("//*[@id=\"sVin\"]")).sendKeys("MALB341CYRM313126");
 
     }
 
@@ -141,11 +147,39 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @When("Verify the data in the table with the customer booking values")
-    public void verifyTheDataInTheTableWithTheCustomerBookingValues() {
+    public void verifyTheDataInTheTableWithTheCustomerBookingValues() throws InterruptedException {
+
+    }
+
+    @When("User selects Customer Booking Mgt List under sales Operation in accounts")
+    public void userSelectsCustomerBookingMgtListUnderSalesOperationInAccounts() {
+        getDriver().findElement(By.xpath("//*[@id=\"gnb\"]/li[2]/div/ul/li[3]/ul/li[1]/a ")).click();
+    }
+
+    @Then("verifies the value from the customer link")
+    public void verifiesTheValueFromTheCustomerLink() throws InterruptedException {
         String VariantValue = getDriver().findElement(By.xpath("//*[@id=\"grid\"]/div[3]/table/tbody/tr/td[11]")).getText();
         String ExteriorColor = getDriver().findElement(By.xpath("//*[@id=\"grid\"]/div[3]/table/tbody/tr/td[15]")).getText();
         String InteriorColor = getDriver().findElement(By.xpath("//*[@id=\"grid\"]/div[3]/table/tbody/tr/td[17]")).getText();
-        getDriver().findElement(By.xpath("//span[text()='Customer Booking Mgt']")).click();
+
+        getDriver().switchTo().defaultContent();
+        getDriver().findElement(By.xpath("//*[@id=\"sidebar\"]/div[1]/ul/li[3]")).click();
+        bookingPage.SalesOperationLink();
+        bookingPage.selectCustomerBookingMgtListMainLinks();
+        WebElement iframename = getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']"));
+        getDriver().switchTo().defaultContent();
+        getDriver().switchTo().frame(iframename);
+        getDriver().findElement(By.xpath("/html/body/section/div/section/section[1]/div[2]/dl[1]/dd[1]")).click();
+        List<WebElement> options = getDriver().findElements(By.xpath("//ul[@id='dSearchCd_listbox']/li"));  // Replace with the actual XPath or locator
+        WebElement selectedOption = options.get(0);
+        selectedOption.click();
+        System.out.println("Selected Option: " + selectedOption.getText());
+        bookingPage.MobileNumberTextBox();
+        bookingPage.BasedOnDropdown();
+        bookingPage.SelectDates();
+        bookingPage.SearchButton();
+        bookingPage.SalesTable();
+
         String CustExtColor = getDriver().findElement(By.xpath("//span[@aria-owns='extColorCd_listbox']")).getText();
         String CustIntColor = getDriver().findElement(By.xpath("//span[@aria-owns='intColorCd_listbox']")).getText();
         String CustVariant = getDriver().findElement(By.xpath("//span[@aria-owns='subVariantCd_listbox']")).getText();
