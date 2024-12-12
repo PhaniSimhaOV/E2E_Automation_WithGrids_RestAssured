@@ -21,7 +21,7 @@ public class DatabaseConnectionStepDefinition {
 	@Given("User connects to MySQL Workbench database")
 	public void user_connects_to_mysql_workbench_database() {
 		try {
-			String url = "jdbc:mysql://localhost:3306/salesDataSetup?connectTimeout=5000&socketTimeout=5000";
+			String url = "jdbc:mysql://pentesting-db.chvrsbdweoe1.ap-south-1.rds.amazonaws.com/salesDataSetup?enabledTLSProtocols=TLSv1.2";
 			String username = "dualPunch";
 			String password = "Cyepro@123";
 
@@ -38,7 +38,7 @@ public class DatabaseConnectionStepDefinition {
 	@When("User executes a query to fetch data")
 	public void user_executes_query_to_fetch_data() {
 		try {
-			String result = mysqlDatabaseConnectionPage.fetchData(1); // Fetch data for ID 1
+			String result = mysqlDatabaseConnectionPage.fetchData(874); // Fetch data for ID 1
 			System.out.println("Query Result: " + result);
 		} catch (SQLException e) {
 			System.err.println("Error executing the query: " + e.getMessage());

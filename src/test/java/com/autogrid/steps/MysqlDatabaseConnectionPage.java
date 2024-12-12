@@ -14,12 +14,12 @@ public class MysqlDatabaseConnectionPage {
 	}
 
 	public String fetchData(int id) throws SQLException {
-		String query = "SELECT * FROM dms_lead";
+		String query = "SELECT * FROM dms_lead WHERE sales_consultant_id = ?";
 		try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 			preparedStatement.setInt(1, id);
 			try (ResultSet resultSet = preparedStatement.executeQuery()) {
 				if (resultSet.next()) {
-					return resultSet.getString("*");
+					return resultSet.getString("sales_consultant");
 				} else {
 					return "No data found for ID: " + id;
 				}
