@@ -259,6 +259,7 @@ public class BookingSalesOperationPage {
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).clear();
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).sendKeys("1500000");
             Thread.sleep(2000);
+            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]")).click();
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).click();
             System.out.println("Registered loan amount as been entered successfully");
 
@@ -322,6 +323,7 @@ public void clickbutton(String button){
         getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).clear();
         getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).sendKeys("150000");
         System.out.println("Basic insurance is updated successfully");
+        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span")).click();
        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span")).clear();
         getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span")).sendKeys("1");
         System.out.println("Ex warranty amount is updated successfully");
