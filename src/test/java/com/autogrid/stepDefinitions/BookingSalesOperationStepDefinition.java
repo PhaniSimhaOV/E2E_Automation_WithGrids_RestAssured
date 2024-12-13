@@ -80,6 +80,10 @@ public class BookingSalesOperationStepDefinition {
     public void userFillsTheFieldsInTheCustomerBookingMGT() throws InterruptedException {
         bookingPage.fillfieldsBookingPage();
     }
+    @Then("user clicks on {string} based on the value")
+    public void userClicksOnBasedOnTheValue(String button) {
+        bookingPage.clickbutton(button);
+    }
 
     @And("After successful registration user clicks on Quotation")
     public void afterSuccessfulRegistrationUserClicksOnQuotation() {
@@ -187,6 +191,8 @@ public class BookingSalesOperationStepDefinition {
         Assert.assertEquals(ExteriorColor, CustExtColor);
         Assert.assertEquals(InteriorColor, CustIntColor);
     }
+
+
 }
 
 

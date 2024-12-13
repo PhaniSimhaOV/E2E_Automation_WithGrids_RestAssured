@@ -200,23 +200,22 @@ public class BookingSalesOperationPage {
             getDriver().findElement(By.xpath("//*[@id='eqryRfrlBy']")).sendKeys("CHENIGACHERLA SAMPATH RAJ");
             System.out.println("The Referred by as being selected");
             Thread.sleep(3000);
-//            //RegisteredCorp
+            //RegisteredCorp
 //            getDriver().findElement(By.xpath("//*[@id=\"basicInfo\"]/div[4]/dl[1]/dd[2]/div/a")).click();
 //            Thread.sleep(2000);
-//            WebElement iframenamePop = getDriver().findElement(By.xpath("//*[@id="corporateInfoSearchPopup"]/iframe"));
 //            LaunchDriver.getDriver().switchTo().defaultContent();
-//            LaunchDriver.getDriver().switchTo().frame(iframenamePop);
-//                getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[2]/dl/dd[1]/span/span")).click();
-//                getDriver().findElement(By.xpath("//li[text()=\"Classic\"]")).click();
-//                getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[1]/div")).click();
-//                //Select a coulumn from the search table
+//            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']"))); getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[2]/dl/dd[1]/span/span")).click();
+//            getDriver().findElement(By.xpath("//li[text()=\"Classic\"]")).click();
+//            getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[1]/div")).click();
+                //Select a coulumn from the search table
 //                getDriver().findElement(By.xpath("//*[@id=\"gridBody\"]/div[2]/table/tbody/tr[1]/td[1]")).click();
 //                getDriver().findElement(By.xpath("//*[@id=\"gridBody\"]/div[2]/table/tbody/tr[1]/td[1]")).click();
-
+//            System.out.println("Registered corp is slected successfully");
             //ModeOfPurchase
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[2]/dd[1]/span/span/span[1]")).click();
             getDriver().findElement(By.xpath("//*[@id=\"purchaseType_listbox\"]/li[4]")).click();
             System.out.println("The Purchase Type as being selected");
+            Thread.sleep(3000);
             //Title
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[2]/div[2]/dl[2]/dd[1]/span/span")).click();
             List<WebElement> optionsTitle = getDriver().findElements(By.xpath("//*[@id=\"titleType_listbox\"]"));  // Replace with the actual XPath or locator
@@ -256,6 +255,13 @@ public class BookingSalesOperationPage {
             JavascriptExecutor js = (JavascriptExecutor) getDriver();
             js.executeScript("window.scrollBy(0,1000)");
             System.out.println("Scrolled down successfully.");
+            //Registered Loan amount
+            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).clear();
+            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).sendKeys("1500000");
+            Thread.sleep(2000);
+            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).click();
+            System.out.println("Registered loan amount as been entered successfully");
+
             //Shipping address
             getDriver().findElement(By.xpath("//*[@id=\"bkngShipToName\"]")).clear();
             getDriver().findElement(By.xpath("//*[@id=\"bkngShipToName\"]")).sendKeys("Srujan");
@@ -273,48 +279,55 @@ public class BookingSalesOperationPage {
             LaunchDriver.getDriver().switchTo().frame(iframenameShipping);
             Thread.sleep(2000);
             getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[2]/dl[1]/dd[1]/span/span")).click();
+            Thread.sleep(2000);
             getDriver().findElement(By.xpath("//*[@id=\"sStcdName_listbox\"]/li[4]")).click();
             getDriver().findElement(By.xpath("//*[@id='window']/div[1]/div/button[2]")).click();
             WebElement ShippingTable = getDriver().findElement(By.xpath("//*[@id='grid']/div[2]/table/tbody/tr[1]"));
             actions.doubleClick(ShippingTable).perform();
             Thread.sleep(2000);
+            Thread.sleep(2000);
             System.out.println("Shipping Table address is updated");
             Thread.sleep(2000);
             LaunchDriver.getDriver().switchTo().defaultContent();
             LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
-//Registered Loan amount
-            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).clear();
-            Thread.sleep(4000);
-            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).sendKeys("1500000");
-            //Register
 
-//            getDriver().findElement(By.xpath("//button[@id='btnBookingRegister']")).click();
-
-            //modify
-            getDriver().findElement(By.xpath("//*[@id=\"btnBookingModify\"]")).click();
-            Alert alert = getDriver().switchTo().alert();
-            System.out.println("Popup message: " + alert.getText());
-            alert.accept();
-            //getDriver().findElement(By.xpath("/html/body/div[117]/div[2]/p[2]/button[1]")).click();
-            Thread.sleep(2000);
-
-            String SuccesMessage = getDriver().findElement(By.xpath("//*[@id=\"template\"]/div/div/p")).getText();
-            System.out.println(SuccesMessage);
 
         } catch (Exception e) {
             System.err.println("Error in passing the dates: " + e.getMessage());
             throw e;
         }
     }
+public void clickbutton(String button){
+        //Register
+    if(button.equalsIgnoreCase("Register")) {
+        getDriver().findElement(By.xpath("//button[@id='btnBookingRegister']")).click();
+        LaunchDriver.getDriver().switchTo().defaultContent();
+        LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+        getDriver().findElement(By.xpath("/html/body/div[116]/div[2]/p[2]/button[1]")).click();
+        System.out.println("Successfully clicked on register");
+    }
+    //modify
+    else{
+    getDriver().findElement(By.xpath("//*[@id=\"btnBookingModify\"]")).click();
+    LaunchDriver.getDriver().switchTo().defaultContent();
+    LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
 
+    getDriver().findElement(By.xpath("/html/body/div[116]/div[2]/p[2]/button[1]")).click();
+    System.out.println("Modified successfully");
+//            String SuccesMessage = getDriver().findElement(By.xpath("//*[@id=\"template\"]/div/div/p")).getText();
+//            System.out.println(SuccesMessage);
+}}
     public void QuotationPage() {
         getDriver().findElement(By.xpath("//*[text()=\"Quotation\"]")).click();
-        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]")).clear();
-        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]")).sendKeys("150000");
+        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).clear();
+        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).sendKeys("150000");
+        System.out.println("Basic insurance is updated successfully");
        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span")).clear();
         getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span")).sendKeys("1");
+        System.out.println("Ex warranty amount is updated successfully");
         getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span")).clear();
         getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span")).sendKeys("106450");
+        System.out.println("RTO Amount has been updated successfully");
         getDriver().findElement(By.xpath("//*[@id=\"btnFinanceModify\"]")).click();
 
     }
