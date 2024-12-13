@@ -29,7 +29,7 @@ public class DatabaseConnectionStepDefinition {
 			System.out.println("Database connection successful!");
 			mysqlDatabaseConnectionPage = new MysqlDatabaseConnectionPage(connection); // Initialize
 		} catch (SQLException e) {
-			System.err.println("Error connecting to the database: " + e.getMessage());
+			System.err.println("Error connecting to the Database: " + e.getMessage());
 			e.printStackTrace();
 			Assert.fail("Database connection failed.");
 		}
