@@ -14,6 +14,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import java.awt.*;
 import java.util.List;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
@@ -77,7 +78,7 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @Then("User fills the fields in the Customer Booking MGT")
-    public void userFillsTheFieldsInTheCustomerBookingMGT() throws InterruptedException {
+    public void userFillsTheFieldsInTheCustomerBookingMGT() throws InterruptedException, AWTException {
         bookingPage.fillfieldsBookingPage();
     }
     @Then("user clicks on {string} based on the value")

@@ -12,9 +12,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.autogrid.utils.CommonActions;
 
+import java.awt.*;
 import java.time.Duration;
-import java.time.Instant;
+import java.awt.event.InputEvent;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
@@ -166,7 +168,7 @@ public class BookingSalesOperationPage {
         }
     }
 
-    public void fillfieldsBookingPage() throws InterruptedException {
+    public void fillfieldsBookingPage() throws InterruptedException, AWTException {
         try {
             LaunchDriver.getDriver().switchTo().defaultContent();
             LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
@@ -258,9 +260,14 @@ public class BookingSalesOperationPage {
             //Registered Loan amount
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).clear();
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).sendKeys("1500000");
-            Thread.sleep(2000);
-            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]")).click();
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).click();
+            Robot robot = new Robot();
+            Random random = new Random();
+            int x = random.nextInt(1920);
+            int y = random.nextInt(1080);
+            robot.mouseMove(x, y);
+            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK); // Left-click press
+            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
             System.out.println("Registered loan amount as been entered successfully");
 
             //Shipping address
@@ -323,9 +330,9 @@ public void clickbutton(String button){
         getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).clear();
         getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).sendKeys("150000");
         System.out.println("Basic insurance is updated successfully");
-        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span")).click();
-       getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span")).clear();
-        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span")).sendKeys("1");
+        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span/span/input[1]")).click();
+       getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span/span/input[1]")).clear();
+        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span/span/input[1]")).sendKeys("1");
         System.out.println("Ex warranty amount is updated successfully");
         getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span")).clear();
         getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span")).sendKeys("106450");
