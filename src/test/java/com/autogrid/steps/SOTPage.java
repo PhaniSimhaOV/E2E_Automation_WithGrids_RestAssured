@@ -93,11 +93,11 @@ public void clickExtWarrantySubMenu() {
     
     public void  clickHyundaiShieldOfTrustPackageRegisterLink() {
     	try {
-    		commonActions.explicitWait("(//a[text()='Hyundai Shield of Trust Package Register'])");
-    		HyundaiShieldOfTrustPackageRegLink.click();
+    		//commonActions.explicitWait("(//a[text()='Hyundai Shield of Trust Package Register'])");
+    		//HyundaiShieldOfTrustPackageRegLink.click();
     		
-    		//JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-          //  js.executeScript("arguments[0].click();", HyundaiShieldOfTrustPackageRegLink);
+    		JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
+                 js.executeScript("arguments[0].click();", HyundaiShieldOfTrustPackageRegLink);
             
 		} catch (Exception e) {
 			System.err.println("Failed to click HyundaiShieldOfTrustPackageRegLink "+e.getMessage());
