@@ -90,7 +90,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		try {
 			Thread.sleep(2000);
 			exWarranty.interactWithIframeExtW();
-			String vin="MALPC812TRM101723";
+			String vin="MALBH512LRM333921";
 			exWarranty.enterVIN(vin);
 			System.out.println("Entered VIN " +vin);
 		} catch (Exception e) {
@@ -131,7 +131,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	@When("User select Employee Name")
 	public void user_select_employee_name() {
 		try {
-			String employeeName="K BICHAPPA";
+			String employeeName="BEHARA ARUN KUMAR";
 			exWarranty.selectEmployeeName(employeeName);
 			System.out.println("Selected Employee Name " +employeeName);
 		} catch (Exception e) {
@@ -230,7 +230,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		try {
 			Thread.sleep(2000);
 			sot.interactWithIframeSOT();
-			String vin="MALPC812TRM101723";
+			String vin="MALBH512LRM333921";
 			sot.enterVIN(vin);
 			System.out.println("Entered VIN in SOT "+vin);
 		} catch (Exception e) {
@@ -267,7 +267,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	public void user_select_employee_name_in_sot() throws Throwable {
 		Thread.sleep(2000);
 		try {
-			String employeeName="K BICHAPPA";
+			String employeeName="BEHARA ARUN KUMAR";
 			sot.selectEmployeeName(employeeName);
 			System.out.println("Employee Name selected in SOT "+employeeName);
 		} catch (Exception e) {
