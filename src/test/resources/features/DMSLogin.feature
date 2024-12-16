@@ -4,7 +4,7 @@ Feature: User tries to verify the Login functionality
     Given launch browser and enter url
     Then user navigate to login page
 
-  @test
+  
   Scenario: DMS_Login_Validate the forgot password link
     Given launch browser and enter url
     And user is on login page

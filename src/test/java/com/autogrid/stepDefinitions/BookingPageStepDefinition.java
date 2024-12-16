@@ -1,11 +1,14 @@
 package com.autogrid.stepDefinitions;
 
 import org.testng.Assert;
+
 import com.autogrid.steps.CustBookingmgmtPage;
 import com.autogrid.steps.SearchCustBookingMgmtListPage;
-import com.autogrid.utils.LaunchDriver;
 
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class BookingPageStepDefinition {
 
@@ -54,8 +57,9 @@ public class BookingPageStepDefinition {
 			cbmlp.clickSaveButton();
 			System.out.println("User Clicked save button in  Customer Booking Mananagement List Screen ");
 		} catch (Exception e) {
-			System.err.println("Error while clicking save button in  Customer Booking Mananagement List Screen" + e.getMessage());
-					throw new io.cucumber.java.PendingException();
+			System.err.println(
+					"Error while clicking save button in  Customer Booking Mananagement List Screen" + e.getMessage());
+			throw new io.cucumber.java.PendingException();
 		}
 	}
 

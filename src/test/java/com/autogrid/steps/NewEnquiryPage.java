@@ -81,7 +81,7 @@ public class NewEnquiryPage {
     @FindBy(xpath = "//*[@id='email']")
     private WebElement Email;
     
-    @FindBy(xpath = "///*[@id='template']")
+    @FindBy(xpath = "//*[@id='template']")
     private WebElement InvalidEmailToast;    
     
     @FindBy(xpath = "//*[@id='enquiry_info']/div[2]/dl[3]/dd[1]/span/span/span[1]")

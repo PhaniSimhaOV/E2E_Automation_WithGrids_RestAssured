@@ -1719,3 +1719,393 @@
 433  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
 448  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
 3306 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+449  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+460  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+509  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+510  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+510  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+512  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+512  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+512  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+512  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+512  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+513  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+529  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4365 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+404  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+411  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+451  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+451  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+452  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+452  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+453  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+455  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+455  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+456  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+457  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+474  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+6814 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+468  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+471  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+476  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+476  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+476  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+476  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+476  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+476  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+477  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+477  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+477  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+525  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4614 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+380  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+384  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+389  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+390  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+390  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+390  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+392  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+394  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+399  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+401  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+403  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+432  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3095 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+297  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+299  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+302  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+302  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+302  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+302  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+302  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+302  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+303  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+303  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+303  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+321  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+2912 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+338  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+342  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+350  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+351  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+351  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+351  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+351  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+352  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+352  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+352  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+352  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+371  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4423 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+323  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+328  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+333  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+334  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+334  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+335  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+335  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+336  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+337  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+341  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+342  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+364  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3064 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+374  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+376  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+381  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+382  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+382  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+382  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+383  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+383  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+383  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+384  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+385  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+402  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3625 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+587  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+589  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+593  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+593  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+593  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+594  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+594  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+595  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+595  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+595  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+595  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+611  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3845 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+376  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+385  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+417  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+418  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+418  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+418  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+418  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+418  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+418  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+419  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+419  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+432  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3785 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+384  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+386  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+390  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+390  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+390  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+390  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+390  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+391  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+395  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+397  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+397  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+411  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3545 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+387  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+390  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+396  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+398  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+402  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+402  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+403  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+403  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+404  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+404  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+405  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+429  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3509 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+366  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+370  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+380  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+381  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+382  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+382  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+382  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+383  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+383  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+384  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+384  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+408  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3115 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+393  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+395  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+400  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+401  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+401  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+401  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+401  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+403  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+404  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+405  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+410  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+432  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4756 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+394  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+396  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+403  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+403  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+403  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+403  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+404  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+404  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+415  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+417  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+417  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+454  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3470 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+393  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+397  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+402  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+402  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+403  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+405  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+406  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+408  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+409  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+410  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+410  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+449  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3464 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+416  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+421  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+428  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+429  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+429  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+429  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+429  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+430  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+431  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+433  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+433  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+468  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3171 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+441  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+445  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+450  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+452  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+452  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+452  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+452  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+452  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+452  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+452  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+452  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+469  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3924 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+382  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+384  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+389  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+390  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+390  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+390  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+390  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+391  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+391  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+392  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+393  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+405  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3232 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+381  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+383  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+389  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+389  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+389  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+390  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+390  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+391  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+391  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+392  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+394  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+414  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3311 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+406  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+409  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+414  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+415  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+415  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+415  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+415  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+415  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+415  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+416  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+416  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+428  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3234 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+414  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+416  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+421  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+421  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+422  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+422  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+422  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+422  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+422  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+423  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+423  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+435  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3647 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+420  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+423  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+428  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+428  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+428  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+429  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+429  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+429  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+429  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+429  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+430  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+446  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3737 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+355  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+359  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+367  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+368  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+368  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+368  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+369  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+369  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+369  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+369  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+369  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+386  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4038 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+486  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+489  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+494  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+494  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+494  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+494  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+494  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+494  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+495  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+495  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+495  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+518  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3426 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+474  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+477  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+483  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+483  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+483  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+484  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+484  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+486  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+490  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+493  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+493  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+516  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3714 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+340  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+342  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+347  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+348  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+348  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+348  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+348  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+348  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+348  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+348  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+349  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+364  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+2661 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+357  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+360  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+366  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+366  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+366  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+367  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+367  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+368  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+369  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+370  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+370  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+382  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3095 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+348  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+352  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+357  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+358  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+359  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+359  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+359  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+360  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+360  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+360  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+360  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+376  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+2692 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+382  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+390  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+424  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+424  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+425  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+425  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+425  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+425  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+425  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+426  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+426  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+442  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3258 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"

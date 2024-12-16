@@ -152,7 +152,7 @@ public class DMSLoginStepDefinition {
 	public void user_enters_username() {
 		try {
 			Thread.sleep(2000);
-            String username = "S523700";
+            String username = "S583400";
             dMSLoginPage.enterUsername(username);
             System.out.println("Entered username: " + username);
         } catch (Exception e) {
@@ -164,7 +164,7 @@ public class DMSLoginStepDefinition {
 	public void user_enter_username_without_entering_password(){
 		try {
 			Thread.sleep(2000);
-            String username = "S523700";
+            String username = "S583400";
             dMSLoginPage.enterUsername(username);
             System.out.println("Entered username: " + username);
         } catch (Exception e) {
@@ -189,10 +189,10 @@ public class DMSLoginStepDefinition {
 	public void user_enter_username_and_password_without_entering_otp() {
 		try {
 			Thread.sleep(3000);
-            String username = "S523700";
+            String username = "S583400";
             dMSLoginPage.enterUsername(username);
             System.out.println("Entered username: " + username);
-            String password = "S523700";
+            String password = "S583400";
             dMSLoginPage.enterPassword(password);
             System.out.println("Entered password: " + password);
         } catch (Exception e) {
@@ -226,7 +226,7 @@ public class DMSLoginStepDefinition {
 	@When("user enters valid password")
 	public void user_enters_valid_password() {
 		try {
-			String password = "Hyundai@2024";
+			String password = "Creta@2022";
             dMSLoginPage.enterPassword(password);
             System.out.println("Entered password: " + password);
         } catch (Exception e) {
@@ -259,7 +259,7 @@ public class DMSLoginStepDefinition {
 	@When("user enters a valid username")
 	public void user_enters_a_valid_username() {
 		try {
-            String username = "S523700";
+            String username = "S583400";
             dMSLoginPage.enterUsername(username);
             System.out.println("Entered username: " + username);
         } catch (Exception e) {
@@ -270,7 +270,7 @@ public class DMSLoginStepDefinition {
 	@And("user enters a invalid password")
 	public void user_enters_a_invalid_password(){
 		try {
-			String password = "S523700";
+			String password = "S583400";
             dMSLoginPage.enterPassword(password);
             System.out.println("Entered password: " + password);
         } catch (Exception e) {
@@ -294,7 +294,7 @@ public class DMSLoginStepDefinition {
 	public void user_enters_a_invalid_otp() {
 		try {
 			Thread.sleep(10000);
-			String otp = "S523700";
+			String otp = "S583400";
             dMSLoginPage.enterOTP(otp);
             System.out.println("Entered otp: " + otp);
         } catch (Exception e) {
@@ -344,7 +344,7 @@ public class DMSLoginStepDefinition {
 	@When("user enter invalid password")
 	public void user_enter_invalid_password() {
 		try {
-			String password = "S523700";
+			String password = "S583400";
             dMSLoginPage.enterPassword(password);
             System.out.println("Entered password: " + password);
         } catch (Exception e) {
@@ -367,7 +367,7 @@ public class DMSLoginStepDefinition {
 	@When("user enter a valid username")
 	public void user_enter_a_valid_username() {
 		try {
-            String username = "S523700";
+            String username = "S583400";
             dMSLoginPage.enterUsername(username);
             System.out.println("Entered username: " + username);
         } catch (Exception e) {
@@ -390,7 +390,7 @@ public class DMSLoginStepDefinition {
 	@When("user enter a valid password")
 	public void user_enter_a_valid_password() {
 		try {
-			String password = "Hyundai@2024";
+			String password = "Creta@2022";
             dMSLoginPage.enterPassword(password);
             System.out.println("Entered password: " + password);
         } catch (Exception e) {
