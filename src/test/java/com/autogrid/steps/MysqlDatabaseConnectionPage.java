@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class MysqlDatabaseConnectionPage {
 
@@ -16,11 +18,14 @@ public class MysqlDatabaseConnectionPage {
 	}
 
 	public String fetchData(int id) throws SQLException {
+
 		String query = "SELECT * FROM dms_lead WHERE sales_consultant_id = ?";
+
 		try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 			preparedStatement.setInt(1, id);
 			try (ResultSet resultSet = preparedStatement.executeQuery()) {
 				if (resultSet.next()) {
+
 					// Retrieve data from multiple columns
 					Map<String, String> data = new HashMap<>();
 					data.put("sales_consultant", resultSet.getString("sales_consultant"));
@@ -35,6 +40,7 @@ public class MysqlDatabaseConnectionPage {
 					data.put("phone", resultSet.getString("phone"));
 					// Convert data map to a readable string
 					return data.toString();
+
 				} else {
 					return "No data found for ID: " + id;
 				}

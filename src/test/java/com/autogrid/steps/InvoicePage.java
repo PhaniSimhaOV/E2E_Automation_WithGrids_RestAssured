@@ -100,8 +100,9 @@ public class InvoicePage {
 	@FindBy(xpath = "//*[@id='btnPromoAdd']")
 	private WebElement PromotionsSectionPlusIcon;
 
+
 	@FindBy(xpath = "//input[@type='checkbox'][@class='checkAll']")
-	private WebElement PromotionCheckBoxAll;
+  private WebElement PromotionCheckBoxAll;
 
 	@FindBy(xpath = "//*[@id='btnAddSelected']")
 	private WebElement PromotionAddSelectedButton;
@@ -121,29 +122,32 @@ public class InvoicePage {
 	@FindBy(xpath = "//*[@id='btnInvRegister']")
 	private WebElement RegisterButton;
 
+
 	@FindBy(xpath = "/html/body/div[117]/div[1]/span")
 	private WebElement RegisterConfirmationPopup;
 
 	@FindBy(xpath = "/html/body/div[117]/div[2]/p[2]/button[1]")
-	private WebElement RegisterConfirmationPopupConfirmButton;
+  private WebElement RegisterConfirmationPopupConfirmButton;
 
 	@FindBy(xpath = "//*[@id='btnInvModify']")
 	private WebElement InvoiceModifyButton;
+
 
 	@FindBy(xpath = "/html/body/div[118]/div[1]/span")
 	private WebElement InvoiceModifyConfirmationPopup;
 
 	@FindBy(xpath = "/html/body/div[118]/div[2]/p[2]/button[1]")
-	private WebElement InvoiceModifyConfirmationPopupConfirmButton;
+  private WebElement InvoiceModifyConfirmationPopupConfirmButton;
 
 	@FindBy(xpath = "//*[@id='btnInvoiceConfirm']")
 	private WebElement InvoiceConfirmButton;
+
 
 	@FindBy(xpath = "/html/body/div[119]/div[1]/span")
 	private WebElement InvoiceConfirmConfirmationPopup;
 
 	@FindBy(xpath = "/html/body/div[119]/div[2]/p[2]/button[1]")
-	private WebElement InvoiceConfirmConfirmationPopupConfirmButton;
+  private WebElement InvoiceConfirmConfirmationPopupConfirmButton;
 
 	@FindBy(xpath = "//*[@id='gnb']/li[5]/a")
 	private WebElement ServiceMenu;
@@ -156,6 +160,7 @@ public class InvoicePage {
 
 	@FindBy(xpath = "//span[contains(text(), 'Vehicle Mgt')]")
 	private WebElement VehicleMgtScreenHeader;
+
 
 	@FindBy(xpath = "//input[@id='sVinNo']")
 	private WebElement VinField;
