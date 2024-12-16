@@ -100,7 +100,7 @@ public class InvoicePage {
 	@FindBy(xpath = "//*[@id='btnPromoAdd']")
 	private WebElement PromotionsSectionPlusIcon;
 
-	@FindBy(xpath = "//*[@id='grid_active_cell']/input")
+	@FindBy(xpath = "//input[@type='checkbox'][@class='checkAll']")
 	private WebElement PromotionCheckBoxAll;
 
 	@FindBy(xpath = "//*[@id='btnAddSelected']")
@@ -121,28 +121,28 @@ public class InvoicePage {
 	@FindBy(xpath = "//*[@id='btnInvRegister']")
 	private WebElement RegisterButton;
 
-	@FindBy(xpath = "//span[normalize-space()='Notice']")
+	@FindBy(xpath = "/html/body/div[117]/div[1]/span")
 	private WebElement RegisterConfirmationPopup;
 
-	@FindBy(xpath = "//*[@class='confirm-yes k-button']")
+	@FindBy(xpath = "/html/body/div[117]/div[2]/p[2]/button[1]")
 	private WebElement RegisterConfirmationPopupConfirmButton;
 
 	@FindBy(xpath = "//*[@id='btnInvModify']")
 	private WebElement InvoiceModifyButton;
 
-	@FindBy(xpath = "//span[normalize-space()='Notice']")
+	@FindBy(xpath = "/html/body/div[118]/div[1]/span")
 	private WebElement InvoiceModifyConfirmationPopup;
 
-	@FindBy(xpath = "//*[@class='confirm-yes k-button']")
+	@FindBy(xpath = "/html/body/div[118]/div[2]/p[2]/button[1]")
 	private WebElement InvoiceModifyConfirmationPopupConfirmButton;
 
 	@FindBy(xpath = "//*[@id='btnInvoiceConfirm']")
 	private WebElement InvoiceConfirmButton;
 
-	@FindBy(xpath = "//span[normalize-space()='Notice']")
+	@FindBy(xpath = "/html/body/div[119]/div[1]/span")
 	private WebElement InvoiceConfirmConfirmationPopup;
 
-	@FindBy(xpath = "//*[@class='confirm-yes k-button']")
+	@FindBy(xpath = "/html/body/div[119]/div[2]/p[2]/button[1]")
 	private WebElement InvoiceConfirmConfirmationPopupConfirmButton;
 
 	@FindBy(xpath = "//*[@id='gnb']/li[5]/a")
@@ -157,7 +157,7 @@ public class InvoicePage {
 	@FindBy(xpath = "//span[contains(text(), 'Vehicle Mgt')]")
 	private WebElement VehicleMgtScreenHeader;
 
-	@FindBy(xpath = "//*[@id='sVinNo']")
+	@FindBy(xpath = "//input[@id='sVinNo']")
 	private WebElement VinField;
 
 	@FindBy(xpath = "/html/body/section/div[1]/div/section[1]/div[1]/div/button")

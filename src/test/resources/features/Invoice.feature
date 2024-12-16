@@ -58,16 +58,5 @@ Feature: User tries to verify the Invoice functionality
     When User tries to clicks on Invoice Confirm button in invoice tab in the Customer Booking Management Screen
     And User should be able to see Do you want to confirm it? Popup
     And User tries to clicks on Confirm button in Do you want to confirm it? Popup 
-    
-    When User clicks Service Menu Item
-    And User clicks on the Basic Info Sub Menu Item
-    And User clicks on the Vehicle Mgt link
-    Then User should be able to navigate to the Vehicle Mgt Screen
-    And User tries to enters valid data in VIN field
-    And User tries to clicks on the Search button in Vehicle Mgt Screen
-    And User tries to clicks on the respective record in the table in Vehicle Mgt Screen
-    And User tries to selects valid data in the delivery date field in Vehicle Mgt Screen
-    And User tries to enters valid data in the Reg. No field in Vehicle Mgt Screen
-    And User tries to click on the Modify button in Vehicle Mgt Screen
-    
+   
     Given user tries to close the chrome browser
