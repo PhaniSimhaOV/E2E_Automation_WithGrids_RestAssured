@@ -220,7 +220,7 @@ public class BookingSalesOperationPage {
             Thread.sleep(3000);
             //Title
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[2]/div[2]/dl[2]/dd[1]/span/span")).click();
-            List<WebElement> optionsTitle = getDriver().findElements(By.xpath("//*[@id=\"titleType_listbox\"]"));  // Replace with the actual XPath or locator
+            List<WebElement> optionsTitle = getDriver().findElements(By.xpath("//*[@id=\"titleType_listbox\"]"));
             String valueToSelect = "Mr.";
             boolean valueFound = false;
             for (WebElement item : optionsTitle) {
@@ -258,9 +258,9 @@ public class BookingSalesOperationPage {
             js.executeScript("window.scrollBy(0,1000)");
             System.out.println("Scrolled down successfully.");
             //Registered Loan amount
-            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).clear();
-            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).sendKeys("1500000");
-            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).click();
+//            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).clear();
+//            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).sendKeys("15000");
+//            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).sendKeys(Keys.ENTER);
             Robot robot = new Robot();
             Random random = new Random();
             int x = random.nextInt(1920);
@@ -325,34 +325,47 @@ public void clickbutton(String button){
 //            String SuccesMessage = getDriver().findElement(By.xpath("//*[@id=\"template\"]/div/div/p")).getText();
 //            System.out.println(SuccesMessage);
 }}
-    public void QuotationPage() {
+    public void QuotationPage() throws InterruptedException {
+      Thread.sleep(3000);
         getDriver().findElement(By.xpath("//*[text()=\"Quotation\"]")).click();
-        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).clear();
-        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).sendKeys("150000");
-        System.out.println("Basic insurance is updated successfully");
-        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span/span/input[1]")).click();
-       getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span/span/input[1]")).clear();
-        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span/span/input[1]")).sendKeys("1");
+//        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).clear();
+//        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).sendKeys("150000");
+//        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).sendKeys(Keys.ENTER);
+//        System.out.println("Basic insurance is updated successfully");
+    //    getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span/span/input[1]")).click();
+//        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span/span/input[1]")).clear();
+//        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span/span/input[1]")).sendKeys("1");
+//        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[3]/dd[3]/span/span/input[1]")).click();
+
         System.out.println("Ex warranty amount is updated successfully");
-        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span")).clear();
-        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span")).sendKeys("106450");
-        System.out.println("RTO Amount has been updated successfully");
+//        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span")).clear();
+//        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span")).sendKeys("106450");
+//        System.out.println("RTO Amount has been updated successfully");
         getDriver().findElement(By.xpath("//*[@id=\"btnFinanceModify\"]")).click();
+        Thread.sleep(4000);
 
     }
 
-    public void ReceiptTab() {
-        LaunchDriver.getDriver().switchTo().defaultContent();
+    public void ReceiptTab() throws InterruptedException {
+//        LaunchDriver.getDriver().switchTo().defaultContent();
+//        LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+getDriver().findElement(By.xpath("//*[@id=\"receiptTab\"]")).click();
+        Thread.sleep(4000);
+       LaunchDriver.getDriver().switchTo().defaultContent();
+       Thread.sleep(4000);
         LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
-        getDriver().findElement(By.xpath("//*[@id=\"receiptTab\"]")).click();
-        getDriver().findElement(By.xpath("//*[@id=\"btnPayAdd\"]")).click();
+       getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[2]/table/tbody/tr[1]/td[8]/button")).click();
+        System.out.println("successfully clicked on share reciept");
     }
 
     public void AmountReceiptPage() throws InterruptedException {
         getDriver().findElement(By.xpath(" //*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[2]")).click();
-        getDriver().findElement(By.xpath("//*[@id=\"paymentGrid_active_cell\"]/span/span/span[2]/span[1]/span")).click();
+        Thread.sleep(4000);
+       // getDriver().findElement(By.xpath("//*[@id=\"paymentGrid_active_cell\"]/span/span/span[2]/span[1]/span")).click();
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[3]")).click();
+        Thread.sleep(4000);
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[3]")).click();
+        Thread.sleep(4000);
         getDriver().findElement(By.xpath("/html/body/div[115]/div/div[2]/ul/li[3]")).click();
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[4]")).click();
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[4]")).click();
@@ -371,6 +384,8 @@ public void clickbutton(String button){
         Thread.sleep(3000);
         getDriver().findElement(By.xpath("//input[@name='chqNo']")).sendKeys("12345678000");
         getDriver().findElement(By.xpath("//*[@id=\"btnPaySave\"]")).click();
+
+
     }
 
 }

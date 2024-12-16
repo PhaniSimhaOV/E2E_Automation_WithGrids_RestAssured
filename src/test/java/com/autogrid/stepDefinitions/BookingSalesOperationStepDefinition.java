@@ -87,13 +87,13 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @And("After successful registration user clicks on Quotation")
-    public void afterSuccessfulRegistrationUserClicksOnQuotation() {
+    public void afterSuccessfulRegistrationUserClicksOnQuotation() throws InterruptedException {
         bookingPage.QuotationPage();
 
     }
 
     @Then("User clicks on the receipt icon")
-    public void userClicksOnTheReceiptIcon() {
+    public void userClicksOnTheReceiptIcon() throws InterruptedException {
         bookingPage.ReceiptTab();
 
     }
@@ -194,6 +194,12 @@ public class BookingSalesOperationStepDefinition {
     }
 
 
+    @Then("User clicks on the receipt icon for account")
+    public void userClicksOnTheReceiptIconForAccount() {
+                LaunchDriver.getDriver().switchTo().defaultContent();
+              LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+        getDriver().findElement(By.xpath("//*[@id=\"receiptTab\"]")).click();
+    }
 }
 
 
