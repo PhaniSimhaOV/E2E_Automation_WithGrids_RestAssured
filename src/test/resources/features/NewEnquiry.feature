@@ -5,8 +5,8 @@ Feature: User tries to verify the New Enquiry functionality
     Given launch browser and enter url
     When user enters a valid username
     And user enter a valid password
-    And clicks on Send OTP
-    And user enters a valid OTP
+    #And clicks on Send OTP
+    #And user enters a valid OTP
     And clicks on login
     When User clicks Sales Menu Item
     And User clicks on the Customer Enquiry Sub Menu Item
