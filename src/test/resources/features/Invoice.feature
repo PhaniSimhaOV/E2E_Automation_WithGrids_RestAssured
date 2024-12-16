@@ -58,5 +58,5 @@ Feature: User tries to verify the Invoice functionality
     When User tries to clicks on Invoice Confirm button in invoice tab in the Customer Booking Management Screen
     And User should be able to see Do you want to confirm it? Popup
     And User tries to clicks on Confirm button in Do you want to confirm it? Popup 
-   
+
     Given user tries to close the chrome browser

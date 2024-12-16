@@ -79,7 +79,9 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_enters_lead_mobile_number_in_the_based_on_field() {
 		try {
 			Thread.sleep(2000);
+
 			String basedOnField = "9577222345";
+
 			invoicepage.enterBasedOnField(basedOnField);
 			System.out.println("Entered Lead Mobile Number: " + basedOnField);
 		} catch (Exception e) {
@@ -168,7 +170,9 @@ public class InvoiceStepDefinition {
 			LaunchDriver.getDriver().switchTo().defaultContent();
 			invoicepage.interactWithIframeElement2();
 			invoicepage.interactWithIframeElement3();
+
 			String PayableByDealerAmount = "00044";
+
 			Thread.sleep(3000);
 			invoicepage.enterPayableByDealerAmountField(PayableByDealerAmount);
 			System.out.println("Entered Payable By Dealer Amount: " + PayableByDealerAmount);
@@ -181,7 +185,9 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_enters_valid_data_in_the_adjustment_credit_note_amount_in_tax_adjustment_allowed_table() {
 		try {
 			Thread.sleep(3000);
+
 			String AdjustmentCreditNoteAmount = "00044";
+
 			invoicepage.enterAdjustmentCreditNoteField(AdjustmentCreditNoteAmount);
 			System.out.println("Entered Adjustment Credit Note Amount : " + AdjustmentCreditNoteAmount);
 		} catch (Exception e) {
@@ -423,9 +429,11 @@ public class InvoiceStepDefinition {
 	@When("User tries to selects valid data in Vehicle usage Type field in customer info Section in the Customer Booking Management Screen")
 	public void user_tries_to_selects_valid_data_in_vehicle_usage_type_field_in_customer_info_section_in_the_customer_booking_management_screen() {
 		try {
+
 			Thread.sleep(7000);
 			invoicepage.interactWithIframeElement2();
 			invoicepage.selectVehicleUsageType("Normal");
+
 		} catch (Exception e) {
 			System.err.println("Error during Vehicle usage Type selection: " + e.getMessage());
 		}
@@ -439,7 +447,9 @@ public class InvoiceStepDefinition {
 			System.out.println("Register button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Register button click: " + e.getMessage());
+
 		}LaunchDriver.getDriver().switchTo().defaultContent();
+
 	}
 
 	@When("User should be able to see Do you want to register? Popup")
@@ -472,12 +482,15 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_click_on_the_modify_button_in_invoice_tab_in_the_customer_booking_management_screen() {
 		try {
 			Thread.sleep(2000);
+
 			invoicepage.interactWithIframeElement2();
 			invoicepage.clickInvoiceModifyButton();
 			System.out.println("Modify button in invoice tab clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Modify button in invoice tab click: " + e.getMessage());
+
 		}LaunchDriver.getDriver().switchTo().defaultContent();
+
 	}
 
 	@When("User should be able to see Do you want to Modify it? Popup in the Customer Booking Management Screen")
@@ -509,19 +522,25 @@ public class InvoiceStepDefinition {
 	@When("User tries to clicks on Invoice Confirm button in invoice tab in the Customer Booking Management Screen")
 	public void user_tries_to_clicks_on_invoice_confirm_button_in_invoice_tab_in_the_customer_booking_management_screen() {
 		try {
+
 			Thread.sleep(7000);
+
 			invoicepage.interactWithIframeElement2();
 			invoicepage.clickInvoiceConfirmButton();
 			System.out.println("Invoice Confirm button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Invoice Confirm button click: " + e.getMessage());
+
 		}LaunchDriver.getDriver().switchTo().defaultContent();
+
 	}
 
 	@When("User should be able to see Do you want to confirm it? Popup")
 	public void user_should_be_able_to_see_do_you_want_to_confirm_it_popup() {
 		try {
+
 			Thread.sleep(2000);
+
 			invoicepage.interactWithIframeElement2();
 			Assert.assertTrue(invoicepage.isInvoiceConfirmConfirmationPopupDisplayed(),
 					"Do you want to confirm it? Popup is not displayed.");
@@ -593,7 +612,9 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_enters_valid_data_in_vin_field() {
 		try {
 			Thread.sleep(2000);
+
 			invoicepage.interactWithIframeElement1();
+
 			String vinField = "MALPC812TRM085097";
 			invoicepage.enterVinField(vinField);
 			System.out.println("Entered Email: " + vinField);
