@@ -79,7 +79,7 @@ public class InvoiceStepDefinition {
 	public void user_tries_to_enters_lead_mobile_number_in_the_based_on_field() {
 		try {
 			Thread.sleep(2000);
-			String basedOnField = "9160495604";
+			String basedOnField = "9154148466";
 			invoicepage.enterBasedOnField(basedOnField);
 			System.out.println("Entered Lead Mobile Number: " + basedOnField);
 		} catch (Exception e) {
@@ -430,7 +430,7 @@ public class InvoiceStepDefinition {
 
 			Thread.sleep(7000);
 			invoicepage.interactWithIframeElement2();
-			invoicepage.selectVehicleUsageType("Normal");
+			invoicepage.selectVehicleUsageType("Corporate");
 
 		} catch (Exception e) {
 			System.err.println("Error during Vehicle usage Type selection: " + e.getMessage());
