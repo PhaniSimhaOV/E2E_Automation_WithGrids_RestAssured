@@ -6,4 +6,3 @@ Feature: MySQL Database Connection
     When User executes a query to fetch data
     Then User closes the database connection
 
-    
