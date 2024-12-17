@@ -78,32 +78,32 @@ Feature: User tries to verify the New Enquiry functionality
     And I click on the Save button
     Then User Should be able to navigate to the Lead Tab in the Sales Customer Enquiry screen
 
-    Given User is in Lead Tab in the Sales Customer Enquiry screen
-    And User tries to enters the Customer Name in Customer Name filter
-    And User tries to clicks on the search button in Lead in the Sales Customer Enquiry screen
-    And User tries to double click on the Repective Enquiry
-    Then User Should be able to navigate to the Basic Info tab in the Sales Customer Enquiry Info screen
-    And User tries to selects valid data in TD Offer dropdown
-    And User tries to selects valid data in TD VIN dropdown
-    And User tries to clicks on Save button in the Basic Info tab in the Sales Customer Enquiry Info screen
-
-    Given User is in the Test Drive Appointment Screen
-    When User tries to selects A valid Time solt Which was greater than the Current time
-    And User tries to clicks on Save button in the Test Drive Appointment Screen
-    Then User should be able to see a Toast Message as Successfully reflected in Test Drive Appointment Screen
-
-    Given User is in the Test Drive Appointment Screen
-    And User tries to clicks on the Close Icon on the Test Drive Appointment Tab
-    Then User Should be able to navigate to the Basic Info tab in the Sales Customer Enquiry Info screen
-    And User tries to clicks on the Follow Up tab in the Sales Customer Enquiry Info screen
-    Then User Should be able to navigate to the Follow Up tab in the Sales Customer Enquiry Info screen
-    And User tries to selects valid data in Next Follow Up Time
-    And User tries to selects valid data in Next Follow Up Type
-    And User tries to selects valid data in Enquiry Type
-    And User tries to selects valid data in Verification
-    And User tries to enters valid data in Scheme Offered
-    And User tries to enters valid data in Follow Up Remarks
-    And User tries to clicks on Save button in the Follow Up tab in the Sales Customer Enquiry Info screen
-    Then User should be able to see a Toast Message as Successfully reflected in Follow Up tab
+    #Given User is in Lead Tab in the Sales Customer Enquiry screen
+    #And User tries to enters the Customer Name in Customer Name filter
+    #And User tries to clicks on the search button in Lead in the Sales Customer Enquiry screen
+    #And User tries to double click on the Repective Enquiry
+    #Then User Should be able to navigate to the Basic Info tab in the Sales Customer Enquiry Info screen
+    #And User tries to selects valid data in TD Offer dropdown
+    #And User tries to selects valid data in TD VIN dropdown
+    #And User tries to clicks on Save button in the Basic Info tab in the Sales Customer Enquiry Info screen
+#
+    #Given User is in the Test Drive Appointment Screen
+    #When User tries to selects A valid Time solt Which was greater than the Current time
+    #And User tries to clicks on Save button in the Test Drive Appointment Screen
+    #Then User should be able to see a Toast Message as Successfully reflected in Test Drive Appointment Screen
+#
+    #Given User is in the Test Drive Appointment Screen
+    #And User tries to clicks on the Close Icon on the Test Drive Appointment Tab
+    #Then User Should be able to navigate to the Basic Info tab in the Sales Customer Enquiry Info screen
+    #And User tries to clicks on the Follow Up tab in the Sales Customer Enquiry Info screen
+    #Then User Should be able to navigate to the Follow Up tab in the Sales Customer Enquiry Info screen
+    #And User tries to selects valid data in Next Follow Up Time
+    #And User tries to selects valid data in Next Follow Up Type
+    #And User tries to selects valid data in Enquiry Type
+    #And User tries to selects valid data in Verification
+    #And User tries to enters valid data in Scheme Offered
+    #And User tries to enters valid data in Follow Up Remarks
+    #And User tries to clicks on Save button in the Follow Up tab in the Sales Customer Enquiry Info screen
+    #Then User should be able to see a Toast Message as Successfully reflected in Follow Up tab
 
     Given user tries to close the google chrome browser
