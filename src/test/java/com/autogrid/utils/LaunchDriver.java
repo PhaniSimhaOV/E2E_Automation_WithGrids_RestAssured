@@ -29,6 +29,7 @@ public class LaunchDriver {
                 && Config.get("selenium.grid.enabled").equalsIgnoreCase("false")
                 && !Config.get("selenium.run.device").equalsIgnoreCase("mobile")) {
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("headless");
             options.addArguments(Arrays.asList("--no-sandbox", "--verbose", "--window-size=1920,1080",
                     "--ignore-certificate-errors", "--disable-notifications", "--remote-allow-origins=*"));
             logger.info("Initializing WebDriver & launching Chrome Locally");
