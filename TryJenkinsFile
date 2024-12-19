@@ -32,7 +32,7 @@ pipeline {
                 script {
                     // Run the Cucumber tests using Maven, store results in a JSON file
                     // Ensure the correct setup for Chrome and WebDriver in your test environment
-                    sh "mvn test -Dcucumber.options='--plugin json:${env.REPORTS_DIR}/cucumber.json' -Dwebdriver.chrome.driver=${env.CHROME_DRIVER_PATH}"
+                    sh "mvn test -Dcucumber.options='--plugin json:${env.REPORTS_DIR}/cucumber.json'"
                 }
             }
         }
@@ -54,4 +54,3 @@ pipeline {
         }
     }
 }
-
