@@ -1,0 +1,72 @@
+pipeline {
+    agent any
+    triggers {
+        // Trigger the job every 2 hours
+        cron('H 0,2,4,6,8,10,12,14,16,18,20,22 * * *')  // Every 2 hours
+    }
+
+    environment {
+        // Define environment variables
+        GIT_REPO_URL = 'https://github.com/LazySaif20/E2E_Automation_WithGrids_RestAssured.git' // Replace with your Git repository URL
+        GIT_BRANCH = 'OEM_Anjali.M'  // Branch to checkout from
+        GIT_TAG = 'testBooking'   // Replace with your specific Git tag
+        REPORTS_DIR = 'cucumber-reports'  // Folder for Cucumber reports
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                script {
+                    // Checkout the code from the Git repository with a specific tag
+                    git branch: "${env.GIT_BRANCH}", url: "${env.GIT_REPO_URL}"
+                    sh "git fetch --tags"  // Fetch tags if not already fetched
+                    sh "git checkout tags/${env.GIT_TAG}"  // Checkout the specific tag
+                }
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Install dependencies using Gradle
+                    // Ensure Gradle is installed on the Jenkins agent
+                    sh './gradlew clean build'  // Run Gradle build (including dependency installation)
+                }
+            }
+        }
+
+        stage('Run Automation Scripts (Cucumber Tests)') {
+            steps {
+                script {
+                    // Run the Cucumber tests using Gradle, store results in a JSON file
+                    // Ensure that your Gradle project is configured to run Cucumber tests
+                    sh './gradlew test -Dcucumber.options="--plugin json:${env.REPORTS_DIR}/cucumber.json"'
+                }
+            }
+        }
+
+        stage('Archive Cucumber Reports') {
+            steps {
+                script {
+                    // Archive the generated Cucumber JSON reports
+                    archiveArtifacts artifacts: "${env.REPORTS_DIR}/**/*", allowEmptyArchive: true
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Automation scripts executed successfully!'
+            // Optional: You can add success notifications or actions here (e.g., send success messages)
+        }
+        failure {
+            echo 'Automation scripts failed. Please check the logs.'
+            // Optional: You can add failure notifications or actions here (e.g., send failure messages)
+        }
+        always {
+            // Always run this block (whether success or failure)
+            junit "${env.REPORTS_DIR}/cucumber.json"  // Process Cucumber JSON reports using Jenkins' JUnit plugin
+        }
+    }
+}
