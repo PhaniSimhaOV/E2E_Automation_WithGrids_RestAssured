@@ -3,6 +3,9 @@ pipeline {
 tools{
 maven 'MAVEN'
 }
+node {
+    bat 'dir' // Use Windows-specific commands
+}
 
     stages {
         stage('Checkout Code') {
@@ -18,6 +21,7 @@ maven 'MAVEN'
         stage('Run Automation Scripts (Cucumber Tests)') {
             steps {
                 script {
+                bat 'echo Hello, World!'
                     sh "mvn test -Dcucumber.options='--plugin json:${env.REPORTS_DIR}/cucumber.json'"
                 }
             }
