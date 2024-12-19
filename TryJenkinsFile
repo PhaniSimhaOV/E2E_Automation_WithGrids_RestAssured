@@ -1,9 +1,9 @@
 pipeline {
     agent any
     tools {
-            maven 'MAVEN'
-             jdk 'JAVA_JDK'// Use the name configured in Jenkins
-        }
+        maven 'MAVEN'       // Use the name configured in Jenkins
+        jdk 'JAVA_JDK'      // Use the name configured in Jenkins
+    }
     stages {
         stage('Checkout Code') {
             steps {
@@ -16,21 +16,26 @@ pipeline {
             }
         }
         stage('Generate Cucumber Report') {
-                    steps {
-                        bat 'mvn net.masterthought:cucumber-reporting:generate' // Generate the report
-                    }
-         }
+            steps {
+                bat 'mvn net.masterthought:cucumber-reporting:generate'
+            }
+        }
         stage('Archive Test Results') {
             steps {
+                // Archive JUnit test results
                 junit '**/target/surefire-reports/*.xml'
+                // Archive Cucumber JSON report for debugging
+                archiveArtifacts artifacts: 'target/cucumber-reports/Cucumber.json'
             }
         }
     }
     post {
-            always {
-                cucumber(fileIncludePattern: '**/target/cucumber-reports/Cucumber.json')
-                archiveArtifacts artifacts: 'target/cucumber-reports/**', fingerprint: true
-            }
+        always {
+            // Publish Cucumber reports
+            cucumber fileIncludePattern: 'target/cucumber-reports/Cucumber.json'
+
+            // Clean workspace after the build
+            cleanWs()
         }
     }
-
+}
