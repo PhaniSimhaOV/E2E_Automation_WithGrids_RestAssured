@@ -36,7 +36,8 @@ maven 'MAVEN'
     post {
         always {
             // Always run this block, whether success or failure
-            junit "${env.REPORTS_DIR}/cucumber.json"  // Process the Cucumber JSON reports using the JUnit plugin
+            junit '**/target/surefire-reports/*.xml'
+
         }
     }
 }
