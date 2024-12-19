@@ -3,14 +3,16 @@ pipeline {
 tools{
 maven 'MAVEN'
 }
-node {
-    bat 'dir' // Use Windows-specific commands
-}
+
 
     stages {
         stage('Checkout Code') {
             steps {
+
+
                 script {
+                 bat 'echo %PATH%'
+
                      checkout scmGit(branches: [[name: '*/OEM_Anjali.M']], extensions: [], userRemoteConfigs: [[credentialsId: '1b8be9aa-d3f6-4295-94bd-99f752461e51', url: 'https://github.com/LazySaif20/E2E_Automation_WithGrids_RestAssured.git']])
 
                 }
