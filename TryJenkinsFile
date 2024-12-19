@@ -24,8 +24,16 @@ pipeline {
             steps {
                 // Archive JUnit test results
                 junit '**/target/surefire-reports/*.xml'
+
                 // Archive Cucumber JSON report for debugging
                 archiveArtifacts artifacts: 'target/cucumber-reports/Cucumber.json'
+
+                // Create a dedicated folder for the Cucumber reports
+                script {
+                    def reportDir = "CucumberReports"
+                    bat "mkdir ${reportDir}"
+                    bat "copy target\\cucumber-reports\\* ${reportDir}"
+                }
             }
         }
     }
