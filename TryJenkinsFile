@@ -3,36 +3,21 @@ pipeline {
 tools{
 maven 'MAVEN'
 }
-    environment {
-        GIT_REPO_URL = 'https://github.com/LazySaif20/E2E_Automation_WithGrids_RestAssured.git'  // Replace with your Git repository URL
-        GIT_BRANCH = 'OEM_Anjali.M'  // Branch to checkout from
-        REPORTS_DIR = 'cucumber-reports'  // Folder for storing Cucumber reports
 
-    }
     stages {
         stage('Checkout Code') {
             steps {
                 script {
-                    // Checkout the latest code from the Git repository
-                    git branch: "${env.GIT_BRANCH}", url: "${env.GIT_REPO_URL}"
+                     checkout scmGit(branches: [[name: '*/OEM_Anjali.M']], extensions: [], userRemoteConfigs: [[credentialsId: '1b8be9aa-d3f6-4295-94bd-99f752461e51', url: 'https://github.com/LazySaif20/E2E_Automation_WithGrids_RestAssured.git']])
+
                 }
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                script {
-                    // Install dependencies using Maven
-                    sh 'mvn clean install'  // Run Maven build to install dependencies
-                }
-            }
-        }
 
         stage('Run Automation Scripts (Cucumber Tests)') {
             steps {
                 script {
-                    // Run the Cucumber tests using Maven, store results in a JSON file
-                    // Ensure the correct setup for Chrome and WebDriver in your test environment
                     sh "mvn test -Dcucumber.options='--plugin json:${env.REPORTS_DIR}/cucumber.json'"
                 }
             }
