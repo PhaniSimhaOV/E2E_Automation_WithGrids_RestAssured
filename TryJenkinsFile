@@ -9,7 +9,6 @@ maven 'MAVEN'
         REPORTS_DIR = 'cucumber-reports'  // Folder for storing Cucumber reports
 
     }
-
     stages {
         stage('Checkout Code') {
             steps {
