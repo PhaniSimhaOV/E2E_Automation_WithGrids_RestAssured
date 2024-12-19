@@ -1,69 +1,56 @@
-#!usr/bin/groovy
-library identifier:"esqm-automation-serenity-plugin@master",
-    retriever: modernSCM([
-    $class: 'GitSCMSource',
-    remote:'https://github.com/LazySaif20/E2E_Automation_WithGrids_RestAssured.git'
-    ])
-
-def git_credentials_id=''
-def gitURL='https://github.com/LazySaif20/E2E_Automation_WithGrids_RestAssured.git'
-def gitBranch='testBooking'
-
-def scheduleBuild=''
-def emailTo=''
-
 pipeline {
     agent any
-    triggers {
-        // Trigger the job every 2 hours
-        cron('H 0,2,4,6,8,10,12,14,16,18,20,22 * * *')  // Every 2 hours
+
+    environment {
+        GIT_REPO_URL = 'https://github.com/LazySaif20/E2E_Automation_WithGrids_RestAssured.git'  // Replace with your Git repository URL
+        GIT_BRANCH = 'OEM_Anjali.M'  // Branch to checkout from
+        REPORTS_DIR = 'cucumber-reports'  // Folder for storing Cucumber reports
+
     }
-    parameters{
-        choice(choices:"chrome\nie",descripton: "Browser to run test", name:'browserName')
-        choice(choices:"true\nfalse",descripton: 'Perform sonar scan',name:'sonarscan')
-    }
-    agent any
-    triggers{
-        githubPush()
-    }
-    options{
-        buildDiscarder(logRotator(numToKeepStr: '20',daysToKeepStr:'30'))
-        timeout(time:60,unit:'MINUTES')
-    }
-    stages{
-        stage('Run Smoke Test'){
-            parallel{
-                stage('Run each test'){
-                    steps{
-                        script{
-                            try{
-                                gitCheckout(gitURL,gitBranch,git_credentials_id)
-                                sh 'chmod +x gradlew;./gradlew runRegression --browserName='+"${params.browserName}"+''
-                            }catch(Exception e){
-                                echo "Caught Error: ${e}"
-                                sh "exit 1"
-                            }finally{
-                                gradleTest.publishReport("Cucumber-Report","index.html","reports")
-                            }
-                        }
-                    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                script {
+                    // Checkout the latest code from the Git repository
+                    git branch: "${env.GIT_BRANCH}", url: "${env.GIT_REPO_URL}"
+                }
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Install dependencies using Maven
+                    sh 'mvn clean install'  // Run Maven build to install dependencies
+                }
+            }
+        }
+
+        stage('Run Automation Scripts (Cucumber Tests)') {
+            steps {
+                script {
+                    // Run the Cucumber tests using Maven, store results in a JSON file
+                    // Ensure the correct setup for Chrome and WebDriver in your test environment
+                    sh "mvn test -Dcucumber.options='--plugin json:${env.REPORTS_DIR}/cucumber.json' -Dwebdriver.chrome.driver=${env.CHROME_DRIVER_PATH}"
+                }
+            }
+        }
+
+        stage('Archive Cucumber Reports') {
+            steps {
+                script {
+                    // Archive the generated Cucumber JSON reports
+                    archiveArtifacts artifacts: "${env.REPORTS_DIR}/**/*", allowEmptyArchive: true
                 }
             }
         }
     }
-    post{
-        success{
-            echo "All stages passed"
-        }
-        failure{
-            step([$class:'ClaimPublisher'])
-        }
-        always{
-            script{
-                currentBuild.displayName="${BUILD_NUMBER}+${params.TypeOfTesting}+${cuurentBuild.currentResult}"
-            }
-        }
-        cleanWs()s
-    }
 
+    post {
+        always {
+            // Always run this block, whether success or failure
+            junit "${env.REPORTS_DIR}/cucumber.json"  // Process the Cucumber JSON reports using the JUnit plugin
+        }
+    }
 }
