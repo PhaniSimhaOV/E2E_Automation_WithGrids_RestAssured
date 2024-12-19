@@ -1,7 +1,8 @@
 pipeline {
     agent any
     tools {
-            maven 'MAVEN' // Use the name configured in Jenkins
+            maven 'MAVEN'
+             jdk 'JAVA_JDK'// Use the name configured in Jenkins
         }
     stages {
         stage('Checkout Code') {
