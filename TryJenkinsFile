@@ -15,6 +15,11 @@ pipeline {
                 bat 'mvn clean test'
             }
         }
+        stage('Generate Cucumber Report') {
+                    steps {
+                        bat 'mvn net.masterthought:cucumber-reporting:generate' // Generate the report
+                    }
+         }
         stage('Archive Test Results') {
             steps {
                 junit '**/target/surefire-reports/*.xml'
@@ -22,8 +27,10 @@ pipeline {
         }
     }
     post {
-        always {
-            cleanWs()
+            always {
+                cucumber(fileIncludePattern: '**/target/cucumber-reports/Cucumber.json')
+                archiveArtifacts artifacts: 'target/cucumber-reports/**', fingerprint: true
+            }
         }
     }
-}
+
