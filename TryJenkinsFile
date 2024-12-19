@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+tools{
+maven 'MAVEN'
+}
     environment {
         GIT_REPO_URL = 'https://github.com/LazySaif20/E2E_Automation_WithGrids_RestAssured.git'  // Replace with your Git repository URL
         GIT_BRANCH = 'OEM_Anjali.M'  // Branch to checkout from
