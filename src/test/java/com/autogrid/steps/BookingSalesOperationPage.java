@@ -330,10 +330,7 @@ public void clickbutton(String button){
 }}
     public void QuotationPage() throws InterruptedException {
       Thread.sleep(3000);
-        LaunchDriver.getDriver().switchTo().defaultContent();
-        LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
-
-        getDriver().findElement(By.xpath("//*[text()=\"Quotation\"]")).click();
+      getDriver().findElement(By.xpath("//*[@id=\"orpTab\"]")).click();
 //        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).clear();
 //        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).sendKeys("150000");
 //        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).sendKeys(Keys.ENTER);
