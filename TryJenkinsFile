@@ -12,7 +12,11 @@ pipeline {
         }
         stage('Run Automation Scripts (Cucumber Tests)') {
             steps {
-                bat 'mvn clean test'
+                script {
+                    // Specify the tags for the tests you want to run
+                    def tags = '--tags @testBooking'
+                    bat "mvn clean test ${tags}"
+                }
             }
         }
         stage('Validate Cucumber JSON File') {
@@ -26,7 +30,9 @@ pipeline {
         }
         stage('Generate Cucumber Report') {
             steps {
-                bat 'mvn net.masterthought:cucumber-reporting:generate'
+                script {
+                    bat 'mvn net.masterthought:cucumber-reporting:generate'
+                }
             }
         }
         stage('Archive Test Results') {
@@ -38,7 +44,7 @@ pipeline {
     }
     post {
         always {
-            cleanWs()
+            cleanWs deleteDirs: true, notFailBuild: true
         }
     }
 }
