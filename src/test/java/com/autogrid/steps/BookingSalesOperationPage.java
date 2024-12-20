@@ -188,6 +188,7 @@ public class BookingSalesOperationPage {
             getDriver().findElement(By.xpath("//*[@id=\"basicInfo\"]/div[3]/dl[2]/dd[2]")).click();
             List<WebElement> optionsCategory = getDriver().findElements(By.xpath("//ul[@id=\"enCategory_listbox\"]/li"));  // Replace with the actual XPath or locator
             WebElement Enquirycategory=optionsCategory.get(3);
+            Thread.sleep(3000);
             Enquirycategory.click();
             System.out.println("The Enquiry Category as being selected");
             Thread.sleep(3000);
@@ -195,6 +196,7 @@ public class BookingSalesOperationPage {
             getDriver().findElement(By.xpath(" //*[@id=\"basicInfo\"]/div[3]/dl[2]/dd[3]")).click();
             List<WebElement> options = getDriver().findElements(By.xpath("//ul[@id=\"enSaleEmpNo_listbox\"]/li"));  // Replace with the actual XPath or locator
             WebElement selectedOption = options.get(15);
+            Thread.sleep(3000);
             selectedOption.click();
             System.out.println("Selected Option: " + selectedOption.getText());
             System.out.println("The Sales Consultant as being selected");
