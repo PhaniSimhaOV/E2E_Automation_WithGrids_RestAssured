@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools {
-        maven 'MAVEN'       // Use the name configured in Jenkins
-        jdk 'JAVA_JDK'      // Use the name configured in Jenkins
+        maven 'MAVEN'
+        jdk 'JAVA_JDK'
     }
     stages {
         stage('Checkout Code') {
@@ -22,27 +22,16 @@ pipeline {
         }
         stage('Archive Test Results') {
             steps {
-                // Archive JUnit test results
                 junit '**/target/surefire-reports/*.xml'
-
-                // Archive Cucumber JSON report for debugging
-                archiveArtifacts artifacts: 'target/cucumber-reports/Cucumber.json'
-
-                // Create a dedicated folder for the Cucumber reports
-                script {
-                    def reportDir = "CucumberReports"
-                    bat "mkdir ${reportDir}"
-                    bat "copy target\\cucumber-reports\\* ${reportDir}"
-                }
+                archiveArtifacts artifacts: 'target/cucumber-reports/*.json', fingerprint: true
             }
         }
     }
     post {
         always {
-            // Publish Cucumber reports
-            cucumber fileIncludePattern: 'target/cucumber-reports/Cucumber.json'
-
-            // Clean workspace after the build
+            script {
+                echo 'Build completed. Cleaning up workspace.'
+            }
             cleanWs()
         }
     }
