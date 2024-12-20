@@ -88,7 +88,7 @@ public class BookingSalesOperationStepDefinition {
 
     @And("After successful registration user clicks on Quotation")
     public void afterSuccessfulRegistrationUserClicksOnQuotation() throws InterruptedException {
-       Thread.sleep(3000);
+       Thread.sleep(7000);
         bookingPage.QuotationPage();
 
     }
