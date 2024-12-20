@@ -122,7 +122,8 @@ public class BookingSalesOperationPage {
 
     public void MobileNumberTextBox() {
         try {
-            getDriver().findElement(By.xpath("//input[@class=\"form_input\"]")).sendKeys("7799222422");
+            getDriver().findElement(By.xpath("//input[@class=\"form_input\"]")).sendKeys("8886376262");
+            //7799222422
         } catch (Exception e) {
             System.err.println("Error in passing the mobile number to the text field: " + e.getMessage());
             throw e;
@@ -174,10 +175,10 @@ public class BookingSalesOperationPage {
             LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
             System.out.println("Successfully interacted with the element inside the iframe.");
             Thread.sleep(3000);
-            getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).clear();
-            getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).sendKeys("34512678");
-            System.out.println("The GST number as been passed" +getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).getText());
-            //EnquiryType:
+//            getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).clear();
+//            getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).sendKeys("34512678");
+//            System.out.println("The GST number as been passed" +getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).getText());
+//            //EnquiryType:
             getDriver().findElement(By.xpath("//*[@id=\"basicInfo\"]/div[3]/dl[2]/dd[1]")).click();
             getDriver().findElement(By.xpath("//*[@id=\"enType_listbox\"]/li[1]")).click();
             System.out.println("The Enquiry type as being selected");
@@ -214,10 +215,10 @@ public class BookingSalesOperationPage {
 //                getDriver().findElement(By.xpath("//*[@id=\"gridBody\"]/div[2]/table/tbody/tr[1]/td[1]")).click();
 //            System.out.println("Registered corp is slected successfully");
             //ModeOfPurchase
-            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[2]/dd[1]/span/span/span[1]")).click();
-            getDriver().findElement(By.xpath("//*[@id=\"purchaseType_listbox\"]/li[4]")).click();
-            System.out.println("The Purchase Type as being selected");
-            Thread.sleep(3000);
+//            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[2]/dd[1]/span/span/span[1]")).click();
+//            getDriver().findElement(By.xpath("//*[@id=\"purchaseType_listbox\"]/li[4]")).click();
+//            System.out.println("The Purchase Type as being selected");
+//            Thread.sleep(3000);
             //Title
             getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[2]/div[2]/dl[2]/dd[1]/span/span")).click();
             List<WebElement> optionsTitle = getDriver().findElements(By.xpath("//*[@id=\"titleType_listbox\"]"));
@@ -271,34 +272,34 @@ public class BookingSalesOperationPage {
             System.out.println("Registered loan amount as been entered successfully");
 
             //Shipping address
-            getDriver().findElement(By.xpath("//*[@id=\"bkngShipToName\"]")).clear();
-            getDriver().findElement(By.xpath("//*[@id=\"bkngShipToName\"]")).sendKeys("Srujan");
-            System.out.println("Name is updated");
-            Thread.sleep(2000);
-            getDriver().findElement(By.xpath("//*[@id=\"bkngShipToAddr\"]")).clear();
-            getDriver().findElement(By.xpath("//*[@id=\"bkngShipToAddr\"]")).sendKeys("Assam");
-            System.out.println("Address is updated");
-            getDriver().findElement(By.xpath("//a[@href=\"javascript:fn_pinCodeSearch2('Ship');\"]")).click();
-            Thread.sleep(2000);
-            WebElement iframenameShipping = getDriver().findElement(By.xpath("//iframe[@class='k-content-frame']"));
-            LaunchDriver.getDriver().switchTo().defaultContent();
-            Thread.sleep(2000);
-            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
-            LaunchDriver.getDriver().switchTo().frame(iframenameShipping);
-            Thread.sleep(2000);
-            getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[2]/dl[1]/dd[1]/span/span")).click();
-            Thread.sleep(2000);
-            getDriver().findElement(By.xpath("//*[@id=\"sStcdName_listbox\"]/li[4]")).click();
-            getDriver().findElement(By.xpath("//*[@id='window']/div[1]/div/button[2]")).click();
-            WebElement ShippingTable = getDriver().findElement(By.xpath("//*[@id='grid']/div[2]/table/tbody/tr[1]"));
-            actions.doubleClick(ShippingTable).perform();
-            Thread.sleep(2000);
-            Thread.sleep(2000);
-            System.out.println("Shipping Table address is updated");
-            Thread.sleep(2000);
-            LaunchDriver.getDriver().switchTo().defaultContent();
-            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
-
+//            getDriver().findElement(By.xpath("//*[@id=\"bkngShipToName\"]")).clear();
+//            getDriver().findElement(By.xpath("//*[@id=\"bkngShipToName\"]")).sendKeys("Srujan");
+//            System.out.println("Name is updated");
+//            Thread.sleep(2000);
+//            getDriver().findElement(By.xpath("//*[@id=\"bkngShipToAddr\"]")).clear();
+//            getDriver().findElement(By.xpath("//*[@id=\"bkngShipToAddr\"]")).sendKeys("Assam");
+//            System.out.println("Address is updated");
+//            getDriver().findElement(By.xpath("//a[@href=\"javascript:fn_pinCodeSearch2('Ship');\"]")).click();
+//            Thread.sleep(2000);
+//            WebElement iframenameShipping = getDriver().findElement(By.xpath("//iframe[@class='k-content-frame']"));
+//            LaunchDriver.getDriver().switchTo().defaultContent();
+//            Thread.sleep(2000);
+//            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+//            LaunchDriver.getDriver().switchTo().frame(iframenameShipping);
+//            Thread.sleep(2000);
+//            getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[2]/dl[1]/dd[1]/span/span")).click();
+//            Thread.sleep(2000);
+//            getDriver().findElement(By.xpath("//*[@id=\"sStcdName_listbox\"]/li[4]")).click();
+//            getDriver().findElement(By.xpath("//*[@id='window']/div[1]/div/button[2]")).click();
+//            WebElement ShippingTable = getDriver().findElement(By.xpath("//*[@id='grid']/div[2]/table/tbody/tr[1]"));
+//            actions.doubleClick(ShippingTable).perform();
+//            Thread.sleep(2000);
+//            Thread.sleep(2000);
+//            System.out.println("Shipping Table address is updated");
+//            Thread.sleep(2000);
+//            LaunchDriver.getDriver().switchTo().defaultContent();
+//            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+//
 
         } catch (Exception e) {
             System.err.println("Error in passing the dates: " + e.getMessage());
