@@ -129,7 +129,8 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @Then("User clicks on Order and stock")
-    public void userClicksOnOrderAndStock() {
+    public void userClicksOnOrderAndStock() throws InterruptedException {
+        Thread.sleep(3000);
         getDriver().findElement(By.xpath("//a[text()='Order/Stock']")).click();
     }
 
