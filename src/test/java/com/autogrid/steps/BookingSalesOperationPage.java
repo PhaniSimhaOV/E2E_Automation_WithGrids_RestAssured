@@ -59,9 +59,9 @@ public class BookingSalesOperationPage {
 
     public void SalesIconButton() throws InterruptedException {
         try {
-            //Thread.sleep(15000*3);
-
+            Thread.sleep(3000);
             SalesIcon.click();
+            Thread.sleep(3000);
         } catch (Exception e) {
             System.err.println("Error in Clicking the Sales Icon : " + e.getMessage());
             throw e;

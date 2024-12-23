@@ -163,7 +163,8 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @When("User selects Customer Booking Mgt List under sales Operation in accounts")
-    public void userSelectsCustomerBookingMgtListUnderSalesOperationInAccounts() {
+    public void userSelectsCustomerBookingMgtListUnderSalesOperationInAccounts() throws InterruptedException {
+        Thread.sleep(3000);
         getDriver().findElement(By.xpath("//*[@id=\"gnb\"]/li[2]/div/ul/li[3]/ul/li[1]/a ")).click();
     }
 
