@@ -132,11 +132,14 @@ public class BookingSalesOperationStepDefinition {
     public void userClicksOnOrderAndStock() throws InterruptedException {
         Thread.sleep(3000);
         getDriver().findElement(By.xpath("//a[text()='Order/Stock']")).click();
+        Thread.sleep(3000);
     }
 
     @Then("user selects Dealer Vechile Stock MGT")
-    public void userSelectsDealerVechileStockMGT() {
+    public void userSelectsDealerVechileStockMGT() throws InterruptedException {
+        Thread.sleep(3000);
         getDriver().findElement(By.xpath("//*[@id=\"gnb\"]/li[3]/div/ul/li[4]/ul/li[4]/a")).click();
+        Thread.sleep(3000);
     }
 
     @And("User passes the VIN number into the field")
