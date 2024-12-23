@@ -143,8 +143,9 @@ public class BookingSalesOperationStepDefinition {
         WebElement iframename = getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame2']"));
         getDriver().switchTo().defaultContent();
         getDriver().switchTo().frame(iframename);
-        getDriver().findElement(By.xpath("//*[@id=\"sVin\"]")).sendKeys("MALB351CLRM593451");
+        getDriver().findElement(By.xpath("//*[@id=\"sVin\"]")).sendKeys("MALB551CLRM614650");
 //MALB341CYRM313126
+        //MALB351CLRM593451
     }
 
     @And("Searches for the Vin number")
