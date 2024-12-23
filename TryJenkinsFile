@@ -10,37 +10,7 @@ pipeline {
                 git url: 'https://github.com/LazySaif20/E2E_Automation_WithGrids_RestAssured.git', branch: 'OEM_Anjali.M'
             }
         }
-        stage('Run Automation Scripts (Cucumber Tests)') {
-            steps {
-                script {
 
-                    bat 'mvn clean test -Dcucumber.filter.tags="@testBooking"'
-                }
-            }
-        }
-        stage('Validate Cucumber JSON File') {
-            steps {
-                script {
-                    if (!fileExists('target/cucumber-reports/Cucumber.json')) {
-                        error('Cucumber JSON report not found. Test execution might have failed or reports are not being generated.')
-                    }
-                }
-            }
-        }
-        stage('Generate Cucumber Report') {
-            steps {
-                script {
-                    bat 'mvn net.masterthought:cucumber-reporting:generate'
-                }
-            }
-        }
-        stage('Archive Test Results') {
-            steps {
-                junit '**/target/surefire-reports/*.xml'
-                archiveArtifacts artifacts: 'target/cucumber-reports/*.json', fingerprint: true
-            }
-        }
-    }
     post {
         always {
             cleanWs deleteDirs: true, notFailBuild: true
