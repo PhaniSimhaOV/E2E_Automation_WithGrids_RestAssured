@@ -4,6 +4,7 @@ pipeline {
         maven 'MAVEN'
         jdk 'JAVA_JDK'
     }
+
     stages {
         stage('Checkout Code') {
             steps {
