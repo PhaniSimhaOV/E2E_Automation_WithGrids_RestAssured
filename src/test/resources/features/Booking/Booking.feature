@@ -23,7 +23,7 @@ Feature: User navigates to booking section
     Then user clicks on "<button>" based on the value
     And After successful registration user clicks on Quotation
     Then User clicks on the receipt icon
-  Given user tries to close the chrome browser
+
     Given launch browser and enter url
     When user enters a valid username for account
     And user enter a valid password for account
@@ -41,7 +41,7 @@ Feature: User navigates to booking section
     Then User clicks on the receipt icon for account
     And User as to add the amount in the receipt section
     Then User clicks on Send Customer consent link
-    Given user tries to close the chrome browser
+
     Given launch browser and enter url
     When user enters a valid username
     And user enter a valid password
