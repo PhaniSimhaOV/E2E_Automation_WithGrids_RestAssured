@@ -37,7 +37,7 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @Then("User selects the Sales Operation tab")
-    public void userSelectsTheSalesOperationTab() {
+    public void userSelectsTheSalesOperationTab() throws InterruptedException {
         bookingPage.SalesOperationLink();
     }
 

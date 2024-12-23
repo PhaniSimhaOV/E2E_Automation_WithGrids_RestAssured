@@ -81,8 +81,9 @@ public class BookingSalesOperationPage {
 
     }
 
-    public void SalesOperationLink() {
+    public void SalesOperationLink() throws InterruptedException {
         try {
+            Thread.sleep(4000);
             SalesOperationButton.click();
         } catch (Exception e) {
             System.err.println("Error in Clicking the SalesOperation Button  : " + e.getMessage());
