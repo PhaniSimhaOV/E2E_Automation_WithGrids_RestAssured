@@ -13,7 +13,8 @@ pipeline {
         stage('Run Automation Scripts (Cucumber Tests)') {
             steps {
                 script {
-                    bat 'mvn clean test'
+                    // Replace @yourTag with the actual tag you want to run
+                    bat 'mvn clean test -Dcucumber.filter.tags="@yourTag"'
                 }
             }
         }
