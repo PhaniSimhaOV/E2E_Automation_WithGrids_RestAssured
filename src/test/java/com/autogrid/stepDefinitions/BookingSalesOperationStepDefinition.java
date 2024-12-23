@@ -206,6 +206,14 @@ public class BookingSalesOperationStepDefinition {
               LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
         getDriver().findElement(By.xpath("//*[@id=\"receiptTab\"]")).click();
     }
+    @Given("user tries to close the chrome browser")
+    public void user_tries_to_close_the_chrome_browser() throws Exception {
+        try {
+            LaunchDriver.tearDown();
+        } catch (Exception e) {
+            throw new Exception("Error occurred while Closing the browser : " + e.getMessage());
+        }
+    }
 }
 
 
