@@ -83,7 +83,7 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @Then("user clicks on {string} based on the value")
-    public void userClicksOnBasedOnTheValue(String button) {
+    public void userClicksOnBasedOnTheValue(String button) throws InterruptedException {
         bookingPage.clickbutton(button);
     }
 
@@ -108,6 +108,7 @@ public class BookingSalesOperationStepDefinition {
 
     @And("user enter a valid password for account")
     public void userEnterAValidPasswordForAccount() {
+    bookingPage.AccountLoginPassword();
     }
 
     @And("User as to add the amount in the receipt section")
