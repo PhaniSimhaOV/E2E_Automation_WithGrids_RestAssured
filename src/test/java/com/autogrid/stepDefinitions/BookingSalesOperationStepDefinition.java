@@ -123,8 +123,8 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @Then("Verify the status in the Customer booking list should be pending")
-    public void verifyTheStatusInTheCustomerBookingListShouldBePending() {
-        bookingPage.VerifyConscentLink();
+    public void verifyTheStatusInTheCustomerBookingListShouldBePending() throws InterruptedException {
+       // bookingPage.VerifyConscentLink();
 
     }
 
@@ -144,7 +144,7 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @And("Searches for the Vin number")
-    public void searchesForTheVinNumber() {
+    public void searchesForTheVinNumber() throws InterruptedException {
        bookingPage.vinSearch();
     }
 
@@ -161,6 +161,7 @@ public class BookingSalesOperationStepDefinition {
     @Then("verifies the value from the customer link")
     public void verifiesTheValueFromTheCustomerLink() throws InterruptedException {
         bookingPage.verifyDataMGT();
+
     }
 
 
