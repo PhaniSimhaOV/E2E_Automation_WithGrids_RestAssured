@@ -1,13 +1,17 @@
 package com.autogrid.steps;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.List;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class MysqlDatabaseConnectionPage {
 
@@ -17,34 +21,53 @@ public class MysqlDatabaseConnectionPage {
 		this.connection = connection;
 	}
 
-	public String fetchData(int id) throws SQLException {
+	public String fetchDataAndSaveToExcel(List<String> queries, List<List<Object>> parametersList, String filePath)
+			throws SQLException, IOException {
+		try (Workbook workbook = new XSSFWorkbook()) {
+			Sheet sheet = workbook.createSheet("Query Results");
 
-		String query = "SELECT * FROM dms_lead WHERE sales_consultant_id = ?";
+			int rowCount = 0;
 
-		try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-			preparedStatement.setInt(1, id);
-			try (ResultSet resultSet = preparedStatement.executeQuery()) {
-				if (resultSet.next()) {
+			// Execute each query
+			for (int i = 0; i < queries.size(); i++) {
+				String query = queries.get(i);
+				List<Object> parameters = parametersList.get(i);
 
-					// Retrieve data from multiple columns
-					Map<String, String> data = new HashMap<>();
-					data.put("sales_consultant", resultSet.getString("sales_consultant"));
-					data.put("lead_type", resultSet.getString("lead_type"));
-					data.put("mode_of_payment", resultSet.getString("mode_of_payment"));
-					data.put("finance_required", resultSet.getString("finance_required"));
-					data.put("id", resultSet.getString("id"));
-					data.put("first_name", resultSet.getString("first_name"));
-					data.put("last_name", resultSet.getString("last_name"));
-					data.put("lead_status", resultSet.getString("lead_status"));
-					data.put("email", resultSet.getString("email"));
-					data.put("phone", resultSet.getString("phone"));
-					// Convert data map to a readable string
-					return data.toString();
+				try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+					// Set parameters for the current query
+					for (int j = 0; j < parameters.size(); j++) {
+						preparedStatement.setObject(j + 1, parameters.get(j));
+					}
 
-				} else {
-					return "No data found for ID: " + id;
+					try (ResultSet resultSet = preparedStatement.executeQuery()) {
+						ResultSetMetaData metaData = resultSet.getMetaData();
+						int columnCount = metaData.getColumnCount();
+
+						// Write header row if it is the first query
+						if (rowCount == 0) {
+							Row headerRow = sheet.createRow(rowCount++);
+							for (int col = 1; col <= columnCount; col++) {
+								headerRow.createCell(col - 1).setCellValue(metaData.getColumnName(col));
+							}
+						}
+
+						// Write data rows
+						while (resultSet.next()) {
+							Row dataRow = sheet.createRow(rowCount++);
+							for (int col = 1; col <= columnCount; col++) {
+								dataRow.createCell(col - 1).setCellValue(resultSet.getString(col));
+							}
+						}
+					}
 				}
 			}
+
+			// Save workbook to file
+			try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
+				workbook.write(fileOut);
+			}
 		}
+
+		return "Data successfully fetched and saved to file: " + filePath;
 	}
 }
