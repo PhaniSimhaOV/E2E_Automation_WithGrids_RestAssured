@@ -27,14 +27,7 @@ public class BookingSalesOperationPage {
     WebDriver driver;
     private static final Logger logger = LoggerFactory.getLogger(DMSLoginPage.class);
     private final CommonActions commonActions;
-    @FindBy(xpath = "(//*[starts-with(@id, 'tabMenuFrame')])[2]")
-    private WebElement iframe1;
 
-    @FindBy(xpath = "(//*[starts-with(@id, 'tabMenuFrame')])[3]")
-    private WebElement iframe2;
-
-    @FindBy(xpath = "//iframe[contains(@class, 'k-content-frame')]")
-    private WebElement iframe3;
     @FindBy(xpath = "//a[text()='Sales']")
     private WebElement SalesIcon;
     @FindBy(xpath = "//a[text()='Sales Operation']")
@@ -63,33 +56,6 @@ public class BookingSalesOperationPage {
         this.commonActions = new CommonActions(driver);
         PageFactory.initElements(driver, this);
 
-    }
-    public void interactWithIframeElement1() {
-        try {
-            LaunchDriver.getDriver().switchTo().defaultContent();
-            LaunchDriver.getDriver().switchTo().frame(iframe1);
-            System.out.println("Successfully interacted with the iframe1.");
-        } catch (Exception e) {
-            System.err.println("Error interacting with iframe1: " + e.getMessage());
-        }
-    }
-
-    public void interactWithIframeElement2() {
-        try {
-            LaunchDriver.getDriver().switchTo().frame(iframe2);
-            System.out.println("Successfully interacted with the iframe2.");
-        } catch (Exception e) {
-            System.err.println("Error interacting with iframe2: " + e.getMessage());
-        }
-    }
-
-    public void interactWithIframeElement3() {
-        try {
-            LaunchDriver.getDriver().switchTo().frame(iframe3);
-            System.out.println("Successfully interacted with the iframe2.");
-        } catch (Exception e) {
-            System.err.println("Error interacting with iframe3: " + e.getMessage());
-        }
     }
 
     public void SalesIconButton() throws InterruptedException {
@@ -137,7 +103,10 @@ public class BookingSalesOperationPage {
 
     public void selectDateOFDropdown() throws InterruptedException {
         try {
-            interactWithIframeElement2();
+            WebElement iframename = getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame2']"));
+            LaunchDriver.getDriver().switchTo().defaultContent();
+            LaunchDriver.getDriver().switchTo().frame(iframename);
+            System.out.println("Successfully interacted with the element inside the iframe.");
             dropdownDateOf.click();
             List<WebElement> options = getDriver().findElements(By.xpath("//ul[@id='dSearchCd_listbox']/li"));  // Replace with the actual XPath or locator
             WebElement selectedOption = options.get(0);
@@ -205,7 +174,9 @@ public class BookingSalesOperationPage {
 
     public void fillfieldsBookingPage() throws InterruptedException, AWTException {
         try {
-            interactWithIframeElement3();
+            LaunchDriver.getDriver().switchTo().defaultContent();
+            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+            System.out.println("Successfully interacted with the element inside the iframe.");
             Thread.sleep(3000);
 //            getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).clear();
 //            getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).sendKeys("34512678");
@@ -341,19 +312,20 @@ public class BookingSalesOperationPage {
         }
     }
 
-    public void clickbutton(String button) throws InterruptedException {
+    public void clickbutton(String button) {
         //Register
         if (button.equalsIgnoreCase("Register")) {
             getDriver().findElement(By.xpath("//button[@id='btnBookingRegister']")).click();
-            interactWithIframeElement3();
+            LaunchDriver.getDriver().switchTo().defaultContent();
+            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
             getDriver().findElement(By.xpath("/html/body/div[116]/div[2]/p[2]/button[1]")).click();
             System.out.println("Successfully clicked on register");
         }
         //modify
         else {
-            Thread.sleep(3000);
             getDriver().findElement(By.xpath("//*[@id=\"btnBookingModify\"]")).click();
-            interactWithIframeElement3();
+            LaunchDriver.getDriver().switchTo().defaultContent();
+            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
 
             getDriver().findElement(By.xpath("/html/body/div[116]/div[2]/p[2]/button[1]")).click();
             System.out.println("Modified successfully");
@@ -384,9 +356,13 @@ public class BookingSalesOperationPage {
     }
 
     public void ReceiptTab() throws InterruptedException {
-       getDriver().findElement(By.xpath("//*[@id=\"receiptTab\"]")).click();
+//        LaunchDriver.getDriver().switchTo().defaultContent();
+//        LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+        getDriver().findElement(By.xpath("//*[@id=\"receiptTab\"]")).click();
         Thread.sleep(4000);
-        interactWithIframeElement3();
+        LaunchDriver.getDriver().switchTo().defaultContent();
+        Thread.sleep(4000);
+        LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[2]/table/tbody/tr[1]/td[8]/button")).click();
         System.out.println("successfully clicked on share reciept");
     }
@@ -454,7 +430,9 @@ public class BookingSalesOperationPage {
     }
 
     public void vinNumber() {
-        interactWithIframeElement2();
+        WebElement iframename = getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame2']"));
+        getDriver().switchTo().defaultContent();
+        getDriver().switchTo().frame(iframename);
         getDriver().findElement(By.xpath("//*[@id=\"sVin\"]")).sendKeys("MALB551CLRM614650");
 //MALB341CYRM313126
         //MALB351CLRM593451
@@ -476,7 +454,9 @@ public class BookingSalesOperationPage {
         getDriver().findElement(By.xpath("//*[@id=\"sidebar\"]/div[1]/ul/li[3]")).click();
         SalesOperationLink();
         selectCustomerBookingMgtListMainLinks();
-        interactWithIframeElement3();
+        WebElement iframename = getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']"));
+        getDriver().switchTo().defaultContent();
+        getDriver().switchTo().frame(iframename);
         getDriver().findElement(By.xpath("/html/body/section/div/section/section[1]/div[2]/dl[1]/dd[1]")).click();
         List<WebElement> options = getDriver().findElements(By.xpath("//ul[@id='dSearchCd_listbox']/li"));  // Replace with the actual XPath or locator
         WebElement selectedOption = options.get(0);
@@ -496,7 +476,7 @@ public class BookingSalesOperationPage {
 //        Assert.assertEquals(InteriorColor, CustIntColor);
     }
     public void receiptLink() {
-        interactWithIframeElement3();
-        getDriver().findElement(By.xpath("//*[@id=\"receiptTab\"]")).click();
-    }
+        LaunchDriver.getDriver().switchTo().defaultContent();
+        LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+        getDriver().findElement(By.xpath("//*[@id=\"receiptTab\"]")).click();}
 }
