@@ -13,29 +13,16 @@ pipeline {
         stage('Run Automation Scripts (Cucumber Tests)') {
             steps {
                 script {
-                    // Run Maven command to execute tests
+
                     bat 'mvn clean test -Dcucumber.filter.tags="@testBooking"'
                 }
             }
         }
+
     }
     post {
         always {
-            // Clean workspace after the build
             cleanWs deleteDirs: true, notFailBuild: true
-        }
-        success {
-            script {
-                // Publish JUnit test results
-                junit 'target/surefire-reports/*.xml'
-
-                // Publish Cucumber HTML Reports (if applicable)
-                cucumber fileIncludePattern: 'target/cucumber-reports/*.json', trendsLimit: 10
-            }
-        }
-        failure {
-            // Send notifications or handle failures
-            echo 'Build failed. Please check the logs for details.'
         }
     }
 }
