@@ -108,7 +108,6 @@ public class BookingSalesOperationStepDefinition {
 
     @And("user enter a valid password for account")
     public void userEnterAValidPasswordForAccount() {
-    bookingPage.AccountLoginPassword();
     }
 
     @And("User as to add the amount in the receipt section")

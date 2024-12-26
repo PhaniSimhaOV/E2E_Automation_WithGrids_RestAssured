@@ -55,7 +55,7 @@ Feature: User navigates to booking section
     And Searches for the Vin number
     When Verify the data in the table with the customer booking values
     Then verifies the value from the customer link
-    Given user tries to close the chrome browser
+
     Examples:
       | button |
       | modify |

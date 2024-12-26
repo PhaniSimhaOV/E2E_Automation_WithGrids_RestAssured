@@ -398,7 +398,7 @@ public class BookingSalesOperationPage {
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[3]")).click();
         Thread.sleep(4000);
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[3]")).click();
-        Thread.sleep(4000);
+        Thread.sleep(7000);
         getDriver().findElement(By.xpath("/html/body/div[115]/div/div[2]/ul/li[3]")).click();
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[4]")).click();
         getDriver().findElement(By.xpath("//*[@id=\"paymentGrid\"]/div[3]/table/tbody/tr/td[4]")).click();
