@@ -81,6 +81,7 @@ public class BookingSalesOperationStepDefinition {
     public void userFillsTheFieldsInTheCustomerBookingMGT() throws InterruptedException, AWTException {
         bookingPage.fillfieldsBookingPage();
     }
+
     @Then("user clicks on {string} based on the value")
     public void userClicksOnBasedOnTheValue(String button) {
         bookingPage.clickbutton(button);
@@ -88,7 +89,7 @@ public class BookingSalesOperationStepDefinition {
 
     @And("After successful registration user clicks on Quotation")
     public void afterSuccessfulRegistrationUserClicksOnQuotation() throws InterruptedException {
-       Thread.sleep(7000);
+        Thread.sleep(7000);
         bookingPage.QuotationPage();
 
     }
@@ -101,12 +102,12 @@ public class BookingSalesOperationStepDefinition {
 
     @When("user enters a valid username for account")
     public void userEntersAValidUsernameForAccount() {
-        getDriver().findElement(By.xpath("//input[@id='usrId']")).sendKeys("ACCOUNTS37");
+        bookingPage.AcocuntLoginUseraname();
+
     }
 
     @And("user enter a valid password for account")
     public void userEnterAValidPasswordForAccount() {
-        getDriver().findElement(By.xpath("//input[@id='usrPswdNo']")).sendKeys("Creta@2023");
     }
 
     @And("User as to add the amount in the receipt section")
@@ -117,44 +118,33 @@ public class BookingSalesOperationStepDefinition {
 
     @Then("User clicks on Send Customer consent link")
     public void userClicksOnSendCustomerConsentLink() {
-        getDriver().findElement(By.xpath("//*[text()='Send Customer Consent Link']")).click();
-        getDriver().findElement(By.xpath("/html/body/div[116]/div[2]/p[2]/button[1]")).click();
+        bookingPage.SendConsentLink();
     }
 
     @Then("Verify the status in the Customer booking list should be pending")
     public void verifyTheStatusInTheCustomerBookingListShouldBePending() {
-        getDriver().findElement(By.xpath("//*[text()=\"Customer Booking Mgt List\" and @class='k-link']")).click();
-        String statusValue = getDriver().findElement(By.xpath("//*[@id=\"mainGrid\"]/div[3]/table/tbody/tr/td[24]")).getText();
-        Assert.assertEquals(statusValue, "Pending");
+        bookingPage.VerifyConscentLink();
+
     }
 
     @Then("User clicks on Order and stock")
     public void userClicksOnOrderAndStock() throws InterruptedException {
-        Thread.sleep(3000);
-        getDriver().findElement(By.xpath("//a[text()='Order/Stock']")).click();
-        Thread.sleep(3000);
+        bookingPage.orderStock();
     }
 
     @Then("user selects Dealer Vechile Stock MGT")
     public void userSelectsDealerVechileStockMGT() throws InterruptedException {
-        Thread.sleep(3000);
-        getDriver().findElement(By.xpath("//*[@id=\"gnb\"]/li[3]/div/ul/li[4]/ul/li[4]/a")).click();
-        Thread.sleep(3000);
+    bookingPage.DealerVechileStock();
     }
 
     @And("User passes the VIN number into the field")
     public void userPassesTheVINNumberIntoTheField() {
-        WebElement iframename = getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame2']"));
-        getDriver().switchTo().defaultContent();
-        getDriver().switchTo().frame(iframename);
-        getDriver().findElement(By.xpath("//*[@id=\"sVin\"]")).sendKeys("MALB551CLRM614650");
-//MALB341CYRM313126
-        //MALB351CLRM593451
+      bookingPage.vinNumber();
     }
 
     @And("Searches for the Vin number")
     public void searchesForTheVinNumber() {
-        getDriver().findElement(By.xpath("//*[@class=\"btn_m btn_search k-button\"]")).click();
+       bookingPage.vinSearch();
     }
 
     @When("Verify the data in the table with the customer booking values")
@@ -164,57 +154,21 @@ public class BookingSalesOperationStepDefinition {
 
     @When("User selects Customer Booking Mgt List under sales Operation in accounts")
     public void userSelectsCustomerBookingMgtListUnderSalesOperationInAccounts() throws InterruptedException {
-        Thread.sleep(3000);
-        getDriver().findElement(By.xpath("//*[@id=\"gnb\"]/li[2]/div/ul/li[3]/ul/li[1]/a ")).click();
+        bookingPage.mgtListSales();
     }
 
     @Then("verifies the value from the customer link")
     public void verifiesTheValueFromTheCustomerLink() throws InterruptedException {
-        String VariantValue = getDriver().findElement(By.xpath("//*[@id=\"grid\"]/div[3]/table/tbody/tr/td[11]")).getText();
-        String ExteriorColor = getDriver().findElement(By.xpath("//*[@id=\"grid\"]/div[3]/table/tbody/tr/td[15]")).getText();
-        String InteriorColor = getDriver().findElement(By.xpath("//*[@id=\"grid\"]/div[3]/table/tbody/tr/td[17]")).getText();
-
-        getDriver().switchTo().defaultContent();
-        getDriver().findElement(By.xpath("//*[@id=\"sidebar\"]/div[1]/ul/li[3]")).click();
-        bookingPage.SalesOperationLink();
-        bookingPage.selectCustomerBookingMgtListMainLinks();
-        WebElement iframename = getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']"));
-        getDriver().switchTo().defaultContent();
-        getDriver().switchTo().frame(iframename);
-        getDriver().findElement(By.xpath("/html/body/section/div/section/section[1]/div[2]/dl[1]/dd[1]")).click();
-        List<WebElement> options = getDriver().findElements(By.xpath("//ul[@id='dSearchCd_listbox']/li"));  // Replace with the actual XPath or locator
-        WebElement selectedOption = options.get(0);
-        selectedOption.click();
-        System.out.println("Selected Option: " + selectedOption.getText());
-        bookingPage.MobileNumberTextBox();
-        bookingPage.BasedOnDropdown();
-        bookingPage.SelectDates();
-        bookingPage.SearchButton();
-        bookingPage.SalesTable();
-//
-//        String CustExtColor = getDriver().findElement(By.xpath("//*[@aria-owns='extColorCd_listbox']/span")).getText();
-//        String CustIntColor = getDriver().findElement(By.xpath("//span[@aria-owns='intColorCd_listbox']")).getText();
-//        String CustVariant = getDriver().findElement(By.xpath("//span[@aria-owns='subVariantCd_listbox']")).getText();
-//        Assert.assertEquals(VariantValue, CustVariant.contains(VariantValue));
-//        Assert.assertEquals(ExteriorColor, CustExtColor);
-//        Assert.assertEquals(InteriorColor, CustIntColor);
+        bookingPage.verifyDataMGT();
     }
 
 
     @Then("User clicks on the receipt icon for account")
     public void userClicksOnTheReceiptIconForAccount() {
-                LaunchDriver.getDriver().switchTo().defaultContent();
-              LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
-        getDriver().findElement(By.xpath("//*[@id=\"receiptTab\"]")).click();
+       bookingPage.receiptLink();
     }
-    @Given("user tries to close the chrome browser")
-    public void user_tries_to_close_the_chrome_browser() throws Exception {
-        try {
-            LaunchDriver.tearDown();
-        } catch (Exception e) {
-            throw new Exception("Error occurred while Closing the browser : " + e.getMessage());
-        }
-    }
+
+
 }
 
 
