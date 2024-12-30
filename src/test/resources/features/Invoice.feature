@@ -1,6 +1,7 @@
 Feature: User tries to verify the Invoice functionality
 
 @test
+  @invoice
   Scenario: User tries to verify the Invoice functionality
     Given launch browser and enter url
     When user enters a valid username
