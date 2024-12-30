@@ -15,7 +15,7 @@ Feature: User tries to verify the Invoice functionality
     And User clicks on the Customer Booking Mgt List link
     Then User should be able to navigate to the Customer Booking Mgt List Screen
     And User reads data from the Excel sheet regarding Invoice feature
-    And User processes all rows from the Excel sheet
+    And User processes all rows from the Excel sheet of sheet Name Invoice Leads
     
     When User tries to Selects Mobile Number in the Based On Auto-Suggestion in Customer Booking Mgt List Screen
     And User tries to enters Lead Mobile Number in the Based On Field
