@@ -61,8 +61,8 @@ public class InvoiceStepDefinition {
         System.out.println("All Test Data Loaded: " + allTestData.size() + " rows.");
     }
 
-    @When("User processes all rows from the Excel sheet")
-    public void user_processes_all_rows_from_the_excel_sheet() throws Throwable {
+    @When("User processes all rows from the Excel sheet of sheet Name Invoice Leads")
+    public void user_processes_all_rows_from_the_excel_sheet_of_sheet_name_invoice_leads() throws Throwable {
         int passedCount = 0;
         int failedCount = 0;
 
