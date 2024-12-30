@@ -91,7 +91,7 @@ public class DatabaseConnectionStepDefinition {
 					+ "LEFT JOIN \r\n" + "    dms_enquiry_lead del ON del.id = dl.dms_enquiry_id\r\n" + "LEFT JOIN \r\n"
 					+ "    dms_workflow_task dwt ON dl.id = dwt.entity_id AND dwt.task_name = 'Enquiry Follow Up'\r\n"
 					+ "WHERE \r\n" + "    dmls.lead_stage_key = 'ENQUIRY' \r\n" + "    AND dl.organization_id = 16\r\n"
-					+ "LIMIT 50;\r\n" + "",
+					+ "LIMIT 100;\r\n" + "",
 					"SELECT \r\n" + "    dl.phone,\r\n" + "    db.created_date AS bookingDate,\r\n"
 							+ "    db.mode_of_payment AS modeOfPayment,\r\n" + "    dal.vinno AS VinNo,\r\n"
 							+ "    dat.document_number AS panNo,\r\n"
@@ -116,10 +116,31 @@ public class DatabaseConnectionStepDefinition {
 							+ "        AND dad.address_type = 'Communication'\r\n" + "        LEFT JOIN\r\n"
 							+ "    dms_onroad_price dop ON dop.lead_id = dl.id\r\n" + "WHERE\r\n"
 							+ "    dl.organization_id = '16'\r\n" + "        AND dmls.lead_stage_key='BOOKING'\r\n"
-							+ "GROUP BY dl.id , db.created_date , db.mode_of_payment , dal.vinno , dat.document_number , dad.state , dad.district , dad.city , dad.pincode , dad.village , dad.house_no , dad.street LIMIT 50;\r\n"
+							+ "GROUP BY dl.id , db.created_date , db.mode_of_payment , dal.vinno , dat.document_number , dad.state , dad.district , dad.city , dad.pincode , dad.village , dad.house_no , dad.street LIMIT 100;\r\n"
 							+ "",
-					"select DISTINCT * from dms_lead where lead_status='BOOKINGCOMPLETED'",
-					"select DISTINCT * from dms_lead where lead_status='INVOICECOMPLETED'");
+					"select dl.phone,di.invoice_date,\r\n"
+					+ "(select value from dms_master_common where id=did.vehicle_usage_type_id) as vehicleUsageType,\r\n"
+					+ "di.state_type,di.basic_price as exshowroomPrice,di.total_amount,\r\n"
+					+ "dop.cash_discount,dop.promotional_offers,dop.discount,dop.foc_accessories,dop.additional_offer1,dop.additional_offer2,dop.insurance_discount,dop.accessories_discount\r\n"
+					+ ",dop.exchange_offers,dop.corporate_offer,dop.special_scheme,dop.life_tax as roadTax,dop.life_tax as lifeTax, (dop.life_tax+dop.registration_charges) as rtoCharges,dop.registration_charges as otherCharges,dop.warranty_name,dop.warranty_amount,dop.handling_charges,dop.essential_kit,dop.tcs,dop.nps_scheme,dop.rural_offer,dop.fast_tag,\r\n"
+					+ "(SELECT policy_name FROM `vehicle-management`.insurance_details where id=dli.insurance_type) as basicInsurance,dli.insurance_type_premium as basicInsuranceAmont,dli.add_on_insurance as additionalInsurance\r\n"
+					+ "from dms_lead dl\r\n"
+					+ "LEFT JOIN dms_lead_stage_ref dlsr ON dlsr.lead_id = dl.id\r\n"
+					+ "LEFT JOIN dms_master_lead_stage dmls ON dlsr.stage_id = dmls.id\r\n"
+					+ "LEFT JOIN dms_invoice di ON di.lead_id = dl.id\r\n"
+					+ "LEFT JOIN dms_invoice_lead_details did ON did.invoice_id = di.id\r\n"
+					+ "LEFT JOIN dms_lead_insurance dli ON dli.lead_id = di.lead_id\r\n"
+					+ "LEFT JOIN dms_onroad_price dop ON dop.lead_id = dl.id\r\n"
+					+ "where dmls.lead_stage_key='INVOICE' and dl.organization_id=16 LIMIT 100;",
+					"select da.vinno,dd.etd_warranty_no as schemeNo,dd.warrantyname as schemeDescription,dd.warrantyamount,dad.state as  placeOfSupply,dl.sales_consultant as empName\r\n"
+					+ "from dms_lead dl\r\n"
+					+ "LEFT JOIN dms_lead_stage_ref dlsr ON dlsr.lead_id = dl.id\r\n"
+					+ "LEFT JOIN dms_master_lead_stage dmls ON dlsr.stage_id = dmls.id\r\n"
+					+ "LEFT JOIN dms_delivery dd ON dd.lead_id = dl.id\r\n"
+					+ "LEFT JOIN dms_allotment da ON da.lead_id = dl.id\r\n"
+					+ "LEFT JOIN dms_address dad ON dad.dms_lead_id = dl.id AND dad.address_type = 'Communication'\r\n"
+					+ "where dmls.lead_stage_key='DELIVERY' and dl.organization_id=16 LIMIT 100\r\n"
+					+ ";");
 
 			// Descriptive sheet names for each query
 			List<String> sheetNames = Arrays.asList("Enquiry Leads", "Booking Leads", "Invoice Leads",
