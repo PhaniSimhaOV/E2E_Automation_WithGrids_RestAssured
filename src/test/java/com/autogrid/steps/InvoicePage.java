@@ -1,7 +1,6 @@
 package com.autogrid.steps;
 
 import com.autogrid.utils.CommonActions;
-import com.autogrid.utils.LaunchDriver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -177,7 +176,10 @@ public class InvoicePage {
 
     @FindBy(xpath = "//*[@id='btnModify']")
     private WebElement VehicleMgtModifyButton;
-
+    
+    @FindBy(xpath = "//li[@class='k-item k-state-default k-tab-on-top k-state-active']//button[@class='tab_close'][normalize-space()='close']")
+    private WebElement CloseCustomerBookingMgtListScreen;
+    
     @FindBy(xpath = "//span[normalize-space()='Notice']")
     private WebElement VehicleMgtModifyConfirmationPopup;
 
@@ -296,6 +298,7 @@ public class InvoicePage {
     public void enterBasedOnField(String basedOnField) {
         try {
             waitForElementToBeClickable(BasedOnField);
+            BasedOnField.clear();
             BasedOnField.sendKeys(basedOnField);
         } catch (Exception e) {
             System.err.println("Error entering Mobile in Filter: " + e.getMessage());
@@ -309,6 +312,16 @@ public class InvoicePage {
             CustomerBookingMgtListSearch.click();
         } catch (Exception e) {
             System.err.println("Error clicking Customer Booking Mgt List Search: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+    public void clickCloseCustomerBookingMgtList() {
+        try {
+            waitForElementToBeClickable(CloseCustomerBookingMgtListScreen);
+            CloseCustomerBookingMgtListScreen.click();
+        } catch (Exception e) {
+            System.err.println("Error clicking Close Customer Booking Mgt List Screen: " + e.getMessage());
             throw e;
         }
     }
