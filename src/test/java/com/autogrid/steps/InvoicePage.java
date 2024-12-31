@@ -180,6 +180,12 @@ public class InvoicePage {
     @FindBy(xpath = "//li[@class='k-item k-state-default k-tab-on-top k-state-active']//button[@class='tab_close'][normalize-space()='close']")
     private WebElement CloseCustomerBookingMgtListScreen;
     
+    @FindBy(xpath = "//*[@id='tabMenu_ts_active']/button")
+    private WebElement CloseCustomerBookingMgtScreen;
+    
+    @FindBy(xpath = "//*[@id='btn_closeGnb']")
+    private WebElement GDMSMenuClose;
+    
     @FindBy(xpath = "//span[normalize-space()='Notice']")
     private WebElement VehicleMgtModifyConfirmationPopup;
 
@@ -312,6 +318,16 @@ public class InvoicePage {
             CustomerBookingMgtListSearch.click();
         } catch (Exception e) {
             System.err.println("Error clicking Customer Booking Mgt List Search: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+    public void clickCloseCustomerBookingMgt() {
+        try {
+            waitForElementToBeClickable(CloseCustomerBookingMgtScreen);
+            CloseCustomerBookingMgtScreen.click();
+        } catch (Exception e) {
+            System.err.println("Error clicking Close Customer Booking Mgt Screen: " + e.getMessage());
             throw e;
         }
     }

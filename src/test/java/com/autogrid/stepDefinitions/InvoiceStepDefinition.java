@@ -149,7 +149,6 @@ public class InvoiceStepDefinition {
     	user_tries_to_clicks_on_invoice_confirm_button_in_invoice_tab_in_the_customer_booking_management_screen();
     	user_should_be_able_to_see_do_you_want_to_confirm_it_popup();
     	user_tries_to_clicks_on_confirm_button_in_do_you_want_to_confirm_it_popup();
-    	user_clicks_on_sales_menu_item();
     	} catch (Exception e) {
             System.err.println("Error during execution of steps for Row " + (currentDataRowIndex + 1) + ": " + e.getMessage());
             throw new RuntimeException("Failed to execute steps for Row " + (currentDataRowIndex + 1), e);
@@ -322,6 +321,7 @@ public class InvoiceStepDefinition {
             invoicepage.interactWithIframeElement2();
             invoicepage.interactWithIframeElement3();
             if (testData != null) {
+            	Thread.sleep(5000);
                 invoicepage.enterPayableByDealerAmountField(testData.get("cash_discount"));
                 System.out.println("Entered Payable By Dealer Amount: " + testData.get("cash_discount"));
             } else {
@@ -336,6 +336,7 @@ public class InvoiceStepDefinition {
     public void user_tries_to_enters_valid_data_in_the_adjustment_credit_note_amount_in_tax_adjustment_allowed_table() {
         try {
             if (testData != null) {
+            	Thread.sleep(5000);
                 invoicepage.enterAdjustmentCreditNoteField(testData.get("cash_discount"));
                 System.out.println("Entered Adjustment Credit Note Amount: " + testData.get("cash_discount"));
             } else {
@@ -714,15 +715,9 @@ public class InvoiceStepDefinition {
             System.err.println("Error during Confirm button click: " + e.getMessage());
         }
         LaunchDriver.getDriver().switchTo().defaultContent();
+        invoicepage.clickCloseCustomerBookingMgt();
         invoicepage.clickCloseCustomerBookingMgtList();
-    }
-
-    @Given("user tries to close the chrome browser")
-    public void user_tries_to_close_the_chrome_browser() throws Exception {
-        try {
-            LaunchDriver.tearDown();
-        } catch (Exception e) {
-            throw new Exception("Error occurred while Closing the browser : " + e.getMessage());
-        }
+        user_clicks_on_sales_menu_item();
+    	user_clicks_on_the_sales_operation_sub_menu_item();
     }
 }
