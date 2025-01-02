@@ -11,5 +11,5 @@ Feature: User tries to verify the Invoice functionality
     And clicks on login
     Then user should be able to see Home Icon on the dashboard
     And User reads data from the Excel sheet regarding Invoice feature
-    And User processes all rows from the Excel sheet of sheet Name Invoice Leads
+    And User processes the Invoice for all rows from the Excel sheet of sheet Name Invoice Leads
     
