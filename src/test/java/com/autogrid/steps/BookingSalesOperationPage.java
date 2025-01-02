@@ -17,6 +17,7 @@ import java.awt.*;
 import java.time.Duration;
 import java.awt.event.InputEvent;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -27,6 +28,9 @@ public class BookingSalesOperationPage {
     WebDriver driver;
     private static final Logger logger = LoggerFactory.getLogger(DMSLoginPage.class);
     private final CommonActions commonActions;
+    private Map<String, String> testData; // Stores data from Excel
+    private List<Map<String, String>> allTestData; // List to store all data rows from Excel
+    private int currentDataRowIndex = 0;
 
     @FindBy(xpath = "//a[text()='Sales']")
     private WebElement SalesIcon;
@@ -154,6 +158,9 @@ public class BookingSalesOperationPage {
     private WebElement verifydata1;
     @FindBy(xpath = "//ul[@id='dSearchCd_listbox']/li")
     private List<WebElement> VerifyOptions;
+    @FindBy(xpath="//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span/input[1]")
+    private WebElement RTOAmountField;
+
 
 
 
@@ -162,6 +169,7 @@ public class BookingSalesOperationPage {
 
     public BookingSalesOperationPage(WebDriver driver) throws Exception {
         this.commonActions = new CommonActions(driver);
+
         PageFactory.initElements(driver, this);
 
     }
@@ -189,7 +197,8 @@ public class BookingSalesOperationPage {
 
     }
 
-    public void SalesOperationLink() throws InterruptedException {
+    public void
+    SalesOperationLink() throws InterruptedException {
         try {
             Thread.sleep(4000);
             SalesOperationButton.click();
@@ -237,13 +246,13 @@ public class BookingSalesOperationPage {
     }
 
 
-    public void MobileNumberTextBox() {
+    public void MobileNumberTextBox(String mobileNumber) {
         try {
-            MobileNoTextField.sendKeys("8099261232");
-            //7799222422
-            //8886376262
+
+            MobileNumberField.clear();
+            MobileNumberField.sendKeys(mobileNumber);
         } catch (Exception e) {
-            System.err.println("Error in passing the mobile number to the text field: " + e.getMessage());
+            System.err.println("Error entering Mobile in Filter: " + e.getMessage());
             throw e;
         }
     }
@@ -286,7 +295,7 @@ public class BookingSalesOperationPage {
         }
     }
 
-    public void fillfieldsBookingPage() throws InterruptedException, AWTException {
+    public void fillfieldsBookingPage(String pan) throws InterruptedException, AWTException {
         try {
             iframe3();
             Thread.sleep(3000);
@@ -295,40 +304,41 @@ public class BookingSalesOperationPage {
             basicinfoEnquiryList.click();
             System.out.println("The Enquiry type as being selected");
             Thread.sleep(3000);
-            //EnquiryCategory
-            EnquiryCategoryField.click();
-            WebElement Enquirycategory = optionsEnquiryCategory.get(3);
-            Thread.sleep(3000);
-            Enquirycategory.click();
-            System.out.println("The Enquiry Category as being selected");
+//            //EnquiryCategory
+////            EnquiryCategoryField.click();
+////            WebElement Enquirycategory = optionsEnquiryCategory.get(3);
+//            Thread.sleep(3000);
+////            Enquirycategory.click();
+//            //System.out.println("The Enquiry Category as being selected");
             Thread.sleep(3000);
             //SalesConsultant
-            SalesConsultantField.click();
-            WebElement selectedOption = SalesConsultantFieldoptions.get(15);
+//            SalesConsultantField.click();
+//            WebElement selectedOption = SalesConsultantFieldoptions.get(15);
+//            Thread.sleep(3000);
+//            selectedOption.click();
+//            System.out.println("Selected Option: " + selectedOption.getText());
+//            System.out.println("The Sales Consultant as being selected");
             Thread.sleep(3000);
-            selectedOption.click();
-            System.out.println("Selected Option: " + selectedOption.getText());
-            System.out.println("The Sales Consultant as being selected");
-            Thread.sleep(3000);
-            //Referred by :
-            ReferredByField.sendKeys("CHENIGACHERLA SAMPATH RAJ");
-            System.out.println("The Referred by as being selected");
-            Thread.sleep(3000);
-            //Title
-            TitleField.click();
-            String valueToSelect = "Mr.";
-            boolean valueFound = false;
-            for (WebElement item : optionsTitleFieldDropdown) {
-                if (item.getText().equals(valueToSelect)) {
-                    item.click();
-                    valueFound = true;
-                    System.out.println("Selected value: " + valueToSelect);
-                    break;
-                }
-            }
-            System.out.println("Title is selected");
+//            //Referred by :
+//            ReferredByField.sendKeys("CHENIGACHERLA SAMPATH RAJ");
+//            System.out.println("The Referred by as being selected");
+//            Thread.sleep(3000);
+//            //Title
+//            TitleField.click();
+//            String valueToSelect = "Mr.";
+//            boolean valueFound = false;
+//            for (WebElement item : optionsTitleFieldDropdown) {
+//                if (item.getText().equals(valueToSelect)) {
+//                    item.click();
+//                    valueFound = true;
+//                    System.out.println("Selected value: " + valueToSelect);
+//                    break;
+//                }
+//            }
+//            System.out.println("Title is selected");
             //Pan
-            panfield.sendKeys("sdfghj345");
+            panfield.clear();
+            panfield.sendKeys(pan);
             System.out.println("The Pan as being selected" +panfield.getText());
             iframe3();
             JavascriptExecutor js = (JavascriptExecutor) getDriver();
@@ -430,11 +440,29 @@ public class BookingSalesOperationPage {
         }
     }
 
-    public void QuotationPage() throws InterruptedException {
+    public void QuotationPage(String RTOamount) throws InterruptedException {
         Thread.sleep(3000);
         QuotationButton.click();
-//        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).clear();
-//        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).sendKeys("150000");
+
+        try {
+            Actions actions = new Actions(getDriver());
+            actions.moveToElement(RTOAmountField).click() // Move to the field and click to focus
+                    .keyDown(Keys.CONTROL).sendKeys("a") // Select all text (CTRL + A)
+                    .keyUp(Keys.CONTROL)
+                    .sendKeys(Keys.BACK_SPACE) // Delete the selected text
+                    .perform();
+
+            actions.click(RTOAmountField).sendKeys(RTOamount).build().perform();
+            System.out.println("Successfully entered text: " + RTOamount);
+        } catch (Exception e) {
+            System.err.println("Error while entering text using Actions: " + e.getMessage());
+            throw new RuntimeException("Failed to enter text using Actions.", e);
+        }
+
+        QuotationButtonModify.click();
+        Thread.sleep(4000);
+        //          getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span/input[1]")).clear();
+//          getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span/input[1]")).sendKeys(RTOamount);
 //        Thread.sleep(3000);
 //        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[3]/span/span/input[1]")).sendKeys(Keys.ENTER);
 //        System.out.println("Basic insurance is updated successfully");
@@ -449,13 +477,12 @@ public class BookingSalesOperationPage {
 //        getDriver().findElement(By.xpath("//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span/input[1]")).sendKeys("106450");
 //        Thread.sleep(3000);
 //        System.out.println("RTO Amount has been updated successfully");
-//        Thread.sleep(3000);
-        QuotationButtonModify.click();
-        Thread.sleep(4000);
+        Thread.sleep(3000);
 
     }
 
     public void ReceiptTab() throws InterruptedException {
+       Thread.sleep(4000);
         ReceiptField.click();
         Thread.sleep(4000);
         iframe3();
@@ -519,10 +546,10 @@ public class BookingSalesOperationPage {
         Thread.sleep(3000);
     }
 
-    public void vinNumber() {
+    public void vinNumber(String VinNo) {
        iframe2();
 
-        vinNumber.sendKeys("MALB551CLRM614650");
+        vinNumber.sendKeys(VinNo);
         //MALB341CYRM313126
         //MALB351CLRM593451
     }
@@ -552,11 +579,7 @@ public class BookingSalesOperationPage {
         WebElement selectedOption = VerifyOptions.get(0);
         selectedOption.click();
         System.out.println("Selected Option: " + selectedOption.getText());
-        MobileNumberTextBox();
-        BasedOnDropdown();
-        SelectDates();
-        SearchButton();
-        SalesTable();
+
 //
 //        String CustExtColor = getDriver().findElement(By.xpath("//*[@aria-owns='extColorCd_listbox']/span")).getText();
 //        String CustIntColor = getDriver().findElement(By.xpath("//span[@aria-owns='intColorCd_listbox']")).getText();

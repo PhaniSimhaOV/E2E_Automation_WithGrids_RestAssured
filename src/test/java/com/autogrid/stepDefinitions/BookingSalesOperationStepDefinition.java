@@ -3,6 +3,7 @@ package com.autogrid.stepDefinitions;
 import com.autogrid.steps.BookingSalesOperationPage;
 import com.autogrid.steps.DMSLoginPage;
 import com.autogrid.utils.CommonActions;
+import com.autogrid.utils.ExcelReading;
 import com.autogrid.utils.LaunchDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -15,19 +16,27 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
 
 public class BookingSalesOperationStepDefinition {
     CommonActions commonActions;
+    DMSLoginPage dMSLoginPage;
 
     BookingSalesOperationPage bookingPage;
+    private Map<String, String> testData; // Stores data from Excel
+    private List<Map<String, String>> allTestData; // List to store all data rows from Excel
+    private int currentDataRowIndex = 0;
 
     public BookingSalesOperationStepDefinition() throws Exception {
         WebDriver driver = getDriver();
         this.bookingPage = new BookingSalesOperationPage(driver);
         PageFactory.initElements(driver, bookingPage);
+        this.dMSLoginPage = new DMSLoginPage(driver);
+        PageFactory.initElements(driver, dMSLoginPage);
     }
 
     @Given("User clicks on the Sales icon")
@@ -53,9 +62,21 @@ public class BookingSalesOperationStepDefinition {
 
     @And("User enters the mobile number in the text box")
     public void userEntersTheMobileNumberInTheTextBox() {
+        try {
+            if (testData != null) {
 
-        bookingPage.MobileNumberTextBox();
+                bookingPage.MobileNumberTextBox(testData.get("phone"));
+
+                System.out.println("Entered Lead Mobile Number: " + testData.get("phone"));
+            } else {
+                throw new RuntimeException("Test data is not initialized.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error during entering Lead Mobile Number : " + e.getMessage());
+        }
     }
+
+
 
     @And("User selects the mobile number option from the dropdown")
     public void userSelectsTheMobileNumberOptionFromTheDropdown() throws InterruptedException {
@@ -79,7 +100,17 @@ public class BookingSalesOperationStepDefinition {
 
     @Then("User fills the fields in the Customer Booking MGT")
     public void userFillsTheFieldsInTheCustomerBookingMGT() throws InterruptedException, AWTException {
-        bookingPage.fillfieldsBookingPage();
+
+        try {
+            if (testData != null) {
+                bookingPage.fillfieldsBookingPage(testData.get("panNo"));
+                System.out.println("Entered Pan number: " + testData.get("panNo"));
+            } else {
+                throw new RuntimeException("Test data is not initialized.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error during Entered Pan number : " + e.getMessage());
+        }
     }
 
     @Then("user clicks on {string} based on the value")
@@ -90,7 +121,18 @@ public class BookingSalesOperationStepDefinition {
     @And("After successful registration user clicks on Quotation")
     public void afterSuccessfulRegistrationUserClicksOnQuotation() throws InterruptedException {
         Thread.sleep(7000);
-        bookingPage.QuotationPage();
+        System.out.println("Entered RTOamount: " + testData.get("RTOamount"));
+        try {
+            if (testData != null) {
+                bookingPage.QuotationPage(testData.get("RTOamount"));
+                System.out.println("Entered RTOamount: " + testData.get("RTOamount"));
+            } else {
+                throw new RuntimeException("Test data is not initialized.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error during Entered RTOamount : " + e.getMessage());
+        }
+
 
     }
 
@@ -101,7 +143,8 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @When("user enters a valid username for account")
-    public void userEntersAValidUsernameForAccount() {
+    public void userEntersAValidUsernameForAccount() throws InterruptedException {
+        Thread.sleep(3000);
         bookingPage.AcocuntLoginUseraname();
 
     }
@@ -140,7 +183,19 @@ public class BookingSalesOperationStepDefinition {
 
     @And("User passes the VIN number into the field")
     public void userPassesTheVINNumberIntoTheField() {
-      bookingPage.vinNumber();
+        try {
+            if (testData != null) {
+                bookingPage.vinNumber(testData.get("VinNo"));
+
+
+                System.out.println("Entered VIN Number: " + testData.get("VinNo"));
+            } else {
+                throw new RuntimeException("Test data is not initialized.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error during entering VIN Number : " + e.getMessage());
+        }
+
     }
 
     @And("Searches for the Vin number")
@@ -161,6 +216,11 @@ public class BookingSalesOperationStepDefinition {
     @Then("verifies the value from the customer link")
     public void verifiesTheValueFromTheCustomerLink() throws InterruptedException {
         bookingPage.verifyDataMGT();
+        userEntersTheMobileNumberInTheTextBox();
+        userSelectsTheMobileNumberOptionFromTheDropdown();
+        userPassedTheStartDateAndEndDateInThePage();
+        userClicksOnTheSearchButton();
+        theEnquiryWillBePopulatedThenUserAsToSelectIt();
 
     }
 
@@ -171,6 +231,103 @@ public class BookingSalesOperationStepDefinition {
     }
 
 
+    @And("User reads data from the Excel sheet regarding Booking Feature")
+    public void userReadsDataFromTheExcelSheetRegardingBookingFeature() throws IOException {
+        String filePath = "C:/Users/Anjali/OneDrive/Downloads/output.xlsx";
+        String sheetName = "Booking Leads";
+
+        // Fetch all data from the Excel sheet
+        allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
+
+        if (allTestData == null || allTestData.isEmpty()) {
+            throw new RuntimeException("No data found in Excel sheet: " + sheetName);
+        }
+        System.out.println("All Test Data Loaded: " + allTestData.size() + " rows.");
+    }
+
+    @And("User processes the Booking for all rows from the Excel sheet from the sheet Name Booking Leads")
+    public void userProcessesTheBookingForAllRowsFromTheExcelSheetFromTheSheetNameBookingLeads() {
+        int passedCount = 0;
+        int failedCount = 0;
+
+        for (currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
+            System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
+
+            // Log the current row data
+            System.out.println("Reading data for Row " + (currentDataRowIndex + 1) + ": " + allTestData.get(currentDataRowIndex));
+
+            // Initialize testData for the current row
+            testData = allTestData.get(currentDataRowIndex);
+            System.out.println("Current Test Data: " + testData);
+
+            boolean rowExecutionPassed = true;
+
+            try {
+                // Execute all test steps for the current row
+                executeTestStepsForRow_Booking();
+
+                // Log success for the current row
+                System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
+                passedCount++;
+            } catch (Exception e) {
+                // Log failure for the current row
+                System.err.println("Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage());
+                e.printStackTrace();
+                rowExecutionPassed = false;
+                failedCount++;
+            } finally {
+                // Ensure that execution proceeds to the next row
+                if (!rowExecutionPassed) {
+                    System.out.println("Row " + (currentDataRowIndex + 1) + " failed. Moving to the next row.");
+                } else {
+                    System.out.println("Row " + (currentDataRowIndex + 1) + " passed. Moving to the next row.");
+                }
+            }
+    }
 }
+
+    private void executeTestStepsForRow_Booking() throws Exception {
+        userClicksOnTheSalesIcon();
+        userSelectsTheSalesOperationTab();
+        userSelectsCustomerBookingMgtListUnderSalesOperation();
+        userNeedToSelectTheEnquiryOptionInTheDropdown();
+
+        userEntersTheMobileNumberInTheTextBox();
+        userSelectsTheMobileNumberOptionFromTheDropdown();
+        userPassedTheStartDateAndEndDateInThePage();
+        userClicksOnTheSearchButton();
+
+        theEnquiryWillBePopulatedThenUserAsToSelectIt();
+        userFillsTheFieldsInTheCustomerBookingMGT();
+        //userClicksOnBasedOnTheValue(button);
+      afterSuccessfulRegistrationUserClicksOnQuotation();
+        userClicksOnTheReceiptIcon();
+        dMSLoginPage.launchDMSSite();
+        userEntersAValidUsernameForAccount();
+        userEnterAValidPasswordForAccount();
+        dMSLoginPage.clickLoginButton();
+        //userAsToAddTheAmountInTheReceiptSection();
+        userClicksOnTheSalesIcon();
+        userSelectsTheSalesOperationTab();
+        userSelectsCustomerBookingMgtListUnderSalesOperation();
+        userNeedToSelectTheEnquiryOptionInTheDropdown();
+        userEntersTheMobileNumberInTheTextBox();
+        userSelectsTheMobileNumberOptionFromTheDropdown();
+        userPassedTheStartDateAndEndDateInThePage();
+        userClicksOnTheSearchButton();
+        theEnquiryWillBePopulatedThenUserAsToSelectIt();
+        userClicksOnTheReceiptIcon();
+        userAsToAddTheAmountInTheReceiptSection();
+        userClicksOnSendCustomerConsentLink();
+        dMSLoginPage.launchDMSSite();
+        dMSLoginPage.enterUsername("S523700");
+        dMSLoginPage.enterPassword("Hyundai@2024");
+        dMSLoginPage.clickLoginButton();
+        userClicksOnTheSalesIcon();
+        userClicksOnOrderAndStock();
+        userSelectsDealerVechileStockMGT();
+        searchesForTheVinNumber();
+    }
+    }
 
 
