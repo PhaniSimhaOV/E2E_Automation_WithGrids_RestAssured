@@ -61,56 +61,72 @@ public class InvoiceStepDefinition {
         System.out.println("All Test Data Loaded: " + allTestData.size() + " rows.");
     }
 
-    @When("User processes all rows from the Excel sheet of sheet Name Invoice Leads")
-    public void user_processes_all_rows_from_the_excel_sheet_of_sheet_name_invoice_leads() throws Throwable {
-        int passedCount = 0;
-        int failedCount = 0;
+    @When("User processes the Invoice for all rows from the Excel sheet of sheet Name Invoice Leads")
+    public void user_processes_the_invoice_for_all_rows_from_the_excel_sheet_of_sheet_name_invoice_leads() throws Throwable {
+    	int passedCount = 0;
+    	int failedCount = 0;
 
-        for (currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
-            System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
+    	for (currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
+    	    System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
 
-            // Initialize testData for the current row
-            testData = allTestData.get(currentDataRowIndex);
-            System.out.println("Current Test Data: " + testData);
+    	    // Log the current row data
+    	    System.out.println("Reading data for Row " + (currentDataRowIndex + 1) + ": " + allTestData.get(currentDataRowIndex));
 
-            boolean rowExecutionPassed = true;
+    	    // Initialize testData for the current row
+    	    testData = allTestData.get(currentDataRowIndex);
+    	    System.out.println("Current Test Data: " + testData);
 
-            try {
-                // Execute all test steps for the current row
-            	executeTestStepsForRow();
+    	    boolean rowExecutionPassed = true;
 
-                // Log success for the current row
-                System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
-                passedCount++;
-            } catch (Exception e) {
-                // Log failure for the current row
-                System.err.println("Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage());
-                e.printStackTrace();
-                rowExecutionPassed = false;
-                failedCount++;
-            } finally {
-                // Ensure that execution proceeds to the next row
-                if (!rowExecutionPassed) {
-                    System.out.println("Row " + (currentDataRowIndex + 1) + " failed. Moving to the next row.");
-                } else {
-                    System.out.println("Row " + (currentDataRowIndex + 1) + " passed. Moving to the next row.");
-                }
-            }
+    	    try {
+    	        // Restart execution from Sales Menu for each row
+    	        restartFromSalesMenuStep();
+
+    	        // Execute all test steps for the current row
+    	        executeTestStepsForRow();
+
+    	        // Log success for the current row
+    	        System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
+    	        passedCount++;
+    	    } catch (Exception e) {
+    	        // Log failure for the current row
+    	        System.err.println("Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage());
+    	        e.printStackTrace();
+    	        rowExecutionPassed = false;
+    	        failedCount++;
+    	    } finally {
+    	        // Ensure that execution proceeds to the next row
+    	        if (!rowExecutionPassed) {
+    	            System.out.println("Row " + (currentDataRowIndex + 1) + " failed. Moving to the next row.");
+    	        } else {
+    	            System.out.println("Row " + (currentDataRowIndex + 1) + " passed. Moving to the next row.");
+    	        }
+    	    }
+    	}
+
+    	// Summary log after processing all rows
+    	System.out.println("\nExecution Summary:");
+    	System.out.println("Total Rows Processed: " + allTestData.size());
+    	System.out.println("Rows Passed: " + passedCount);
+    	System.out.println("Rows Failed: " + failedCount);
+
+    }
+    
+    private void restartFromSalesMenuStep() throws Throwable {
+        try {
+            user_clicks_on_sales_menu_item();
+            user_clicks_on_the_sales_operation_sub_menu_item();
+            user_clicks_on_the_customer_booking_mgt_list_link();
+            user_should_be_able_to_navigate_to_the_customer_booking_mgt_list_screen();
+        } catch (Exception e) {
+            System.err.println("Error restarting from Sales Menu step: " + e.getMessage());
+            throw new RuntimeException("Failed to restart execution from Sales Menu step.", e);
         }
-
-        // Summary log after processing all rows
-        System.out.println("\nExecution Summary:");
-        System.out.println("Total Rows Processed: " + allTestData.size());
-        System.out.println("Rows Passed: " + passedCount);
-        System.out.println("Rows Failed: " + failedCount);
     }
     
     private void executeTestStepsForRow() throws Throwable {
         // Example: Call test methods for each step
     	try {
-    	user_clicks_on_the_sales_operation_sub_menu_item();
-    	user_clicks_on_the_customer_booking_mgt_list_link();
-    	user_should_be_able_to_navigate_to_the_customer_booking_mgt_list_screen();
     	user_tries_to_selects_mobile_number_in_the_based_on_auto_suggestion_in_customer_booking_mgt_list_screen();
     	user_tries_to_enters_lead_mobile_number_in_the_based_on_field();
     	user_tries_to_clicks_on_the_search_button_in_customer_booking_mgt_list_screen();
@@ -151,11 +167,32 @@ public class InvoiceStepDefinition {
     	user_should_be_able_to_see_do_you_want_to_confirm_it_popup();
     	user_tries_to_clicks_on_confirm_button_in_do_you_want_to_confirm_it_popup();
     	} catch (Exception e) {
-            // Handle exception and rethrow with specific error message
-            throw new Exception("Error while executing invoice feature for Row " + (currentDataRowIndex + 1) + ": " + e.getMessage());
+            System.err.println("Error during execution of steps for Row " + (currentDataRowIndex + 1) + ": " + e.getMessage());
+            throw new RuntimeException("Failed to execute steps for Row " + (currentDataRowIndex + 1), e);
         }
     }
 
+    @Then("user should be able to see the Home Icon on the dashboard")
+    public void user_should_be_able_to_see_the_home_icon_on_dashboard() {
+        try {
+            Assert.assertTrue(dMSLoginPage.isHomepageIconDisplayed(), "Home Icon is not displayed on the dashboard.");
+            System.out.println("Home Icon is displayed on the dashboard.");
+        } catch (Exception e) {
+            System.err.println("Error verifying Home Icon: " + e.getMessage());
+            Assert.fail("Home Icon verification failed.");
+        }
+    }
+    @When("User clicks On Sales Menu Item")
+	public void user_clicks_on_sales_menu_item() {
+		try {
+			Thread.sleep(3000);
+			invoicepage.clickSalesMenu();
+			System.out.println("Sales Menu clicked.");
+		} catch (Exception e) {
+			System.err.println("Error during Sales Menu click: " + e.getMessage());
+		}
+	}
+    
     @Then("User clicks on the Sales Operation Sub Menu Item")
     public void user_clicks_on_the_sales_operation_sub_menu_item() {
         try {
@@ -195,7 +232,8 @@ public class InvoiceStepDefinition {
     public void user_tries_to_selects_mobile_number_in_the_based_on_auto_suggestion_in_customer_booking_mgt_list_screen() {
         try {
             invoicepage.interactWithIframeElement1();
-            String enquirystartDate = "01091947";
+            Thread.sleep(5000);
+            String enquirystartDate = "01091947";          
             invoicepage.enterEnquiryStartDateField(enquirystartDate);
             waitForVisibilityOfElement(invoicepage.getBasedOnDropDown());
             invoicepage.selectBasedOn("Mobile No");
@@ -209,6 +247,7 @@ public class InvoiceStepDefinition {
         try {
             if (testData != null) {
                 waitForVisibilityOfElement(invoicepage.getBasedOnField());
+                invoicepage.enterBasedOnField(testData.get("phone"));
                 invoicepage.enterBasedOnField(testData.get("phone"));
                 System.out.println("Entered Lead Mobile Number: " + testData.get("phone"));
             } else {
@@ -299,6 +338,7 @@ public class InvoiceStepDefinition {
             invoicepage.interactWithIframeElement2();
             invoicepage.interactWithIframeElement3();
             if (testData != null) {
+            	Thread.sleep(5000);
                 invoicepage.enterPayableByDealerAmountField(testData.get("cash_discount"));
                 System.out.println("Entered Payable By Dealer Amount: " + testData.get("cash_discount"));
             } else {
@@ -313,6 +353,7 @@ public class InvoiceStepDefinition {
     public void user_tries_to_enters_valid_data_in_the_adjustment_credit_note_amount_in_tax_adjustment_allowed_table() {
         try {
             if (testData != null) {
+            	Thread.sleep(5000);
                 invoicepage.enterAdjustmentCreditNoteField(testData.get("cash_discount"));
                 System.out.println("Entered Adjustment Credit Note Amount: " + testData.get("cash_discount"));
             } else {
@@ -471,7 +512,8 @@ public class InvoiceStepDefinition {
     @Then("User tries to clicks on the Plus icon in Promotions Section in the Customer Booking Management Screen")
     public void user_tries_to_clicks_on_the_plus_icon_in_promotions_section_in_the_customer_booking_management_screen() {
         try {         
-            waitForElementToBeClickable(invoicepage.getPromotionsSectionPlusIcon());
+        	Thread.sleep(14000);          
+        	waitForElementToBeClickable(invoicepage.getPromotionsSectionPlusIcon());
             invoicepage.clickPromotionsSectionPlusIcon();
             System.out.println("Plus icon in Promotions Section clicked.");
         } catch (Exception e) {
@@ -690,14 +732,9 @@ public class InvoiceStepDefinition {
             System.err.println("Error during Confirm button click: " + e.getMessage());
         }
         LaunchDriver.getDriver().switchTo().defaultContent();
-    }
-
-    @Given("user tries to close the chrome browser")
-    public void user_tries_to_close_the_chrome_browser() throws Exception {
-        try {
-            LaunchDriver.tearDown();
-        } catch (Exception e) {
-            throw new Exception("Error occurred while Closing the browser : " + e.getMessage());
-        }
+        invoicepage.clickCloseCustomerBookingMgt();
+        invoicepage.clickCloseCustomerBookingMgtList();
+        user_clicks_on_sales_menu_item();
+    	user_clicks_on_the_sales_operation_sub_menu_item();
     }
 }
