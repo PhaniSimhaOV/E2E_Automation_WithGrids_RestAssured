@@ -32,8 +32,8 @@ public class ExWarrantyPage {
         PageFactory.initElements(driver, this);
     }
     
-    
-    @FindBy(xpath="//*[text()='Service']")    //a[text()='Service']
+    //XPath for web elements
+    @FindBy(xpath="//*[text()='Service']") 
     private WebElement ServiceIcon;
     
     @FindBy(xpath="//*[text()='Extended Warranty']")
