@@ -61,38 +61,55 @@ public class InvoiceStepDefinition {
         System.out.println("All Test Data Loaded: " + allTestData.size() + " rows.");
     }
 
-    @When("User processes all rows from the Excel sheet of sheet Name Invoice Leads")
-    public void user_processes_all_rows_from_the_excel_sheet_of_sheet_name_invoice_leads() throws Throwable {
+    @When("User processes the Invoice for all rows from the Excel sheet of sheet Name Invoice Leads")
+    public void user_processes_the_invoice_for_all_rows_from_the_excel_sheet_of_sheet_name_invoice_leads() throws Throwable {
     	int passedCount = 0;
-        int failedCount = 0;
+    	int failedCount = 0;
 
-        for (currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
-            System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
-            testData = allTestData.get(currentDataRowIndex); // Load data for the current row
-            System.out.println("Current Test Data: " + testData);
+    	for (currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
+    	    System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
 
-            try {
-                // Restart execution from Sales Menu for each row
-                restartFromSalesMenuStep();
-                executeTestStepsForRow();
-                System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
-                passedCount++;
-            } catch (Exception e) {
-                // Log the error and continue with the next row
-                System.err.println("Row " + (currentDataRowIndex + 1) + " execution FAILED.");
-                System.err.println("Error Details: " + e.getMessage());
-                e.printStackTrace();
-                failedCount++;
-            } finally {
-                System.out.println("Completed processing Row " + (currentDataRowIndex + 1) + ". Moving to next row.");
-            }
-        }
+    	    // Log the current row data
+    	    System.out.println("Reading data for Row " + (currentDataRowIndex + 1) + ": " + allTestData.get(currentDataRowIndex));
 
-        // Summary after processing all rows
-        System.out.println("\nExecution Summary:");
-        System.out.println("Total Rows Processed: " + allTestData.size());
-        System.out.println("Rows Passed: " + passedCount);
-        System.out.println("Rows Failed: " + failedCount);
+    	    // Initialize testData for the current row
+    	    testData = allTestData.get(currentDataRowIndex);
+    	    System.out.println("Current Test Data: " + testData);
+
+    	    boolean rowExecutionPassed = true;
+
+    	    try {
+    	        // Restart execution from Sales Menu for each row
+    	        restartFromSalesMenuStep();
+
+    	        // Execute all test steps for the current row
+    	        executeTestStepsForRow();
+
+    	        // Log success for the current row
+    	        System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
+    	        passedCount++;
+    	    } catch (Exception e) {
+    	        // Log failure for the current row
+    	        System.err.println("Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage());
+    	        e.printStackTrace();
+    	        rowExecutionPassed = false;
+    	        failedCount++;
+    	    } finally {
+    	        // Ensure that execution proceeds to the next row
+    	        if (!rowExecutionPassed) {
+    	            System.out.println("Row " + (currentDataRowIndex + 1) + " failed. Moving to the next row.");
+    	        } else {
+    	            System.out.println("Row " + (currentDataRowIndex + 1) + " passed. Moving to the next row.");
+    	        }
+    	    }
+    	}
+
+    	// Summary log after processing all rows
+    	System.out.println("\nExecution Summary:");
+    	System.out.println("Total Rows Processed: " + allTestData.size());
+    	System.out.println("Rows Passed: " + passedCount);
+    	System.out.println("Rows Failed: " + failedCount);
+
     }
     
     private void restartFromSalesMenuStep() throws Throwable {
