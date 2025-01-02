@@ -249,15 +249,17 @@ public void enterVIN(String vin)
 		}
 	}
    
-   public void closeTab() {
-		try {
-			Thread.sleep(2000);
-			LaunchDriver.getDriver().switchTo().defaultContent();
-			close.click();
-		} catch (Exception e) {
-			System.err.println("Error in clicking close button" +e.getMessage());
-		}
-	}
+   public void closeExwarrentyTab() {
+ 		try {
+ 			Thread.sleep(2000);
+ 			LaunchDriver.getDriver().switchTo().defaultContent();
+ 			close.click();
+ 		} catch (Exception e) {
+ 			System.err.println("Error in clicking close button" +e.getMessage());
+ 		}
+ 	}
+
+
 
    
    

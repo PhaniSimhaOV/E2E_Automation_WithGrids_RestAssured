@@ -233,7 +233,7 @@ public void clickExtWarrantySubMenu() {
     		}
     	}
 
-       public void closeTab() {
+       public void closeSOTTab() {
    		try {
    			Thread.sleep(2000);
    			LaunchDriver.getDriver().switchTo().defaultContent();
@@ -242,6 +242,4 @@ public void clickExtWarrantySubMenu() {
    			System.err.println("Error in clicking close button" +e.getMessage());
    		}
    	}
-    
- 
 }
