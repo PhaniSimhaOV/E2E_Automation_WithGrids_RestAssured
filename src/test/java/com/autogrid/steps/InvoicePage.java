@@ -532,6 +532,11 @@ public class InvoicePage {
         try {
             Actions actions = new Actions(driver);
             waitForVisibilityOfElement(PayableByDealerAmountField);
+            actions.moveToElement(PayableByDealerAmountField).click() // Move to the field and click to focus
+            .keyDown(Keys.CONTROL).sendKeys("a") // Select all text (CTRL + A)
+            .keyUp(Keys.CONTROL)
+            .sendKeys(Keys.BACK_SPACE) // Delete the selected text
+            .perform();
             actions.click(PayableByDealerAmountField).sendKeys(PayableByDealerAmount).build().perform();
             System.out.println("Successfully entered text: " + PayableByDealerAmount);
         } catch (Exception e) {
@@ -544,6 +549,11 @@ public class InvoicePage {
         try {
             Actions actions = new Actions(driver);
             waitForVisibilityOfElement(AdjustmentCreditNoteAmountField);
+            actions.moveToElement(AdjustmentCreditNoteAmountField).click() // Move to the field and click to focus
+            .keyDown(Keys.CONTROL).sendKeys("a") // Select all text (CTRL + A)
+            .keyUp(Keys.CONTROL)
+            .sendKeys(Keys.BACK_SPACE) // Delete the selected text
+            .perform();
             actions.click(AdjustmentCreditNoteAmountField).sendKeys(AdjustmentCreditNoteAmount).build().perform();
             System.out.println("Successfully entered text: " + AdjustmentCreditNoteAmount);
         } catch (Exception e) {
@@ -557,6 +567,11 @@ public class InvoicePage {
         try {
             Actions actions = new Actions(driver);
             waitForVisibilityOfElement(BasicInsuranceAmountField);
+            actions.moveToElement(BasicInsuranceAmountField).click() // Move to the field and click to focus
+            .keyDown(Keys.CONTROL).sendKeys("a") // Select all text (CTRL + A)
+            .keyUp(Keys.CONTROL)
+            .sendKeys(Keys.BACK_SPACE) // Delete the selected text
+            .perform();
             actions.click(BasicInsuranceAmountField).sendKeys(BasicInsuranceAmount).build().perform();
             System.out.println("Successfully entered text: " + BasicInsuranceAmount);
         } catch (Exception e) {
@@ -570,6 +585,11 @@ public class InvoicePage {
         try {
             Actions actions = new Actions(driver);
             waitForVisibilityOfElement(RTOAmountField);
+            actions.moveToElement(RTOAmountField).click() // Move to the field and click to focus
+            .keyDown(Keys.CONTROL).sendKeys("a") // Select all text (CTRL + A)
+            .keyUp(Keys.CONTROL)
+            .sendKeys(Keys.BACK_SPACE) // Delete the selected text
+            .perform();
             actions.click(RTOAmountField).sendKeys(RTOAmount).build().perform();
             System.out.println("Successfully entered text: " + RTOAmount);
         } catch (Exception e) {
@@ -583,6 +603,11 @@ public class InvoicePage {
         try {
             Actions actions = new Actions(driver);
             waitForVisibilityOfElement(RoadTaxAmountField);
+            actions.moveToElement(RoadTaxAmountField).click() // Move to the field and click to focus
+            .keyDown(Keys.CONTROL).sendKeys("a") // Select all text (CTRL + A)
+            .keyUp(Keys.CONTROL)
+            .sendKeys(Keys.BACK_SPACE) // Delete the selected text
+            .perform();
             actions.click(RoadTaxAmountField).sendKeys(RoadTaxAmount).build().perform();
             System.out.println("Successfully entered text: " + RoadTaxAmount);
         } catch (Exception e) {
@@ -596,6 +621,11 @@ public class InvoicePage {
         try {
             Actions actions = new Actions(driver);
             waitForVisibilityOfElement(OtherChargesAmountField);
+            actions.moveToElement(OtherChargesAmountField).click() // Move to the field and click to focus
+            .keyDown(Keys.CONTROL).sendKeys("a") // Select all text (CTRL + A)
+            .keyUp(Keys.CONTROL)
+            .sendKeys(Keys.BACK_SPACE) // Delete the selected text
+            .perform();
             actions.click(OtherChargesAmountField).sendKeys(OtherChargesAmount).build().perform();
             System.out.println("Successfully entered text: " + OtherChargesAmount);
         } catch (Exception e) {
@@ -609,6 +639,11 @@ public class InvoicePage {
         try {
             Actions actions = new Actions(driver);
             waitForVisibilityOfElement(LifeTaxAmountField);
+            actions.moveToElement(LifeTaxAmountField).click() // Move to the field and click to focus
+            .keyDown(Keys.CONTROL).sendKeys("a") // Select all text (CTRL + A)
+            .keyUp(Keys.CONTROL)
+            .sendKeys(Keys.BACK_SPACE) // Delete the selected text
+            .perform();
             actions.click(LifeTaxAmountField).sendKeys(LifeTaxAmount).build().perform();
             System.out.println("Successfully entered text: " + LifeTaxAmount);
         } catch (Exception e) {
