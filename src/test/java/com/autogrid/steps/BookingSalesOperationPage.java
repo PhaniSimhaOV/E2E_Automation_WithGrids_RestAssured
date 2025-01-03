@@ -1,11 +1,12 @@
 package com.autogrid.steps;
+
+import org.apache.poi.ss.formula.functions.T;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
 
 import com.autogrid.utils.LaunchDriver;
-import org.apache.poi.sl.usermodel.Sheet;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -78,7 +79,7 @@ public class BookingSalesOperationPage {
 
     @FindBy(xpath = "//*[@id=\"enType_listbox\"]/li[1]")
     private WebElement basicinfoEnquiryList;
-    @FindBy(xpath ="//*[@id='basicInfo']/div[3]/dl[2]/dd[2]")
+    @FindBy(xpath = "//*[@id='basicInfo']/div[3]/dl[2]/dd[2]")
     private WebElement EnquiryCategoryField;
     @FindBy(xpath = "//ul[@id=\"enCategory_listbox\"]/li")
     private List<WebElement> optionsEnquiryCategory;
@@ -90,7 +91,7 @@ public class BookingSalesOperationPage {
     private WebElement ReferredByField;
     @FindBy(xpath = "//*[@id=\"bookingInfo\"]/section[2]/div[2]/dl[2]/dd[1]/span/span")
     private WebElement TitleField;
-    @FindBy(xpath ="//*[@id=\"titleType_listbox\"]")
+    @FindBy(xpath = "//*[@id=\"titleType_listbox\"]")
     private List<WebElement> optionsTitleFieldDropdown;
     @FindBy(xpath = "//*[@id=\"pan\"]")
     private WebElement panfield;
@@ -150,7 +151,7 @@ public class BookingSalesOperationPage {
     private WebElement DealerVechileStock;
     @FindBy(xpath = "//*[@id=\"sVin\"]")
     private WebElement vinNumber;
-    @FindBy(xpath ="//*[@class='btn_m btn_search k-button']")
+    @FindBy(xpath = "//*[@class='btn_m btn_search k-button']")
     private WebElement vinSearch;
     @FindBy(xpath = "//*[@id=\"gnb\"]/li[2]/div/ul/li[3]/ul/li[1]/a")
     private WebElement mgtListSales;
@@ -166,11 +167,36 @@ public class BookingSalesOperationPage {
     private WebElement verifydata1;
     @FindBy(xpath = "//ul[@id='dSearchCd_listbox']/li")
     private List<WebElement> VerifyOptions;
-    @FindBy(xpath="//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span/input[1]")
+    @FindBy(xpath = "//*[@id=\"orpInfo\"]/section/div[2]/dl[2]/dd[1]/span/span/input[1]")
     private WebElement RTOAmountField;
-
-
-
+    @FindBy(xpath = " //*[@id=\"orpInfo\"]/section/div[2]/dl[1]/dd[2]/span/span/input[1]")
+    private WebElement ExShowrroom;
+    @FindBy(xpath = "//*[@id='registrationNm']")
+    private WebElement RegistrationNm;
+    @FindBy(xpath = "//*[@id=\"bkngShipToName\"]")
+    private WebElement ShipToName;
+    @FindBy(xpath = "//*[@id=\"addressTab\"]")
+    private WebElement AddressTab;
+    @FindBy(xpath = "//a[@href='javascript:fn_pinCodeSearch()")
+    private WebElement pinCodeSearchBilling;
+    @FindBy(xpath = "//*[@id='window']/div[2]/dl[1]/dd[1]/span/span")
+    private WebElement statedropdown;
+    @FindBy(xpath = "//*[@id=\"sPinCode\"]")
+    private WebElement pinCodeBilling;
+    @FindBy(xpath = "//*[@id='window']/div[1]/div/button[2]")
+    private WebElement serachBilling;
+    @FindBy(xpath = "//*[@id=\"bkngShipToAddr\"]")
+    private WebElement ShipToAddr;
+    @FindBy(xpath = "//*[@id=\"bkngFileLoginDate\"]")
+    private WebElement fileLoginDate;
+    @FindBy(xpath = "//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[3]/dd[1]/span/span/span[1]")
+    private WebElement bookingInfoFinancer;
+    @FindBy(xpath = "//*[@id=\"financierCd_listbox\"]")
+    List<WebElement> financierCdList;
+    @FindBy(xpath = "//*[@id=\"btnBookingRegister\"]")
+    private WebElement btnBookingRegister;
+    @FindBy(xpath = "//*[@id=\"btnBookingModify\"]")
+    private WebElement btnBookingModify;
 
 
     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
@@ -184,7 +210,7 @@ public class BookingSalesOperationPage {
 
     public void SalesIconButton() throws InterruptedException {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(3000 * 5);
             SalesIcon.click();
             Thread.sleep(3000);
         } catch (Exception e) {
@@ -303,7 +329,7 @@ public class BookingSalesOperationPage {
         }
     }
 
-    public void fillfieldsBookingPage(String pan) throws InterruptedException, AWTException {
+    public void fillfieldsBookingPage(String pan, String RegistrationName, String address, String StateValue, String pincode, String LoginDate) throws InterruptedException, AWTException {
         try {
             iframe3();
             Thread.sleep(3000);
@@ -311,14 +337,78 @@ public class BookingSalesOperationPage {
             basicinfoEnquiry.click();
             basicinfoEnquiryList.click();
             System.out.println("The Enquiry type as being selected");
+            Thread.sleep(6000);
+
+
+            //Pan
+            panfield.clear();
+            panfield.sendKeys(pan);
+            System.out.println("The Pan as being selected" + panfield.getText());
+            iframe3();
+            JavascriptExecutor js = (JavascriptExecutor) getDriver();
+            js.executeScript("window.scrollBy(0,1000)");
+            System.out.println("Scrolled down successfully.");
+            //RegisteredName
+            RegistrationNm.clear();
+            RegistrationNm.sendKeys(RegistrationName);
+            ShipToName.clear();
+            ShipToName.sendKeys(RegistrationName);
+            System.out.println("RegistrationNm is." + RegistrationNm.getText());
+            AddressTab.clear();
+            AddressTab.sendKeys(address);
+            ShipToAddr.clear();
+            ShipToAddr.sendKeys(address);
+            //ModeOfPurchase
+            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[2]/dd[1]/span/span/span[1]")).click();
+            getDriver().findElement(By.xpath("//*[@id=\"purchaseType_listbox\"]/li[4]")).click();
+            System.out.println("The Purchase Type as being selected");
             Thread.sleep(3000);
+            //BillingAddress
+            pinCodeSearchBilling.click();
+            WebElement iframenameBilling = getDriver().findElement(By.xpath("//iframe[@class='k-content-frame']"));
+            LaunchDriver.getDriver().switchTo().defaultContent();
+            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+            LaunchDriver.getDriver().switchTo().frame(iframenameBilling);
+            System.out.println("Successfully interacted with the element inside the iframe. for billing address");
+            statedropdown.click();
+            Thread.sleep(2000);
+            List<WebElement> ShippingAddress = getDriver().findElements(By.xpath("//ul[@id=\"sStcdName_listbox\"]/li"));
+            for (WebElement option : ShippingAddress) {
+                if (option.getText().equals(StateValue)) {
+                    option.click();
+                    break;
+                }
+            }
+            pinCodeBilling.clear();
+            pinCodeBilling.sendKeys(pincode);
+            serachBilling.click();
+            WebElement SalesTable = getDriver().findElement(By.xpath("//*[@id='grid']/div[2]/table/tbody/tr[1]"));
+            Actions actions = new Actions(getDriver());
+            actions.doubleClick(SalesTable).perform();
+            Thread.sleep(2000);
+            System.out.println("Billing address is updated");
+            fileLoginDate.click();
+            fileLoginDate.sendKeys(LoginDate);
+            bookingInfoFinancer.click();
+            financierCdList.get(3).click();
+            btnBookingRegister.click();
+            iframe3();
+            confirmRegisterButton.click();
+            System.out.println("Successfully clicked on register");
+            Thread.sleep(5000);
+            btnBookingModify.click();
+            iframe3();
+            iframe3();
+            confirmmodifybutton.click();
+            System.out.println("Modified successfully");
+
+
 //            //EnquiryCategory
 ////            EnquiryCategoryField.click();
 ////            WebElement Enquirycategory = optionsEnquiryCategory.get(3);
 //            Thread.sleep(3000);
 ////            Enquirycategory.click();
 //            //System.out.println("The Enquiry Category as being selected");
-            Thread.sleep(3000);
             //SalesConsultant
 //            SalesConsultantField.click();
 //            WebElement selectedOption = SalesConsultantFieldoptions.get(15);
@@ -326,7 +416,6 @@ public class BookingSalesOperationPage {
 //            selectedOption.click();
 //            System.out.println("Selected Option: " + selectedOption.getText());
 //            System.out.println("The Sales Consultant as being selected");
-            Thread.sleep(3000);
 //            //Referred by :
 //            ReferredByField.sendKeys("CHENIGACHERLA SAMPATH RAJ");
 //            System.out.println("The Referred by as being selected");
@@ -344,15 +433,6 @@ public class BookingSalesOperationPage {
 //                }
 //            }
 //            System.out.println("Title is selected");
-            //Pan
-            panfield.clear();
-            panfield.sendKeys(pan);
-            System.out.println("The Pan as being selected" +panfield.getText());
-            iframe3();
-            JavascriptExecutor js = (JavascriptExecutor) getDriver();
-            js.executeScript("window.scrollBy(0,1000)");
-            System.out.println("Scrolled down successfully.");
-
             //            getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).clear();
 //            getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).sendKeys("34512678");
 //            System.out.println("The GST number as been passed" +getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).getText());
@@ -367,28 +447,8 @@ public class BookingSalesOperationPage {
 //                getDriver().findElement(By.xpath("//*[@id=\"gridBody\"]/div[2]/table/tbody/tr[1]/td[1]")).click();
 //                getDriver().findElement(By.xpath("//*[@id=\"gridBody\"]/div[2]/table/tbody/tr[1]/td[1]")).click();
 //            System.out.println("Registered corp is slected successfully");
-            //ModeOfPurchase
-//            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[2]/dd[1]/span/span/span[1]")).click();
-//            getDriver().findElement(By.xpath("//*[@id=\"purchaseType_listbox\"]/li[4]")).click();
-//            System.out.println("The Purchase Type as being selected");
-//            Thread.sleep(3000);
-            //BillingAddress
-//            getDriver().findElement(By.xpath("//a[@href='javascript:fn_pinCodeSearch();']")).click();
-//            WebElement iframenameBilling = getDriver().findElement(By.xpath("//iframe[@class='k-content-frame']"));
-//            LaunchDriver.getDriver().switchTo().defaultContent();
-//            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
-//            LaunchDriver.getDriver().switchTo().frame(iframenameBilling);
-//            System.out.println("Successfully interacted with the element inside the iframe. for billing address");
-//            getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[2]/dl[1]/dd[1]/span/span")).click();
-//            Thread.sleep(2000);
-//            List<WebElement> ShippingAddress= getDriver().findElements(By.xpath("//ul[@id=\"sStcdName_listbox\"]/li"));
-//            ShippingAddress.get(1).click();
-//            getDriver().findElement(By.xpath("//*[@id='window']/div[1]/div/button[2]")).click();
-//            WebElement SalesTable = getDriver().findElement(By.xpath("//*[@id='grid']/div[2]/table/tbody/tr[1]"));
-//            Actions actions = new Actions(getDriver());
-//            actions.doubleClick(SalesTable).perform();
-//            Thread.sleep(2000);
-//            System.out.println("Billing address is updated");
+
+
             //Registered Loan amount
 //            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).clear();
 //            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).sendKeys("15000");
@@ -448,7 +508,7 @@ public class BookingSalesOperationPage {
         }
     }
 
-    public void QuotationPage(String RTOamount) throws InterruptedException {
+    public void QuotationPage(String RTOamount, String ExShowrroomamount) throws InterruptedException {
         Thread.sleep(3000);
         QuotationButton.click();
 
@@ -462,6 +522,16 @@ public class BookingSalesOperationPage {
 
             actions.click(RTOAmountField).sendKeys(RTOamount).build().perform();
             System.out.println("Successfully entered text: " + RTOamount);
+            actions.moveToElement(ExShowrroom).click() // Move to the field and click to focus
+                    .keyDown(Keys.CONTROL).sendKeys("a") // Select all text (CTRL + A)
+                    .keyUp(Keys.CONTROL)
+                    .sendKeys(Keys.BACK_SPACE) // Delete the selected text
+                    .perform();
+
+            actions.click(ExShowrroom).sendKeys(ExShowrroomamount).build().perform();
+            System.out.println("Successfully entered text: " + ExShowrroomamount);
+
+
         } catch (Exception e) {
             System.err.println("Error while entering text using Actions: " + e.getMessage());
             throw new RuntimeException("Failed to enter text using Actions.", e);
@@ -490,7 +560,7 @@ public class BookingSalesOperationPage {
     }
 
     public void ReceiptTab() throws InterruptedException {
-       Thread.sleep(4000);
+        Thread.sleep(4000);
         ReceiptField.click();
         Thread.sleep(4000);
         iframe3();
@@ -555,7 +625,7 @@ public class BookingSalesOperationPage {
     }
 
     public void vinNumber(String VinNo) {
-       iframe2();
+        iframe2();
 
         vinNumber.sendKeys(VinNo);
         //MALB341CYRM313126
@@ -563,7 +633,7 @@ public class BookingSalesOperationPage {
     }
 
     public void vinSearch() throws InterruptedException {
-       Thread.sleep(3000);
+        Thread.sleep(3000);
         vinSearch.click();
     }
 
@@ -595,20 +665,20 @@ public class BookingSalesOperationPage {
 //        Assert.assertEquals(VariantValue, CustVariant.contains(VariantValue));
 //        Assert.assertEquals(ExteriorColor, CustExtColor);
 //        Assert.assertEquals(InteriorColor, CustIntColor);
-        String Enquirynumber=getDriver().findElement(By.xpath("//*[@id=\"enquiryNo\"]")).getText();
-        String excelFilePath = "C:/Users/Anjali/OneDrive/BookingDetails.xlsx";
-
+        String Enquirynumber = getDriver().findElement(By.xpath("//*[@id=\"enquiryNo\"]")).getText();
+        // Path to your existing Excel file
+        String excelFilePath = "C:/Users/Anjali/OneDrive/Downloads/BookingDetails.xlsx";
         // Load the Excel file
         FileInputStream fis = new FileInputStream(new File(excelFilePath));
         Workbook workbook = new XSSFWorkbook(fis);
         // Get the first sheet from the workbook
-        Sheet sheet = (Sheet) workbook.getSheetAt(0);
+        Sheet sheet = workbook.getSheetAt(0);
         // Find the next available row to write
-        int nextRowNum = ((org.apache.poi.ss.usermodel.Sheet) sheet).getPhysicalNumberOfRows();
+        int nextRowNum = sheet.getPhysicalNumberOfRows();
         // Create a new row at the next available index
-        Row row = ((org.apache.poi.ss.usermodel.Sheet) sheet).createRow(nextRowNum);
+        Row row = sheet.createRow(nextRowNum);
         // Add data to each cell in the new row (You can change the data format as per your needs)
-        row.createCell(0).setCellValue("Enquirynumber");
+        row.createCell(0).setCellValue(Enquirynumber);
         // Save the Excel file after editing
         FileOutputStream fos = new FileOutputStream(new File(excelFilePath));
         workbook.write(fos);
@@ -622,10 +692,9 @@ public class BookingSalesOperationPage {
     }
 
     public void receiptLink() {
-       iframe3();
-       ReceiptTab.click();
+        iframe3();
+        ReceiptTab.click();
     }
-
 
 
 //    public void VerifyConscentLink() {
@@ -634,7 +703,6 @@ public class BookingSalesOperationPage {
 //        String statusValue = getDriver().findElement(By.xpath("//*[@id=\"mainGrid\"]/div[3]/table/tbody/tr/td[24]")).getText();
 //        Assert.assertEquals(statusValue, "Pending");
 //    }
-
 
 
 }

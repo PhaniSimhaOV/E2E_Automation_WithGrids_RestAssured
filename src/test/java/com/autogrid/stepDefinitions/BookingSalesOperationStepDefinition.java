@@ -111,11 +111,15 @@ public class BookingSalesOperationStepDefinition {
 
     @Then("User fills the fields in the Customer Booking MGT")
     public void userFillsTheFieldsInTheCustomerBookingMGT() throws InterruptedException, AWTException {
-
+        Thread.sleep(4000);
         try {
             if (testData != null) {
-                bookingPage.fillfieldsBookingPage(testData.get("panNo"));
+                bookingPage.fillfieldsBookingPage(testData.get("panNo"),testData.get("regName"),testData.get("address"),testData.get("state"),testData.get("pincode"),testData.get("bookingDate").substring(0,10));
+                System.out.println("Entered regName : " + testData.get("regName"));
                 System.out.println("Entered Pan number: " + testData.get("panNo"));
+                System.out.println("Entered address: " + testData.get("address"));
+                System.out.println(testData.get("state"));
+                System.out.println(testData.get("pincode"));
             } else {
                 throw new RuntimeException("Test data is not initialized.");
             }
@@ -135,8 +139,11 @@ public class BookingSalesOperationStepDefinition {
         System.out.println("Entered RTOamount: " + testData.get("RTOamount"));
         try {
             if (testData != null) {
-                bookingPage.QuotationPage(testData.get("RTOamount"));
+                bookingPage.QuotationPage(testData.get("RTOamount"),testData.get("ex_showroom_price"));
                 System.out.println("Entered RTOamount: " + testData.get("RTOamount"));
+                System.out.println("Entered ex_showroom_price: " + testData.get("ex_showroom_price"));
+
+
             } else {
                 throw new RuntimeException("Test data is not initialized.");
             }
@@ -310,23 +317,30 @@ public class BookingSalesOperationStepDefinition {
         userClicksOnTheSearchButton();
 
         theEnquiryWillBePopulatedThenUserAsToSelectIt();
+        Thread.sleep(4000);
         userFillsTheFieldsInTheCustomerBookingMGT();
         //userClicksOnBasedOnTheValue(button);
-      afterSuccessfulRegistrationUserClicksOnQuotation();
+       afterSuccessfulRegistrationUserClicksOnQuotation();
         userClicksOnTheReceiptIcon();
         dMSLoginPage.launchDMSSite();
         userEntersAValidUsernameForAccount();
         userEnterAValidPasswordForAccount();
-        dMSLoginPage.clickLoginButton();
+        dMSLoginPage.clickSendOTPButton();
+        Thread.sleep(4000*3);
+        //dMSLoginPage.clickLoginButton();
         //userAsToAddTheAmountInTheReceiptSection();
         userClicksOnTheSalesIcon();
+        Thread.sleep(4000);
         userSelectsTheSalesOperationTab();
         userSelectsCustomerBookingMgtListUnderSalesOperation();
         userNeedToSelectTheEnquiryOptionInTheDropdown();
+        Thread.sleep(4000);
         userEntersTheMobileNumberInTheTextBox();
+        Thread.sleep(4000);
         userSelectsTheMobileNumberOptionFromTheDropdown();
         userPassedTheStartDateAndEndDateInThePage();
         userClicksOnTheSearchButton();
+        Thread.sleep(4000);
         theEnquiryWillBePopulatedThenUserAsToSelectIt();
         userClicksOnTheReceiptIcon();
         userAsToAddTheAmountInTheReceiptSection();
