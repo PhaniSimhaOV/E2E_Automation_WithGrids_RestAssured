@@ -336,12 +336,13 @@ public class BookingSalesOperationStepDefinition {
         dMSLoginPage.enterPassword("Hyundai@2024");
         dMSLoginPage.clickLoginButton();
         userClicksOnTheSalesIcon();
-        userClicksOnOrderAndStock();
-        userSelectsDealerVechileStockMGT();
-        searchesForTheVinNumber();
-        verifiesTheValueFromTheCustomerLink();
+        bookingPage.orderStock();
+        bookingPage.DealerVechileStock();
+        bookingPage.vinNumber("");
+        bookingPage.vinSearch();
         bookingPage.mgtListSales();
         bookingPage.verifyDataMGT();
+
     }
 }
 
