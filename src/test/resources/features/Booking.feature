@@ -7,7 +7,7 @@ Feature: User navigates to booking section
     Given launch browser and enter url
     When user enters a valid username
     And user enter a valid password
-    And clicks on Send OTP
+    And clicks on Send OTP for booking
     #And user enters a valid OTP
     #And clicks on login
     And User reads data from the Excel sheet regarding Booking Feature

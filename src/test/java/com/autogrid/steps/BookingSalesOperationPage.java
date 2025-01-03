@@ -210,7 +210,7 @@ public class BookingSalesOperationPage {
 
     public void SalesIconButton() throws InterruptedException {
         try {
-            Thread.sleep(3000 * 5);
+            Thread.sleep(3000* 15);
             SalesIcon.click();
             Thread.sleep(3000);
         } catch (Exception e) {
@@ -509,7 +509,8 @@ public class BookingSalesOperationPage {
     }
 
     public void QuotationPage(String RTOamount, String ExShowrroomamount) throws InterruptedException {
-        Thread.sleep(3000);
+        Thread.sleep(6000);
+        iframe3();
         QuotationButton.click();
 
         try {
