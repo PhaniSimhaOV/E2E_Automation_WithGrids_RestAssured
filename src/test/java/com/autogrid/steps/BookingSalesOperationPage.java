@@ -1,6 +1,11 @@
 package com.autogrid.steps;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.*;
 
 import com.autogrid.utils.LaunchDriver;
+import org.apache.poi.sl.usermodel.Sheet;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,6 +19,9 @@ import com.autogrid.utils.CommonActions;
 import org.testng.Assert;
 
 import java.awt.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.Duration;
 import java.awt.event.InputEvent;
 import java.util.List;
@@ -564,7 +572,7 @@ public class BookingSalesOperationPage {
         mgtListSales.click();
     }
 
-    public void verifyDataMGT() throws InterruptedException {
+    public void verifyDataMGT() throws InterruptedException, IOException {
 
         String VariantValue = VariantValueTab.getText();
         String ExteriorColor = ExteriorColorTab.getText();
@@ -587,6 +595,29 @@ public class BookingSalesOperationPage {
 //        Assert.assertEquals(VariantValue, CustVariant.contains(VariantValue));
 //        Assert.assertEquals(ExteriorColor, CustExtColor);
 //        Assert.assertEquals(InteriorColor, CustIntColor);
+        String Enquirynumber=getDriver().findElement(By.xpath("//*[@id=\"enquiryNo\"]")).getText();
+        String excelFilePath = "C:/Users/Anjali/OneDrive/BookingDetails.xlsx";
+
+        // Load the Excel file
+        FileInputStream fis = new FileInputStream(new File(excelFilePath));
+        Workbook workbook = new XSSFWorkbook(fis);
+        // Get the first sheet from the workbook
+        Sheet sheet = (Sheet) workbook.getSheetAt(0);
+        // Find the next available row to write
+        int nextRowNum = ((org.apache.poi.ss.usermodel.Sheet) sheet).getPhysicalNumberOfRows();
+        // Create a new row at the next available index
+        Row row = ((org.apache.poi.ss.usermodel.Sheet) sheet).createRow(nextRowNum);
+        // Add data to each cell in the new row (You can change the data format as per your needs)
+        row.createCell(0).setCellValue("Enquirynumber");
+        // Save the Excel file after editing
+        FileOutputStream fos = new FileOutputStream(new File(excelFilePath));
+        workbook.write(fos);
+
+        // Close the resources
+        fos.close();
+        fis.close();
+
+        System.out.println("Data has been added to the Excel file successfully.");
         getDriver().close();
     }
 
@@ -603,4 +634,7 @@ public class BookingSalesOperationPage {
 //        String statusValue = getDriver().findElement(By.xpath("//*[@id=\"mainGrid\"]/div[3]/table/tbody/tr/td[24]")).getText();
 //        Assert.assertEquals(statusValue, "Pending");
 //    }
+
+
+
 }

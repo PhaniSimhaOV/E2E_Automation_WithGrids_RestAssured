@@ -9,6 +9,16 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +29,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
 
@@ -214,13 +225,14 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @Then("verifies the value from the customer link")
-    public void verifiesTheValueFromTheCustomerLink() throws InterruptedException {
-        bookingPage.verifyDataMGT();
+    public void verifiesTheValueFromTheCustomerLink() throws InterruptedException, IOException {
+       // bookingPage.verifyDataMGT();
         userEntersTheMobileNumberInTheTextBox();
         userSelectsTheMobileNumberOptionFromTheDropdown();
         userPassedTheStartDateAndEndDateInThePage();
         userClicksOnTheSearchButton();
         theEnquiryWillBePopulatedThenUserAsToSelectIt();
+        bookingPage.verifyDataMGT();
 
     }
 
@@ -327,7 +339,10 @@ public class BookingSalesOperationStepDefinition {
         userClicksOnOrderAndStock();
         userSelectsDealerVechileStockMGT();
         searchesForTheVinNumber();
+        verifiesTheValueFromTheCustomerLink();
+        bookingPage.mgtListSales();
+        bookingPage.verifyDataMGT();
     }
-    }
+}
 
 
