@@ -65,53 +65,64 @@ public class InvoiceStepDefinition {
 	public void user_processes_the_invoice_for_all_rows_from_the_excel_sheet_of_sheet_name_invoice_leads()
 			throws Throwable {
 		int passedCount = 0;
-		int failedCount = 0;
+	    int failedCount = 0;
 
-		for (currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
-			System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
+	    for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
+	        System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
 
-			// Log the current row data
-			System.out.println(
-					"Reading data for Row " + (currentDataRowIndex + 1) + ": " + allTestData.get(currentDataRowIndex));
+	        // Fetch and log current row data
+	        testData = allTestData.get(currentDataRowIndex);
+	        System.out.println("Current Test Data: " + testData);
 
-			// Initialize testData for the current row
-			testData = allTestData.get(currentDataRowIndex);
-			System.out.println("Current Test Data: " + testData);
+	        boolean rowExecutionPassed = true;
 
-			boolean rowExecutionPassed = true;
+	        try {
+	            // Reset application state for every row
+	            System.out.println("Refreshing the browser to reset the application state...");
+	            LaunchDriver.getDriver().navigate().refresh();
 
-			try {
-				// Restart execution from Sales Menu for each row
-				restartFromSalesMenuStep();
+	            // Restart from the initial step
+	            restartFromSalesMenuStep();
 
-				// Execute all test steps for the current row
-				executeTestStepsForRow();
+	            // Execute all test steps for the current row
+	            executeTestStepsForRow();
 
-				// Log success for the current row
-				System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
-				passedCount++;
-			} catch (Exception e) {
-				// Log failure for the current row
-				System.err.println("Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage());
-				e.printStackTrace();
-				rowExecutionPassed = false;
-				failedCount++;
-			} finally {
-				// Ensure that execution proceeds to the next row
-				if (!rowExecutionPassed) {
-					System.out.println("Row " + (currentDataRowIndex + 1) + " failed. Moving to the next row.");
-				} else {
-					System.out.println("Row " + (currentDataRowIndex + 1) + " passed. Moving to the next row.");
-				}
-			}
-		}
+	            // Log success
+	            System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
+	            passedCount++;
+	        } catch (Exception e) {
+	            // Handle row failure
+	        	// Handle application state reset on failure
+		        try {
+		            System.out.println("Navigating to the application's base URL...");
+		            LaunchDriver.getDriver().navigate().refresh();
+		            restartFromSalesMenuStep();
+		            executeTestStepsForRow();
+		        } catch (Exception navigationException) {
+		            System.err.println("Error while navigating to the base URL: " + navigationException.getMessage());
+		            navigationException.printStackTrace();
+		        }
+	            System.err.println("Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage());
+	            e.printStackTrace();
+	            rowExecutionPassed = false;
+	            failedCount++;
 
-		// Summary log after processing all rows
-		System.out.println("\nExecution Summary:");
-		System.out.println("Total Rows Processed: " + allTestData.size());
-		System.out.println("Rows Passed: " + passedCount);
-		System.out.println("Rows Failed: " + failedCount);
+	            // Skip retry and move to the next row
+	            System.out.println("Skipping retry for Row " + (currentDataRowIndex + 1) + ". Moving to the next row.");
+	        } finally {
+	            if (rowExecutionPassed) {
+	                System.out.println("Row " + (currentDataRowIndex + 1) + " processed successfully.");
+	            } else {
+	                System.err.println("Row " + (currentDataRowIndex + 1) + " processing failed.");
+	            }
+	        }
+	    }
 
+	    // Summary after processing all rows
+	    System.out.println("\nExecution Summary:");
+	    System.out.println("Total Rows Processed: " + allTestData.size());
+	    System.out.println("Rows Passed: " + passedCount);
+	    System.out.println("Rows Failed: " + failedCount);
 	}
 
 	private void restartFromSalesMenuStep() throws Throwable {
