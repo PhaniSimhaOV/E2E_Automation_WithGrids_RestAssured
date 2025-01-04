@@ -1,6 +1,5 @@
 package com.autogrid.steps;
 
-import org.apache.poi.ss.formula.functions.T;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -10,25 +9,20 @@ import com.autogrid.utils.LaunchDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.autogrid.utils.CommonActions;
-import org.testng.Assert;
 
 import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.Duration;
-import java.awt.event.InputEvent;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
-import java.util.Set;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
 
@@ -210,7 +204,7 @@ public class BookingSalesOperationPage {
 
     public void SalesIconButton() throws InterruptedException {
         try {
-            Thread.sleep(3000* 15);
+            Thread.sleep(3000 * 15);
             SalesIcon.click();
             Thread.sleep(3000);
         } catch (Exception e) {
@@ -219,10 +213,46 @@ public class BookingSalesOperationPage {
         }
     }
 
-    public void SalesTable() {
+    public void SalesTable() throws IOException {
         try {
             Actions actions = new Actions(getDriver());
             actions.doubleClick(SalesTable).perform();
+//            WebElement contactField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"mainGrid\"]/div[3]/table/tbody/tr/td[10]")));
+//            String contactNumber = contactField.getAttribute("value");
+//            // Fetch enquiry number
+//            WebElement enquiryField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"mainGrid\"]/div[3]/table/tbody/tr/td[2]")));
+//            String enquiryNumber = enquiryField.getAttribute("value");
+//
+//            System.out.println("Contact Number: " + contactNumber);
+//            System.out.println("Enquiry Number: " + enquiryNumber);
+//
+//            // Path to your existing Excel file
+//            String excelFilePath = "C:/Users/Anjali/OneDrive/Desktop/BookingDetails.xlsx";
+//            FileInputStream fis = new FileInputStream(new File(excelFilePath));
+//            Workbook workbook = new XSSFWorkbook(fis);
+//
+//            // Get the first sheet
+//            Sheet sheet = workbook.getSheetAt(0);
+//
+//            // Find the next available row
+//            int nextRowNum = sheet.getPhysicalNumberOfRows();
+//            Row row = sheet.createRow(nextRowNum);
+//
+//            // Write data to Excel
+//            row.createCell(0).setCellValue(enquiryNumber);
+//            row.createCell(1).setCellValue(contactNumber);
+//
+//            // Save changes to the Excel file
+//            FileOutputStream fos = new FileOutputStream(new File(excelFilePath));
+//            workbook.write(fos);
+//
+//            // Close resources
+//            fos.close();
+//            workbook.close();
+//            fis.close();
+//
+//            System.out.println("Data has been added to the Excel file successfully.");
+
 
         } catch (Exception e) {
             System.err.println("Error in Clicking the row of data: " + e.getMessage());
@@ -329,7 +359,7 @@ public class BookingSalesOperationPage {
         }
     }
 
-    public void fillfieldsBookingPage(String pan, String RegistrationName, String address, String StateValue, String pincode, String LoginDate) throws InterruptedException, AWTException {
+    public void fillfieldsBookingPage(String pan, String RegistrationName, String address, String StateValue, String pincode, String LoginDate) throws InterruptedException, AWTException, IOException {
         try {
             iframe3();
             Thread.sleep(3000);
@@ -340,68 +370,122 @@ public class BookingSalesOperationPage {
             Thread.sleep(6000);
 
 
-            //Pan
-            panfield.clear();
-            panfield.sendKeys(pan);
-            System.out.println("The Pan as being selected" + panfield.getText());
-            iframe3();
-            JavascriptExecutor js = (JavascriptExecutor) getDriver();
-            js.executeScript("window.scrollBy(0,1000)");
-            System.out.println("Scrolled down successfully.");
-            //RegisteredName
-            RegistrationNm.clear();
-            RegistrationNm.sendKeys(RegistrationName);
-            ShipToName.clear();
-            ShipToName.sendKeys(RegistrationName);
-            System.out.println("RegistrationNm is." + RegistrationNm.getText());
-            AddressTab.clear();
-            AddressTab.sendKeys(address);
-            ShipToAddr.clear();
-            ShipToAddr.sendKeys(address);
-            //ModeOfPurchase
-            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[2]/dd[1]/span/span/span[1]")).click();
-            getDriver().findElement(By.xpath("//*[@id=\"purchaseType_listbox\"]/li[4]")).click();
-            System.out.println("The Purchase Type as being selected");
-            Thread.sleep(3000);
-            //BillingAddress
-            pinCodeSearchBilling.click();
-            WebElement iframenameBilling = getDriver().findElement(By.xpath("//iframe[@class='k-content-frame']"));
-            LaunchDriver.getDriver().switchTo().defaultContent();
-            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
-            LaunchDriver.getDriver().switchTo().frame(iframenameBilling);
-            System.out.println("Successfully interacted with the element inside the iframe. for billing address");
-            statedropdown.click();
-            Thread.sleep(2000);
-            List<WebElement> ShippingAddress = getDriver().findElements(By.xpath("//ul[@id=\"sStcdName_listbox\"]/li"));
-            for (WebElement option : ShippingAddress) {
-                if (option.getText().equals(StateValue)) {
-                    option.click();
-                    break;
-                }
-            }
-            pinCodeBilling.clear();
-            pinCodeBilling.sendKeys(pincode);
-            serachBilling.click();
-            WebElement SalesTable = getDriver().findElement(By.xpath("//*[@id='grid']/div[2]/table/tbody/tr[1]"));
-            Actions actions = new Actions(getDriver());
-            actions.doubleClick(SalesTable).perform();
-            Thread.sleep(2000);
-            System.out.println("Billing address is updated");
-            fileLoginDate.click();
-            fileLoginDate.sendKeys(LoginDate);
-            bookingInfoFinancer.click();
-            financierCdList.get(3).click();
-            btnBookingRegister.click();
-            iframe3();
-            confirmRegisterButton.click();
-            System.out.println("Successfully clicked on register");
-            Thread.sleep(5000);
-            btnBookingModify.click();
-            iframe3();
-            iframe3();
-            confirmmodifybutton.click();
-            System.out.println("Modified successfully");
+            WebDriver driver = getDriver(); // Initialize WebDriver instance
 
+            // Wait for Enquiry No and Contact No to be visible
+
+
+            // Fetch Enquiry No
+            WebElement enquiryField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("enquiryNo")));
+            String enquiryNumber = enquiryField.getAttribute("value");
+
+            // Fetch Contact No
+            WebElement contactField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("contactNo")));
+            String contactNumber = contactField.getAttribute("value");
+
+            System.out.println("Enquiry Number: " + enquiryNumber);
+            String filePath = "C:/Users/Anjali/OneDrive/Downloads/output.xlsx";
+            String sheetName = "BookingDetails";
+
+                File excelFile = new File(filePath);
+                Workbook workbook;
+                Sheet sheet;
+
+                if (excelFile.exists()) {
+                    FileInputStream fis = new FileInputStream(excelFile);
+                    workbook = new XSSFWorkbook(fis);
+                    fis.close();
+                } else {
+                    workbook = new XSSFWorkbook();
+                    System.out.println("Excel file does not exist. Creating a new file...");
+                }
+
+                // Get the sheet or create one if it doesn't exist
+                sheet = workbook.getSheet(sheetName);
+                if (sheet == null) {
+                    sheet = workbook.createSheet(sheetName);
+                }
+
+                // Find the next empty row
+                int nextRowNum = sheet.getPhysicalNumberOfRows();
+                Row row = sheet.createRow(nextRowNum);
+
+                // Write data to the row
+                row.createCell(0).setCellValue(enquiryNumber);
+                row.createCell(1).setCellValue(contactNumber);
+
+                // Save the changes to the Excel file
+                FileOutputStream fos = new FileOutputStream(excelFile);
+                workbook.write(fos);
+
+                // Close resources
+                fos.close();
+                workbook.close();
+
+                System.out.println("Data has been successfully added to the Excel file.");
+
+                //Pan
+                panfield.clear();
+                panfield.sendKeys(pan);
+                System.out.println("The Pan as being selected" + panfield.getText());
+                iframe3();
+                JavascriptExecutor js = (JavascriptExecutor) getDriver();
+                js.executeScript("window.scrollBy(0,1000)");
+                System.out.println("Scrolled down successfully.");
+                //RegisteredName
+                RegistrationNm.clear();
+                RegistrationNm.sendKeys(RegistrationName);
+                ShipToName.clear();
+                ShipToName.sendKeys(RegistrationName);
+                System.out.println("RegistrationNm is." + RegistrationNm.getText());
+                AddressTab.clear();
+                AddressTab.sendKeys(address);
+                ShipToAddr.clear();
+                ShipToAddr.sendKeys(address);
+                //ModeOfPurchase
+                getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[2]/dd[1]/span/span/span[1]")).click();
+                getDriver().findElement(By.xpath("//*[@id=\"purchaseType_listbox\"]/li[4]")).click();
+                System.out.println("The Purchase Type as being selected");
+                Thread.sleep(3000);
+                //BillingAddress
+                pinCodeSearchBilling.click();
+                WebElement iframenameBilling = getDriver().findElement(By.xpath("//iframe[@class='k-content-frame']"));
+                LaunchDriver.getDriver().switchTo().defaultContent();
+                LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
+                LaunchDriver.getDriver().switchTo().frame(iframenameBilling);
+                System.out.println("Successfully interacted with the element inside the iframe. for billing address");
+                statedropdown.click();
+                Thread.sleep(2000);
+                List<WebElement> ShippingAddress = getDriver().findElements(By.xpath("//ul[@id=\"sStcdName_listbox\"]/li"));
+                for (WebElement option : ShippingAddress) {
+                    if (option.getText().equals(StateValue)) {
+                        option.click();
+                        break;
+                    }
+                }
+                pinCodeBilling.clear();
+                pinCodeBilling.sendKeys(pincode);
+                serachBilling.click();
+                WebElement SalesTable = getDriver().findElement(By.xpath("//*[@id='grid']/div[2]/table/tbody/tr[1]"));
+                Actions actions = new Actions(getDriver());
+                actions.doubleClick(SalesTable).perform();
+                Thread.sleep(2000);
+                System.out.println("Billing address is updated");
+                fileLoginDate.click();
+                fileLoginDate.sendKeys(LoginDate);
+                bookingInfoFinancer.click();
+                financierCdList.get(3).click();
+                btnBookingRegister.click();
+                iframe3();
+                confirmRegisterButton.click();
+                System.out.println("Successfully clicked on register");
+                Thread.sleep(5000);
+                btnBookingModify.click();
+                iframe3();
+                iframe3();
+                confirmmodifybutton.click();
+                System.out.println("Modified successfully");
+                iframe3();
 
 //            //EnquiryCategory
 ////            EnquiryCategoryField.click();
@@ -409,7 +493,7 @@ public class BookingSalesOperationPage {
 //            Thread.sleep(3000);
 ////            Enquirycategory.click();
 //            //System.out.println("The Enquiry Category as being selected");
-            //SalesConsultant
+                //SalesConsultant
 //            SalesConsultantField.click();
 //            WebElement selectedOption = SalesConsultantFieldoptions.get(15);
 //            Thread.sleep(3000);
@@ -433,28 +517,28 @@ public class BookingSalesOperationPage {
 //                }
 //            }
 //            System.out.println("Title is selected");
-            //            getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).clear();
+                //            getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).clear();
 //            getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).sendKeys("34512678");
 //            System.out.println("The GST number as been passed" +getDriver().findElement(By.xpath("//*[@id=\"custGstNo\"]")).getText());
-            //RegisteredCorp
+                //RegisteredCorp
 //            getDriver().findElement(By.xpath("//*[@id=\"basicInfo\"]/div[4]/dl[1]/dd[2]/div/a")).click();
 //            Thread.sleep(2000);
 //            LaunchDriver.getDriver().switchTo().defaultContent();
 //            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']"))); getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[2]/dl/dd[1]/span/span")).click();
 //            getDriver().findElement(By.xpath("//li[text()=\"Classic\"]")).click();
 //            getDriver().findElement(By.xpath("//*[@id=\"window\"]/div[1]/div")).click();
-            //Select a coulumn from the search table
+                //Select a coulumn from the search table
 //                getDriver().findElement(By.xpath("//*[@id=\"gridBody\"]/div[2]/table/tbody/tr[1]/td[1]")).click();
 //                getDriver().findElement(By.xpath("//*[@id=\"gridBody\"]/div[2]/table/tbody/tr[1]/td[1]")).click();
 //            System.out.println("Registered corp is slected successfully");
 
 
-            //Registered Loan amount
+                //Registered Loan amount
 //            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).clear();
 //            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).sendKeys("15000");
 //            getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[8]/dd[1]/span/span/input[1]")).sendKeys(Keys.ENTER);
 
-            //Shipping address
+                //Shipping address
 //            getDriver().findElement(By.xpath("//*[@id=\"bkngShipToName\"]")).clear();
 //            getDriver().findElement(By.xpath("//*[@id=\"bkngShipToName\"]")).sendKeys("Srujan");
 //            System.out.println("Name is updated");
@@ -482,13 +566,18 @@ public class BookingSalesOperationPage {
 //            Thread.sleep(2000);
 //            LaunchDriver.getDriver().switchTo().defaultContent();
 //            LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@name='tabMenuFrame3']")));
-//
 
-        } catch (Exception e) {
-            System.err.println("Error in passing the dates: " + e.getMessage());
-            throw e;
-        }
+
+                // Fetch contact number
+
+
+            } catch (Exception e) {
+                System.err.println("Error while processing: " + e.getMessage());
+                e.printStackTrace();
+            }
+
     }
+
 
     public void clickbutton(String button) {
         //Register
@@ -571,7 +660,7 @@ public class BookingSalesOperationPage {
         System.out.println("successfully clicked on share reciept");
     }
 
-    public void AmountReceiptPage() throws InterruptedException {
+    public void AmountReceiptPage(String bookingDate) throws InterruptedException {
         Actions actions = new Actions(getDriver());
         AmountPage.click();
         Thread.sleep(4000);
@@ -584,10 +673,10 @@ public class BookingSalesOperationPage {
         DrawnBankList.click();
         actions.doubleClick(TransactionDate).perform();
         Thread.sleep(3000);
-        TransactionDateEnter.sendKeys("03/12/2024");
+        TransactionDateEnter.sendKeys(bookingDate);
         actions.doubleClick(ChequeNo).perform();
         Thread.sleep(3000);
-        ChequeNumberEnter.sendKeys("12345678000");
+        //ChequeNumberEnter.sendKeys("12345678000");
         saveButtonAccount.click();
 
 
@@ -604,10 +693,12 @@ public class BookingSalesOperationPage {
 
     }
 
-    public void SendConsentLink() {
+    public void SendConsentLink() throws InterruptedException {
 
         SendConsentField.click();
+        Thread.sleep(4000);
         sendConsentconfirm.click();
+        Thread.sleep(6000);
     }
 
 
@@ -642,7 +733,10 @@ public class BookingSalesOperationPage {
         Thread.sleep(3000);
         mgtListSales.click();
     }
-
+public void mgtListSalesvin() throws InterruptedException {
+        Thread.sleep(2000);
+        getDriver().findElement(By.xpath("//*[@id=\"gnb\"]/li[3]/div/ul/li[3]/ul/li[1]/a")).click();
+}
     public void verifyDataMGT() throws InterruptedException, IOException {
 
         String VariantValue = VariantValueTab.getText();
@@ -666,30 +760,7 @@ public class BookingSalesOperationPage {
 //        Assert.assertEquals(VariantValue, CustVariant.contains(VariantValue));
 //        Assert.assertEquals(ExteriorColor, CustExtColor);
 //        Assert.assertEquals(InteriorColor, CustIntColor);
-        String Enquirynumber = getDriver().findElement(By.xpath("//*[@id=\"enquiryNo\"]")).getText();
-        // Path to your existing Excel file
-        String excelFilePath = "C:/Users/Anjali/OneDrive/Downloads/BookingDetails.xlsx";
-        // Load the Excel file
-        FileInputStream fis = new FileInputStream(new File(excelFilePath));
-        Workbook workbook = new XSSFWorkbook(fis);
-        // Get the first sheet from the workbook
-        Sheet sheet = workbook.getSheetAt(0);
-        // Find the next available row to write
-        int nextRowNum = sheet.getPhysicalNumberOfRows();
-        // Create a new row at the next available index
-        Row row = sheet.createRow(nextRowNum);
-        // Add data to each cell in the new row (You can change the data format as per your needs)
-        row.createCell(0).setCellValue(Enquirynumber);
-        // Save the Excel file after editing
-        FileOutputStream fos = new FileOutputStream(new File(excelFilePath));
-        workbook.write(fos);
 
-        // Close the resources
-        fos.close();
-        fis.close();
-
-        System.out.println("Data has been added to the Excel file successfully.");
-        getDriver().close();
     }
     public void recordDataExcel() throws IOException {
         iframe3();
@@ -718,7 +789,6 @@ public class BookingSalesOperationPage {
         fis.close();
 
         System.out.println("Data has been added to the Excel file successfully.");
-        getDriver().close();
     }
 
 
