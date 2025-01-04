@@ -233,7 +233,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	@When("User enter Current Odometer reading")
 	public void user_enter_current_odometer_reading() {
 		try {
-			String odoMtrReading = "90";
+			String odoMtrReading = "150";
 			exWarranty.enterCurrentOdoMtrReading(odoMtrReading);
 			System.out.println("Entered Current Odometer Reading" + odoMtrReading);
 		} catch (Exception e) {
@@ -366,7 +366,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	public void user_enter_current_odometer_reading_in_sot() throws Throwable {
 		Thread.sleep(2000);
 		try {
-			String odoMtrReading = "90";
+			String odoMtrReading = "150";
 			sot.enterCurrentOdoMtrReading(odoMtrReading);
 			System.out.println("Entered Current Odometer reading in SOT " + odoMtrReading);
 		} catch (Exception e) {
