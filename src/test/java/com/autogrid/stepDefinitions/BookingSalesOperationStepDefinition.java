@@ -118,7 +118,7 @@ public class BookingSalesOperationStepDefinition {
         Thread.sleep(4000);
         try {
             if (testData != null) {
-                bookingPage.fillfieldsBookingPage(testData.get("panNo"), testData.get("regName"), testData.get("address"), testData.get("state"), testData.get("pincode"), testData.get("bookingDate").substring(0, 10));
+                bookingPage.fillfieldsBookingPage(testData.get("panNo"), testData.get("regName"), testData.get("address"), testData.get("state"), testData.get("pincode"));
                 System.out.println("Entered regName : " + testData.get("regName"));
                 System.out.println("Entered Pan number: " + testData.get("panNo"));
                 System.out.println("Entered address: " + testData.get("address"));

@@ -360,7 +360,7 @@ public class BookingSalesOperationPage {
         }
     }
 
-    public void fillfieldsBookingPage(String pan, String RegistrationName, String address, String StateValue, String pincode, String LoginDate) throws InterruptedException, AWTException, IOException {
+    public void fillfieldsBookingPage(String pan, String RegistrationName, String address, String StateValue, String pincode) throws InterruptedException, AWTException, IOException {
         try {
             iframe3();
             Thread.sleep(3000);
@@ -472,8 +472,6 @@ public class BookingSalesOperationPage {
                 actions.doubleClick(SalesTable).perform();
                 Thread.sleep(2000);
                 System.out.println("Billing address is updated");
-                fileLoginDate.click();
-                fileLoginDate.sendKeys(LoginDate);
                 bookingInfoFinancer.click();
                 financierCdList.get(3).click();
                 btnBookingRegister.click();
