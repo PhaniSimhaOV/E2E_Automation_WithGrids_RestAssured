@@ -369,10 +369,10 @@ public class BookingSalesOperationPage {
             iframe3();
             Thread.sleep(3000);
             //EnquiryType:
-            basicinfoEnquiry.click();
-            basicinfoEnquiryList.click();
-            System.out.println("The Enquiry type as being selected");
-            Thread.sleep(6000);
+//            basicinfoEnquiry.click();
+//            basicinfoEnquiryList.click();
+//            System.out.println("The Enquiry type as being selected");
+//            Thread.sleep(6000);
 
 
             WebDriver driver = getDriver(); // Initialize WebDriver instance
