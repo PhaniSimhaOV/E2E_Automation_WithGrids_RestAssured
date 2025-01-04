@@ -321,7 +321,7 @@ public class BookingSalesOperationPage {
             StartDate.clear();
             EndDate.clear();
             Thread.sleep(3000);
-            StartDate.sendKeys("01102024");
+            StartDate.sendKeys("01101990");
             EndDate.sendKeys("30122024");
         } catch (Exception e) {
             System.err.println("Error in passing the dates: " + e.getMessage());
@@ -691,6 +691,36 @@ public class BookingSalesOperationPage {
         System.out.println("Data has been added to the Excel file successfully.");
         getDriver().close();
     }
+    public void recordDataExcel() throws IOException {
+        iframe3();
+        String ContactNumber=getDriver().findElement(By.xpath("//*[@id=\"contactNo\"]")).getText();
+        String Enquirynumber = getDriver().findElement(By.xpath("//*[@id=\"enquiryNo\"]")).getText();
+        // Path to your existing Excel file
+        String excelFilePath = "C:/Users/Anjali/OneDrive/Downloads/BookingDetails.xlsx";
+        // Load the Excel file
+        FileInputStream fis = new FileInputStream(new File(excelFilePath));
+        Workbook workbook = new XSSFWorkbook(fis);
+        // Get the first sheet from the workbook
+        Sheet sheet = workbook.getSheetAt(0);
+        // Find the next available row to write
+        int nextRowNum = sheet.getPhysicalNumberOfRows();
+        // Create a new row at the next available index
+        Row row = sheet.createRow(nextRowNum);
+        // Add data to each cell in the new row (You can change the data format as per your needs)
+        row.createCell(0).setCellValue(Enquirynumber);
+        row.createCell(1).setCellValue(ContactNumber);
+        // Save the Excel file after editing
+        FileOutputStream fos = new FileOutputStream(new File(excelFilePath));
+        workbook.write(fos);
+
+        // Close the resources
+        fos.close();
+        fis.close();
+
+        System.out.println("Data has been added to the Excel file successfully.");
+        getDriver().close();
+    }
+
 
     public void receiptLink() {
         iframe3();

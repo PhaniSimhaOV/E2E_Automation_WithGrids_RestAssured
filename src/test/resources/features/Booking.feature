@@ -2,7 +2,7 @@ Feature: User navigates to booking section
 
   @testBooking
   #Background: Functionality of booking
-  @Booking
+  @Booking1
   Scenario: To validate the Booking section in the Sales Operation
     Given launch browser and enter url
     When user enters a valid username
@@ -12,6 +12,25 @@ Feature: User navigates to booking section
     #And clicks on login
     And User reads data from the Excel sheet regarding Booking Feature
     And User processes the Booking for all rows from the Excel sheet from the sheet Name Booking Leads
+
+@Booking2
+  Scenario: to Validate the booking section by providing the account details
+  Given launch browser and enter url
+  When user enters a valid username for account
+  And user enter a valid password for account
+  And clicks on Send OTP for booking
+  And User reads data from the Excel sheet regarding Booking Feature
+  And User processes the Booking for all rows from the Excel sheet from the sheet Name Booking Leads for account login
+
+  @Booking3
+  Scenario: To verify the Vin number values
+    Given launch browser and enter url
+    When user enters a valid username
+    And user enter a valid password
+    And clicks on Send OTP for booking
+    And User reads data from the Excel sheet regarding Booking Feature
+    And User processes the Booking for all rows from the Excel sheet from the sheet Name Booking Leads for VIN
+
 
 
 
