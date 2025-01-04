@@ -190,9 +190,7 @@ public class InvoiceStepDefinition {
 			user_should_be_able_to_see_do_you_want_to_confirm_it_popup();
 			user_tries_to_clicks_on_confirm_button_in_do_you_want_to_confirm_it_popup();
 		} catch (Exception e) {
-			System.err.println(
-					"Error during execution of steps for Row " + (currentDataRowIndex + 1) + ": " + e.getMessage());
-			throw new RuntimeException("Failed to execute steps for Row " + (currentDataRowIndex + 1), e);
+	        throw new RuntimeException("Error during execution due to"+ ": " + e.getMessage(), e);
 		}
 	}
 
