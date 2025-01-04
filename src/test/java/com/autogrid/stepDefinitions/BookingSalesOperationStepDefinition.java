@@ -510,13 +510,13 @@ public class BookingSalesOperationStepDefinition {
         bookingPage.DealerVechileStock();
         userPassesTheVINNumberIntoTheField();
         bookingPage.vinSearch();
-        restartFromSalesMenuStep();
+
+        bookingPage.verifyDataMGT();
         userEntersTheMobileNumberInTheTextBox();
         userSelectsTheMobileNumberOptionFromTheDropdown();
         userPassedTheStartDateAndEndDateInThePage();
         userClicksOnTheSearchButton();
         theEnquiryWillBePopulatedThenUserAsToSelectIt();
-        bookingPage.verifyDataMGT();
     }
 
     @And("User processes the Booking for all rows from the Excel sheet from the sheet Name Booking Leads for VIN")

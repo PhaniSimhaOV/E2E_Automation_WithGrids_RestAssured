@@ -6,6 +6,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.*;
 
 import com.autogrid.utils.LaunchDriver;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -754,12 +755,12 @@ public void mgtListSalesvin() throws InterruptedException {
         System.out.println("Selected Option: " + selectedOption.getText());
 
 //
-//        String CustExtColor = getDriver().findElement(By.xpath("//*[@aria-owns='extColorCd_listbox']/span")).getText();
-//        String CustIntColor = getDriver().findElement(By.xpath("//span[@aria-owns='intColorCd_listbox']")).getText();
-//        String CustVariant = getDriver().findElement(By.xpath("//span[@aria-owns='subVariantCd_listbox']")).getText();
-//        Assert.assertEquals(VariantValue, CustVariant.contains(VariantValue));
-//        Assert.assertEquals(ExteriorColor, CustExtColor);
-//        Assert.assertEquals(InteriorColor, CustIntColor);
+        String CustExtColor = getDriver().findElement(By.xpath("//*[@aria-owns='extColorCd_listbox']/span")).getText();
+        String CustIntColor = getDriver().findElement(By.xpath("//span[@aria-owns='intColorCd_listbox']")).getText();
+        String CustVariant = getDriver().findElement(By.xpath("//span[@aria-owns='subVariantCd_listbox']")).getText();
+        Assert.assertEquals(VariantValue, CustVariant.contains(VariantValue));
+        Assert.assertEquals(ExteriorColor, CustExtColor);
+        Assert.assertEquals(InteriorColor, CustIntColor);
 
     }
     public void recordDataExcel() throws IOException {
