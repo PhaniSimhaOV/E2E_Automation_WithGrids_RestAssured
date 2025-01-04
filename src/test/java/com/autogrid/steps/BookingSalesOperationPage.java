@@ -192,6 +192,10 @@ public class BookingSalesOperationPage {
     private WebElement btnBookingRegister;
     @FindBy(xpath = "//*[@id=\"btnBookingModify\"]")
     private WebElement btnBookingModify;
+    @FindBy(xpath = "//*[@id=\"paymentGrid\"]/div[2]/table/tbody/tr/td[1]")
+            private WebElement AmountTransactionDate;
+    @FindBy(xpath = "//*[@id=\"paymentGrid\"]/div[2]/table/tbody/tr/td[2]")
+            private WebElement AmountTransaction;
 
 
     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
@@ -663,18 +667,23 @@ public class BookingSalesOperationPage {
         Actions actions = new Actions(getDriver());
         AmountPage.click();
         Thread.sleep(4000);
-        actions.doubleClick(OnAccountOf).perform();
-        Thread.sleep(7000);
-        OnAccountList.click();
-        actions.doubleClick(PaymentAccount).perform();
-        actions.doubleClick(DrawnBank).perform();
+        AmountTransactionDate.click();
+        AmountTransactionDate.sendKeys(bookingDate);
+      //  AmountTransaction.click();
+//        AmountTransaction.sendKeys();
+
+//        actions.doubleClick(OnAccountOf).perform();
+//        Thread.sleep(7000);
+//        OnAccountList.click();
+     //   actions.doubleClick(PaymentAccount).perform();
+//        actions.doubleClick(DrawnBank).perform();
+//        Thread.sleep(3000);
+//        DrawnBankList.click();
+       // actions.doubleClick(TransactionDate).perform();
         Thread.sleep(3000);
-        DrawnBankList.click();
-        actions.doubleClick(TransactionDate).perform();
-        Thread.sleep(3000);
-        TransactionDateEnter.sendKeys(bookingDate);
-        actions.doubleClick(ChequeNo).perform();
-        Thread.sleep(3000);
+//        TransactionDateEnter.sendKeys(bookingDate);
+//        actions.doubleClick(ChequeNo).perform();
+//        Thread.sleep(3000);
         //ChequeNumberEnter.sendKeys("12345678000");
         saveButtonAccount.click();
 
