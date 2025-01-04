@@ -11,6 +11,7 @@ import com.autogrid.steps.InvoicePage;
 import com.autogrid.steps.NewEnquiryPage;
 import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.ExcelReading;
+import com.autogrid.utils.ExcelWriting;
 import com.autogrid.utils.LaunchDriver;
 import org.testng.Assert;
 import io.cucumber.java.en.Given;
@@ -67,6 +68,12 @@ public class InvoiceStepDefinition {
 		int passedCount = 0;
 	    int failedCount = 0;
 
+	    String filePath = "C:/Users/ADMIN/Downloads/output.xlsx";
+	    String sheetName = "Invoice Leads";
+
+	    // Add a new column for error logging
+	    ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
+	    
 	    for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
 	        System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
 
@@ -89,6 +96,7 @@ public class InvoiceStepDefinition {
 
 	            // Log success
 	            System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
+	            ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", "PASSED");
 	            passedCount++;
 	        } catch (Exception e) {
 	            // Handle row failure
@@ -102,8 +110,10 @@ public class InvoiceStepDefinition {
 		            System.err.println("Error while navigating to the base URL: " + navigationException.getMessage());
 		            navigationException.printStackTrace();
 		        }
-	            System.err.println("Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage());
+		        String errorMessage = "Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage();
+	            System.err.println(errorMessage);
 	            e.printStackTrace();
+	            ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", errorMessage);
 	            rowExecutionPassed = false;
 	            failedCount++;
 
