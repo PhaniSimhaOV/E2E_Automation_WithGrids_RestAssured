@@ -126,7 +126,6 @@ try {
 
 public void interactWithIframeExtW() {
 	
-	
 	try {
 		LaunchDriver.getDriver().switchTo().frame(iFrameForExtWarranty);
 		System.out.println("Successfully interacted with iFrame of ExtWarranty");

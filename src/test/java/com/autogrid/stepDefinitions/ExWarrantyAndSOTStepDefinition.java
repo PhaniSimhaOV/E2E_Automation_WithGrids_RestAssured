@@ -36,7 +36,6 @@ public class ExWarrantyAndSOTStepDefinition {
 		this.sot = new SOTPage(driver);
 		PageFactory.initElements(driver, sot);
 	}
-
 	@Given("User reads data from the Excel sheet regarding ExWarranty and SOT feature")
 	public void User_reads_data_from_the_Excel_sheet_regarding_ExWarranty_and_SOT_feature() throws IOException {
 		String filePath = "C:/Document/DataExcel/output.xlsx";
