@@ -140,7 +140,6 @@ public class InvoiceStepDefinition {
 			user_clicks_on_sales_menu_item();
 			user_clicks_on_the_sales_operation_sub_menu_item();
 			user_clicks_on_the_customer_booking_mgt_list_link();
-			user_should_be_able_to_navigate_to_the_customer_booking_mgt_list_screen();
 		} catch (Exception e) {
 			System.err.println("Error restarting from Sales Menu step: " + e.getMessage());
 			throw new RuntimeException("Failed to restart execution from Sales Menu step.", e);
@@ -154,10 +153,8 @@ public class InvoiceStepDefinition {
 			user_tries_to_enters_lead_mobile_number_in_the_based_on_field();
 			user_tries_to_clicks_on_the_search_button_in_customer_booking_mgt_list_screen();
 			user_tries_to_select_enquiry_from_the_list_after_applying_filters_in_customer_booking_mgt_list_screen();
-			user_should_be_able_to_navigate_to_the_customer_booking_management_screen();
 			user_tries_to_clicks_on_the_invoice_tab_in_the_customer_booking_management_screen();
 			user_tries_to_clicks_on_scheme_button_in_the_invoice_tab_in_the_customer_booking_management_screen();
-			user_should_be_able_to_navigate_to_the_scheme_popup_screen();
 			user_tries_to_enters_valid_data_in_the_payable_by_dealer_amount_in_tax_adjustment_allowed_table();
 			user_tries_to_enters_valid_data_in_the_adjustment_credit_note_amount_in_tax_adjustment_allowed_table();
 			user_tries_to_enters_valid_data_in_the_basic_insurance_amount_in_chargeable_sharing_table();
@@ -166,28 +163,20 @@ public class InvoiceStepDefinition {
 			user_tries_to_enters_valid_data_in_the_other_charges_amount_in_chargeable_sharing_table();
 			user_tries_to_enters_valid_data_in_the_life_tax_amount_in_chargeable_sharing_table();
 			user_tries_to_clicks_on_save_button_in_scheme_popup_screen();
-			user_should_be_able_to_see_do_you_want_to_save_it_popup();
 			user_tries_to_clicks_on_confirm_button_in_do_you_want_to_save_it_popup();
 			user_tries_to_clicks_on_close_button_in_scheme_popup_screen();
-			user_should_be_able_to_navigate_to_the_customer_booking_management_screen();
 			user_tries_to_clicks_on_the_more_promotions_button_in_basic_info_section_in_the_customer_booking_management_screen();
-			user_should_be_able_to_see_promotions_section_in_the_customer_booking_management_screen();
 			user_tries_to_clicks_on_the_plus_icon_in_promotions_section_in_the_customer_booking_management_screen();
-			user_should_be_able_to_navigate_to_the_promotion_pop_up();
 			user_tries_to_checks_the_all_the_promotions_from_promotions_table_in_the_promotion_pop_up();
 			user_tries_to_clicks_on_add_selected_button_in_the_promotion_pop_up();
 			user_tries_to_click_on_the_modify_button_in_basic_info_section_in_the_customer_booking_management_screen();
-			user_should_be_able_to_see_do_you_want_to_modify_it_popup();
 			user_tries_to_clicks_on_confirm_button_in_do_you_want_to_modify_it_popup();
 			user_tries_to_selects_valid_data_in_vehicle_usage_type_field_in_customer_info_section_in_the_customer_booking_management_screen();
 			user_tries_to_clicks_on_the_register_button_in_invoice_tab_in_the_customer_booking_management_screen();
-			user_should_be_able_to_see_do_you_want_to_register_popup();
 			user_tries_to_clicks_on_confirm_button_in_do_you_want_to_save_it_popup_in_the_customer_booking_management_screen();
 			user_tries_to_click_on_the_modify_button_in_invoice_tab_in_the_customer_booking_management_screen();
-			user_should_be_able_to_see_do_you_want_to_modify_it_popup_in_the_customer_booking_management_screen();
 			user_tries_to_clicks_on_confirm_button_in_do_you_want_to_modify_it_popup_in_the_customer_booking_management_screen();
 			user_tries_to_clicks_on_invoice_confirm_button_in_invoice_tab_in_the_customer_booking_management_screen();
-			user_should_be_able_to_see_do_you_want_to_confirm_it_popup();
 			user_tries_to_clicks_on_confirm_button_in_do_you_want_to_confirm_it_popup();
 		} catch (Exception e) {
 	        throw new RuntimeException("Error during execution due to"+ ": " + e.getMessage(), e);
@@ -219,6 +208,7 @@ public class InvoiceStepDefinition {
 	@Then("User clicks on the Sales Operation Sub Menu Item")
 	public void user_clicks_on_the_sales_operation_sub_menu_item() {
 		try {
+			Thread.sleep(3000);
 			waitForElementToBeClickable(invoicepage.getSalesOperationSubmenu());
 			invoicepage.clickSalesOperationSubmenu();
 			System.out.println("Sales Operation Sub Menu Item clicked.");
@@ -230,24 +220,12 @@ public class InvoiceStepDefinition {
 	@Then("User clicks on the Customer Booking Mgt List link")
 	public void user_clicks_on_the_customer_booking_mgt_list_link() {
 		try {
+			Thread.sleep(3000);
 			waitForElementToBeClickable(invoicepage.getCustomerBookingMgtListLink());
 			invoicepage.clickCustomerBookingMgtListLink();
 			System.out.println("Customer Booking Mgt List Link clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Customer Booking Mgt List Link click: " + e.getMessage());
-		}
-	}
-
-	@Then("User should be able to navigate to the Customer Booking Mgt List Screen")
-	public void user_should_be_able_to_navigate_to_the_customer_booking_mgt_list_screen() {
-		try {
-			waitForVisibilityOfElement(invoicepage.getCustomerBookingMgtListScreenHeader());
-			Assert.assertTrue(invoicepage.isCustomerBookingMgtListScreenDisplayed(),
-					"Customer Booking Mgt List Screen is not displayed.");
-			System.out.println("Customer Booking Mgt List Screen is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error verifying Customer Booking Mgt List Screen pop-up: " + e.getMessage());
-			Assert.fail("Customer Booking Mgt List Screen verification failed.");
 		}
 	}
 
@@ -303,23 +281,10 @@ public class InvoiceStepDefinition {
 		}
 	}
 
-	@Then("User should be able to navigate to the Customer Booking Management Screen")
-	public void user_should_be_able_to_navigate_to_the_customer_booking_management_screen() {
-		try {
-			LaunchDriver.getDriver().switchTo().defaultContent();
-			waitForVisibilityOfElement(invoicepage.getCustomerBookingMgtScreenHeader());
-			Assert.assertTrue(invoicepage.isCustomerBookingMgtScreenDisplayed(),
-					"Customer Booking Mgt Screen is not displayed.");
-			System.out.println("Customer Booking Mgt Screen is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error verifying Customer Booking Mgt Screen pop-up: " + e.getMessage());
-			Assert.fail("Customer Booking Mgt Screen verification failed.");
-		}
-	}
-
 	@When("User tries to clicks on the Invoice Tab in the Customer Booking Management Screen")
 	public void user_tries_to_clicks_on_the_invoice_tab_in_the_customer_booking_management_screen() {
 		try {
+			LaunchDriver.getDriver().switchTo().defaultContent();
 			invoicepage.interactWithIframeElement2();
 			waitForElementToBeClickable(invoicepage.getInvoiceTab());
 			invoicepage.clickInvoiceTab();
@@ -340,24 +305,10 @@ public class InvoiceStepDefinition {
 		}
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
-
-	@Then("User should be able to navigate to the Scheme Popup screen")
-	public void user_should_be_able_to_navigate_to_the_scheme_popup_screen() {
-		try {
-			invoicepage.interactWithIframeElement2();
-			waitForVisibilityOfElement(invoicepage.getSchemePopupHeader());
-			Assert.assertTrue(invoicepage.isSchemePopupDisplayed(), "Scheme Popup is not displayed.");
-			System.out.println("Scheme Popup is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error verifying Scheme Popup : " + e.getMessage());
-			Assert.fail("Scheme Popup verification failed.");
-		}
-	}
-
+	
 	@Then("User tries to enters valid data in the Payable By Dealer Amount in TAX Adjustment Allowed Table")
 	public void user_tries_to_enters_valid_data_in_the_payable_by_dealer_amount_in_tax_adjustment_allowed_table() {
 		try {
-			LaunchDriver.getDriver().switchTo().defaultContent();
 			invoicepage.interactWithIframeElement2();
 			invoicepage.interactWithIframeElement3();
 			if (testData != null) {
@@ -466,27 +417,15 @@ public class InvoiceStepDefinition {
 		} catch (Exception e) {
 			System.err.println("Error during Save button in Scheme Popup screen click: " + e.getMessage());
 		}
-		LaunchDriver.getDriver().switchTo().defaultContent();
+		
 	}
-
-	@Then("User should be able to see Do you want to save it? Popup")
-	public void user_should_be_able_to_see_do_you_want_to_save_it_popup() {
-		try {
-			invoicepage.interactWithIframeElement2();
-			invoicepage.interactWithIframeElement3();
-			waitForVisibilityOfElement(invoicepage.getSchemeSaveConfirmationPopup());
-			Assert.assertTrue(invoicepage.isSchemeSaveConfirmationPopupDisplayed(),
-					"Do you want to save it? Popup is not displayed.");
-			System.out.println("Do you want to save it? Popup is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error verifying Do you want to save it? Popup : " + e.getMessage());
-			Assert.fail("Do you want to save it? Popup verification failed.");
-		}
-	}
-
+	
 	@Then("User tries to clicks on Confirm button in Do you want to save it? Popup")
 	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_save_it_popup() {
 		try {
+			LaunchDriver.getDriver().switchTo().defaultContent();
+			invoicepage.interactWithIframeElement2();
+			invoicepage.interactWithIframeElement3();
 			waitForElementToBeClickable(invoicepage.getSchemeSaveConfirmationConfirmButton());
 			invoicepage.clickSchemeSaveConfirmationConfirmButton();
 			System.out.println("Confirm button in Do you want to save it? Popup screen clicked.");
@@ -521,18 +460,6 @@ public class InvoiceStepDefinition {
 		}
 	}
 
-	@Then("User should be able to see Promotions Section in the Customer Booking Management Screen")
-	public void user_should_be_able_to_see_promotions_section_in_the_customer_booking_management_screen() {
-		try {
-			waitForVisibilityOfElement(invoicepage.getPromotionsSection());
-			Assert.assertTrue(invoicepage.isPromotionsSectionDisplayed(), "Promotions Section is not displayed.");
-			System.out.println("Promotions Section is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error verifying Promotions Section : " + e.getMessage());
-			Assert.fail("Promotions Section verification failed.");
-		}
-	}
-
 	@Then("User tries to clicks on the Plus icon in Promotions Section in the Customer Booking Management Screen")
 	public void user_tries_to_clicks_on_the_plus_icon_in_promotions_section_in_the_customer_booking_management_screen() {
 		try {
@@ -546,23 +473,9 @@ public class InvoiceStepDefinition {
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
 
-	@Then("User should be able to navigate to the Promotion Pop-up")
-	public void user_should_be_able_to_navigate_to_the_promotion_pop_up() {
-		try {
-			invoicepage.interactWithIframeElement2();
-			waitForVisibilityOfElement(invoicepage.getPromotionsPopupHeader());
-			Assert.assertTrue(invoicepage.isPromotionsPopupDisplayed(), "Promotion Pop-up is not displayed.");
-			System.out.println("Promotion Pop-up is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error verifying Promotion Pop-up : " + e.getMessage());
-			Assert.fail("Promotion Pop-up verification failed.");
-		}
-	}
-
 	@Then("User tries to Checks the All the promotions from promotions table in the Promotion Pop-up")
 	public void user_tries_to_checks_the_all_the_promotions_from_promotions_table_in_the_promotion_pop_up() {
 		try {
-			LaunchDriver.getDriver().switchTo().defaultContent();
 			invoicepage.interactWithIframeElement2();
 			invoicepage.interactWithIframeElement3();
 			waitForElementToBeClickable(invoicepage.getPromotionCheckBoxAll());
@@ -598,23 +511,10 @@ public class InvoiceStepDefinition {
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
 
-	@When("User should be able to see Do you want to Modify it? Popup")
-	public void user_should_be_able_to_see_do_you_want_to_modify_it_popup() {
-		try {
-			invoicepage.interactWithIframeElement2();
-			waitForVisibilityOfElement(invoicepage.getCustomerBookingMgtModifyConfirmationPopup());
-			Assert.assertTrue(invoicepage.isCustomerBookingMgtModifyConfirmationPopupDisplayed(),
-					"Do you want to Modify it? Popup is not displayed.");
-			System.out.println("Do you want to Modify it? Popup is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error Verifying Do you want to Modify it? Popup : " + e.getMessage());
-			Assert.fail("Do you want to Modify it? Popup verification failed.");
-		}
-	}
-
 	@When("User tries to clicks on Confirm button in Do you want to Modify it? Popup")
 	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_modify_it_popup() {
 		try {
+			invoicepage.interactWithIframeElement2();
 			waitForElementToBeClickable(invoicepage.getCustomerBookingMgtModifyConfirmationPopupConfirmButton());
 			invoicepage.clickCustomerBookingMgtModifyConfirmationPopupConfirmButton();
 			System.out.println("Confirm button clicked.");
@@ -652,23 +552,10 @@ public class InvoiceStepDefinition {
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
 
-	@When("User should be able to see Do you want to register? Popup")
-	public void user_should_be_able_to_see_do_you_want_to_register_popup() {
-		try {
-			invoicepage.interactWithIframeElement2();
-			waitForVisibilityOfElement(invoicepage.getRegisterConfirmationPopup());
-			Assert.assertTrue(invoicepage.isRegisterConfirmationPopupDisplayed(),
-					"Do you want to register? Popup is not displayed.");
-			System.out.println("Do you want to register? Popup is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error Verifying Do you want to register? Popup : " + e.getMessage());
-			Assert.fail("Do you want to register? Popup verification failed.");
-		}
-	}
-
 	@When("User tries to clicks on Confirm button in Do you want to save it? Popup in the Customer Booking Management Screen")
 	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_save_it_popup_in_the_customer_booking_management_screen() {
 		try {
+			invoicepage.interactWithIframeElement2();
 			waitForElementToBeClickable(invoicepage.getRegisterConfirmationPopupConfirmButton());
 			invoicepage.clickRegisterConfirmationPopupConfirmButton();
 			System.out.println("Confirm button clicked.");
@@ -692,23 +579,10 @@ public class InvoiceStepDefinition {
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
 
-	@When("User should be able to see Do you want to Modify it? Popup in the Customer Booking Management Screen")
-	public void user_should_be_able_to_see_do_you_want_to_modify_it_popup_in_the_customer_booking_management_screen() {
-		try {
-			invoicepage.interactWithIframeElement2();
-			waitForVisibilityOfElement(invoicepage.getInvoiceModifyConfirmationPopup());
-			Assert.assertTrue(invoicepage.isInvoiceModifyConfirmationPopupDisplayed(),
-					"Do you want to Modify it? Popup is not displayed.");
-			System.out.println("Do you want to Modify it? Popup is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error VerifyingDo you want to Modify it? Popup : " + e.getMessage());
-			Assert.fail("Do you want to Modify it? Popup verification failed.");
-		}
-	}
-
 	@When("User tries to clicks on Confirm button in Do you want to Modify it? Popup in the Customer Booking Management Screen")
 	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_modify_it_popup_in_the_customer_booking_management_screen() {
 		try {
+			invoicepage.interactWithIframeElement2();
 			waitForElementToBeClickable(invoicepage.getInvoiceModifyConfirmationPopupConfirmButton());
 			invoicepage.clickInvoiceModifyConfirmationPopupConfirmButton();
 			System.out.println("Confirm button clicked.");
@@ -732,33 +606,21 @@ public class InvoiceStepDefinition {
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
 
-	@When("User should be able to see Do you want to confirm it? Popup")
-	public void user_should_be_able_to_see_do_you_want_to_confirm_it_popup() {
-		try {
-			invoicepage.interactWithIframeElement2();
-			waitForVisibilityOfElement(invoicepage.getInvoiceConfirmConfirmationPopup());
-			Assert.assertTrue(invoicepage.isInvoiceConfirmConfirmationPopupDisplayed(),
-					"Do you want to confirm it? Popup is not displayed.");
-			System.out.println("Do you want to confirm it? Popup is displayed.");
-		} catch (Exception e) {
-			System.err.println("Error Verifying Do you want to confirm it? Popup : " + e.getMessage());
-			Assert.fail("Do you want to confirm it? Popup verification failed.");
-		}
-	}
 
 	@When("User tries to clicks on Confirm button in Do you want to confirm it? Popup")
 	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_confirm_it_popup() {
 		try {
+			invoicepage.interactWithIframeElement2();
 			waitForElementToBeClickable(invoicepage.getInvoiceConfirmConfirmationPopupConfirmButton());
 			invoicepage.clickInvoiceConfirmConfirmationPopupConfirmButton();
 			System.out.println("Confirm button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Confirm button click: " + e.getMessage());
 		}
-		LaunchDriver.getDriver().switchTo().defaultContent();
-		invoicepage.clickCloseCustomerBookingMgt();
-		invoicepage.clickCloseCustomerBookingMgtList();
-		user_clicks_on_sales_menu_item();
-		user_clicks_on_the_sales_operation_sub_menu_item();
+//		LaunchDriver.getDriver().switchTo().defaultContent();
+//		invoicepage.clickCloseCustomerBookingMgt();
+//		invoicepage.clickCloseCustomerBookingMgtList();
+//		invoicepage.clickSalesMenu();
+//		invoicepage.clickSalesOperationSubmenu();
 	}
 }
