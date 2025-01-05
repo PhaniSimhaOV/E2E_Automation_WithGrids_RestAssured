@@ -4,7 +4,10 @@ import com.autogrid.steps.BookingSalesOperationPage;
 import com.autogrid.steps.DMSLoginPage;
 import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.ExcelReading;
+import com.autogrid.utils.ExcelWriting;
 import com.autogrid.utils.LaunchDriver;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -30,6 +33,7 @@ import org.testng.Assert;
 import java.awt.*;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -92,7 +96,6 @@ public class BookingSalesOperationStepDefinition {
     }
 
 
-
     @And("User selects the mobile number option from the dropdown")
     public void userSelectsTheMobileNumberOptionFromTheDropdown() throws InterruptedException {
         bookingPage.BasedOnDropdown();
@@ -109,7 +112,7 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @When("The enquiry will be populated then user as to select it")
-    public void theEnquiryWillBePopulatedThenUserAsToSelectIt() {
+    public void theEnquiryWillBePopulatedThenUserAsToSelectIt() throws IOException {
         bookingPage.SalesTable();
     }
 
@@ -118,7 +121,7 @@ public class BookingSalesOperationStepDefinition {
         Thread.sleep(4000);
         try {
             if (testData != null) {
-                bookingPage.fillfieldsBookingPage(testData.get("panNo"),testData.get("regName"),testData.get("address"),testData.get("state"),testData.get("pincode"),testData.get("bookingDate").substring(0,10));
+                bookingPage.fillfieldsBookingPage(testData.get("panNo"), testData.get("regName"), testData.get("address"), testData.get("state"), testData.get("pincode"));
                 System.out.println("Entered regName : " + testData.get("regName"));
                 System.out.println("Entered Pan number: " + testData.get("panNo"));
                 System.out.println("Entered address: " + testData.get("address"));
@@ -142,7 +145,7 @@ public class BookingSalesOperationStepDefinition {
         Thread.sleep(7000);
         try {
             if (testData != null) {
-                bookingPage.QuotationPage(testData.get("RTOamount"),testData.get("ex_showroom_price"));
+                bookingPage.QuotationPage(testData.get("RTOamount"), testData.get("ex_showroom_price"));
                 System.out.println("Entered RTOamount: " + testData.get("RTOamount"));
                 System.out.println("Entered ex_showroom_price: " + testData.get("ex_showroom_price"));
 
@@ -177,18 +180,32 @@ public class BookingSalesOperationStepDefinition {
 
     @And("User as to add the amount in the receipt section")
     public void userAsToAddTheAmountInTheReceiptSection() throws InterruptedException {
-        bookingPage.AmountReceiptPage();
+        try {
+            if (testData != null) {
+                bookingPage.AmountReceiptPage(testData.get("bookingDate").substring(0, 10));
+                System.out.println("Entered RTOamount: " + testData.get("RTOamount"));
+                System.out.println("Entered ex_showroom_price: " + testData.get("ex_showroom_price"));
+
+
+            } else {
+                throw new RuntimeException("Test data is not initialized.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error during Entered RTOamount : " + e.getMessage());
+        }
+
 
     }
 
     @Then("User clicks on Send Customer consent link")
-    public void userClicksOnSendCustomerConsentLink() {
+    public void userClicksOnSendCustomerConsentLink() throws InterruptedException {
+        Thread.sleep(4000);
         bookingPage.SendConsentLink();
     }
 
     @Then("Verify the status in the Customer booking list should be pending")
     public void verifyTheStatusInTheCustomerBookingListShouldBePending() throws InterruptedException {
-       // bookingPage.VerifyConscentLink();
+        // bookingPage.VerifyConscentLink();
 
     }
 
@@ -199,7 +216,7 @@ public class BookingSalesOperationStepDefinition {
 
     @Then("user selects Dealer Vechile Stock MGT")
     public void userSelectsDealerVechileStockMGT() throws InterruptedException {
-    bookingPage.DealerVechileStock();
+        bookingPage.DealerVechileStock();
     }
 
     @And("User passes the VIN number into the field")
@@ -221,7 +238,7 @@ public class BookingSalesOperationStepDefinition {
 
     @And("Searches for the Vin number")
     public void searchesForTheVinNumber() throws InterruptedException {
-       bookingPage.vinSearch();
+        bookingPage.vinSearch();
     }
 
     @When("Verify the data in the table with the customer booking values")
@@ -236,7 +253,7 @@ public class BookingSalesOperationStepDefinition {
 
     @Then("verifies the value from the customer link")
     public void verifiesTheValueFromTheCustomerLink() throws InterruptedException, IOException {
-       // bookingPage.verifyDataMGT();
+        // bookingPage.verifyDataMGT();
         userEntersTheMobileNumberInTheTextBox();
         userSelectsTheMobileNumberOptionFromTheDropdown();
         userPassedTheStartDateAndEndDateInThePage();
@@ -249,7 +266,7 @@ public class BookingSalesOperationStepDefinition {
 
     @Then("User clicks on the receipt icon for account")
     public void userClicksOnTheReceiptIconForAccount() {
-       bookingPage.receiptLink();
+        bookingPage.receiptLink();
     }
 
 
@@ -257,10 +274,8 @@ public class BookingSalesOperationStepDefinition {
     public void userReadsDataFromTheExcelSheetRegardingBookingFeature() throws IOException {
         String filePath = "C:/Users/Anjali/OneDrive/Downloads/output.xlsx";
         String sheetName = "Booking Leads";
-
         // Fetch all data from the Excel sheet
         allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
-
         if (allTestData == null || allTestData.isEmpty()) {
             throw new RuntimeException("No data found in Excel sheet: " + sheetName);
         }
@@ -268,130 +283,16 @@ public class BookingSalesOperationStepDefinition {
     }
 
     @And("User processes the Booking for all rows from the Excel sheet from the sheet Name Booking Leads")
-    public void userProcessesTheBookingForAllRowsFromTheExcelSheetFromTheSheetNameBookingLeads() {
-
-            int passedCount = 0;
-            int failedCount = 0;
-
-            for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
-                System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
-
-                // Fetch and log current row data
-                testData = allTestData.get(currentDataRowIndex);
-                System.out.println("Current Test Data: " + testData);
-
-                boolean rowExecutionPassed = true;
-
-                try {
-                    // Reset application state for every row
-                    System.out.println("Refreshing the browser to reset the application state...");
-                    LaunchDriver.getDriver().navigate().refresh();
-
-                    // Restart from the initial step
-                    restartFromSalesMenuStep();
-
-                    // Execute all test steps for the current row
-                    executeTestStepsForRow_Booking();
-
-                    // Log success
-                    System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
-                    passedCount++;
-                } catch (Throwable e) {
-                    // Handle row failure
-                    // Handle application state reset on failure
-                    try {
-                        System.out.println("Navigating to the application's base URL...");
-                        LaunchDriver.getDriver().navigate().refresh();
-                        restartFromSalesMenuStep();
-                        executeTestStepsForRow_Booking();
-                    } catch (Exception navigationException) {
-                        System.err.println("Error while navigating to the base URL: " + navigationException.getMessage());
-                        navigationException.printStackTrace();
-                    } catch (Throwable ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    System.err.println("Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage());
-                    e.printStackTrace();
-                    rowExecutionPassed = false;
-                    failedCount++;
-
-                    // Skip retry and move to the next row
-                    System.out.println("Skipping retry for Row " + (currentDataRowIndex + 1) + ". Moving to the next row.");
-                } finally {
-                    if (rowExecutionPassed) {
-                        System.out.println("Row " + (currentDataRowIndex + 1) + " processed successfully.");
-                    } else {
-                        System.err.println("Row " + (currentDataRowIndex + 1) + " processing failed.");
-                    }
-                }
-            }
-
-            // Summary after processing all rows
-            System.out.println("\nExecution Summary:");
-            System.out.println("Total Rows Processed: " + allTestData.size());
-            System.out.println("Rows Passed: " + passedCount);
-            System.out.println("Rows Failed: " + failedCount);
-        }
-
-    private void executeTestStepsForRow_Booking() throws Exception {
-
-        userNeedToSelectTheEnquiryOptionInTheDropdown();
-        userEntersTheMobileNumberInTheTextBox();
-        userSelectsTheMobileNumberOptionFromTheDropdown();
-        userPassedTheStartDateAndEndDateInThePage();
-        userClicksOnTheSearchButton();
-        theEnquiryWillBePopulatedThenUserAsToSelectIt();
-        Thread.sleep(4000);
-        userFillsTheFieldsInTheCustomerBookingMGT();
-        //userClicksOnBasedOnTheValue(button);
-       afterSuccessfulRegistrationUserClicksOnQuotation();
-        userClicksOnTheReceiptIcon();
-        bookingPage.recordDataExcel();
-        System.out.println("\nExecution Summary: The data as been picked from the excel performed required validations, and stored the enquiry number and mobile number in the new excel sheet");
-
-
-
-    }
-    private void restartFromSalesMenuStep() throws Throwable {
-        try {
-            userClicksOnTheSalesIcon();
-            Thread.sleep(6000);
-            userSelectsTheSalesOperationTab();
-            Thread.sleep(6000);
-            userSelectsCustomerBookingMgtListUnderSalesOperation();
-
-        } catch (Exception e) {
-            System.err.println("Error restarting from Sales Menu step: " + e.getMessage());
-            throw new RuntimeException("Failed to restart execution from Sales Menu step.", e);
-        }
-    }
-
-    @And("clicks on Send OTP for booking")
-    public void clicksOnSendOTPForBooking() throws InterruptedException {
-        dMSLoginPage.clickSendOTPButton();
-        Thread.sleep(30000);
-        // Print a message indicating the button was clicked
-                System.out.println("Send OTP button clicked.");
-
-                // Wait for OTP to be entered and the page to change
-                WebDriver driver = LaunchDriver.getDriver();
-
-                // Create an explicit wait with a timeout of 100 seconds
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1000));
-
-                // Wait until the expected element is visible after the page changes (e.g., the header element)
-                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='header']/div[1]")));
-
-                // Print a message indicating that the expected element is now visible
-                System.out.println("Page changed and element is visible.");
-            }
-
-
-    @And("User processes the Booking for all rows from the Excel sheet from the sheet Name Booking Leads for account login")
-    public void userProcessesTheBookingForAllRowsFromTheExcelSheetFromTheSheetNameBookingLeadsForAccountLogin() {
-
+    public void userProcessesTheBookingForAllRowsFromTheExcelSheetFromTheSheetNameBookingLeads() throws IOException, InterruptedException {
         int passedCount = 0;
         int failedCount = 0;
+
+        String filePath = "C:/Users/Anjali/OneDrive/Downloads/output.xlsx";
+        String sheetName = "Booking Leads";
+
+
+        // Add a new column for error logging
+        ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
 
         for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
             System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
@@ -415,28 +316,33 @@ public class BookingSalesOperationStepDefinition {
 
                 // Log success
                 System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
+                ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", "PASSED");
                 passedCount++;
-            } catch (Throwable e) {
+            } catch (Exception e) {
                 // Handle row failure
                 // Handle application state reset on failure
                 try {
                     System.out.println("Navigating to the application's base URL...");
                     LaunchDriver.getDriver().navigate().refresh();
                     restartFromSalesMenuStep();
-                    executeTestStepsForRow_BookingAccount();
+                    executeTestStepsForRow_Booking();
                 } catch (Exception navigationException) {
                     System.err.println("Error while navigating to the base URL: " + navigationException.getMessage());
                     navigationException.printStackTrace();
                 } catch (Throwable ex) {
                     throw new RuntimeException(ex);
                 }
-                System.err.println("Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage());
+                String errorMessage = "Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage();
+                System.err.println(errorMessage);
                 e.printStackTrace();
+                ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", errorMessage);
                 rowExecutionPassed = false;
                 failedCount++;
 
                 // Skip retry and move to the next row
                 System.out.println("Skipping retry for Row " + (currentDataRowIndex + 1) + ". Moving to the next row.");
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
             } finally {
                 if (rowExecutionPassed) {
                     System.out.println("Row " + (currentDataRowIndex + 1) + " processed successfully.");
@@ -451,10 +357,137 @@ public class BookingSalesOperationStepDefinition {
         System.out.println("Total Rows Processed: " + allTestData.size());
         System.out.println("Rows Passed: " + passedCount);
         System.out.println("Rows Failed: " + failedCount);
+    }
+    private void executeTestStepsForRow_Booking() throws Exception {
+
+        userNeedToSelectTheEnquiryOptionInTheDropdown();
+        userEntersTheMobileNumberInTheTextBox();
+        userSelectsTheMobileNumberOptionFromTheDropdown();
+        userPassedTheStartDateAndEndDateInThePage();
+        userClicksOnTheSearchButton();
+        theEnquiryWillBePopulatedThenUserAsToSelectIt();
+        Thread.sleep(4000);
+        userFillsTheFieldsInTheCustomerBookingMGT();
+        //bookingPage.recordDataExcel();
+        //userClicksOnBasedOnTheValue(button);
+        afterSuccessfulRegistrationUserClicksOnQuotation();
+        userClicksOnTheReceiptIcon();
+        //
+        System.out.println("\nExecution Summary: The data as been picked from the excel performed required validations, and stored the enquiry number and mobile number in the new excel sheet");
+
 
     }
 
-    private void executeTestStepsForRow_BookingAccount() throws InterruptedException {
+    private void restartFromSalesMenuStep() throws Throwable {
+        try {
+            userClicksOnTheSalesIcon();
+            Thread.sleep(6000);
+            userSelectsTheSalesOperationTab();
+            Thread.sleep(6000);
+            userSelectsCustomerBookingMgtListUnderSalesOperation();
+
+        } catch (Exception e) {
+            System.err.println("Error restarting from Sales Menu step: " + e.getMessage());
+            throw new RuntimeException("Failed to restart execution from Sales Menu step.", e);
+        }
+    }
+
+    @And("clicks on Send OTP for booking")
+    public void clicksOnSendOTPForBooking() throws InterruptedException {
+        dMSLoginPage.clickSendOTPButton();
+        Thread.sleep(30000);
+        // Print a message indicating the button was clicked
+        System.out.println("Send OTP button clicked.");
+
+        // Wait for OTP to be entered and the page to change
+        WebDriver driver = LaunchDriver.getDriver();
+
+        // Create an explicit wait with a timeout of 100 seconds
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1000));
+
+        // Wait until the expected element is visible after the page changes (e.g., the header element)
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='header']/div[1]")));
+
+        // Print a message indicating that the expected element is now visible
+        System.out.println("Page changed and element is visible.");
+    }
+
+
+    @And("User processes the Booking for all rows from the Excel sheet from the sheet Name Booking Leads for account login")
+    public void userProcessesTheBookingForAllRowsFromTheExcelSheetFromTheSheetNameBookingLeadsForAccountLogin() throws IOException {
+        int passedCount = 0;
+        int failedCount = 0;
+
+        String filePath = "C:/Users/Anjali/OneDrive/Downloads/output.xlsx";
+        String sheetName = "Booking Leads";
+
+        // Add a new column for error logging
+        ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
+
+        for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
+            System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
+
+            // Fetch and log current row data
+            testData = allTestData.get(currentDataRowIndex);
+            System.out.println("Current Test Data: " + testData);
+
+            boolean rowExecutionPassed = true;
+
+            try {
+                // Reset application state for every row
+                System.out.println("Refreshing the browser to reset the application state...");
+                LaunchDriver.getDriver().navigate().refresh();
+
+                // Restart from the initial step
+                //restartFromSalesMenuStep();
+
+                // Execute all test steps for the current row
+                executeTestStepsForRow_BookingAccount();
+
+                // Log success
+                System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
+                ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", "PASSED");
+                passedCount++;
+            } catch (Exception e) {
+                // Handle row failure
+                // Handle application state reset on failure
+                try {
+                    System.out.println("Navigating to the application's base URL...");
+                    LaunchDriver.getDriver().navigate().refresh();
+                    //restartFromSalesMenuStep();
+                    executeTestStepsForRow_BookingAccount();
+                } catch (Throwable navigationException) {
+                    System.err.println("Error while navigating to the base URL: " + navigationException.getMessage());
+                    navigationException.printStackTrace();
+                }
+                String errorMessage = "Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage();
+                System.err.println(errorMessage);
+                e.printStackTrace();
+                ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", errorMessage);
+                rowExecutionPassed = false;
+                failedCount++;
+
+                // Skip retry and move to the next row
+                System.out.println("Skipping retry for Row " + (currentDataRowIndex + 1) + ". Moving to the next row.");
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            } finally {
+                if (rowExecutionPassed) {
+                    System.out.println("Row " + (currentDataRowIndex + 1) + " processed successfully.");
+                } else {
+                    System.err.println("Row " + (currentDataRowIndex + 1) + " processing failed.");
+                }
+            }
+        }
+
+        // Summary after processing all rows
+        System.out.println("\nExecution Summary:");
+        System.out.println("Total Rows Processed: " + allTestData.size());
+        System.out.println("Rows Passed: " + passedCount);
+        System.out.println("Rows Failed: " + failedCount);
+    }
+
+    private void executeTestStepsForRow_BookingAccount() throws InterruptedException, IOException {
         userClicksOnTheSalesIcon();
         Thread.sleep(4000);
         userSelectsTheSalesOperationTab();
@@ -472,25 +505,33 @@ public class BookingSalesOperationStepDefinition {
         userAsToAddTheAmountInTheReceiptSection();
         userClicksOnSendCustomerConsentLink();
     }
-    private void executeTestStepsForRow_BookingAccountVIN() throws InterruptedException, IOException {
-        dMSLoginPage.launchDMSSite();
-        dMSLoginPage.enterUsername("S523700");
-        dMSLoginPage.enterPassword("Hyundai@2024");
-        dMSLoginPage.clickLoginButton();
+
+    private void executeTestStepsForRow_BookingAccountVIN() throws Throwable {
+
         userClicksOnTheSalesIcon();
         bookingPage.orderStock();
         bookingPage.DealerVechileStock();
-        bookingPage.vinNumber("");
+        userPassesTheVINNumberIntoTheField();
         bookingPage.vinSearch();
-        bookingPage.mgtListSales();
+
         bookingPage.verifyDataMGT();
+        userEntersTheMobileNumberInTheTextBox();
+        userSelectsTheMobileNumberOptionFromTheDropdown();
+        userPassedTheStartDateAndEndDateInThePage();
+        userClicksOnTheSearchButton();
+        theEnquiryWillBePopulatedThenUserAsToSelectIt();
     }
 
     @And("User processes the Booking for all rows from the Excel sheet from the sheet Name Booking Leads for VIN")
-    public void userProcessesTheBookingForAllRowsFromTheExcelSheetFromTheSheetNameBookingLeadsForVIN() {
-
+    public void userProcessesTheBookingForAllRowsFromTheExcelSheetFromTheSheetNameBookingLeadsForVIN() throws IOException {
         int passedCount = 0;
         int failedCount = 0;
+
+        String filePath = "C:/Users/Anjali/OneDrive/Downloads/output.xlsx";
+        String sheetName = "Booking Leads";
+
+        // Add a new column for error logging
+        ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
 
         for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
             System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
@@ -507,35 +548,38 @@ public class BookingSalesOperationStepDefinition {
                 LaunchDriver.getDriver().navigate().refresh();
 
                 // Restart from the initial step
-                restartFromSalesMenuStep();
+                //restartFromSalesMenuStep();
 
                 // Execute all test steps for the current row
                 executeTestStepsForRow_BookingAccountVIN();
 
                 // Log success
                 System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
+                ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", "PASSED");
                 passedCount++;
-            } catch (Throwable e) {
+            } catch (Exception e) {
                 // Handle row failure
                 // Handle application state reset on failure
                 try {
                     System.out.println("Navigating to the application's base URL...");
                     LaunchDriver.getDriver().navigate().refresh();
-                    restartFromSalesMenuStep();
-                    executeTestStepsForRow_BookingAccount();
-                } catch (Exception navigationException) {
+                    //restartFromSalesMenuStep();
+                    executeTestStepsForRow_BookingAccountVIN();
+                } catch (Throwable navigationException) {
                     System.err.println("Error while navigating to the base URL: " + navigationException.getMessage());
                     navigationException.printStackTrace();
-                } catch (Throwable ex) {
-                    throw new RuntimeException(ex);
                 }
-                System.err.println("Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage());
+                String errorMessage = "Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage();
+                System.err.println(errorMessage);
                 e.printStackTrace();
+                ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", errorMessage);
                 rowExecutionPassed = false;
                 failedCount++;
 
                 // Skip retry and move to the next row
                 System.out.println("Skipping retry for Row " + (currentDataRowIndex + 1) + ". Moving to the next row.");
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
             } finally {
                 if (rowExecutionPassed) {
                     System.out.println("Row " + (currentDataRowIndex + 1) + " processed successfully.");
@@ -550,7 +594,5 @@ public class BookingSalesOperationStepDefinition {
         System.out.println("Total Rows Processed: " + allTestData.size());
         System.out.println("Rows Passed: " + passedCount);
         System.out.println("Rows Failed: " + failedCount);
-
-
     }
 }
