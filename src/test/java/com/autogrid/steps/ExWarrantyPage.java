@@ -181,12 +181,25 @@ public void enterVIN(String vin)
 		
 		 WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
          List<WebElement> employeeList = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//ul[@id='extbEmpNo_listbox']//li")));
-		try {
-			for (WebElement empName : employeeList) {
-	        	 if (empName.getText().equals(employeeName)) {
-	        		 empName.click();
-	                 break;
-	             }
+         System.out.println(employeeList.size());
+         try {
+			
+	        	 for (WebElement empName : employeeList) {
+	        		 System.out.println("Employee Name - " + empName.getText().trim().toUpperCase().equals(employeeName.trim().toUpperCase()));
+	        		 if (empName.getText().trim().toUpperCase().equals(employeeName.trim().toUpperCase())) {
+		        		 empName.click();
+		        		 System.out.println("Employee Name after Click: " + empName.getText().trim().toUpperCase());
+		        		 break;
+		             }
+		    
+		        	 
+		        	 /*for (WebElement empName : employeeList) {
+						
+		        	 if (empName.getText().equalsIgnoreCase("SUNIL KUMAR SONKANBLE")) {
+		        		 empName.click();
+		        		 System.out.println("Em Name: "+empName.getText());
+		        		 break;
+		             }*/
 			}
 			
 			//JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
@@ -204,8 +217,10 @@ public void enterVIN(String vin)
 	         List<WebElement> SupplyStates = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//ul[@id='placeOfSupply_listbox']//li")));
 			try {
 				for (WebElement stateName : SupplyStates) {
-		        	 if (stateName.getText().equals(placeOfSupply)) {
+					System.out.println("Place Of Supply - " + stateName.getText().trim().toUpperCase().equals(placeOfSupply.trim().toUpperCase()));
+		        	 if (stateName.getText().trim().toUpperCase().equals(placeOfSupply.trim().toUpperCase())) {
 		        		 stateName.click();
+							System.out.println("Place Of Supply after Click: " + placeOfSupply.trim().toUpperCase());
 		                 break;
 		             }
 				}

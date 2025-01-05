@@ -1,15 +1,22 @@
 package com.autogrid.stepDefinitions;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import com.autogrid.steps.DMSLoginPage;
 import com.autogrid.steps.ExWarrantyPage;
 import com.autogrid.steps.SOTPage;
 import com.autogrid.utils.ExcelReading;
+import com.autogrid.utils.ExcelWriting;
 import com.autogrid.utils.LaunchDriver;
 import io.cucumber.java.en.*;
 
@@ -51,6 +58,11 @@ public class ExWarrantyAndSOTStepDefinition {
 		int passedCount = 0;
 		int failedCount = 0;
 
+		String filePath = "C:/Document/DataExcel/output.xlsx";
+		String sheetName = "ExWarranty & SOT Leads";
+		// Add a new column for error logging
+		ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
+
 		for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
 			System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
 
@@ -70,6 +82,7 @@ public class ExWarrantyAndSOTStepDefinition {
 
 				// Log success
 				System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
+				ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", "PASSED");
 				passedCount++;
 			} catch (Exception e) {
 				// Handle row failure
@@ -82,8 +95,11 @@ public class ExWarrantyAndSOTStepDefinition {
 					System.err.println("Error while navigating to the base URL: " + navigationException.getMessage());
 					navigationException.printStackTrace();
 				}
-				System.err.println("Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage());
+
+				String errorMessage = "Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage();
+				System.err.println(errorMessage);
 				e.printStackTrace();
+				ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", errorMessage);
 				rowExecutionPassed = false;
 				failedCount++;
 
@@ -117,6 +133,27 @@ public class ExWarrantyAndSOTStepDefinition {
 			user_clicks_on_inquire();
 			user_enter_current_odometer_reading();
 			user_select_employee_name();
+
+			/*
+			 * EmployeeNameDrpDwn.click();
+			 * commonActions.explicitWait("//ul[@id='extbEmpNo_listbox']//li");
+			 * 
+			 * WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(),
+			 * Duration.ofSeconds(10)); List<WebElement> employeeList =
+			 * wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(
+			 * "//ul[@id='extbEmpNo_listbox']//li")));
+			 * System.out.println(employeeList.size()); try { for (WebElement employeeName :
+			 * employeeList) {
+			 * 
+			 * if (employeeName.getText().equalsIgnoreCase("testData.get("empName")")) {
+			 * employeeName.click(); System.out.println("Em Name: "+employeeName.getText());
+			 * break; } }
+			 * 
+			 * //JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
+			 * //js.executeScript("arguments[0].value='" + employeeName + "';",
+			 * EmployeeNameDrpDwn); } catch (Exception e) {
+			 * System.err.println("Error in selecting employee Name"+e.getMessage()); }
+			 */
 			user_select_place_of_supply();
 			user_select_required_extented_warranty_type();
 			user_clicks_on_clear_button();
@@ -248,8 +285,9 @@ public class ExWarrantyAndSOTStepDefinition {
 		try {
 			if (testData != null) {
 
-				exWarranty.selectEmployeeName(testData.get("empName"));
-				System.out.println("Selected Employee Name " + testData.get("empName"));
+				String employeeName = testData.get("empName").toLowerCase();
+				exWarranty.selectEmployeeName(employeeName);
+				System.out.println("Selected Employee Name " + employeeName);
 			} else {
 				throw new RuntimeException("Test data is not initialized.");
 			}
@@ -381,8 +419,9 @@ public class ExWarrantyAndSOTStepDefinition {
 		Thread.sleep(2000);
 		try {
 			if (testData != null) {
-				sot.selectEmployeeName(testData.get("empName"));
-				System.out.println("Employee Name selected in SOT " + testData.get("empName"));
+				String employeeName = testData.get("empName").toLowerCase();
+				sot.selectEmployeeName(testData.get("employeeName"));
+				System.out.println("Employee Name selected in SOT " + testData.get("employeeName"));
 			} else {
 				throw new RuntimeException("Test data is not initialized.");
 			}
