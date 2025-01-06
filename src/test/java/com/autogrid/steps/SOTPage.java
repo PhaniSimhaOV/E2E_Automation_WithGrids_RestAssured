@@ -158,7 +158,6 @@ public class SOTPage {
 		}
 	}
 
-	
 	public void selectEmployeeName(String employeeName) {
 		EmployeeNameDrpDwn.click();
 		commonActions.explicitWait("//ul[@id='hssdEmpNo_listbox']//li");
@@ -168,19 +167,20 @@ public class SOTPage {
 				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//ul[@id='hssdEmpNo_listbox']//li")));
 		try {
 			for (WebElement empName : employeeList) {
-				System.out.println("Employee Name - " + empName.getText().trim().toUpperCase().equals(employeeName.trim().toUpperCase()));
+
 				if (empName.getText().equals(employeeName)) {
-					 empName.click();
-					//JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-					 //js.executeScript("arguments[0].click();", empName);
-					
+					empName.click();
+					// JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
+					// js.executeScript("arguments[0].click();", empName);
+
 					System.out.println("Employee Name after Click: " + empName.getText().trim().toUpperCase());
 					break;
 				}
 			}
 
 			// JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-			// js.executeScript("arguments[0].value='" + employeeName + "';",EmployeeNameDrpDwn);
+			// js.executeScript("arguments[0].value='" + employeeName +
+			// "';",EmployeeNameDrpDwn);
 		} catch (Exception e) {
 			System.err.println("Error in selecting employee Name" + e.getMessage());
 		}
@@ -195,7 +195,7 @@ public class SOTPage {
 				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//ul[@id='placeOfSupply_listbox']//li")));
 		try {
 			for (WebElement stateName : SupplyStates) {
-				System.out.println("Place Of Supply - " + stateName.getText().trim().toUpperCase().equals(placeOfSupply.trim().toUpperCase()));
+
 				if (stateName.getText().equals(placeOfSupply)) {
 					stateName.click();
 					System.out.println("Place Of Supply after Click: " + placeOfSupply.trim().toUpperCase());
@@ -213,12 +213,6 @@ public class SOTPage {
 	}
 
 	public void setRequiredSOTSchemeType(String SOTSchemeDes) {
-		/*try {
-			RequiredSOTScheme.click();
-		} catch (Exception e) {
-			System.err.println("Error in selecting Required Extd warranty Type" + e.getMessage());
-		}*/
-		
 
 		WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
 		List<WebElement> SOTSchemeData = wait.until(ExpectedConditions
@@ -226,8 +220,7 @@ public class SOTPage {
 
 		try {
 			for (WebElement SOTScheme : SOTSchemeData) {
-				System.out.println("Scheme - "
-						+ SOTScheme.getText().trim().toUpperCase().equals(SOTSchemeDes.trim().toUpperCase()));
+
 				if (SOTScheme.getText().trim().toUpperCase().equals(SOTSchemeDes.trim().toUpperCase())) {
 					SOTScheme.click();
 					System.out.println("Scheme after Click: " + SOTScheme.getText().trim().toUpperCase());
@@ -241,11 +234,6 @@ public class SOTPage {
 		}
 
 	}
-		
-		
-		
-		
-	
 
 	public void clickSubmitBtn() {
 		try {

@@ -43,9 +43,7 @@ public class ExWarrantyPage {
 	@FindBy(xpath = "//input[@id='sKeyword']")
 	private WebElement VIN;
 
-	@FindBy(xpath = "//input[@class='k-formatted-value form_numeric ar k-input']") // (//
-																					// input[@aria-valuemax='9999999'])[1]
-																					// , //*[@id='odometerReading']
+	@FindBy(xpath = "//input[@class='k-formatted-value form_numeric ar k-input']") 
 	private WebElement OdometerReading;
 
 	@FindBy(xpath = "//*[@id='frm1']/div[2]/dl[8]/dd[1]/span/span[1]")
@@ -181,8 +179,7 @@ public class ExWarrantyPage {
 		try {
 
 			for (WebElement empName : employeeList) {
-				System.out.println("Employee Name - "
-						+ empName.getText().trim().toUpperCase().equals(employeeName.trim().toUpperCase()));
+
 				if (empName.getText().trim().toUpperCase().equals(employeeName.trim().toUpperCase())) {
 					empName.click();
 					System.out.println("Employee Name after Click: " + empName.getText().trim().toUpperCase());
@@ -209,8 +206,7 @@ public class ExWarrantyPage {
 				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//ul[@id='placeOfSupply_listbox']//li")));
 		try {
 			for (WebElement stateName : SupplyStates) {
-				System.out.println("Place Of Supply - "
-						+ stateName.getText().trim().toUpperCase().equals(placeOfSupply.trim().toUpperCase()));
+
 				if (stateName.getText().trim().toUpperCase().equals(placeOfSupply.trim().toUpperCase())) {
 					stateName.click();
 					System.out.println("Place Of Supply after Click: " + placeOfSupply.trim().toUpperCase());
@@ -229,22 +225,12 @@ public class ExWarrantyPage {
 
 	public void setExtdWarrantyType(String SchemeDes) {
 
-		/*
-		 * try { 
-		 * RequiredExtWarrantyType.click(); 
-		 * } 
-		 * catch (Exception e) {
-		 * System.err.println("Error in selecting Required Extd warranty Type"+e.getMessage()); } }
-		 */
-
 		WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
 		List<WebElement> ExWarrantySchemeData = wait.until(ExpectedConditions
 				.visibilityOfAllElementsLocatedBy(By.xpath("//div/div/div/div[1]/div[2]/table/tbody/tr/td[3]")));
 
 		try {
 			for (WebElement ExWarScheme : ExWarrantySchemeData) {
-				System.out.println("Scheme - "
-						+ ExWarScheme.getText().trim().toUpperCase().equals(SchemeDes.trim().toUpperCase()));
 				if (ExWarScheme.getText().trim().toUpperCase().equals(SchemeDes.trim().toUpperCase())) {
 					ExWarScheme.click();
 					System.out.println("Scheme after Click: " + ExWarScheme.getText().trim().toUpperCase());

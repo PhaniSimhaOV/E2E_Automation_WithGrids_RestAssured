@@ -285,7 +285,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		try {
 			if (testData != null) {
 
-				String employeeName = testData.get("empName").toLowerCase();
+				String employeeName = testData.get("empName").toUpperCase();
 				exWarranty.selectEmployeeName(employeeName);
 				System.out.println("Selected Employee Name " + employeeName);
 			} else {
@@ -435,8 +435,9 @@ public class ExWarrantyAndSOTStepDefinition {
 	public void user_select_employee_name_in_sot() throws Throwable {
 		Thread.sleep(2000);
 		try {
+			
 			if (testData != null) {
-				String employeeName = testData.get("empName").toLowerCase();
+				String employeeName = testData.get("empName").toUpperCase();
 				sot.selectEmployeeName(testData.get("employeeName"));
 				System.out.println("Employee Name selected in SOT " + testData.get("employeeName"));
 			} else {
