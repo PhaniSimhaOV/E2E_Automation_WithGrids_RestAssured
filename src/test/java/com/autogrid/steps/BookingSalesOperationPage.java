@@ -667,6 +667,8 @@ public class BookingSalesOperationPage {
         Thread.sleep(4000);
         iframe3();
         Thread.sleep(5000);
+        getDriver().findElement(By.xpath("//*[@id=\"btnPayAdd\"]")).click();
+        Thread.sleep(2000);
         ShareReceiptButton.click();
         Thread.sleep(4000);
         System.out.println("successfully clicked on share reciept");
