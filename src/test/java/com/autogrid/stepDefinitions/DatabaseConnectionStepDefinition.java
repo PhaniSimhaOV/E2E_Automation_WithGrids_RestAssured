@@ -262,12 +262,33 @@ public class DatabaseConnectionStepDefinition {
 							+ "            dms_lead dl \r\n"
 							+ "        WHERE \r\n"
 							+ "            dl.organization_id = 16\r\n"
-							+ "    ) order by test_drive_datetime desc LIMIT 3;\r\n"
+							+ "    ) order by test_drive_datetime desc LIMIT 3;",
+							"SELECT \r\n"
+							+ "    da.vinno,\r\n"
+							+ "    dd.warrantyamount,\r\n"
+							+ "    dad.state AS placeOfSupply,\r\n"
+							+ "    dl.sales_consultant AS empName\r\n"
+							+ "FROM \r\n"
+							+ "    dms_lead dl\r\n"
+							+ "LEFT JOIN \r\n"
+							+ "    dms_lead_stage_ref dlsr ON dlsr.lead_id = dl.id\r\n"
+							+ "LEFT JOIN \r\n"
+							+ "    dms_master_lead_stage dmls ON dlsr.stage_id = dmls.id\r\n"
+							+ "LEFT JOIN \r\n"
+							+ "    dms_delivery dd ON dd.lead_id = dl.id\r\n"
+							+ "LEFT JOIN \r\n"
+							+ "    dms_allotment da ON da.lead_id = dl.id\r\n"
+							+ "LEFT JOIN \r\n"
+							+ "    dms_address dad ON dad.dms_lead_id = dl.id AND dad.address_type = 'Communication'\r\n"
+							+ "WHERE \r\n"
+							+ "    dmls.lead_stage_key = 'DELIVERY' \r\n"
+							+ "    AND dl.organization_id = 16\r\n"
+							+ "LIMIT 3;\r\n"
 							+ "");
 
 			// Descriptive sheet names for each query
 			List<String> sheetNames = Arrays.asList("Enquiry Lead Creation", "Booking Leads", "Invoice Leads",
-					"ExWarranty & SOT Leads","Test Drive - Enquiry");
+					"ExWarranty Leads","Test Drive - Enquiry","SOT Leads");
 
 			// Validate that the number of queries matches the number of sheet names
 			if (sheetNames.size() != queries.size()) {
