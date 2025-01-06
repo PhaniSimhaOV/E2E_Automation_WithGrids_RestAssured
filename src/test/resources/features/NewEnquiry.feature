@@ -1,3 +1,4 @@
+@web
 Feature: User tries to verify the New Enquiry functionality
 
 @test

@@ -1,3 +1,4 @@
+@web
 Feature: User tries to verify the Invoice functionality
 
   @test 

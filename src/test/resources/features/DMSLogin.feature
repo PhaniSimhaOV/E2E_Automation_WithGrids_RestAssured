@@ -1,3 +1,4 @@
+@web
 Feature: User tries to verify the Login functionality
 
   Scenario: DMS_Login_User tries to verify the DMS navigation

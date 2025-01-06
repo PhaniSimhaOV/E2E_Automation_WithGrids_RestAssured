@@ -1,3 +1,4 @@
+@web
 Feature: Connecting and Fetching Data From MySQL Database
 
   Scenario: Fetching data from the database and Save the fetched data into EXCEL File

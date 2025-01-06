@@ -1,3 +1,4 @@
+@web
 Feature: Extended Warranty Punching and SOT
 
   @test

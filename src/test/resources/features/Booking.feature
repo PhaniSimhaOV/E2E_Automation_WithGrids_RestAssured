@@ -1,3 +1,4 @@
+@web
 Feature: User navigates to booking section
 
   @testBooking
