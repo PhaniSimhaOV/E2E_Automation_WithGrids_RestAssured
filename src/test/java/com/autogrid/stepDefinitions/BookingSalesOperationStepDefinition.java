@@ -337,6 +337,7 @@ public class BookingSalesOperationStepDefinition {
                 e.printStackTrace();
                 ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", errorMessage);
                 rowExecutionPassed = false;
+
                 failedCount++;
 
                 // Skip retry and move to the next row

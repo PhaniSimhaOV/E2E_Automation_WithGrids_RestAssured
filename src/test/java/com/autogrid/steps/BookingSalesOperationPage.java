@@ -455,6 +455,7 @@ public class BookingSalesOperationPage {
             System.out.println("Modified successfully");
                 ShipToAddr.clear();
                 ShipToAddr.sendKeys(address);
+
                 //ModeOfPurchase
                 getDriver().findElement(By.xpath("//*[@id=\"bookingInfo\"]/section[1]/div[2]/dl[2]/dd[1]/span/span/span[1]")).click();
                 getDriver().findElement(By.xpath("//*[@id=\"purchaseType_listbox\"]/li[4]")).click();
