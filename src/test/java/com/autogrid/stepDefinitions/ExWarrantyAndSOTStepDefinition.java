@@ -36,10 +36,10 @@ public class ExWarrantyAndSOTStepDefinition {
 		this.sot = new SOTPage(driver);
 		PageFactory.initElements(driver, sot);
 	}
-	@Given("User reads data from the Excel sheet regarding ExWarranty and SOT feature")
-	public void User_reads_data_from_the_Excel_sheet_regarding_ExWarranty_and_SOT_feature() throws IOException {
+	@Given("User reads data from the Excel sheet regarding ExWarranty feature")
+	public void User_reads_data_from_the_Excel_sheet_regarding_ExWarranty_feature() throws IOException {
 		String filePath = "C:/Document/DataExcel/output.xlsx";
-		String sheetName = "ExWarranty & SOT Leads";
+		String sheetName = "ExWarranty Leads";
 
 		// Fetch all data from the Excel sheet
 		allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
@@ -50,15 +50,15 @@ public class ExWarrantyAndSOTStepDefinition {
 		System.out.println("All Test Data Loaded: " + allTestData.size() + " rows.");
 	}
 
-	@When("User processes the ExWarranty and SOT for all rows from the Excel sheet of sheet Name ExWarranty & SOT Leads")
-	public void User_processes_the_exwarranty_and_sot_for_all_rows_from_the_Excel_sheet_of_sheet_Name_ExWarranty_and_SOT_Leads()
+	@When("User processes the ExWarranty for all rows from the Excel sheet of sheet Name ExWarranty Leads for Ewarranty")
+	public void User_processes_the_exwarranty_for_all_rows_from_the_Excel_sheet_of_sheet_Name_ExWarranty_Leads_for_Ewarranty ()
 			throws Throwable {
 
 		int passedCount = 0;
 		int failedCount = 0;
 
 		String filePath = "C:/Document/DataExcel/output.xlsx";
-		String sheetName = "ExWarranty & SOT Leads";
+		String sheetName = "ExWarranty Leads";
 		// Add a new column for error logging
 		ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
 
@@ -77,7 +77,8 @@ public class ExWarrantyAndSOTStepDefinition {
 				LaunchDriver.getDriver().navigate().refresh();
 
 				// Execute all test steps for the current row
-				executeTestStepsForRowForExwarrentyAndSOT();
+				executeTestStepsForRowForExwarrenty();
+				
 
 				// Log success
 				System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
@@ -89,7 +90,8 @@ public class ExWarrantyAndSOTStepDefinition {
 				try {
 					System.out.println("Navigating to the application's base URL...");
 					LaunchDriver.getDriver().navigate().refresh();
-					executeTestStepsForRowForExwarrentyAndSOT();
+					executeTestStepsForRowForExwarrenty();
+					
 				} catch (Exception navigationException) {
 					System.err.println("Error while navigating to the base URL: " + navigationException.getMessage());
 					navigationException.printStackTrace();
@@ -120,7 +122,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		System.out.println("Rows Failed: " + failedCount);
 	}
 
-	private void executeTestStepsForRowForExwarrentyAndSOT() throws Throwable {
+	private void executeTestStepsForRowForExwarrenty() throws Throwable {
 		// Example: Call test methods for each step
 		try {
 			// Call test methods for each step in Ex-warrenty Functionality
@@ -132,34 +134,108 @@ public class ExWarrantyAndSOTStepDefinition {
 			user_clicks_on_inquire();
 			user_enter_current_odometer_reading();
 			user_select_employee_name();
-
-			/*
-			 * EmployeeNameDrpDwn.click();
-			 * commonActions.explicitWait("//ul[@id='extbEmpNo_listbox']//li");
-			 * 
-			 * WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(),
-			 * Duration.ofSeconds(10)); List<WebElement> employeeList =
-			 * wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(
-			 * "//ul[@id='extbEmpNo_listbox']//li")));
-			 * System.out.println(employeeList.size()); try { for (WebElement employeeName :
-			 * employeeList) {
-			 * 
-			 * if (employeeName.getText().equalsIgnoreCase("testData.get("empName")")) {
-			 * employeeName.click(); System.out.println("Em Name: "+employeeName.getText());
-			 * break; } }
-			 * 
-			 * //JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-			 * //js.executeScript("arguments[0].value='" + employeeName + "';",
-			 * EmployeeNameDrpDwn); } catch (Exception e) {
-			 * System.err.println("Error in selecting employee Name"+e.getMessage()); }
-			 */
 			user_select_place_of_supply();
 			user_select_required_extented_warranty_type();
 			user_clicks_on_clear_button();
 			// user_clicks_on_submit_button();
 			user_clicks_on_service_icon();
 			user_clicks_on_extended_warranty_sub_menu();
+		}catch (Exception e) {
+			System.err.println(
+					"Error during execution of steps for Row " + (currentDataRowIndex + 1) + ": " + e.getMessage());
+			throw new RuntimeException("Failed to execute steps for Row " + (currentDataRowIndex + 1), e);
+		}
+	}
+	
+	@Given("User reads data from the Excel sheet regarding SOT feature")
+	public void User_reads_data_from_the_Excel_sheet_regarding_Sot_feature() throws IOException {
+		String filePath = "C:/Document/DataExcel/output.xlsx";
+		String sheetName = "SOT Leads";
 
+		// Fetch all data from the Excel sheet
+		allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
+
+		if (allTestData == null || allTestData.isEmpty()) {
+			throw new RuntimeException("No data found in Excel sheet: " + sheetName);
+		}
+		System.out.println("All Test Data Loaded: " + allTestData.size() + " rows.");
+	}
+
+	
+	@When("User processes the SOT for all rows from the Excel sheet of sheet Name SOT Leads for SOT")
+	public void User_processes_the_exwarranty_and_sot_for_all_rows_from_the_Excel_sheet_of_sheet_Name_SOT_Leads_for_SOT()
+			throws Throwable {
+
+		int passedCount = 0;
+		int failedCount = 0;
+
+		String filePath = "C:/Document/DataExcel/output.xlsx";
+		String sheetName = "SOT Leads";
+		// Add a new column for error logging
+		ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
+
+		for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
+			System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
+
+			// Fetch and log current row data
+			testData = allTestData.get(currentDataRowIndex);
+			System.out.println("Current Test Data: " + testData);
+
+			boolean rowExecutionPassed = true;
+
+			try {
+				// Reset application state for every row
+				System.out.println("Refreshing the browser to reset the application state...");
+				LaunchDriver.getDriver().navigate().refresh();
+
+				// Execute all test steps for the current row
+				
+				executeTestStepsForRowForSOT();
+
+				// Log success
+				System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
+				ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", "PASSED");
+				passedCount++;
+			} catch (Exception e) {
+				// Handle row failure
+				// Handle application state reset on failure
+				try {
+					System.out.println("Navigating to the application's base URL...");
+					LaunchDriver.getDriver().navigate().refresh();
+					
+					executeTestStepsForRowForSOT();
+				} catch (Exception navigationException) {
+					System.err.println("Error while navigating to the base URL: " + navigationException.getMessage());
+					navigationException.printStackTrace();
+				}
+
+				String errorMessage = "Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage();
+				System.err.println(errorMessage);
+				e.printStackTrace();
+				ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", errorMessage);
+				rowExecutionPassed = false;
+				failedCount++;
+
+				// Skip retry and move to the next row
+				System.out.println("Skipping retry for Row " + (currentDataRowIndex + 1) + ". Moving to the next row.");
+			} finally {
+				if (rowExecutionPassed) {
+					System.out.println("Row " + (currentDataRowIndex + 1) + " processed successfully.");
+				} else {
+					System.err.println("Row " + (currentDataRowIndex + 1) + " processing failed.");
+				}
+			}
+		}
+
+		// Summary after processing all rows
+		System.out.println("\nExecution Summary:");
+		System.out.println("Total Rows Processed: " + allTestData.size());
+		System.out.println("Rows Passed: " + passedCount);
+		System.out.println("Rows Failed: " + failedCount);
+	}
+			
+		private void executeTestStepsForRowForSOT() throws Throwable {
+			try {
 			// Call test methods for each step in SOT Functionality
 			user_clicks_on_service_icon();
 			user_clicks_on_extended_warranty_sub_menu();
