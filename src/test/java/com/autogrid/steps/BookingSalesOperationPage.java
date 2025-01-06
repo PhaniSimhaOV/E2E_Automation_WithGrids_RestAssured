@@ -389,7 +389,7 @@ public class BookingSalesOperationPage {
             String contactNumber = contactField.getAttribute("value");
 
             System.out.println("Enquiry Number: " + enquiryNumber);
-            String filePath = "C:/Users/Anjali/OneDrive/Downloads/output.xlsx";
+            String filePath = "C:/Users/Anjali/OneDrive/Desktop/output.xlsx";
             String sheetName = "BookingDetails";
 
                 File excelFile = new File(filePath);
@@ -438,13 +438,21 @@ public class BookingSalesOperationPage {
                 js.executeScript("window.scrollBy(0,1000)");
                 System.out.println("Scrolled down successfully.");
                 //RegisteredName
+            iframe3();
                 RegistrationNm.clear();
                 RegistrationNm.sendKeys(RegistrationName);
+            iframe3();
                 ShipToName.clear();
                 ShipToName.sendKeys(RegistrationName);
                 System.out.println("RegistrationNm is." + RegistrationNm.getText());
+            iframe3();
                 AddressTab.clear();
                 AddressTab.sendKeys(address);
+            iframe3();
+            btnBookingModify.click();
+            iframe3();
+            confirmmodifybutton.click();
+            System.out.println("Modified successfully");
                 ShipToAddr.clear();
                 ShipToAddr.sendKeys(address);
                 //ModeOfPurchase
@@ -484,7 +492,6 @@ public class BookingSalesOperationPage {
                 System.out.println("Successfully clicked on register");
                 Thread.sleep(5000);
                 btnBookingModify.click();
-                iframe3();
                 iframe3();
                 confirmmodifybutton.click();
                 System.out.println("Modified successfully");
@@ -607,6 +614,7 @@ public class BookingSalesOperationPage {
 
         try {
             Actions actions = new Actions(getDriver());
+            Thread.sleep(3000);
             actions.moveToElement(RTOAmountField).click() // Move to the field and click to focus
                     .keyDown(Keys.CONTROL).sendKeys("a") // Select all text (CTRL + A)
                     .keyUp(Keys.CONTROL)
