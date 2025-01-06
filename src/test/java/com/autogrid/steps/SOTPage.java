@@ -212,13 +212,40 @@ public class SOTPage {
 		}
 	}
 
-	public void setRequiredSOTSchemeType() {
-		try {
+	public void setRequiredSOTSchemeType(String SOTSchemeDes) {
+		/*try {
 			RequiredSOTScheme.click();
 		} catch (Exception e) {
 			System.err.println("Error in selecting Required Extd warranty Type" + e.getMessage());
+		}*/
+		
+
+		WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
+		List<WebElement> SOTSchemeData = wait.until(ExpectedConditions
+				.visibilityOfAllElementsLocatedBy(By.xpath("//div/div/div/div[1]/div[2]/table/tbody/tr/td[3]")));
+
+		try {
+			for (WebElement SOTScheme : SOTSchemeData) {
+				System.out.println("Scheme - "
+						+ SOTScheme.getText().trim().toUpperCase().equals(SOTSchemeDes.trim().toUpperCase()));
+				if (SOTScheme.getText().trim().toUpperCase().equals(SOTSchemeDes.trim().toUpperCase())) {
+					SOTScheme.click();
+					System.out.println("Scheme after Click: " + SOTScheme.getText().trim().toUpperCase());
+					break;
+				}
+			}
 		}
+
+		catch (Exception e) {
+			System.err.println("Error in selecting Scheme" + e.getMessage());
+		}
+
 	}
+		
+		
+		
+		
+	
 
 	public void clickSubmitBtn() {
 		try {
