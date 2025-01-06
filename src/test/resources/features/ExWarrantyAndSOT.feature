@@ -11,6 +11,7 @@ Feature: Extended Warranty Punching and SOT
     And User reads data from the Excel sheet regarding ExWarranty feature
     And User processes the ExWarranty for all rows from the Excel sheet of sheet Name ExWarranty Leads for Exwarranty
 
+
   @test
   Scenario: User tries to verify SOT Submit functionality
     Given launch browser and enter url

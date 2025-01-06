@@ -29,6 +29,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	private List<Map<String, String>> allTestData; // List to store all data rows from Excel
 	private int currentDataRowIndex = 0; // To keep track of the current row index
 
+	
 	public ExWarrantyAndSOTStepDefinition() {
 		WebDriver driver = LaunchDriver.getDriver();
 		this.exWarranty = new ExWarrantyPage(driver);
