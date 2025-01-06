@@ -582,3 +582,591 @@
 466  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
 492  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
 3540 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+4385 [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+5140 [main] WARN  org.testng.internal.Utils -- The test method 'io.cucumber.testng.AbstractTestNGCucumberTests.runScenario' will be skipped since its data provider 'scenarios' returned an empty array or iterator. 
+2304 [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+2344 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+2348 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+2348 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+2348 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+2348 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+2348 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+2348 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+2349 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+2349 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+2349 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+2349 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+2349 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+2349 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+2349 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+2349 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+2349 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+2350 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+2350 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+2350 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+2350 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+2350 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+2351 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+2351 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+2351 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+2351 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+2373 [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+32407 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+35294 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+641  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+645  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+650  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+652  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+652  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+652  [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+652  [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+652  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+652  [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+652  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+653  [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+653  [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+653  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+653  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+653  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+653  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+653  [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+653  [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+654  [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+654  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+654  [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+654  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+654  [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+654  [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+654  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+655  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+667  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+29419 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+29761 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+29807 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+1414 [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+2446 [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+2447 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+2448 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+2448 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+2448 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+2448 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+2449 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+2449 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+2449 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+2449 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+2449 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+2450 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+2450 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+2450 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+2450 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+2450 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+2450 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+2450 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+2450 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+2450 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+2450 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+2450 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+2452 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+2452 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+2452 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+2452 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+2464 [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+6309 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+412  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+417  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+421  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+422  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+422  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+422  [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+422  [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+423  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+423  [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+423  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+424  [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+424  [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+426  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+426  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+426  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+427  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+427  [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+427  [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+427  [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+428  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+428  [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+428  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+428  [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+428  [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+428  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+428  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+445  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+13677 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+14197 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+14223 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+1297 [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+2526 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting up the Driver
+2526 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+2528 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+2528 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+2528 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+2529 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+2529 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+2529 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+2529 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+2529 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+2529 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+2530 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+2530 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+2530 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+2530 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+2530 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+2530 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+2530 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+2530 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+2530 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+2531 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+2531 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+2531 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+2531 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+2548 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+2548 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+2548 [main] INFO  c.a.utils.LaunchAndroidDriver -- Installing the given APK on Virtual Mobile device
+4020 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting Up Appium Server...
+12425 [main] INFO  c.a.utils.LaunchAndroidDriver -- Starting Appium Server...
+1502 [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+2728 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting Up Appium Server...
+4246 [main] INFO  c.a.utils.LaunchAndroidDriver -- Starting Appium Server...
+1176 [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+2247 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting Up Appium Server...
+3324 [main] INFO  c.a.utils.LaunchAndroidDriver -- Starting Appium Server...
+94989 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server have started on URL...http://127.0.0.1:4723/
+95010 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting up the Driver
+95010 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+95011 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+95011 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+95011 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+95011 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+95012 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+95012 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+95012 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+95012 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+95012 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+95012 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+95012 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+95012 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+95012 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+95012 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+95012 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+95013 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+95013 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+95013 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+95013 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+95013 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+95013 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+95013 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+95013 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+95013 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+95013 [main] INFO  c.a.utils.LaunchAndroidDriver -- Installing the given APK on Virtual Mobile device
+97944 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting Up Appium Server...
+98995 [main] INFO  c.a.utils.LaunchAndroidDriver -- Starting Appium Server...
+99015 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server have started on URL...http://127.0.0.1:4723/
+99028 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting up the Driver
+99028 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+99029 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+99029 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+99029 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+99029 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+99029 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+99029 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+99029 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+99029 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+99029 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+99030 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+99030 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+99030 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+99030 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+99030 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+99030 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+99030 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+99030 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+99031 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+99031 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+99031 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+99031 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+99031 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+99031 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+99031 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+99031 [main] INFO  c.a.utils.LaunchAndroidDriver -- Installing the given APK on Virtual Mobile device
+99734 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server stopped...
+99763 [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+99764 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+99766 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+99766 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+99766 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+99766 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+99766 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+99766 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+99766 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+99767 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+99767 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+99767 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+99767 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+99767 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+99767 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+99767 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+99767 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+99767 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+99767 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+99767 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+99767 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+99767 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+99768 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+99768 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+99768 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+99768 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+99776 [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+108077 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting Up Appium Server...
+108935 [main] INFO  c.a.utils.LaunchAndroidDriver -- Starting Appium Server...
+109070 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server have started on URL...http://127.0.0.1:4723/
+109084 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting up the Driver
+109085 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+109086 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+109086 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+109086 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+109086 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+109087 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+109087 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+109087 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+109087 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+109087 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+109087 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+109087 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+109088 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+109088 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+109088 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+109088 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+109088 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+109088 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+109088 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+109088 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+109089 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+109089 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+109089 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+109089 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+109089 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+109089 [main] INFO  c.a.utils.LaunchAndroidDriver -- Installing the given APK on Virtual Mobile device
+109991 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server stopped...
+109993 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+111146 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+111165 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+1301 [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+2385 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting up the Driver
+2641 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+2642 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+2642 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+2643 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+2643 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+2643 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+2643 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+2643 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+2643 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+2643 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+2643 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+2643 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+2643 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+2643 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+2643 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+2644 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+2644 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+2644 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+2644 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+2644 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+2644 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+2644 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+2644 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+2644 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+2644 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+2644 [main] INFO  c.a.utils.LaunchAndroidDriver -- Installing the given APK on Virtual Mobile device
+4156 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting Up Appium Server...
+5294 [main] INFO  c.a.utils.LaunchAndroidDriver -- Starting Appium Server...
+5325 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server have started on URL...http://127.0.0.1:4723/
+5333 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server stopped...
+5396 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting up the Driver
+5397 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+5398 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+5398 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+5398 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+5398 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+5398 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+5398 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+5399 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+5399 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+5399 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+5399 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+5399 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+5399 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+5399 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+5399 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+5399 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+5400 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+5400 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+5400 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+5400 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+5400 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+5401 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+5401 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+5401 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+5401 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+5401 [main] INFO  c.a.utils.LaunchAndroidDriver -- Installing the given APK on Virtual Mobile device
+6151 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting Up Appium Server...
+6679 [main] INFO  c.a.utils.LaunchAndroidDriver -- Starting Appium Server...
+6696 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server have started on URL...http://127.0.0.1:4723/
+6709 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server stopped...
+6759 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting up the Driver
+6937 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+6939 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+6939 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+6939 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+6939 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+6939 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+6939 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+6939 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+6939 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+6940 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+6940 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+6940 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+6940 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+6940 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+6940 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+6940 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+6940 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+6940 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+6940 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+6940 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+6940 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+6940 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+6941 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+6941 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+6941 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+6941 [main] INFO  c.a.utils.LaunchAndroidDriver -- Installing the given APK on Virtual Mobile device
+7679 [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+7679 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+7680 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+7681 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+7681 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+7681 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+7681 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+7681 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+7681 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+7681 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+7681 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+7681 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+7681 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+7681 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+7682 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+7684 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+7684 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+7684 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+7684 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+7684 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+7684 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+7684 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+7684 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+7684 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+7684 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+7685 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+7691 [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+12349 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting Up Appium Server...
+13559 [main] INFO  c.a.utils.LaunchAndroidDriver -- Starting Appium Server...
+13576 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server have started on URL...http://127.0.0.1:4723/
+13588 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server stopped...
+13589 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+15503 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+15523 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+1259 [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+2356 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting up the Driver
+2357 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+2358 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+2358 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+2358 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+2358 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+2358 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+2360 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+2360 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+2360 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+2360 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+2360 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+2360 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+2360 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+2360 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+2360 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+2360 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+2361 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+2361 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+2362 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+2362 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+2362 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+2362 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+2362 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+2362 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+2363 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+2363 [main] INFO  c.a.utils.LaunchAndroidDriver -- Installing the given APK on Virtual Mobile device
+3740 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting Up Appium Server...
+4398 [main] INFO  c.a.utils.LaunchAndroidDriver -- Starting Appium Server...
+4432 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server have started on URL...http://127.0.0.1:4723/
+4439 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server stopped...
+4516 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting up the Driver
+4516 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+4519 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+4519 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+4519 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+4519 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+4519 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+4519 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+4520 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+4520 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+4520 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+4520 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+4520 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+4520 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+4520 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+4520 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+4521 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+4521 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+4521 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+4522 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+4522 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+4522 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+4522 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+4523 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+4523 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+4523 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+4523 [main] INFO  c.a.utils.LaunchAndroidDriver -- Installing the given APK on Virtual Mobile device
+5303 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting Up Appium Server...
+5843 [main] INFO  c.a.utils.LaunchAndroidDriver -- Starting Appium Server...
+5861 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server have started on URL...http://127.0.0.1:4723/
+5875 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server stopped...
+5924 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting up the Driver
+5924 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+5925 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+5925 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+5926 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+5926 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+5926 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+5926 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+5926 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+5926 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+5926 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+5927 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+5927 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+5927 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+5927 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+5927 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+5927 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+5927 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+5927 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+5927 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+5927 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+5928 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+5928 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+5928 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+5928 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+5928 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+5928 [main] INFO  c.a.utils.LaunchAndroidDriver -- Installing the given APK on Virtual Mobile device
+6753 [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+6753 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+6754 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+6754 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+6754 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+6754 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+6754 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+6754 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+6754 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+6754 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+6754 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+6754 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+6756 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+6756 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+6756 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+6756 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+6756 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+6756 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+6756 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+6756 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+6756 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+6756 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+6756 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+6756 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+6756 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+6756 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+6762 [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+11008 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting Up Appium Server...
+13307 [main] INFO  c.a.utils.LaunchAndroidDriver -- Starting Appium Server...
+13322 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server have started on URL...http://127.0.0.1:4723/
+13767 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server stopped...
+13767 [main] INFO  com.autogrid.utils.LaunchDriver -- Tearing down the WebDriver.
+14685 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver closed successfully.
+14888 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver Killed successfully on win.
+965  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\mdsai\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+1887 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting Up Appium Server...
+2942 [main] INFO  c.a.utils.LaunchAndroidDriver -- Starting Appium Server...
+2980 [main] INFO  c.a.utils.LaunchAndroidDriver -- Appium Server have started on URL...http://127.0.0.1:4723/
+3000 [main] INFO  c.a.utils.LaunchAndroidDriver -- Setting up the Driver
+3002 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+3003 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+3003 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+3003 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+3003 [main] INFO  com.autogrid.utils.Config -- appium.apk.testPwd=Bharat@07
+3003 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformName=Android
+3003 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+3003 [main] INFO  com.autogrid.utils.Config -- appium.apk.testUserName=3720200017
+3003 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+3003 [main] INFO  com.autogrid.utils.Config -- selenium.browser.type=app
+3003 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.hubHost=127.0.0.1
+3005 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+3005 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+3005 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+3005 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+3005 [main] INFO  com.autogrid.utils.Config -- appium.apk.automationName=UiAutomator2
+3005 [main] INFO  com.autogrid.utils.Config -- appium.apk.packageName=com.hyundai.ndms
+3005 [main] INFO  com.autogrid.utils.Config -- appium.apk.activityName=com.hyundai.ndms.activities.SplashActivity
+3005 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+3005 [main] INFO  com.autogrid.utils.Config -- selenium.mobGrid.urlFormat=http://%s:4723/
+3005 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+3006 [main] INFO  com.autogrid.utils.Config -- appium.apk.platformVersion=15.0
+3006 [main] INFO  com.autogrid.utils.Config -- appium.device.name=OEM
+3006 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+3006 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+3006 [main] INFO  c.a.utils.LaunchAndroidDriver -- Installing the given APK on Virtual Mobile device
+83044 [main] INFO  c.a.utils.LaunchAndroidDriver -- Installed the Apk file and Launched application
+83044 [main] INFO  c.a.utils.LaunchAndroidDriver -- WebDriver is already initialized.
+90518 [main] INFO  c.a.utils.CommonActionsAndroid -- 3720200017 value has been entered
+94836 [main] INFO  c.a.utils.CommonActionsAndroid -- Bharat@07 value has been entered
+94836 [main] INFO  c.autogrid.steps.EnquiryParentSteps -- TUser credentials have been entered...
+100679 [main] INFO  c.a.utils.CommonActionsAndroid -- The required Button/Link has been clicked
+110826 [main] INFO  c.a.utils.CommonActionsAndroid -- The required Button/Link has been clicked
+118228 [main] INFO  c.a.utils.CommonActionsAndroid -- The required Button/Link has been clicked
+118228 [main] INFO  c.autogrid.steps.EnquiryParentSteps -- User was logged in Successfully, skipped the demo and Allowed Notifications...
+147536 [main] INFO  c.a.utils.CommonActionsAndroid -- The required Button/Link has been clicked
+147536 [main] INFO  c.autogrid.steps.EnquiryParentSteps -- User clicked on Enquiries...
+160507 [main] INFO  c.a.utils.CommonActionsAndroid -- The required Button/Link has been clicked
+160507 [main] INFO  c.autogrid.steps.EnquiryParentSteps -- User clicked on plus icon on Enquiries Page...
+163843 [main] INFO  c.a.utils.CommonActionsAndroid -- 9704848237 value has been entered
+166842 [main] INFO  c.a.utils.CommonActionsAndroid -- Anand Goud value has been entered
+173291 [main] INFO  c.a.utils.CommonActionsAndroid -- The required Button/Link has been clicked
+181558 [main] INFO  c.a.utils.CommonActionsAndroid -- The required Button/Link has been clicked

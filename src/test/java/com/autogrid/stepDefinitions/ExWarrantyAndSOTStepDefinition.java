@@ -38,7 +38,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	}
 	@Given("User reads data from the Excel sheet regarding ExWarranty and SOT feature")
 	public void User_reads_data_from_the_Excel_sheet_regarding_ExWarranty_and_SOT_feature() throws IOException {
-		String filePath = "C:/Document/DataExcel/output.xlsx";
+		String filePath = System.getProperty("user.dir")+"/output.xlsx";
 		String sheetName = "ExWarranty & SOT Leads";
 
 		// Fetch all data from the Excel sheet
@@ -57,7 +57,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		int passedCount = 0;
 		int failedCount = 0;
 
-		String filePath = "C:/Document/DataExcel/output.xlsx";
+		String filePath = System.getProperty("user.dir")+"l/output.xlsx";
 		String sheetName = "ExWarranty & SOT Leads";
 		// Add a new column for error logging
 		ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");

@@ -48,149 +48,148 @@ public class EnquiryParentStepDefinition {
     }
 
     @Then("Create the Lead and get the Enquiry No in the Excel")
-    public void createTheLeadAndGetTheEnquiryNoInTheExcel(IDataReader dataTable) throws InterruptedException, IOException {
+    public void createTheLeadAndGetTheEnquiryNoInTheExcel() throws InterruptedException, IOException {
 
-        List<Map<String, String>> data = dataTable.getAllRows();
-        String status = "Passed";
-        for (int i = 0; i < dataTable.getAllRows().size() + 1; i++) {
+        int passedCount = 0;
+        int failedCount = 0;
+
+        String filePath = "./output.xlsx";
+        String sheetName = "Enquiry Lead Creation";
+
+        allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
+
+        // Add a new column for error logging
+        ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
+
+        for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
+            System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
+
+            // Fetch and log current row data
+            testData = allTestData.get(currentDataRowIndex);
+            System.out.println("Current Test Data: " + testData);
+
+            boolean rowExecutionPassed = true;
+
             try {
-                if (i != 0) {
-                    Runtime.getRuntime().exec("adb shell am start -n com.hyundai.ndms/com.hyundai.ndms.activities.SplashActivity");
-
-                    try {
-                        commonActions.clickElement(enquiryParentSteps.getButtonSkip());
-                    } catch (Exception e) {
-                        System.out.println("Skip button did not came");
-                    }
-                    try {
-                        commonActions.clickElement(enquiryParentSteps.getNotificationAllow());
-                    } catch (Exception e) {
-                        System.out.println("Notification button did not came");
-                    }
-                }
-
-                if (status.equalsIgnoreCase("Failed")) {
-                    i = i - 1;
-                }
 
                 //Customer Details
                 enquiryParentSteps.clickOnEnquiries();
                 enquiryParentSteps.clickOnEnquiriesPlusIcon();
-                commonActions.sendText(enquiryParentSteps.getTextFieldMobileNumber(), data.get(i).get("mobileNo"));
-                commonActions.sendText(enquiryParentSteps.getTextFieldCustomerName(), data.get(i).get("custName"));
+                commonActions.sendText(enquiryParentSteps.getTextFieldMobileNumber(), testData.get("mobileNo"));
+                commonActions.sendText(enquiryParentSteps.getTextFieldCustomerName(), testData.get("custName"));
 
-                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownCustomerType(), ExcelUtility.getMappedValue(data.get(i).get("enquiryType")));
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownCustomerType(), ExcelUtility.getMappedValue(testData.get("enquiryType")));
 
-                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownGender(), data.get(i).get("gender").isEmpty() ? "Unknown" : ExcelUtility.getMappedValue(data.get(i).get("gender")));
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownGender(), testData.get("gender").isEmpty() ? "Unknown" : ExcelUtility.getMappedValue(testData.get("gender")));
 
-                commonActions.sendText(enquiryParentSteps.getTxtWhatsapp(), data.get(i).get("mobileNo"));
+                commonActions.sendText(enquiryParentSteps.getTxtWhatsapp(), testData.get("mobileNo"));
 
-                String email = !data.get(i).get("email").equalsIgnoreCase("") || !data.get(i).get("email").equalsIgnoreCase("0") ? data.get(i).get("email")
-                        : data.get(i).get("custName").toLowerCase().replaceAll(" ", "") + "@gmail.com";
+                String email = !testData.get("email").equalsIgnoreCase("") || !testData.get("email").equalsIgnoreCase("0") ? testData.get("email")
+                        : testData.get("custName").toLowerCase().replaceAll(" ", "") + "@gmail.com";
                 commonActions.sendText(enquiryParentSteps.getTextFieldEmail(), email);
 
-                commonActions.sendText(enquiryParentSteps.getTextFieldPinCode(), data.get(i).get("pincode"));
+                commonActions.sendText(enquiryParentSteps.getTextFieldPinCode(), testData.get("pincode"));
 
-                commonActions.sendTextAndSelectValues(data.get(i).get("pincode") + " - " + data.get(i).get("village"));
+                commonActions.sendTextAndSelectValues(testData.get("pincode") + " - " + testData.get("village"));
 
-                commonActions.sendText(enquiryParentSteps.getTextFieldAddress(), data.get(i).get("address"));
+                commonActions.sendText(enquiryParentSteps.getTextFieldAddress(), testData.get("address"));
 
                 commonActions.scrollDown();
 
-                String visitedWithFamily = data.get(i).get("visitedWith").isEmpty()
-                        || data.get(i).get("visitedWith").equalsIgnoreCase("0") ? "N" : ExcelUtility.getMappedValue(data.get(i).get("visitedWith"));
+                String visitedWithFamily = testData.get("visitedWith").isEmpty()
+                        || testData.get("visitedWith").equalsIgnoreCase("0") ? "N" : ExcelUtility.getMappedValue(testData.get("visitedWith"));
                 commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownVisitedWithFamily(), visitedWithFamily);
                 enquiryParentSteps.clickOnContinueButton();
 
                 //Complete Enquiry Details
-                String carModel = ExcelUtility.getMappedValue(data.get(i).get("model")) == null ? data.get(i).get("model") : ExcelUtility.getMappedValue(data.get(i).get("model"));
+                String carModel = ExcelUtility.getMappedValue(testData.get("model")) == null ? testData.get("model") : ExcelUtility.getMappedValue(testData.get("model"));
                 commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownModel(), carModel);
 
-                String fuelType = data.get(i).get("fuel").equalsIgnoreCase("Electric") ? "Electric Vehicle"
-                        : data.get(i).get("fuel").equalsIgnoreCase("PETROL") ? "Petrol"
-                        : data.get(i).get("fuel").equalsIgnoreCase("DIESEL") ? "Diesel"
-                        : data.get(i).get("fuel").equalsIgnoreCase("LPG_Petrol") ? "LPG" : data.get(i).get("fuel");
+                String fuelType = testData.get("fuel").equalsIgnoreCase("Electric") ? "Electric Vehicle"
+                        : testData.get("fuel").equalsIgnoreCase("PETROL") ? "Petrol"
+                        : testData.get("fuel").equalsIgnoreCase("DIESEL") ? "Diesel"
+                        : testData.get("fuel").equalsIgnoreCase("LPG_Petrol") ? "LPG" : testData.get("fuel");
                 commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFuelType(), fuelType);
 
-                String variantType = ExcelUtility.getMappedValue(data.get(i).get("variant")) == null ? data.get(i).get("variant") : ExcelUtility.getMappedValue(data.get(i).get("variant"));
+                String variantType = ExcelUtility.getMappedValue(testData.get("variant")) == null ? testData.get("variant") : ExcelUtility.getMappedValue(testData.get("variant"));
                 commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownVariant(), variantType);
 
-                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownExteriorColor(), ExcelUtility.getMappedValue(data.get(i).get("color")));
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownExteriorColor(), ExcelUtility.getMappedValue(testData.get("color")));
 
-                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownInteriorColor(), ExcelUtility.getMappedValue(data.get(i).get("interior_color")));
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownInteriorColor(), ExcelUtility.getMappedValue(testData.get("interior_color")));
 
 
-                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownSourceType(), ExcelUtility.getMappedValue(data.get(i).get("source")));
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownSourceType(), ExcelUtility.getMappedValue(testData.get("source")));
                 commonActions.scrollDown();
 
-                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownSubSourceType(), ExcelUtility.getMappedValue(data.get(i).get("subSource")));
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownSubSourceType(), ExcelUtility.getMappedValue(testData.get("subSource")));
 
-                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownEnquiryCategory(), ExcelUtility.getMappedValue(data.get(i).get("enquiryType")));
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownEnquiryCategory(), ExcelUtility.getMappedValue(testData.get("enquiryType")));
 
-                String expectedPlan = data.get(i).get("expectedPlan").isBlank() || data.get(i).get("expectedPlan").equalsIgnoreCase("0") ? "Within 2 months" : ExcelUtility.getMappedValue(data.get(i).get("expectedPlan"));
+                String expectedPlan = testData.get("expectedPlan").isBlank() || testData.get("expectedPlan").equalsIgnoreCase("0") ? "Within 2 months" : ExcelUtility.getMappedValue(testData.get("expectedPlan"));
                 commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownExpectedPlanToPurchaseVehicle(), expectedPlan);
 
                 commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownWillingToMakeImmediateBooking(),
-                        data.get(i).get("immediate_booking_flag").isEmpty() || data.get(i).get("immediate_booking_flag").equalsIgnoreCase("0")
-                                ? "N" : ExcelUtility.getMappedValue(data.get(i).get("immediate_booking_flag")));
+                        testData.get("immediate_booking_flag").isEmpty() || testData.get("immediate_booking_flag").equalsIgnoreCase("0")
+                                ? "N" : ExcelUtility.getMappedValue(testData.get("immediate_booking_flag")));
 
-                if (data.get(i).get("financeReq").equalsIgnoreCase("Y") || data.get(i).get("financeReq").equalsIgnoreCase("0")) {
-                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFinanceRequired(), data.get(i).get("financeReq"));
+                if (testData.get("financeReq").equalsIgnoreCase("Y") || testData.get("financeReq").equalsIgnoreCase("0")) {
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFinanceRequired(), testData.get("financeReq"));
 
                     commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFinanceOptions(),
-                            data.get(i).get("financeOption").isBlank() || data.get(i).get("financeOption").equalsIgnoreCase("0") ? "Documents not Submitted" : ExcelUtility.getMappedValue(data.get(i).get("financeOption")));
+                            testData.get("financeOption").isBlank() || testData.get("financeOption").equalsIgnoreCase("0") ? "Documents not Submitted" : ExcelUtility.getMappedValue(testData.get("financeOption")));
                 } else {
-                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFinanceRequired(), data.get(i).get("financeReq"));
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFinanceRequired(), testData.get("financeReq"));
                 }
                 enquiryParentSteps.clickContinueButton();
 
                 //Exchange Section
-                if (!data.get(i).get("BuyerType").equals("Exchange Buyer") || data.get(i).get("BuyerType").isEmpty() || data.get(i).get("BuyerType").equalsIgnoreCase("0")) {
+                if (!testData.get("BuyerType").equals("Exchange Buyer") || testData.get("BuyerType").isEmpty() || testData.get("BuyerType").equalsIgnoreCase("0")) {
                     commonActions.selectApkDropdownValue(enquiryParentSteps.getDropdownPresentCar(), "No");
                 } else {
-                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropdownPresentCar(), ExcelUtility.getMappedValue(data.get(i).get("BuyerType")));
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropdownPresentCar(), ExcelUtility.getMappedValue(testData.get("BuyerType")));
 
-                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarMake(), data.get(i).get("exchangeMake").isEmpty() ||
-                            data.get(i).get("exchangeMake").equalsIgnoreCase("0")
-                            ? "Hyundai" : ExcelUtility.getMappedValue(data.get(i).get("exchangeMake")));
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarMake(), testData.get("exchangeMake").isEmpty() ||
+                            testData.get("exchangeMake").equalsIgnoreCase("0")
+                            ? "Hyundai" : ExcelUtility.getMappedValue(testData.get("exchangeMake")));
 
-                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarModel(), data.get(i).get("exchangeModel").isEmpty() ||
-                            data.get(i).get("exchangeModel").equalsIgnoreCase("0")
-                            ? "EON" : ExcelUtility.getMappedValue(data.get(i).get("exchangeModel")));
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarModel(), testData.get("exchangeModel").isEmpty() ||
+                            testData.get("exchangeModel").equalsIgnoreCase("0")
+                            ? "EON" : ExcelUtility.getMappedValue(testData.get("exchangeModel")));
 
-                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarFuelType(), data.get(i).get("exchangeFuelType").isEmpty() ||
-                            data.get(i).get("exchangeFuelType").equalsIgnoreCase("0")
-                            ? "CNG" : ExcelUtility.getMappedValue(data.get(i).get("exchangeFuelType")));
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarFuelType(), testData.get("exchangeFuelType").isEmpty() ||
+                            testData.get("exchangeFuelType").equalsIgnoreCase("0")
+                            ? "CNG" : ExcelUtility.getMappedValue(testData.get("exchangeFuelType")));
 
-                    commonActions.sendText(enquiryParentSteps.getPresentCarModelYear(), data.get(i).get("exchangeModelYear").isEmpty() ||
-                            data.get(i).get("exchangeModelYear").equalsIgnoreCase("0")
-                            ? "2010" : data.get(i).get("exchangeModelYear"));
+                    commonActions.sendText(enquiryParentSteps.getPresentCarModelYear(), testData.get("exchangeModelYear").isEmpty() ||
+                            testData.get("exchangeModelYear").equalsIgnoreCase("0")
+                            ? "2010" : testData.get("exchangeModelYear"));
 
-                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarDoUWantToExchange(), ExcelUtility.getMappedValue(data.get(i).get("BuyerType")));
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarDoUWantToExchange(), ExcelUtility.getMappedValue(testData.get("BuyerType")));
 
                     commonActions.scrollDown();
-                    commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarSelectSource(), data.get(i).get("exchangeSource").isEmpty() ||
-                            data.get(i).get("exchangeSource").equalsIgnoreCase("0")
-                            ? "Inhouse" : data.get(i).get("exchangeSource"));
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarSelectSource(), testData.get("exchangeSource").isEmpty() ||
+                            testData.get("exchangeSource").equalsIgnoreCase("0")
+                            ? "Inhouse" : testData.get("exchangeSource"));
 
-                    commonActions.sendText(enquiryParentSteps.getXchangeCarQuotedPrice(), data.get(i).get("exchangeQuotedPrice").isEmpty() ||
-                            data.get(i).get("exchangeQuotedPrice").equalsIgnoreCase("0")
-                            ? "240000" : data.get(i).get("exchangeQuotedPrice"));
+                    commonActions.sendText(enquiryParentSteps.getXchangeCarQuotedPrice(), testData.get("exchangeQuotedPrice").isEmpty() ||
+                            testData.get("exchangeQuotedPrice").equalsIgnoreCase("0")
+                            ? "240000" : testData.get("exchangeQuotedPrice"));
 
-                    commonActions.sendText(enquiryParentSteps.getXchangeCarExpectedPrice(), data.get(i).get("exchangeExpectedPrice").isEmpty() ||
-                            data.get(i).get("exchangeExpectedPrice").equalsIgnoreCase("0")
-                            ? "240000" : data.get(i).get("exchangeExpectedPrice"));
+                    commonActions.sendText(enquiryParentSteps.getXchangeCarExpectedPrice(), testData.get("exchangeExpectedPrice").isEmpty() ||
+                            testData.get("exchangeExpectedPrice").equalsIgnoreCase("0")
+                            ? "240000" : testData.get("exchangeExpectedPrice"));
 
-                    if (data.get(i).get("certificateOfDeposit").equals("No") || data.get(i).get("certificateOfDeposit").isEmpty() ||
-                            data.get(i).get("certificateOfDeposit").equalsIgnoreCase("0")) {
-                        commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarScrapCategory(), data.get(i).get("certificateOfDeposit"));
+                    if (testData.get("certificateOfDeposit").equals("No") || testData.get("certificateOfDeposit").isEmpty() ||
+                            testData.get("certificateOfDeposit").equalsIgnoreCase("0")) {
+                        commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarScrapCategory(), testData.get("certificateOfDeposit"));
                     } else {
-                        commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarScrapCategory(), data.get(i).get("certificateOfDeposit"));
+                        commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarScrapCategory(), testData.get("certificateOfDeposit"));
                         commonActions.scrollDown();
 
-                        commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarScrapThroughHyundai(), data.get(i).get("exchangeScrapThroughHyundai").isEmpty()
-                                || data.get(i).get("exchangeScrapThroughHyundai").equalsIgnoreCase("0")
-                                ? "No" : data.get(i).get("exchangeScrapThroughHyundai"));
+                        commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarScrapThroughHyundai(), testData.get("exchangeScrapThroughHyundai").isEmpty()
+                                || testData.get("exchangeScrapThroughHyundai").equalsIgnoreCase("0")
+                                ? "No" : testData.get("exchangeScrapThroughHyundai"));
                     }
                 }
 
@@ -200,16 +199,154 @@ public class EnquiryParentStepDefinition {
                         "Successfully Created Enquiry", "The Success Message is NOT as expected. Please check");
                 logger.info("The created Lead id is: {}", commonActions.getElementText(enquiryParentSteps.getTextEnquiryNumber()));
                 ExcelUtility.saveTextToExcel(commonActions.getElementText(enquiryParentSteps.getTextEnquiryNumber())
-                        + " is created for Mobile Number: " + data.get(i).get("mobileNo") + " on " + LocalDate.now());
+                        + " is created for Mobile Number: " + testData.get("mobileNo") + " on " + LocalDate.now());
                 commonActions.clickElement(enquiryParentSteps.getButtonOk());
-                Thread.sleep(5000);
-                status = "Passed";
+
             } catch (Exception e) {
-                Runtime.getRuntime().exec("adb shell am force-stop com.hyundai.ndms");
-                status = "Failed";
+                try {
+
+
+                    //Customer Details
+                enquiryParentSteps.clickOnEnquiries();
+                enquiryParentSteps.clickOnEnquiriesPlusIcon();
+                commonActions.sendText(enquiryParentSteps.getTextFieldMobileNumber(), testData.get("mobileNo"));
+                commonActions.sendText(enquiryParentSteps.getTextFieldCustomerName(), testData.get("custName"));
+
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownCustomerType(), ExcelUtility.getMappedValue(testData.get("enquiryType")));
+
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownGender(), testData.get("gender").isEmpty() ? "Unknown" : ExcelUtility.getMappedValue(testData.get("gender")));
+
+                commonActions.sendText(enquiryParentSteps.getTxtWhatsapp(), testData.get("mobileNo"));
+
+                String email = !testData.get("email").equalsIgnoreCase("") || !testData.get("email").equalsIgnoreCase("0") ? testData.get("email")
+                        : testData.get("custName").toLowerCase().replaceAll(" ", "") + "@gmail.com";
+                commonActions.sendText(enquiryParentSteps.getTextFieldEmail(), email);
+
+                commonActions.sendText(enquiryParentSteps.getTextFieldPinCode(), testData.get("pincode"));
+
+                commonActions.sendTextAndSelectValues(testData.get("pincode") + " - " + testData.get("village"));
+
+                commonActions.sendText(enquiryParentSteps.getTextFieldAddress(), testData.get("address"));
+
+                commonActions.scrollDown();
+
+                String visitedWithFamily = testData.get("visitedWith").isEmpty()
+                        || testData.get("visitedWith").equalsIgnoreCase("0") ? "N" : ExcelUtility.getMappedValue(testData.get("visitedWith"));
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownVisitedWithFamily(), visitedWithFamily);
+                enquiryParentSteps.clickOnContinueButton();
+
+                //Complete Enquiry Details
+                String carModel = ExcelUtility.getMappedValue(testData.get("model")) == null ? testData.get("model") : ExcelUtility.getMappedValue(testData.get("model"));
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownModel(), carModel);
+
+                String fuelType = testData.get("fuel").equalsIgnoreCase("Electric") ? "Electric Vehicle"
+                        : testData.get("fuel").equalsIgnoreCase("PETROL") ? "Petrol"
+                        : testData.get("fuel").equalsIgnoreCase("DIESEL") ? "Diesel"
+                        : testData.get("fuel").equalsIgnoreCase("LPG_Petrol") ? "LPG" : testData.get("fuel");
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFuelType(), fuelType);
+
+                String variantType = ExcelUtility.getMappedValue(testData.get("variant")) == null ? testData.get("variant") : ExcelUtility.getMappedValue(testData.get("variant"));
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownVariant(), variantType);
+
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownExteriorColor(), ExcelUtility.getMappedValue(testData.get("color")));
+
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownInteriorColor(), ExcelUtility.getMappedValue(testData.get("interior_color")));
+
+
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownSourceType(), ExcelUtility.getMappedValue(testData.get("source")));
+                commonActions.scrollDown();
+
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownSubSourceType(), ExcelUtility.getMappedValue(testData.get("subSource")));
+
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownEnquiryCategory(), ExcelUtility.getMappedValue(testData.get("enquiryType")));
+
+                String expectedPlan = testData.get("expectedPlan").isBlank() || testData.get("expectedPlan").equalsIgnoreCase("0") ? "Within 2 months" : ExcelUtility.getMappedValue(testData.get("expectedPlan"));
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownExpectedPlanToPurchaseVehicle(), expectedPlan);
+
+                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownWillingToMakeImmediateBooking(),
+                        testData.get("immediate_booking_flag").isEmpty() || testData.get("immediate_booking_flag").equalsIgnoreCase("0")
+                                ? "N" : ExcelUtility.getMappedValue(testData.get("immediate_booking_flag")));
+
+                if (testData.get("financeReq").equalsIgnoreCase("Y") || testData.get("financeReq").equalsIgnoreCase("0")) {
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFinanceRequired(), testData.get("financeReq"));
+
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFinanceOptions(),
+                            testData.get("financeOption").isBlank() || testData.get("financeOption").equalsIgnoreCase("0") ? "Documents not Submitted" : ExcelUtility.getMappedValue(testData.get("financeOption")));
+                } else {
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFinanceRequired(), testData.get("financeReq"));
+                }
+                enquiryParentSteps.clickContinueButton();
+
+                //Exchange Section
+                if (!testData.get("BuyerType").equals("Exchange Buyer") || testData.get("BuyerType").isEmpty() || testData.get("BuyerType").equalsIgnoreCase("0")) {
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropdownPresentCar(), "No");
+                } else {
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropdownPresentCar(), ExcelUtility.getMappedValue(testData.get("BuyerType")));
+
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarMake(), testData.get("exchangeMake").isEmpty() ||
+                            testData.get("exchangeMake").equalsIgnoreCase("0")
+                            ? "Hyundai" : ExcelUtility.getMappedValue(testData.get("exchangeMake")));
+
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarModel(), testData.get("exchangeModel").isEmpty() ||
+                            testData.get("exchangeModel").equalsIgnoreCase("0")
+                            ? "EON" : ExcelUtility.getMappedValue(testData.get("exchangeModel")));
+
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarFuelType(), testData.get("exchangeFuelType").isEmpty() ||
+                            testData.get("exchangeFuelType").equalsIgnoreCase("0")
+                            ? "CNG" : ExcelUtility.getMappedValue(testData.get("exchangeFuelType")));
+
+                    commonActions.sendText(enquiryParentSteps.getPresentCarModelYear(), testData.get("exchangeModelYear").isEmpty() ||
+                            testData.get("exchangeModelYear").equalsIgnoreCase("0")
+                            ? "2010" : testData.get("exchangeModelYear"));
+
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarDoUWantToExchange(), ExcelUtility.getMappedValue(testData.get("BuyerType")));
+
+                    commonActions.scrollDown();
+                    commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarSelectSource(), testData.get("exchangeSource").isEmpty() ||
+                            testData.get("exchangeSource").equalsIgnoreCase("0")
+                            ? "Inhouse" : testData.get("exchangeSource"));
+
+                    commonActions.sendText(enquiryParentSteps.getXchangeCarQuotedPrice(), testData.get("exchangeQuotedPrice").isEmpty() ||
+                            testData.get("exchangeQuotedPrice").equalsIgnoreCase("0")
+                            ? "240000" : testData.get("exchangeQuotedPrice"));
+
+                    commonActions.sendText(enquiryParentSteps.getXchangeCarExpectedPrice(), testData.get("exchangeExpectedPrice").isEmpty() ||
+                            testData.get("exchangeExpectedPrice").equalsIgnoreCase("0")
+                            ? "240000" : testData.get("exchangeExpectedPrice"));
+
+                    if (testData.get("certificateOfDeposit").equals("No") || testData.get("certificateOfDeposit").isEmpty() ||
+                            testData.get("certificateOfDeposit").equalsIgnoreCase("0")) {
+                        commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarScrapCategory(), testData.get("certificateOfDeposit"));
+                    } else {
+                        commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarScrapCategory(), testData.get("certificateOfDeposit"));
+                        commonActions.scrollDown();
+
+                        commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarScrapThroughHyundai(), testData.get("exchangeScrapThroughHyundai").isEmpty()
+                                || testData.get("exchangeScrapThroughHyundai").equalsIgnoreCase("0")
+                                ? "No" : testData.get("exchangeScrapThroughHyundai"));
+                    }
+                }
+
+                enquiryParentSteps.clickOnSubmit();
+
+                Assert.assertEquals(commonActions.getElementText(enquiryParentSteps.getTextSuccessMessage()),
+                        "Successfully Created Enquiry", "The Success Message is NOT as expected. Please check");
+                logger.info("The created Lead id is: {}", commonActions.getElementText(enquiryParentSteps.getTextEnquiryNumber()));
+                ExcelUtility.saveTextToExcel(commonActions.getElementText(enquiryParentSteps.getTextEnquiryNumber())
+                        + " is created for Mobile Number: " + testData.get("mobileNo") + " on " + LocalDate.now());
+                commonActions.clickElement(enquiryParentSteps.getButtonOk());
+
+                    // Skip retry and move to the next row
+                    System.out.println("Skipping retry for Row " + (currentDataRowIndex + 1) + ". Moving to the next row.");
+                } finally {
+                    if (rowExecutionPassed) {
+                        System.out.println("Row " + (currentDataRowIndex + 1) + " processed successfully.");
+                    } else {
+                        System.err.println("Row " + (currentDataRowIndex + 1) + " processing failed.");
+                    }
+                }
             }
         }
-
     }
 
     @Then("Complete the Test Drive")
@@ -460,6 +597,174 @@ public class EnquiryParentStepDefinition {
 
     }
 
+//    @Then("Create the Lead and get the Enquiry No in the Excel")
+//    public void createTheLeadAndGetTheEnquiryNoInTheExcel(IDataReader dataTable) throws InterruptedException, IOException {
+//
+//        List<Map<String, String>> data = dataTable.getAllRows();
+//        String status = "Passed";
+//        for (int i = 0; i < dataTable.getAllRows().size() + 1; i++) {
+//            try {
+//                if (i != 0) {
+//                    Runtime.getRuntime().exec("adb shell am start -n com.hyundai.ndms/com.hyundai.ndms.activities.SplashActivity");
+//
+//                    try {
+//                        commonActions.clickElement(enquiryParentSteps.getButtonSkip());
+//                    } catch (Exception e) {
+//                        System.out.println("Skip button did not came");
+//                    }
+//                    try {
+//                        commonActions.clickElement(enquiryParentSteps.getNotificationAllow());
+//                    } catch (Exception e) {
+//                        System.out.println("Notification button did not came");
+//                    }
+//                }
+//
+//                if (status.equalsIgnoreCase("Failed")) {
+//                    i = i - 1;
+//                }
+//
+//                //Customer Details
+//                enquiryParentSteps.clickOnEnquiries();
+//                enquiryParentSteps.clickOnEnquiriesPlusIcon();
+//                commonActions.sendText(enquiryParentSteps.getTextFieldMobileNumber(), testData.get("mobileNo"));
+//                commonActions.sendText(enquiryParentSteps.getTextFieldCustomerName(), testData.get("custName"));
+//
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownCustomerType(), ExcelUtility.getMappedValue(testData.get("enquiryType")));
+//
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownGender(), testData.get("gender").isEmpty() ? "Unknown" : ExcelUtility.getMappedValue(testData.get("gender")));
+//
+//                commonActions.sendText(enquiryParentSteps.getTxtWhatsapp(), testData.get("mobileNo"));
+//
+//                String email = !testData.get("email").equalsIgnoreCase("") || !testData.get("email").equalsIgnoreCase("0") ? testData.get("email")
+//                        : testData.get("custName").toLowerCase().replaceAll(" ", "") + "@gmail.com";
+//                commonActions.sendText(enquiryParentSteps.getTextFieldEmail(), email);
+//
+//                commonActions.sendText(enquiryParentSteps.getTextFieldPinCode(), testData.get("pincode"));
+//
+//                commonActions.sendTextAndSelectValues(testData.get("pincode") + " - " + testData.get("village"));
+//
+//                commonActions.sendText(enquiryParentSteps.getTextFieldAddress(), testData.get("address"));
+//
+//                commonActions.scrollDown();
+//
+//                String visitedWithFamily = testData.get("visitedWith").isEmpty()
+//                        || testData.get("visitedWith").equalsIgnoreCase("0") ? "N" : ExcelUtility.getMappedValue(testData.get("visitedWith"));
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownVisitedWithFamily(), visitedWithFamily);
+//                enquiryParentSteps.clickOnContinueButton();
+//
+//                //Complete Enquiry Details
+//                String carModel = ExcelUtility.getMappedValue(testData.get("model")) == null ? testData.get("model") : ExcelUtility.getMappedValue(testData.get("model"));
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownModel(), carModel);
+//
+//                String fuelType = testData.get("fuel").equalsIgnoreCase("Electric") ? "Electric Vehicle"
+//                        : testData.get("fuel").equalsIgnoreCase("PETROL") ? "Petrol"
+//                        : testData.get("fuel").equalsIgnoreCase("DIESEL") ? "Diesel"
+//                        : testData.get("fuel").equalsIgnoreCase("LPG_Petrol") ? "LPG" : testData.get("fuel");
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFuelType(), fuelType);
+//
+//                String variantType = ExcelUtility.getMappedValue(testData.get("variant")) == null ? testData.get("variant") : ExcelUtility.getMappedValue(testData.get("variant"));
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownVariant(), variantType);
+//
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownExteriorColor(), ExcelUtility.getMappedValue(testData.get("color")));
+//
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownInteriorColor(), ExcelUtility.getMappedValue(testData.get("interior_color")));
+//
+//
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownSourceType(), ExcelUtility.getMappedValue(testData.get("source")));
+//                commonActions.scrollDown();
+//
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownSubSourceType(), ExcelUtility.getMappedValue(testData.get("subSource")));
+//
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownEnquiryCategory(), ExcelUtility.getMappedValue(testData.get("enquiryType")));
+//
+//                String expectedPlan = testData.get("expectedPlan").isBlank() || testData.get("expectedPlan").equalsIgnoreCase("0") ? "Within 2 months" : ExcelUtility.getMappedValue(testData.get("expectedPlan"));
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownExpectedPlanToPurchaseVehicle(), expectedPlan);
+//
+//                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownWillingToMakeImmediateBooking(),
+//                        testData.get("immediate_booking_flag").isEmpty() || testData.get("immediate_booking_flag").equalsIgnoreCase("0")
+//                                ? "N" : ExcelUtility.getMappedValue(testData.get("immediate_booking_flag")));
+//
+//                if (testData.get("financeReq").equalsIgnoreCase("Y") || testData.get("financeReq").equalsIgnoreCase("0")) {
+//                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFinanceRequired(), testData.get("financeReq"));
+//
+//                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFinanceOptions(),
+//                            testData.get("financeOption").isBlank() || testData.get("financeOption").equalsIgnoreCase("0") ? "Documents not Submitted" : ExcelUtility.getMappedValue(testData.get("financeOption")));
+//                } else {
+//                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownFinanceRequired(), testData.get("financeReq"));
+//                }
+//                enquiryParentSteps.clickContinueButton();
+//
+//                //Exchange Section
+//                if (!testData.get("BuyerType").equals("Exchange Buyer") || testData.get("BuyerType").isEmpty() || testData.get("BuyerType").equalsIgnoreCase("0")) {
+//                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropdownPresentCar(), "No");
+//                } else {
+//                    commonActions.selectApkDropdownValue(enquiryParentSteps.getDropdownPresentCar(), ExcelUtility.getMappedValue(testData.get("BuyerType")));
+//
+//                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarMake(), testData.get("exchangeMake").isEmpty() ||
+//                            testData.get("exchangeMake").equalsIgnoreCase("0")
+//                            ? "Hyundai" : ExcelUtility.getMappedValue(testData.get("exchangeMake")));
+//
+//                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarModel(), testData.get("exchangeModel").isEmpty() ||
+//                            testData.get("exchangeModel").equalsIgnoreCase("0")
+//                            ? "EON" : ExcelUtility.getMappedValue(testData.get("exchangeModel")));
+//
+//                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarFuelType(), testData.get("exchangeFuelType").isEmpty() ||
+//                            testData.get("exchangeFuelType").equalsIgnoreCase("0")
+//                            ? "CNG" : ExcelUtility.getMappedValue(testData.get("exchangeFuelType")));
+//
+//                    commonActions.sendText(enquiryParentSteps.getPresentCarModelYear(), testData.get("exchangeModelYear").isEmpty() ||
+//                            testData.get("exchangeModelYear").equalsIgnoreCase("0")
+//                            ? "2010" : testData.get("exchangeModelYear"));
+//
+//                    commonActions.selectApkDropdownValue(enquiryParentSteps.getPresentCarDoUWantToExchange(), ExcelUtility.getMappedValue(testData.get("BuyerType")));
+//
+//                    commonActions.scrollDown();
+//                    commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarSelectSource(), testData.get("exchangeSource").isEmpty() ||
+//                            testData.get("exchangeSource").equalsIgnoreCase("0")
+//                            ? "Inhouse" : testData.get("exchangeSource"));
+//
+//                    commonActions.sendText(enquiryParentSteps.getXchangeCarQuotedPrice(), testData.get("exchangeQuotedPrice").isEmpty() ||
+//                            testData.get("exchangeQuotedPrice").equalsIgnoreCase("0")
+//                            ? "240000" : testData.get("exchangeQuotedPrice"));
+//
+//                    commonActions.sendText(enquiryParentSteps.getXchangeCarExpectedPrice(), testData.get("exchangeExpectedPrice").isEmpty() ||
+//                            testData.get("exchangeExpectedPrice").equalsIgnoreCase("0")
+//                            ? "240000" : testData.get("exchangeExpectedPrice"));
+//
+//                    if (testData.get("certificateOfDeposit").equals("No") || testData.get("certificateOfDeposit").isEmpty() ||
+//                            testData.get("certificateOfDeposit").equalsIgnoreCase("0")) {
+//                        commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarScrapCategory(), testData.get("certificateOfDeposit"));
+//                    } else {
+//                        commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarScrapCategory(), testData.get("certificateOfDeposit"));
+//                        commonActions.scrollDown();
+//
+//                        commonActions.selectApkDropdownValue(enquiryParentSteps.getXchangeCarScrapThroughHyundai(), testData.get("exchangeScrapThroughHyundai").isEmpty()
+//                                || testData.get("exchangeScrapThroughHyundai").equalsIgnoreCase("0")
+//                                ? "No" : testData.get("exchangeScrapThroughHyundai"));
+//                    }
+//                }
+//
+//                enquiryParentSteps.clickOnSubmit();
+//
+//                Assert.assertEquals(commonActions.getElementText(enquiryParentSteps.getTextSuccessMessage()),
+//                        "Successfully Created Enquiry", "The Success Message is NOT as expected. Please check");
+//                logger.info("The created Lead id is: {}", commonActions.getElementText(enquiryParentSteps.getTextEnquiryNumber()));
+//                ExcelUtility.saveTextToExcel(commonActions.getElementText(enquiryParentSteps.getTextEnquiryNumber())
+//                        + " is created for Mobile Number: " + testData.get("mobileNo") + " on " + LocalDate.now());
+//                commonActions.clickElement(enquiryParentSteps.getButtonOk());
+//                Thread.sleep(5000);
+//                status = "Passed";
+//            } catch (Exception e) {
+//                Runtime.getRuntime().exec("adb shell am force-stop com.hyundai.ndms");
+//                status = "Failed";
+//            }
+//        }
+//
+//    }
+
 }
+
+
+
 
 //This is done

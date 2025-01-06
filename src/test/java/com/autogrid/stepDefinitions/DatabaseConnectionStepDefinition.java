@@ -16,7 +16,7 @@ public class DatabaseConnectionStepDefinition {
 
 	private Connection connection;
 	private ResultSet resultSet;
-	private String filePath = "C:\\Users\\ADMIN\\Downloads\\output.xlsx"; // Output Excel file path
+	private String filePath = System.getProperty("user.dir")+"/output.xlsx"; // Output Excel file path
 
 	@Given("User connects to MySQL Workbench database")
 	public void user_connects_to_mysql_workbench_database() {
@@ -24,7 +24,7 @@ public class DatabaseConnectionStepDefinition {
 			// Load database credentials from properties file
 			Properties properties = new Properties();
 			FileInputStream fis = new FileInputStream(
-					"D:\\E2E_Automation_WithGrids_RestAssured\\src\\test\\resources\\config\\project.properties");
+					"src/test/resources/config/project.properties");
 			properties.load(fis);
 
 			String dbUrl = properties.getProperty("db.url");

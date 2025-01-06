@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
         features = "src/test/resources/features",  // Relative path from the root directory
         glue = {"com.autogrid.stepDefinitions", "com.autogrid.hooks", "com.autogrid.utils"},
         plugin = {"pretty","json:target/cucumber-reports/Cucumber.json"},
-        tags = "@web",
+        tags = "@mobile",
         monochrome = true)
 
 

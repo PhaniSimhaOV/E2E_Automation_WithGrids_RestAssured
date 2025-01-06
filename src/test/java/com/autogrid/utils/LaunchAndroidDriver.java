@@ -40,7 +40,7 @@ public class LaunchAndroidDriver {
             logger.info("Setting up the Driver");
             new LaunchAndroidDriver();  // Calls the private constructor to initialize driver
         }
-            logger.info("WebDriver is already initialized.");
+        logger.info("WebDriver is already initialized.");
     }
 
     public static AndroidDriver getAndroidDriver() {

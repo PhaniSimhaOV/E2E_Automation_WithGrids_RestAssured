@@ -272,7 +272,7 @@ public class BookingSalesOperationStepDefinition {
 
     @And("User reads data from the Excel sheet regarding Booking Feature")
     public void userReadsDataFromTheExcelSheetRegardingBookingFeature() throws IOException {
-        String filePath = "C:/Users/Anjali/OneDrive/Downloads/output.xlsx";
+        String filePath = System.getProperty("user.dir")+"/output.xlsx";
         String sheetName = "Booking Leads";
         // Fetch all data from the Excel sheet
         allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
@@ -287,7 +287,7 @@ public class BookingSalesOperationStepDefinition {
         int passedCount = 0;
         int failedCount = 0;
 
-        String filePath = "C:/Users/Anjali/OneDrive/Downloads/output.xlsx";
+        String filePath = System.getProperty("user.dir")+"/output.xlsx";
         String sheetName = "Booking Leads";
 
 
@@ -418,7 +418,7 @@ public class BookingSalesOperationStepDefinition {
         int passedCount = 0;
         int failedCount = 0;
 
-        String filePath = "C:/Users/Anjali/OneDrive/Downloads/output.xlsx";
+        String filePath = System.getProperty("user.dir")+"/output.xlsx";
         String sheetName = "Booking Leads";
 
         // Add a new column for error logging
@@ -527,7 +527,7 @@ public class BookingSalesOperationStepDefinition {
         int passedCount = 0;
         int failedCount = 0;
 
-        String filePath = "C:/Users/Anjali/OneDrive/Downloads/output.xlsx";
+        String filePath = System.getProperty("user.dir")+"/output.xlsx";
         String sheetName = "Booking Leads";
 
         // Add a new column for error logging
