@@ -315,14 +315,31 @@ public class ExWarrantyAndSOTStepDefinition {
 
 	@When("User select required extented Warranty type")
 	public void user_select_required_extented_warranty_type() {
-		try {
+		/*try {
 			exWarranty.setExtdWarrantyType();
 			System.out.println("Extended Warranty type selected");
 		} catch (Exception e) {
 			System.err.println("Error in setting Warranty type " + e.getMessage());
-		}
+		}*/
+		
 
-	}
+		
+		try {
+		if (testData != null) {
+
+			String SchemeDes = testData.get("schemeDescription").toLowerCase();
+			exWarranty.setExtdWarrantyType(SchemeDes);;
+		}else {
+			throw new RuntimeException("Test data is not initialized.");
+		}
+		
+		} catch (Exception e) {
+			System.err.println("Error in Selecting Scheme " + e.getMessage());
+			
+		}
+			
+		}
+	
 
 	@Then("User Clicks on clear button")
 	public void user_clicks_on_clear_button() throws Throwable {
@@ -450,15 +467,33 @@ public class ExWarrantyAndSOTStepDefinition {
 
 	@When("User select required SOT Scheme type in SOT")
 	public void user_select_required_extented_warranty_type_in_sot() {
-		try {
+		/*try {
 			sot.setRequiredSOTSchemeType();
 			System.out.println("Selected required SOT Scheme type in SOT ");
 		} catch (Exception e) {
 			System.err.println("Error in selecting SOT Scheme " + e.getMessage());
 
-		}
+		}*/
+		
+		
+		try {
+			if (testData != null) {
 
-	}
+				String SOTSchemeDes = testData.get("schemeDescription").toLowerCase();  ///schemeDescription needs to change for SOT by giving different column name with corresponding data 
+				exWarranty.setExtdWarrantyType(SOTSchemeDes);;
+			}else {
+				throw new RuntimeException("Test data is not initialized.");
+			}
+			
+			} catch (Exception e) {
+				System.err.println("Error in Selecting Scheme " + e.getMessage());
+				
+			}
+				
+			}
+		
+
+	
 
 	@Then("User Clicks on clear button in SOT")
 	public void user_clicks_on_clear_button_in_sot() {
