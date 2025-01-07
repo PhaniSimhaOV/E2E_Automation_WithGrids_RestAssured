@@ -1,8 +1,8 @@
 Feature: Extended Warranty Punching and SOT
 
-  @test
+  @ExtendedWarranty
   Scenario: User tries to verify Extended Warranty Submit functionality
-    Given launch browser and enter url
+   Given launch browser and enter url
     When user enters a valid username
     And user enter a valid password
     And clicks on Send OTP
@@ -11,8 +11,7 @@ Feature: Extended Warranty Punching and SOT
     And User reads data from the Excel sheet regarding ExWarranty feature
     And User processes the ExWarranty for all rows from the Excel sheet of sheet Name ExWarranty Leads for Exwarranty
 
-
-  @test
+  @SOT
   Scenario: User tries to verify SOT Submit functionality
     Given launch browser and enter url
     When user enters a valid username

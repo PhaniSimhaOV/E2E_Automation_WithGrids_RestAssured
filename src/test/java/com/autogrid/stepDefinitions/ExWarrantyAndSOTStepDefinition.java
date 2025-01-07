@@ -37,6 +37,45 @@ public class ExWarrantyAndSOTStepDefinition {
 		this.sot = new SOTPage(driver);
 		PageFactory.initElements(driver, sot);
 	}
+	
+	
+	
+	private void restartFromServiceMenuStepforWarranty() throws Throwable{
+		try{
+		user_clicks_on_service_icon();
+					user_clicks_on_extended_warranty_sub_menu();
+					user_clicks_on_extended_warranty_submit_link();
+					user_should_be_able_to_navigate_to_extended_warranty_submit_screen();
+					}catch (Exception e) {
+					System.err.println("Error restarting from Service Menu step: " + e.getMessage());
+					throw new RuntimeException("Failed to restart execution from Service Menu step.", e);
+				}
+			}
+	private void executeTestStepsForRowForExwarrenty() throws Throwable {
+		try {
+			// Call test methods for each step in Ex-warrenty Functionality			
+			user_enters_vin_number();
+			user_clicks_on_inquire();
+			user_enter_current_odometer_reading();
+			user_select_employee_name();
+			user_select_place_of_supply();
+			user_select_required_extented_warranty_type();
+			//user_clicks_on_clear_button();
+			// user_clicks_on_submit_button();
+			//user_clicks_on_service_icon();
+			//exWarranty.clickExtWarrantySubMenu();
+		} catch (Exception e) {
+	        String errorMessage = "Error during execution of steps for Row " + (currentDataRowIndex + 1) +
+	                              ": " + e.getMessage();
+	        System.err.println(errorMessage);
+	        e.printStackTrace(); // Prints full stack trace to console for debugging
+	        throw new RuntimeException("Failed to execute steps for Row " + (currentDataRowIndex + 1), e);
+	    }
+	}
+
+	
+
+	
 	@Given("User reads data from the Excel sheet regarding ExWarranty feature")
 	public void User_reads_data_from_the_Excel_sheet_regarding_ExWarranty_feature() throws IOException {
 		String filePath = "C:/Document/DataExcel/output.xlsx";
@@ -51,9 +90,8 @@ public class ExWarrantyAndSOTStepDefinition {
 		System.out.println("All Test Data Loaded: " + allTestData.size() + " rows.");
 	}
 
-	@When("User processes the ExWarranty for all rows from the Excel sheet of sheet Name ExWarranty Leads for Ewarranty")
-	public void User_processes_the_exwarranty_for_all_rows_from_the_Excel_sheet_of_sheet_Name_ExWarranty_Leads_for_Ewarranty ()
-			throws Throwable {
+	@When("User processes the ExWarranty for all rows from the Excel sheet of sheet Name ExWarranty Leads for Exwarranty")
+	public void user_processes_the_ex_warranty_for_all_rows_from_the_excel_sheet_of_sheet_name_ex_warranty_leads_for_exwarranty() throws Throwable{
 
 		int passedCount = 0;
 		int failedCount = 0;
@@ -76,6 +114,9 @@ public class ExWarrantyAndSOTStepDefinition {
 				// Reset application state for every row
 				System.out.println("Refreshing the browser to reset the application state...");
 				LaunchDriver.getDriver().navigate().refresh();
+				
+				//Restart from the initial step
+				restartFromServiceMenuStepforWarranty();
 
 				// Execute all test steps for the current row
 				executeTestStepsForRowForExwarrenty();
@@ -91,6 +132,10 @@ public class ExWarrantyAndSOTStepDefinition {
 				try {
 					System.out.println("Navigating to the application's base URL...");
 					LaunchDriver.getDriver().navigate().refresh();
+					restartFromServiceMenuStepforWarranty();
+					
+					
+					 // Execute all test steps for the current row
 					executeTestStepsForRowForExwarrenty();
 					
 				} catch (Exception navigationException) {
@@ -107,7 +152,10 @@ public class ExWarrantyAndSOTStepDefinition {
 
 				// Skip retry and move to the next row
 				System.out.println("Skipping retry for Row " + (currentDataRowIndex + 1) + ". Moving to the next row.");
-			} finally {
+			}
+			catch (Throwable e) {
+                throw new RuntimeException(e);
+			}finally {
 				if (rowExecutionPassed) {
 					System.out.println("Row " + (currentDataRowIndex + 1) + " processed successfully.");
 				} else {
@@ -122,31 +170,25 @@ public class ExWarrantyAndSOTStepDefinition {
 		System.out.println("Rows Passed: " + passedCount);
 		System.out.println("Rows Failed: " + failedCount);
 	}
+	
 
-	private void executeTestStepsForRowForExwarrenty() throws Throwable {
-		// Example: Call test methods for each step
-		try {
-			// Call test methods for each step in Ex-warrenty Functionality
-			user_clicks_on_service_icon();
-			user_clicks_on_extended_warranty_sub_menu();
-			user_clicks_on_extended_warranty_submit_link();
-			user_should_be_able_to_navigate_to_extended_warranty_submit_screen();
-			user_enters_vin_number();
-			user_clicks_on_inquire();
-			user_enter_current_odometer_reading();
-			user_select_employee_name();
-			user_select_place_of_supply();
-			user_select_required_extented_warranty_type();
-			user_clicks_on_clear_button();
-			// user_clicks_on_submit_button();
-			user_clicks_on_service_icon();
-			user_clicks_on_extended_warranty_sub_menu();
-		}catch (Exception e) {
-			System.err.println(
-					"Error during execution of steps for Row " + (currentDataRowIndex + 1) + ": " + e.getMessage());
-			throw new RuntimeException("Failed to execute steps for Row " + (currentDataRowIndex + 1), e);
-		}
-	}
+
+	
+	//STEPS FOR SOT
+
+	private void restartFromServiceMenuStepforSOT() throws Throwable{
+		try{
+		user_clicks_on_service_icon();
+					user_clicks_on_extended_warranty_sub_menu();
+					user_clicks_on_extended_warranty_submit_link();
+					user_should_be_able_to_navigate_to_hyundai_shield_ot_trust_package_register_screen();
+					
+					}catch (Exception e) {
+					System.err.println("Error restarting from Service Menu step: " + e.getMessage());
+					throw new RuntimeException("Failed to restart execution from Service Menu step.", e);
+				}
+			}
+	
 	
 	@Given("User reads data from the Excel sheet regarding SOT feature")
 	public void User_reads_data_from_the_Excel_sheet_regarding_Sot_feature() throws IOException {
@@ -164,7 +206,7 @@ public class ExWarrantyAndSOTStepDefinition {
 
 	
 	@When("User processes the SOT for all rows from the Excel sheet of sheet Name SOT Leads for SOT")
-	public void User_processes_the_exwarranty_and_sot_for_all_rows_from_the_Excel_sheet_of_sheet_Name_SOT_Leads_for_SOT()
+	public void User_processes_the_sot_for_all_rows_from_the_Excel_sheet_of_sheet_Name_SOT_Leads_for_SOT()
 			throws Throwable {
 
 		int passedCount = 0;
@@ -188,7 +230,8 @@ public class ExWarrantyAndSOTStepDefinition {
 				// Reset application state for every row
 				System.out.println("Refreshing the browser to reset the application state...");
 				LaunchDriver.getDriver().navigate().refresh();
-
+				// Restart from the initial step
+				restartFromServiceMenuStepforSOT();
 				// Execute all test steps for the current row
 				
 				executeTestStepsForRowForSOT();
@@ -203,7 +246,7 @@ public class ExWarrantyAndSOTStepDefinition {
 				try {
 					System.out.println("Navigating to the application's base URL...");
 					LaunchDriver.getDriver().navigate().refresh();
-					
+					restartFromServiceMenuStepforSOT();
 					executeTestStepsForRowForSOT();
 				} catch (Exception navigationException) {
 					System.err.println("Error while navigating to the base URL: " + navigationException.getMessage());
@@ -219,7 +262,9 @@ public class ExWarrantyAndSOTStepDefinition {
 
 				// Skip retry and move to the next row
 				System.out.println("Skipping retry for Row " + (currentDataRowIndex + 1) + ". Moving to the next row.");
-			} finally {
+			}  catch (Throwable e) {
+                throw new RuntimeException(e);
+			}finally {
 				if (rowExecutionPassed) {
 					System.out.println("Row " + (currentDataRowIndex + 1) + " processed successfully.");
 				} else {
@@ -234,23 +279,19 @@ public class ExWarrantyAndSOTStepDefinition {
 		System.out.println("Rows Passed: " + passedCount);
 		System.out.println("Rows Failed: " + failedCount);
 	}
-			
+	
 		private void executeTestStepsForRowForSOT() throws Throwable {
 			try {
 			// Call test methods for each step in SOT Functionality
-			user_clicks_on_service_icon();
-			user_clicks_on_extended_warranty_sub_menu();
-			user_clicks_on_hyundai_shield_of_trust_package_register_link();
-			user_should_be_able_to_navigate_to_hyundai_shield_ot_trust_package_register_screen();
 			user_enter_vin_number_in_sot();
 			user_clicks_on_inquire_in_sot();
 			user_enter_current_odometer_reading_in_sot();
 			user_select_employee_name();
 			user_select_place_of_supply_in_sot();
 			user_select_required_extented_warranty_type_in_sot();
-			user_clicks_on_clear_button_in_sot();
+			//user_clicks_on_clear_button_in_sot();
 			// User_clicks_on_Submit_in_sot();
-			user_clicks_on_service_icon();
+			exWarranty.clickServiceIcon();
 			user_clicks_on_extended_warranty_sub_menu();
 		} catch (Exception e) {
 			System.err.println(
@@ -348,7 +389,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		try {
 			String odoMtrReading = "150";
 			exWarranty.enterCurrentOdoMtrReading(odoMtrReading);
-			System.out.println("Entered Current Odometer Reading" + odoMtrReading);
+			System.out.println("Entered Current Odometer Reading : " + odoMtrReading);
 		} catch (Exception e) {
 			System.err.println("Error in Entering Current OdoMeter Reading" + e.getMessage());
 
@@ -377,6 +418,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	@When("User select Place Of Supply")
 	public void user_select_place_of_supply() {
 		try {
+			String PlaceOfSupply =testData.get("placeOfSupply");
 			if (testData != null) {
 				exWarranty.selectPlaceOfSupply(testData.get("placeOfSupply"));
 				System.out.println("Selected place of supply" + testData.get("placeOfSupply"));
@@ -404,7 +446,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		try {
 		if (testData != null) {
 
-			String SchemeDes = testData.get("schemeDescription").toLowerCase();
+			String SchemeDes = testData.get("schemeDescription").toUpperCase();
 			exWarranty.setExtdWarrantyType(SchemeDes);;
 		}else {
 			throw new RuntimeException("Test data is not initialized.");
@@ -427,7 +469,9 @@ public class ExWarrantyAndSOTStepDefinition {
 		} catch (Exception e) {
 			System.err.println("Error in clicking clear button " + e.getMessage());
 		}
-		exWarranty.closeExwarrentyTab();
+		//exWarranty.closeExwarrentyTab();
+		//user_clicks_on_service_icon();
+		//exWarranty.clickExtWarrantySubMenu();
 	}
 
 	@Then("User Clicks on Submit button")
@@ -439,7 +483,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		} catch (Exception e) {
 			System.err.println("Error in clicking submit button " + e.getMessage());
 		}
-		exWarranty.closeExwarrentyTab();
+		//exWarranty.closeExwarrentyTab();
 	}
 
 	@When("User clicks on Hyundai Shield of Trust Package Register link")
@@ -500,7 +544,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		try {
 			String odoMtrReading = "150";
 			sot.enterCurrentOdoMtrReading(odoMtrReading);
-			System.out.println("Entered Current Odometer reading in SOT " + odoMtrReading);
+			System.out.println("Entered Current Odometer reading in SOT : " + odoMtrReading);
 		} catch (Exception e) {
 			System.err.println("Error in entering current odometer reading " + e.getMessage());
 
@@ -512,11 +556,10 @@ public class ExWarrantyAndSOTStepDefinition {
 	public void user_select_employee_name_in_sot() throws Throwable {
 		Thread.sleep(2000);
 		try {
-			
 			if (testData != null) {
-				String employeeName = testData.get("empName").toUpperCase();
-				sot.selectEmployeeName(testData.get("employeeName"));
-				System.out.println("Employee Name selected in SOT " + testData.get("employeeName"));
+				String employeeName= testData.get("empName").toUpperCase();
+				sot.selectEmployeeName(employeeName);
+				System.out.println("Employee Name selected in SOT : " + testData.get("employeeName"));
 			} else {
 				throw new RuntimeException("Test data is not initialized.");
 			}
@@ -531,6 +574,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	public void user_select_place_of_supply_in_sot() throws Throwable {
 		Thread.sleep(2000);
 		try {
+			String PlaceOfSupply=testData.get("placeOfSupply");
 			if (testData != null) {
 				sot.selectPlaceOfSupply(testData.get("placeOfSupply"));
 				System.out.println("Selected Place of Supply " + testData.get("placeOfSupply"));

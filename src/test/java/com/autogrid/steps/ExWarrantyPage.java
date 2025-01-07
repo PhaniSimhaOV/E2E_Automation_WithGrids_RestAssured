@@ -175,7 +175,7 @@ public class ExWarrantyPage {
 		WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
 		List<WebElement> employeeList = wait.until(
 				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//ul[@id='extbEmpNo_listbox']//li")));
-		System.out.println(employeeList.size());
+		
 		try {
 
 			for (WebElement empName : employeeList) {
@@ -197,7 +197,7 @@ public class ExWarrantyPage {
 
 	}
 
-	public void selectPlaceOfSupply(String placeOfSupply) {
+	public void selectPlaceOfSupply(String PlaceOfSupply) {
 		PlaceOfSupplyDrpDwn.click();
 		commonActions.explicitWait("//ul[@id='placeOfSupply_listbox']//li");
 
@@ -207,9 +207,9 @@ public class ExWarrantyPage {
 		try {
 			for (WebElement stateName : SupplyStates) {
 
-				if (stateName.getText().trim().toUpperCase().equals(placeOfSupply.trim().toUpperCase())) {
+				if (stateName.getText().trim().toUpperCase().equals(PlaceOfSupply.trim().toUpperCase())) {
 					stateName.click();
-					System.out.println("Place Of Supply after Click: " + placeOfSupply.trim().toUpperCase());
+					System.out.println("Place Of Supply after Click: " + PlaceOfSupply.trim().toUpperCase());
 					break;
 				}
 			}
