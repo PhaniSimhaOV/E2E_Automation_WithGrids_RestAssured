@@ -224,8 +224,11 @@ public class EnquiryParentSteps {
     @FindBy(xpath = "//android.widget.RadioButton")
     private List<WebElement> timeSlots;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.hyundai.ndms:id/iv_schedule_edit\"]")
+    @FindBy(id = "com.hyundai.ndms:id/btn_schedule_testdrive]")
     private WebElement btnScheduleTestDriver;
+
+    @FindBy(id = "com.hyundai.ndms:id/iv_schedule_edit")
+    private WebElement btnScheduleTestDriverOffer;
 
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.hyundai.ndms:id/show_room\"]")
     private WebElement navShowroom;
@@ -557,7 +560,7 @@ public class EnquiryParentSteps {
 
     public void clickOnTestDriveOffer(){
         commonActions.selectApkDropdownValue(drpDownTestDriver, "Yes");
-        commonActions.clickElement(btnScheduleTestDriver);
+        commonActions.clickElement(btnScheduleTestDriverOffer);
         commonActions.clickElement(toggleInHouse);
         commonActions.clickElement(btnProceed);
     }
@@ -641,22 +644,25 @@ public class EnquiryParentSteps {
     }
 
     public void selectTimeSlot() throws InterruptedException {
-        Thread.sleep(5000);
+        commonActions.scrollDown();
+        Thread.sleep(3000);
         for (WebElement slot : timeSlots) {
-            if (slot.getDomAttribute("clickable").equals("true")) {
-                slot.click();
+            if (slot.getDomAttribute("clickable").equalsIgnoreCase("true")
+                    && slot.getDomAttribute("enabled").equalsIgnoreCase("true")) {
+                commonActions.clickElement(slot);
                 break;
             }
         }
     }
 
-    public void clickOnScheduleTestDriveButton(){
-        commonActions.scrollDown();
+    public void clickOnScheduleTestDriveButton() throws InterruptedException {
+        Thread.sleep(2000);
         commonActions.clickElement(btnScheduleTestDriver);
     }
 
     public void clickOnModelAndReadCataloguePart1() throws InterruptedException {
         commonActions.clickElement(navShowroom);
+        Thread.sleep(2000);
         new WebDriverWait(LaunchAndroidDriver.getAndroidDriver(), Duration.ofSeconds(300))
                 .until(ExpectedConditions.invisibilityOf(aniLoading));
     }

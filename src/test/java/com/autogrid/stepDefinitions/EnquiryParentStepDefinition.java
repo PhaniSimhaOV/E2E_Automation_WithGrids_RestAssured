@@ -50,6 +50,8 @@ public class EnquiryParentStepDefinition {
     @Then("Create the Lead and get the Enquiry No in the Excel")
     public void createTheLeadAndGetTheEnquiryNoInTheExcel() throws InterruptedException, IOException {
 
+        String currentActivity = LaunchAndroidDriver.getAndroidDriver().currentActivity();
+
         int passedCount = 0;
         int failedCount = 0;
 
@@ -71,6 +73,11 @@ public class EnquiryParentStepDefinition {
             boolean rowExecutionPassed = true;
 
             try {
+                if (!currentActivity.equals(LaunchAndroidDriver.getUiAutomator2Options().getAppActivity())) {
+                    // App activity is not running, launch the app
+                    System.out.println("Activity not found, launching the app...");
+                    Runtime.getRuntime().exec("adb shell am start -n com.hyundai.ndms/com.hyundai.ndms.activities.SplashActivity");
+                }
 
                 //Customer Details
                 enquiryParentSteps.clickOnEnquiries();
@@ -205,6 +212,11 @@ public class EnquiryParentStepDefinition {
             } catch (Exception e) {
                 try {
 
+                    if (!currentActivity.equals(LaunchAndroidDriver.getUiAutomator2Options().getAppActivity())) {
+                        // App activity is not running, launch the app
+                        System.out.println("Activity not found, launching the app...");
+                        Runtime.getRuntime().exec("adb shell am start -n com.hyundai.ndms/com.hyundai.ndms.activities.SplashActivity");
+                    }
 
                     //Customer Details
                 enquiryParentSteps.clickOnEnquiries();
@@ -376,9 +388,9 @@ public class EnquiryParentStepDefinition {
 
 //                enquiryParentSteps.clickOnEnquiries();
 //
-//                //click on search icon and search the created lead with mobile number
-//                enquiryParentSteps.clickOnEnquiriesFilterIcon();
-//                enquiryParentSteps.clickOnEnquiriesNewestToOldest();
+////                //click on search icon and search the created lead with mobile number
+////                enquiryParentSteps.clickOnEnquiriesFilterIcon();
+////                enquiryParentSteps.clickOnEnquiriesNewestToOldest();
 //
 //                enquiryParentSteps.clickOnSearchIcon();
 //                commonActions.sendText(enquiryParentSteps.getTxtFieldMobileNumber(), testData.get("mobileNo"));
@@ -407,7 +419,10 @@ public class EnquiryParentStepDefinition {
 //                        }
 //
 //                        enquiryParentSteps.selectTimeSlot();
-//                        enquiryParentSteps.clickOnScheduleTestDriveButton();
+//
+//                        //enquiryParentSteps.clickOnScheduleTestDriveButton();
+//
+//                        LaunchAndroidDriver.getAndroidDriver().executeScript("arguments[0].click();", enquiryParentSteps.getBtnCompleteTestDrive());
 //                    }
 //                } catch (Exception e) {
 //                    System.out.println("Element is not present in the DOM.");
@@ -501,7 +516,14 @@ public class EnquiryParentStepDefinition {
                         if (enquiryParentSteps.getDrpDownTestDriver().isDisplayed()) {
                             enquiryParentSteps.clickOnTestDriveOffer();
                             commonActions.selectApkDropdownValue(enquiryParentSteps.getDrpDownFuelType(), testData.get("fuelType"));
-                            commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownSelectVinNumber(), testData.get("vin_number")); // Need to check this
+                            if(testData.get("vin_number").isEmpty() || testData.get("vin_number").equalsIgnoreCase("0")){
+                                enquiryParentSteps.getDropDownSelectVinNumber().click();
+                                Thread.sleep(1000);
+                                LaunchAndroidDriver.getAndroidDriver().findElement(By.xpath("//android.widget.CheckedTextView[@resource-id=\"android:id/text1\"][2]"))
+                                        .click();
+                            }else{
+                                commonActions.selectApkDropdownValue(enquiryParentSteps.getDropDownSelectVinNumber(), testData.get("vin_number")); // Need to check this
+                            }
                             enquiryParentSteps.selectTimeSlot();
                             enquiryParentSteps.clickOnScheduleTestDriveButton();
                         }
