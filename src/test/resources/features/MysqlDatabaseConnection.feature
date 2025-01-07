@@ -1,5 +1,7 @@
 Feature: Connecting and Fetching Data From MySQL Database
 
+@test 
+  @DatabaseConnection
   Scenario: Fetching data from the database and Save the fetched data into EXCEL File
     Given User connects to MySQL Workbench database
     When User executes a query to fetch data
