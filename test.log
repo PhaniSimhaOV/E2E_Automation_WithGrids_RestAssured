@@ -21,4 +21,564 @@
 151834 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver is already initialized.
 153902 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver is already initialized.
 155950 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver is already initialized.
-158054 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver is already initialized.
+158054 [main] INFO  com.autogrid.utils.LaunchDriver -- WebDriver is already initialized.476  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+478  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+484  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+485  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+485  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+486  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+486  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+486  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+487  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+487  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+487  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+487  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+487  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+488  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+488  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+513  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4775 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+521  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+529  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+539  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+545  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+550  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+553  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+553  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+554  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+555  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+556  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+556  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+556  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+556  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+557  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+562  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+583  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3713 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+1018 [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+1027 [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+1043 [main] INFO  com.autogrid.utils.Config -- Test properties are:
+1044 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+1045 [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+1045 [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+1045 [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+1046 [main] INFO  com.autogrid.utils.Config -- browser=chrome
+1046 [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+1046 [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+1046 [main] INFO  com.autogrid.utils.Config -- db.username=admin
+1046 [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+1047 [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+1047 [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+1048 [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+1114 [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4903 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+422  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+428  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+435  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+435  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+435  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+436  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+437  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+437  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+438  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+438  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+438  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+438  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+438  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+439  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+440  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+462  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4429 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+484  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+489  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+525  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+525  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+526  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+527  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+527  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+527  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+528  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+528  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+528  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+528  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+529  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+530  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+531  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+548  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+6146 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+416  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+420  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+426  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+426  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+427  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+428  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+428  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+428  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+433  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+433  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+433  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+433  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+434  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+435  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+436  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+449  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+2908 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+538  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+545  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+563  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+573  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+573  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+574  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+574  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+576  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+576  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+577  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+578  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+583  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+585  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+585  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+586  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+612  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+5003 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+455  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+458  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+464  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+465  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+466  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+466  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+466  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+467  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+467  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+468  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+469  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+470  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+471  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+471  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+472  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+487  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3292 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+449  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+453  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+459  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+460  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+460  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+461  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+461  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+461  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+461  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+462  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+462  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+462  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+463  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+464  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+464  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+479  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3389 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+462  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+465  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+470  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+470  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+471  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+471  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+471  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+471  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+471  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+472  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+472  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+472  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+473  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+473  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+473  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+495  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3617 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+852  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+858  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+876  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+880  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+883  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+895  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+898  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+898  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+911  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+914  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+932  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+944  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+958  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+959  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+960  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+995  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+5463 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+561  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+580  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+586  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+587  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+587  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+590  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+594  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+595  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+595  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+596  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+597  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+598  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+599  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+601  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+601  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+623  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4072 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+512  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+515  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+522  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+522  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+522  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+523  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+523  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+523  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+523  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+524  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+524  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+524  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+525  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+525  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+525  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+564  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3812 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+571  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+578  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+583  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+584  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+584  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+584  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+585  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+585  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+585  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+585  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+585  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+586  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+587  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+587  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+587  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+635  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4302 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+579  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+586  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+605  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+607  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+608  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+618  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+618  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+619  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+619  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+620  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+620  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+627  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+628  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+628  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+629  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+648  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4048 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+488  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+491  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+496  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+497  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+497  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+498  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+500  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+501  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+502  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+503  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+503  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+504  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+505  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+506  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+506  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+522  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4090 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+484  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+487  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+492  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+492  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+493  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+493  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+493  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+493  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+494  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+495  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+496  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+498  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+501  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+502  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+502  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+527  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4046 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+583  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+586  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+591  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+592  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+592  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+593  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+593  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+593  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+593  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+593  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+593  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+593  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+593  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+593  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+594  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+615  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4321 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+439  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+442  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+451  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+453  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+453  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+454  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+454  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+454  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+454  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+455  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+455  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+455  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+455  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+456  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+456  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+473  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4082 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+467  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+471  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+480  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+481  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+481  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+481  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+482  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+482  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+482  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+483  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+483  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+483  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+483  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+483  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+484  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+502  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3720 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+449  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+455  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+462  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+462  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+463  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+463  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+464  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+465  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+466  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+473  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+473  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+473  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+475  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+476  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+476  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+495  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3416 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+755  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+761  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+769  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+770  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+770  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+771  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+771  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+771  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+771  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+772  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+772  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+776  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+778  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+778  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+778  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+800  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4041 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+503  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+506  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+513  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+516  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+517  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+517  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+517  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+517  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+518  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+519  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+519  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+520  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+522  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+524  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+525  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+557  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3650 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+393  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+398  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+403  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+404  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+404  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+405  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+405  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+405  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+405  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+405  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+406  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+406  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+406  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+406  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+406  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+425  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3936 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+527  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+531  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+578  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+578  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+579  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+580  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+581  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+582  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+582  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+583  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+583  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+585  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+586  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+593  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+593  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+627  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+5026 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+470  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+474  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+481  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+483  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+484  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+485  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+486  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+486  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+486  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+487  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+487  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+488  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+491  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+491  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+492  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+516  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3789 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+471  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+474  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+486  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+489  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+490  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+491  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+492  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+496  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+497  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+500  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+501  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+502  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+503  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+504  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+505  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+540  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4888 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+447  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+452  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+460  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+461  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+467  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+469  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+470  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+470  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+471  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+471  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+472  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+472  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+472  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+473  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+473  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+491  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3687 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+699  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+707  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+713  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+713  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+713  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+714  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+714  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+714  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+714  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+714  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+714  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+715  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+715  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+715  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+715  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+740  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4900 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+478  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+482  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+488  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+488  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+489  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+489  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+489  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+489  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+489  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+490  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+490  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+490  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+490  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+491  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+491  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+516  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3996 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+515  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+518  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+534  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+535  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+536  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+536  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+536  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+537  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+537  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+538  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+539  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+540  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+541  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+542  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+542  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+570  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+4613 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+488  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+491  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+496  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+496  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+497  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+497  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+497  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+497  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+497  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+498  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+498  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+498  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+498  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+499  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+499  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+516  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3696 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"
+453  [main] INFO  com.autogrid.utils.LaunchDriver -- Setting up the WebDriver
+458  [main] INFO  com.autogrid.utils.ResourceLoader -- The data is read from location: config/project.properties
+463  [main] INFO  com.autogrid.utils.Config -- Test properties are:
+464  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+464  [main] INFO  com.autogrid.utils.Config -- selenium.grid.urlFormat=http://%s:4444/wd/hub
+464  [main] INFO  com.autogrid.utils.Config -- db.password=Master$123
+464  [main] INFO  com.autogrid.utils.Config -- site.url=https://ndms.hmil.net
+464  [main] INFO  com.autogrid.utils.Config -- browser=chrome
+465  [main] INFO  com.autogrid.utils.Config -- selenium.run.device=desktop
+465  [main] INFO  com.autogrid.utils.Config -- selenium.grid.enabled=false
+465  [main] INFO  com.autogrid.utils.Config -- db.username=admin
+466  [main] INFO  com.autogrid.utils.Config -- selenium.grid.hubHost=localhost
+466  [main] INFO  com.autogrid.utils.Config -- browser.headless=true
+466  [main] INFO  com.autogrid.utils.Config -- db.url=jdbc:mysql://13.202.82.160/salesDataSetup?enabledTLSProtocols=TLSv1.2
+466  [main] INFO  com.autogrid.utils.Config -- ---------------------------------
+492  [main] INFO  com.autogrid.utils.LaunchDriver -- Initializing WebDriver & launching Chrome Locally
+3540 [main] INFO  com.autogrid.utils.LaunchDriver -- Launching site "https://ndms.hmil.net"

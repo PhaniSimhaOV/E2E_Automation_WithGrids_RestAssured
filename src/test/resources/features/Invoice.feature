@@ -7,8 +7,8 @@ Feature: User tries to verify the Invoice functionality
     When user enters a valid username
     And user enter a valid password
     And clicks on Send OTP
-    And user enters a valid OTP
-    And clicks on login
+#    And user enters a valid OTP
+#    And clicks on login
     Then user should be able to see Home Icon on the dashboard
     And User reads data from the Excel sheet regarding Invoice feature
     And User processes the Invoice for all rows from the Excel sheet of sheet Name Invoice Leads

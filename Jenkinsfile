@@ -6,11 +6,7 @@ pipeline {
         JENKINS_TRIGGERED_BY = "${currentBuild.getBuildCauses()[0].shortDescription}"
     }
 
-    parameters {
-            choice(name: 'environment', choices: ['uat', 'dev'], description: 'Which env to select?')
-            choice(name: 'BROWSER', choices: ['chrome', 'firefox'], description: 'Which browser to select to?')
-            string(name: 'CUCUMBER_TAG', defaultValue: '@SmokeTest', description: 'Enter the tag/tags name.')
-        }
+
 
    options {
     timeout(time: 2, unit: 'HOURS')
@@ -36,20 +32,14 @@ pipeline {
             }
         }
 
-        stage('Build Project') {
-            steps {
-               echo "Starting build..."
-               bat " mvn clean package -DskipTests"
-            }
-        }
 
         stage('Run tests') {
             steps {
                 echo "Starting Tests..."
+                bat "mvn clean test"
             }
         }
     }
-
     post {
         always {
             echo "Post run actions ..."
