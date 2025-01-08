@@ -7,8 +7,7 @@ pipeline {
     }
 
  parameters {
-            choice(name: 'BROWSER', choices: ['chrome', 'firefox'], description: 'Which browser to select to?')
-           // choice(name: 'BROWSER1', choices: ['chrome', 'firefox'], description: 'Which browser to select to?')
+            choice(name: 'Device', choices: ['Mobile', 'Web'], description: 'Which browser to select to?')
             choice(name: 'Module', choices: ['Lead generation','Test drive','Booking','Invoice','Exwarranty','SOT'], description: 'Please select the module to built')
 //
 //             string(name: 'CUCUMBER_TAG', defaultValue: '@SmokeTest', description: 'Enter the tag/tags name.')
@@ -42,7 +41,8 @@ pipeline {
         stage('Run tests') {
             steps {
                 echo "Starting Tests..."
-                bat "set CUCUMBER_TAG=${params.CUCUMBER_TAG}"
+                bat 'mvn clean test -Dcucumber.filter.tags=${params.CUCUMBER_TAG} and @DatabaseConnection"'
+
             }
         }
 
