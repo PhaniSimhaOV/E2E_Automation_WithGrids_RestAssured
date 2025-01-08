@@ -6,6 +6,13 @@ pipeline {
         JENKINS_TRIGGERED_BY = "${currentBuild.getBuildCauses()[0].shortDescription}"
     }
 
+ parameters {
+            choice(name: 'BROWSER', choices: ['chrome', 'firefox'], description: 'Which browser to select to?')
+            choice(name: 'Module', choices: ['Lead generation','Test drive','Booking','Invoice','Exwarranty','SOT'], description: 'Please select the module to built')
+
+            string(name: 'CUCUMBER_TAG', defaultValue: '@SmokeTest', description: 'Enter the tag/tags name.')
+            string(name: 'reportsMail', defaultValue: EMAIL_RECEIVERS, description: 'Send report to these people.')
+        }
 
 
    options {
@@ -31,7 +38,12 @@ pipeline {
                 checkout scm
             }
         }
-
+ stage('Run tests') {
+            steps {
+                echo "Starting Tests..."
+                bat "set CUCUMBER_TAG=${params.CUCUMBER_TAG}"
+            }
+        }
 
         stage('Run tests') {
             steps {
