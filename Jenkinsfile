@@ -38,14 +38,14 @@ pipeline {
                 checkout scm
             }
         }
- stage('Run tests') {
+        stage('Run tests') {
             steps {
                 echo "Starting Tests..."
                 bat "set CUCUMBER_TAG=${params.CUCUMBER_TAG}"
             }
         }
 
-        stage('Run tests') {
+        stage('Clean up') {
             steps {
                 echo "Starting Tests..."
                 bat "mvn clean test"
