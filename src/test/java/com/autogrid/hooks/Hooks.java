@@ -25,7 +25,9 @@ public class Hooks {
 
     @Before("@mobile")
     public void aSetupAppiumServer() {
+        LaunchAndroidDriver.stopAppiumServer();
         LaunchAndroidDriver.startAppiumServer();
+
     }
 
     @Before("@mobile")
@@ -34,7 +36,7 @@ public class Hooks {
         LaunchAndroidDriver.setUpDriver();
     }
 
-    @After("@mobile")
+    @After("@always_run")
     public void killAppiumServer() {
         LaunchAndroidDriver.stopAppiumServer();
     }

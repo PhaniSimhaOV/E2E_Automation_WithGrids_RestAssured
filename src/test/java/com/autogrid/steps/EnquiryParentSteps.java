@@ -152,7 +152,7 @@ public class EnquiryParentSteps {
     @FindBy(xpath = "//android.widget.Button[@resource-id=\"com.hyundai.ndms:id/btn_finish\"]")
     private WebElement finishButton;
 
-    @FindBy(xpath = "//android.widget.Button[@resource-id=\"com.hyundai.ndms:id/frmyes\"]")
+    @FindBy(xpath = "//android.widget.Button[@resource-id=\"com.hyundai.ndms:id/btn_schedule_testdrive\"]")
     private WebElement btnCompleteTestDrive;
 
     @FindBy(xpath = "//android.widget.TextView[@text=\"Test Drive Successful!\"]")
@@ -221,10 +221,21 @@ public class EnquiryParentSteps {
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/text1\" and @text=\"Select Vin No\"]")
     private WebElement dropDownSelectVinNumber;
 
+    public List<WebElement> getTimeSlots() {
+        return timeSlots;
+    }
+
+    public List<WebElement> getDateSlots() {
+        return dateSlots;
+    }
+
     @FindBy(xpath = "//android.widget.RadioButton")
     private List<WebElement> timeSlots;
 
-    @FindBy(id = "com.hyundai.ndms:id/btn_schedule_testdrive]")
+    @FindBy(xpath = "//android.view.View[@resource-id=\"android:id/month_view\"]/android.view.View")
+    private List<WebElement> dateSlots;
+
+    @FindBy(xpath = "//android.widget.Button[@text='Schedule Test Drive']")
     private WebElement btnScheduleTestDriver;
 
     @FindBy(id = "com.hyundai.ndms:id/iv_schedule_edit")
@@ -306,6 +317,22 @@ public class EnquiryParentSteps {
 
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.hyundai.ndms:id/drop_down_text\" and @text=\"Select Scrap Through Hyundai\"]")
     private WebElement xchangeCarScrapThroughHyundai;
+
+    public WebElement getCalenderOkButton() {
+        return calenderOkButton;
+    }
+
+    @FindBy(xpath = "//android.widget.Button[@resource-id=\"android:id/button1\"]")
+    private WebElement calenderOkButton;
+
+
+
+    public WebElement getTestDriveDate() {
+        return testDriveDate;
+    }
+
+    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.hyundai.ndms:id/et_testdrive_select_date\"]")
+    private WebElement testDriveDate;
 
     public WebElement getPresentCarFuelType() {
         return presentCarFuelType;
@@ -635,8 +662,8 @@ public class EnquiryParentSteps {
     public void clickOnShowMoreDropdownAndClickOnSmartConsulting() throws InterruptedException {
         commonActions.clickElement(drpDownShowMore);
         commonActions.clickElement(tileSmartConsulting);
-        commonActions.clickElement(notificationAllow);
         try {
+            commonActions.clickElement(notificationAllow);
             commonActions.clickElement(notificationOk);
         }catch(Exception e){
             logger.info("Button did not popped up");
@@ -644,15 +671,46 @@ public class EnquiryParentSteps {
     }
 
     public void selectTimeSlot() throws InterruptedException {
+        boolean value = true;
         commonActions.scrollDown();
         Thread.sleep(3000);
         for (WebElement slot : timeSlots) {
             if (slot.getDomAttribute("clickable").equalsIgnoreCase("true")
                     && slot.getDomAttribute("enabled").equalsIgnoreCase("true")) {
                 commonActions.clickElement(slot);
+                value = false;
                 break;
             }
         }
+        if (value) {
+            commonActions.clickElement(getTestDriveDate());
+            int count = 0;
+            for (WebElement slot : dateSlots) {
+                if (slot.getDomAttribute("clickable").equalsIgnoreCase("true")
+                        && slot.getDomAttribute("enabled").equalsIgnoreCase("true")) {
+                    count++;
+                    if (count == 2) {
+                        commonActions.clickElement(slot);
+                        commonActions.clickElement(calenderOkButton);
+                        break;
+                    }
+                }
+            }
+
+
+
+            Thread.sleep(3000);
+            for (WebElement slot : timeSlots) {
+                if (slot.getDomAttribute("clickable").equalsIgnoreCase("true")
+                        && slot.getDomAttribute("enabled").equalsIgnoreCase("true")) {
+                    commonActions.clickElement(slot);
+                    value = false;
+                    break;
+                }
+            }
+
+        }
+
     }
 
     public void clickOnScheduleTestDriveButton() throws InterruptedException {
@@ -693,14 +751,43 @@ public class EnquiryParentSteps {
     public void downloadCataloguePart2(String carName) throws InterruptedException, IOException {
         new WebDriverWait(LaunchAndroidDriver.getAndroidDriver(), Duration.ofSeconds(120))
                 .until(ExpectedConditions.elementToBeClickable(LaunchAndroidDriver.getAndroidDriver().findElement(By.xpath("//android.widget.TextView[@resource-id=\"com.hyundai.ndms:id/title_view\" and @text='"+carName+"']/preceding-sibling::*[1]"))));
-
+        Thread.sleep(5000);
         commonActions.clickElement(LaunchAndroidDriver.getAndroidDriver().findElement(By.xpath("//android.widget.TextView[@resource-id=\"com.hyundai.ndms:id/title_view\" and @text='"+carName+"']/preceding-sibling::*[1]")));
-       Thread.sleep(1000);
+        Thread.sleep(1000);
         commonActions.clickElement(downloadButton);
-        Thread.sleep(3000);
-        new WebDriverWait(LaunchAndroidDriver.getAndroidDriver(), Duration.ofSeconds(900))
-                .until(ExpectedConditions.invisibilityOf(downloadLoader));
-        Thread.sleep(10000);
+        Thread.sleep(420000);
+
+        try {
+            // Wait until the progress bar is visible
+            WebElement progressBar = new WebDriverWait(LaunchAndroidDriver.getAndroidDriver(), Duration.ofSeconds(120)).until(ExpectedConditions.
+                    visibilityOfElementLocated(By.xpath("//android.widget.TextView[@resource-id=\"com.hyundai.ndms:id/title_view\" and @text='"+carName+"']/preceding-sibling::*[1]/../..//android.widget.LinearLayout[2]/*[1]")));
+
+
+                // Continuously check the current width of the progress bar
+                String currentWidth = progressBar.getDomAttribute("text");
+                while (true) {
+                    // Get the current width of the filled progress bar (use the appropriate method for your app
+
+                    System.out.println("Download Progress: " + currentWidth + "%");
+
+                    // If the download is complete (progress bar is full)
+                    if (currentWidth.equalsIgnoreCase("100.0")) {
+                        System.out.println("Download complete!");
+                        Thread.sleep(30000);
+                        commonActions.navigateBack();
+                        downloadCataloguePart1();
+                        break; // Exit the loop when download is complete
+                    }
+                }
+
+            new WebDriverWait(LaunchAndroidDriver.getAndroidDriver(), Duration.ofSeconds(600))
+                    .until(ExpectedConditions.invisibilityOf(downloadLoader));
+            Thread.sleep(3000);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error while waiting for the download to complete.");
+        }
     }
 
     public void enterCredentials(){

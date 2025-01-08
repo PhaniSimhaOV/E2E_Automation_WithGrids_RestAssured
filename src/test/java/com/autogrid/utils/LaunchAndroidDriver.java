@@ -84,8 +84,12 @@ public class LaunchAndroidDriver {
                 .setAppPackage(Config.get("appium.apk.packageName"))
                 .setAppActivity(Config.get("appium.apk.activityName"))
                 .setNewCommandTimeout(Duration.ofSeconds(600))
-                //.setIgnoreHiddenApiPolicyError(true)
-                .setApp(System.getProperty("user.dir")+"/H-Smart.apk")
+                .setIgnoreHiddenApiPolicyError(true)
+                //.setApp(System.getProperty("user.dir")+"/H-Smart.apk")
+                .setAndroidInstallTimeout(Duration.ofSeconds(300))
+                .setClearSystemFiles(false)
+                //.setFullReset(false)
+                //.noReset()
                 .setUiautomator2ServerInstallTimeout(Duration.ofSeconds(360));
         options.setCapability("keepAppActivity", true);;
         return options;
@@ -97,8 +101,8 @@ public class LaunchAndroidDriver {
                 .usingPort(4723)
                 .withIPAddress(serverAddress)
                 .withTimeout(Duration.ofSeconds(300))
-                .withArgument(() -> "--log-level", "error")
-                .withArgument(() -> "--allow-insecure", "adb_shell")
+//                .withArgument(() -> "--log-level", "error")
+//                .withArgument(() -> "--allow-insecure", "adb_shell")
                 .withArgument(() -> "--use-plugins", "gestures");
 
         // Build the service
