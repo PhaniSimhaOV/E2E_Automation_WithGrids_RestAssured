@@ -41,7 +41,13 @@ pipeline {
         stage('Run tests') {
             steps {
                 echo "Starting Tests..."
-                bat 'mvn clean test'
+                node {
+                  if (isUnix()) {
+                    sh 'mvn clean test'
+                  } else {
+                    bat 'mvn clean test'
+                  }
+                }
 
             }
         }
@@ -49,7 +55,13 @@ pipeline {
         stage('Clean up') {
             steps {
                 echo "Starting Tests..."
-                bat "mvn clean test"
+                node {
+                  if (isUnix()) {
+                    sh 'mvn clean test'
+                  } else {
+                    bat 'mvn clean test'
+                  }
+                }
             }
         }
     }
