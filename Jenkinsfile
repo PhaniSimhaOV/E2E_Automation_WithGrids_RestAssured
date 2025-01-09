@@ -41,7 +41,7 @@ pipeline {
         stage('Run tests') {
             steps {
                 echo "Starting Tests..."
-                node {
+                script {
                   if (isUnix()) {
                     sh 'mvn clean test'
                   } else {
@@ -55,7 +55,7 @@ pipeline {
         stage('Clean up') {
             steps {
                 echo "Starting Tests..."
-                node {
+                script {
                   if (isUnix()) {
                     sh 'mvn clean test'
                   } else {
