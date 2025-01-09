@@ -43,9 +43,11 @@ pipeline {
                 echo "Starting Tests..."
                 script {
                   if (isUnix()) {
-                    sh 'mvn clean test'
+                    sh  mvn -N io.takari:maven:wrapper
+                    sh './mvnw clean test'
                   } else {
-                    bat 'mvn clean test'
+                    bat  mvn -N io.takari:maven:wrapper
+                    bat './mvnw clean test'
                   }
                 }
 
@@ -57,9 +59,11 @@ pipeline {
                 echo "Starting Tests..."
                 script {
                   if (isUnix()) {
-                    sh 'mvn clean test'
+                    sh  mvn -N io.takari:maven:wrapper
+                    sh './mvnw clean test'
                   } else {
-                    bat 'mvn clean test'
+                    bat  mvn -N io.takari:maven:wrapper
+                    bat './mvnw clean test'
                   }
                 }
             }
