@@ -41,7 +41,7 @@ pipeline {
         stage('Run tests') {
             steps {
                 echo "Starting Tests..."
-                bat 'mvn clean test -Dcucumber.filter.tags=${params.CUCUMBER_TAG} and @DatabaseConnection"'
+                bat 'mvn clean test'
 
             }
         }
