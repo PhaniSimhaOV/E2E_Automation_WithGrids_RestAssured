@@ -4,7 +4,7 @@ pipeline {
 
     environment{
         JENKINS_TRIGGERED_BY = "${currentBuild.getBuildCauses()[0].shortDescription}"
-    }
+    }  
 
     parameters {
             choice(name: 'environment', choices: ['uat', 'dev'], description: 'Which env to select?')
