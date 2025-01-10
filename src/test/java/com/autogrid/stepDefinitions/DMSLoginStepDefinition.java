@@ -22,8 +22,11 @@ public class DMSLoginStepDefinition {
 		WebDriver driver = LaunchDriver.getDriver();
 		this.dMSLoginPage = new DMSLoginPage(driver);
 		PageFactory.initElements(driver, dMSLoginPage);
-		this.testCase = System.getProperty("testCase", "defaultTestCase");
-		System.out.println("Login page is displayed. 0 "+ this.testCase);
+		this.testCase = System.getProperty("testCase", "@default");
+        List<String> tags = Arrays.asList(this.testCase.split(","));
+
+        System.out.println("Tags to execute: " + tags);
+		
     }
 	
 	@Given("launch browser and enter url")
