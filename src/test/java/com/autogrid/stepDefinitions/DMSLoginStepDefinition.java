@@ -23,7 +23,7 @@ public class DMSLoginStepDefinition {
 		this.dMSLoginPage = new DMSLoginPage(driver);
 		PageFactory.initElements(driver, dMSLoginPage);
 		this.testCase = System.getProperty("testCase", "defaultTestCase");
-		System.out.println("Login page is displayed."+ testCase);
+		System.out.println("Login page is displayed. 0 "+ this.testCase);
     }
 	
 	@Given("launch browser and enter url")
@@ -42,7 +42,7 @@ public class DMSLoginStepDefinition {
             String expectedTitle = "GDMS2.0";
             String actualTitle = dMSLoginPage.getPageTitle();
             Assert.assertEquals(actualTitle,expectedTitle,"Login page title does not match!");
-            System.out.println("Login page is displayed 1."+ testCase);
+            System.out.println("Login page is displayed 1."+ this.testCase);
         } catch (Exception e) {
 			throw new Exception("Error occurred while navigating to DMS login page : " + e.getMessage());
         }       
@@ -55,7 +55,7 @@ public class DMSLoginStepDefinition {
             String expectedTitle = "GDMS2.0";
             String actualTitle = dMSLoginPage.getPageTitle();
             Assert.assertEquals(actualTitle,expectedTitle, "Login page title does not match!");
-            System.out.println("Login page is displayed 2."+ testCase);
+            System.out.println("Login page is displayed 2."+ this.testCase);
 		} catch (Exception e) {
 			throw new Exception("Error occurred while validating the DMS login page header :" + e.getMessage());
 		}
