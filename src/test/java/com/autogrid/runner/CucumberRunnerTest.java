@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
         glue = {"com.autogrid.stepDefinitions", "com.autogrid.hooks", "com.autogrid.utils"},
         plugin = {"pretty", "html:target/cucumber-reports.html"},
         monochrome = true,
-        tags = "Invoice"
+        tags = "@Invoice"
 )
 public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
 
