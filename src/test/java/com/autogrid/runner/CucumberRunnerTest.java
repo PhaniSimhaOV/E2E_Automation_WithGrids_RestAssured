@@ -20,7 +20,7 @@ public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
 
                 String userInfo = System.getProperty("testCase");
                 if (userInfo != null) {
-                System.setProperty("cucumber.user input", userInfo);
+                System.setProperty("testCase", userInfo);
                 }
         }
 
