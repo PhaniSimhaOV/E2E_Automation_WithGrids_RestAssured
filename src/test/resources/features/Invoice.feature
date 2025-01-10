@@ -1,6 +1,5 @@
 Feature: User tries to verify the Invoice functionality
 
-  @web 
   @Invoice
   Scenario: User tries to verify the Invoice functionality
     Given launch browser and enter url
