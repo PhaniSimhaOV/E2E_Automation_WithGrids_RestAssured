@@ -11,6 +11,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.And;
 import java.util.Scanner;
+import java.util.List;
+import java.util.Arrays;
 
 
 public class DMSLoginStepDefinition {
