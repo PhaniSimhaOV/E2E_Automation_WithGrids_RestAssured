@@ -20,14 +20,15 @@ public class DMSLoginStepDefinition {
 	
 	DMSLoginPage dMSLoginPage;
 	String testCase;
+	List<String> tags;
     public DMSLoginStepDefinition(){
 		WebDriver driver = LaunchDriver.getDriver();
 		this.dMSLoginPage = new DMSLoginPage(driver);
 		PageFactory.initElements(driver, dMSLoginPage);
 		this.testCase = System.getProperty("testCase", "@default");
-        List<String> tags = Arrays.asList(this.testCase.split(","));
+        this.tags = Arrays.asList(this.testCase.split(","));
 
-        System.out.println("Tags to execute: " + tags);
+        System.out.println("Tags to execute: " + this.tags);
 		
     }
 	
@@ -159,7 +160,7 @@ public class DMSLoginStepDefinition {
 	public void user_enters_username() {
 		try {
 			Thread.sleep(2000);
-            String username = "S523700";
+            String username = this.tags.get(0);
             dMSLoginPage.enterUsername(username);
             System.out.println("Entered username: " + username);
         } catch (Exception e) {
@@ -171,7 +172,7 @@ public class DMSLoginStepDefinition {
 	public void user_enter_username_without_entering_password(){
 		try {
 			Thread.sleep(2000);
-            String username = "S523700";
+            String username = this.tags.get(0);
             dMSLoginPage.enterUsername(username);
             System.out.println("Entered username: " + username);
         } catch (Exception e) {
@@ -196,10 +197,10 @@ public class DMSLoginStepDefinition {
 	public void user_enter_username_and_password_without_entering_otp() {
 		try {
 			Thread.sleep(3000);
-            String username = "S523700";
+            String username = this.tags.get(0);
             dMSLoginPage.enterUsername(username);
             System.out.println("Entered username: " + username);
-            String password = "S523700";
+            String password = this.tags.get(0);
             dMSLoginPage.enterPassword(password);
             System.out.println("Entered password: " + password);
         } catch (Exception e) {
@@ -233,7 +234,7 @@ public class DMSLoginStepDefinition {
 	@When("user enters valid password")
 	public void user_enters_valid_password() {
 		try {
-			String password = "Hyundai@2024";
+			String password = this.tags.get(1);
             dMSLoginPage.enterPassword(password);
             System.out.println("Entered password: " + password);
         } catch (Exception e) {
@@ -266,7 +267,7 @@ public class DMSLoginStepDefinition {
 	@When("user enters a valid username")
 	public void user_enters_a_valid_username() {
 		try {
-            String username = "S523700";
+            String username = this.tags.get(0);
             dMSLoginPage.enterUsername(username);
             System.out.println("Entered username: " + username);
         } catch (Exception e) {
@@ -277,7 +278,7 @@ public class DMSLoginStepDefinition {
 	@And("user enters a invalid password")
 	public void user_enters_a_invalid_password(){
 		try {
-			String password = "S523700";
+			String password = this.tags.get(0);
             dMSLoginPage.enterPassword(password);
             System.out.println("Entered password: " + password);
         } catch (Exception e) {
@@ -301,7 +302,7 @@ public class DMSLoginStepDefinition {
 	public void user_enters_a_invalid_otp() {
 		try {
 			Thread.sleep(10000);
-			String otp = "S523700";
+			String otp = this.tags.get(0);
             dMSLoginPage.enterOTP(otp);
             System.out.println("Entered otp: " + otp);
         } catch (Exception e) {
@@ -351,7 +352,7 @@ public class DMSLoginStepDefinition {
 	@When("user enter invalid password")
 	public void user_enter_invalid_password() {
 		try {
-			String password = "S523700";
+			String password = this.tags.get(0);
             dMSLoginPage.enterPassword(password);
             System.out.println("Entered password: " + password);
         } catch (Exception e) {
@@ -374,7 +375,7 @@ public class DMSLoginStepDefinition {
 	@When("user enter a valid username")
 	public void user_enter_a_valid_username() {
 		try {
-            String username = "S523700";
+            String username = this.tags.get(0);
             dMSLoginPage.enterUsername(username);
             System.out.println("Entered username: " + username);
         } catch (Exception e) {
@@ -397,7 +398,7 @@ public class DMSLoginStepDefinition {
 	@When("user enter a valid password")
 	public void user_enter_a_valid_password() {
 		try {
-			String password = "Hyundai@2024";
+			String password = this.tags.get(1);
             dMSLoginPage.enterPassword(password);
             System.out.println("Entered password: " + password);
         } catch (Exception e) {
