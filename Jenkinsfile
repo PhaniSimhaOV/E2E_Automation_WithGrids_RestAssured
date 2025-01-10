@@ -87,10 +87,10 @@ pipeline {
                 echo "CUCUMBER_TAG: ${cucumberTag}"
                   if (isUnix()) {
                     sh 'mvn clean test -Dcucumber.filter.tags="@DatabaseConnection"'
-                    sh "mvn clean test -Dcucumber.filter.tags=${cucumberTag} -DtestCase="${userInput}""
+                    sh "mvn clean test -Dcucumber.filter.tags=${cucumberTag} -DtestCase=@"${userInput}""
                   } else {
                     bat 'mvn clean test -Dcucumber.filter.tags="@DatabaseConnection"'
-                    bat "mvn clean test -Dcucumber.filter.tags=${cucumberTag} -DtestCase="${userInput}""
+                    bat "mvn clean test -Dcucumber.filter.tags=${cucumberTag} -DtestCase=@"${userInput}""
                   }
                    
                 }
