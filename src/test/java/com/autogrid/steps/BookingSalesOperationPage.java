@@ -389,7 +389,7 @@ public class BookingSalesOperationPage {
             String contactNumber = contactField.getAttribute("value");
 
             System.out.println("Enquiry Number: " + enquiryNumber);
-            String filePath = "C:/Users/Anjali/OneDrive/Desktop/output.xlsx";
+            String filePath = "src/test/resources/config/output.xlsx";
             String sheetName = "BookingDetails";
 
                 File excelFile = new File(filePath);
