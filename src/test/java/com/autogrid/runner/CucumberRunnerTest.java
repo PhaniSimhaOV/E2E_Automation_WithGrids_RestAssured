@@ -8,8 +8,15 @@ import io.cucumber.testng.CucumberOptions;
         glue = {"com.autogrid.stepDefinitions", "com.autogrid.hooks", "com.autogrid.utils"},
         plugin = {"pretty", "html:target/cucumber-reports.html"},
         monochrome = true,
-        tags = System.getProperty("cucumber.filter.tags", "@Invoice")
+        tags = "@Invoice"
 )
 public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
+        @BeforeClass
+        public static void setTags() {
+                String tags = System.getProperty("cucumber.filter.tags");
+                if (tags != null) {
+                System.setProperty("cucumber.filter.tags", tags);
+                }
+        }
 
 }
