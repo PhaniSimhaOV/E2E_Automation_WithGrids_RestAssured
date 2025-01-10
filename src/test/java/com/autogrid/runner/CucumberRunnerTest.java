@@ -17,6 +17,11 @@ public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
                 if (tags != null) {
                 System.setProperty("cucumber.filter.tags", tags);
                 }
+
+                String userInfo = System.getProperty("testCase");
+                if (userInfo != null) {
+                System.setProperty("cucumber.user input", userInfo);
+                }
         }
 
 }

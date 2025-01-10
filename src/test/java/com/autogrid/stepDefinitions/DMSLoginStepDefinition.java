@@ -17,7 +17,7 @@ public class DMSLoginStepDefinition {
 	CommonActions commonActions;
 	
 	DMSLoginPage dMSLoginPage;
-
+	String testCase = System.getProperty("testCase", "defaultTestCase");
     public DMSLoginStepDefinition(){
 		WebDriver driver = LaunchDriver.getDriver();
 		this.dMSLoginPage = new DMSLoginPage(driver);

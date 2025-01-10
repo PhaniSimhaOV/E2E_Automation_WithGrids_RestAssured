@@ -47,40 +47,25 @@ pipeline {
 
                     // Get the input
                     def userInput = input(
-                            id: 'userInput', message: 'Enter path of test reports:?',
+                            id: 'userInput', message: 'Enter username and password:?',
                             parameters: [
 
-                                    string(defaultValue: 'None',
-                                            description: 'Path of config file',
-                                            name: 'Config'),
-                                    string(defaultValue: 'None',
-                                            description: 'Test Info file',
-                                            name: 'Test'),
+                                    string(defaultValue: '',
+                                            description: 'Enter username',
+                                            name: 'username'),
+                                    string(defaultValue: '',
+                                            description: 'Enter Password',
+                                            name: 'password'),
                             ])
 
                     // Save to variables. Default to empty string if not found.
-                    inputConfig = userInput.Config?:''
-                    inputTest = userInput.Test?:''
+                    inputConfig = userInput.username?:''
+                    inputTest = userInput.password?:''
 
                     // Echo to console
                     echo("IQA Sheet Path: ${inputConfig}")
                     echo("Test Info file path: ${inputTest}")
-
-                    // Write to file
-                    writeFile file: "inputData.txt", text: "Config=${inputConfig}\r\nTest=${inputTest}"
-
-                    // Archive the file (or whatever you want to do with it)
-                    archiveArtifacts 'inputData.txt'
-                }
-            }
-        }
-        stage('Run Tests') {
-            steps{
-                echo "Starting Tests..."
-
-            
-            script {
-                def cucumberTag = ''
+                    def cucumberTag = ''
 
                 // Set the Cucumber tag based on selected module and device
                 if (params.Module == 'Lead generation' && params.Device == 'Mobile') {
@@ -102,14 +87,14 @@ pipeline {
                 echo "CUCUMBER_TAG: ${cucumberTag}"
                   if (isUnix()) {
                     sh 'mvn clean test -Dcucumber.filter.tags="@DatabaseConnection"'
-                    sh "mvn clean test -Dcucumber.filter.tags=${cucumberTag}"
+                    sh "mvn clean test -Dcucumber.filter.tags=${cucumberTag} -DtestCase="${userInput}""
                   } else {
                     bat 'mvn clean test -Dcucumber.filter.tags="@DatabaseConnection"'
-                    bat "mvn clean test -Dcucumber.filter.tags=${cucumberTag}"
+                    bat "mvn clean test -Dcucumber.filter.tags=${cucumberTag} -DtestCase="${userInput}""
                   }
+                   
                 }
             }
-            
         }
 
         
