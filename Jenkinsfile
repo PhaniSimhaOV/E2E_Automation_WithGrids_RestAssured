@@ -1,37 +1,34 @@
 pipeline {
-
     agent any
-     tools {
-            maven 'Maven'  // This is the name of the Maven installation you just configured
-        }
-    environment{
-        JENKINS_TRIGGERED_BY = "${currentBuild.getBuildCauses()[0].shortDescription}"
+    tools {
+        maven 'Maven' // Maven installation configured in Jenkins
     }
-
- parameters {
-            choice(name: 'Device', choices: ['Mobile', 'Web'], description: 'Which browser to select to?')
-            choice(name: 'Module', choices: ['Lead generation','Create test drive & followup','Booking','Invoice','ExtendedWarranty','SOT'], description: 'Please select the module to built')
-        }
-
-
-   options {
-    timeout(time: 2, unit: 'HOURS')
-   }
-
+    environment {
+        JENKINS_TRIGGERED_BY = "${env.BUILD_USER}" // More reliable for user trigger info
+    }
+    parameters {
+        choice(name: 'Device', choices: ['Mobile', 'Web'], description: 'Select the device')
+        choice(name: 'Module', choices: [
+            'Lead generation', 
+            'Create test drive & followup', 
+            'Booking', 
+            'Invoice', 
+            'ExtendedWarranty', 
+            'SOT'
+        ], description: 'Select the module to build')
+    }
+    options {
+        timeout(time: 2, unit: 'HOURS')
+    }
     stages {
         stage('Clean Workspace') {
             steps {
                 script {
-                    // Delete the contents of the 'src' directory
-                    echo "Cleaning up the 'src' directory"
-                    // Make sure you use 'dir' to target the correct directory
-                    dir('src') {
-                        deleteDir()  // Deletes all files and subdirectories in 'src'
-                    }
+                    echo "Cleaning up workspace..."
+                    deleteDir() // Cleans the entire workspace
                 }
             }
         }
-
         stage('Checkout from Github') {
             steps {
                 checkout scm
@@ -40,71 +37,53 @@ pipeline {
         stage('Interactive Input') {
             steps {
                 script {
-
-                    // Variables for input
-                    def inputConfig
-                    def inputTest
-
-                    // Get the input
+                    // Interactive input for username and password
                     def userInput = input(
-                            id: 'userInput', message: 'Enter username and password:?',
-                            parameters: [
+                        id: 'userInput',
+                        message: 'Enter username and password:',
+                        parameters: [
+                            string(name: 'username', defaultValue: '', description: 'Enter username'),
+                            string(name: 'password', defaultValue: '', description: 'Enter password')
+                        ]
+                    )
 
-                                    string(defaultValue: '',
-                                            description: 'Enter username',
-                                            name: 'username'),
-                                    string(defaultValue: '',
-                                            description: 'Enter Password',
-                                            name: 'password'),
-                            ])
+                    // Store inputs
+                    def inputConfig = userInput.username ?: ''
+                    def inputTest = userInput.password ?: ''
 
-                    // Save to variables. Default to empty string if not found.
-                    inputConfig = userInput.username?:''
-                    inputTest = userInput.password?:''
-
-                    // Echo to console
-                    echo("IQA Sheet Path: ${inputConfig}")
-                    echo("Test Info file path: ${inputTest}")
+                    // Determine Cucumber tag based on parameters
                     def cucumberTag = ''
+                    if (params.Module == 'Lead generation' && params.Device == 'Mobile') {
+                        cucumberTag = '@CreateNewLead'
+                    } else if (params.Module == 'Create test drive & followup' && params.Device == 'Mobile') {
+                        cucumberTag = '@StartTestDriveAndAddFollowUp'
+                    } else if (params.Module == 'Booking' && params.Device == 'Web') {
+                        cucumberTag = '@Booking'
+                    } else if (params.Module == 'Invoice' && params.Device == 'Web') {
+                        cucumberTag = '@Invoice'
+                    } else if (params.Module == 'ExtendedWarranty' && params.Device == 'Web') {
+                        cucumberTag = '@ExtendedWarranty'
+                    } else if (params.Module == 'SOT' && params.Device == 'Web') {
+                        cucumberTag = '@SOT'
+                    }
 
-                // Set the Cucumber tag based on selected module and device
-                if (params.Module == 'Lead generation' && params.Device == 'Mobile') {
-                    cucumberTag = '@CreateNewLead'
-                } else if (params.Module == 'Create test drive & followup' && params.Device == 'Mobile') {
-                    cucumberTag = '@StartTestDriveAndAddFollowUp'
-                } else if (params.Module == 'Complete Test Drive' && params.Device == 'Web') {
-                    cucumberTag = '@CompleteTestDrive'
-                } else if (params.Module == 'Booking' && params.Device == 'Web') {
-                    cucumberTag = '@Booking'
-                } else if (params.Module == 'Invoice' && params.Device == 'Web') {
-                    cucumberTag = '@Invoice'
-                } else if (params.Module == 'ExtendedWarranty' && params.Device == 'Web') {
-                    cucumberTag = '@ExtendedWarranty'
-                } else if (params.Module == 'SOT' && params.Device == 'Web') {
-                    cucumberTag = '@SOT'
-                }
+                    echo "CUCUMBER_TAG: ${cucumberTag}"
 
-                echo "CUCUMBER_TAG: ${cucumberTag}"
-                  if (isUnix()) {
-                    sh 'mvn clean test -Dcucumber.filter.tags="@DatabaseConnection"'
-                    sh "mvn clean test -Dcucumber.filter.tags=${cucumberTag} -DtestCase="${inputConfig}""
-                  } else {
-                    bat 'mvn clean test -Dcucumber.filter.tags="@DatabaseConnection"'
-                    bat "mvn clean test -Dcucumber.filter.tags=${cucumberTag} -DtestCase="${inputConfig}""
-                  }
-                   
+                    // Run Maven commands
+                    if (isUnix()) {
+                        sh 'mvn clean test -Dcucumber.filter.tags="@DatabaseConnection"'
+                        sh "mvn clean test -Dcucumber.filter.tags='${cucumberTag}' -DtestCase='${inputConfig},${inputTest}'"
+                    } else {
+                        bat 'mvn clean test -Dcucumber.filter.tags="@DatabaseConnection"'
+                        bat "mvn clean test -Dcucumber.filter.tags='${cucumberTag}' -DtestCase='${inputConfig},${inputTest}'"
+                    }
                 }
             }
         }
-
-        
-        
     }
     post {
         always {
-            echo "Post run actions ..."
+            echo "Post run actions..."
         }
     }
 }
-
-
