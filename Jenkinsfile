@@ -72,7 +72,7 @@ node {
     properties([
         parameters([
             choice(name: 'Device', choices: ['Mobile', 'Web'], description: 'Which browser to select?'),
-            choice(name: 'Module', choices: [], description: 'Please select the module to build')
+            choice(name: 'Module', choices: ['Lead generation','Create test drive & followup','Booking','Invoice','ExtendedWarranty','SOT'], description: 'Please select the module to build')
         ])
     ])
 
@@ -120,7 +120,11 @@ node {
             } else if (params.Module == 'Booking' && params.Device == 'Web') {
                 cucumberTag = '@Booking'
             } else if (params.Module == 'Invoice' && params.Device == 'Web') {
-                cucumberTag = '@Invoice'
+                cucumberTag = '@ExtendedWarranty'
+            } else if (params.Module == 'Invoice' && params.Device == 'Web') {
+                cucumberTag = '@ExtendedWarranty'
+            } else if (params.Module == 'SOT' && params.Device == 'Web') {
+                cucumberTag = '@SOT'
             }
 
             echo "CUCUMBER_TAG: ${cucumberTag}"
