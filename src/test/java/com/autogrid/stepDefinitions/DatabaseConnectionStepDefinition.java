@@ -16,7 +16,7 @@ public class DatabaseConnectionStepDefinition {
 
 	private Connection connection;
 	private ResultSet resultSet;
-	private String filePath = "C:\\Users\\ADMIN\\Downloads\\output.xlsx"; // Output Excel file path
+	private String filePath = "src\\test\\resources\\config\\output.xlsx"; // Output Excel file path
 
 	@Given("User connects to MySQL Workbench database")
 	public void user_connects_to_mysql_workbench_database() {
