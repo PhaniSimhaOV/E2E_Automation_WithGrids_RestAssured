@@ -43,9 +43,9 @@ pipeline {
                 echo "Starting Tests..."
                 script {
                   if (isUnix()) {
-                    sh './mvnw clean test'
+                    sh 'mvn clean test'
                   } else {
-                    bat './mvnw clean test'
+                    bat 'mvn clean test'
                   }
                 }
 
@@ -57,9 +57,9 @@ pipeline {
                 echo "Starting Tests..."
                 script {
                   if (isUnix()) {
-                    sh './mvnw clean test'
+                    sh 'mvn clean test'
                   } else {
-                    bat './mvnw clean test'
+                    bat 'mvn clean test'
                   }
                 }
             }
