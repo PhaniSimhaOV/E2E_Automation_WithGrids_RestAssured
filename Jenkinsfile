@@ -1,7 +1,9 @@
 pipeline {
 
     agent any
-
+     tools {
+            maven 'Maven'  // This is the name of the Maven installation you just configured
+        }
     environment{
         JENKINS_TRIGGERED_BY = "${currentBuild.getBuildCauses()[0].shortDescription}"
     }
