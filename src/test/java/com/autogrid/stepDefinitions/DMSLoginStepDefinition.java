@@ -17,11 +17,13 @@ public class DMSLoginStepDefinition {
 	CommonActions commonActions;
 	
 	DMSLoginPage dMSLoginPage;
-	String testCase = System.getProperty("testCase", "defaultTestCase");
+	String testCase;
     public DMSLoginStepDefinition(){
 		WebDriver driver = LaunchDriver.getDriver();
 		this.dMSLoginPage = new DMSLoginPage(driver);
 		PageFactory.initElements(driver, dMSLoginPage);
+		this.testCase = = System.getProperty("testCase", "defaultTestCase");
+		System.out.println("Login page is displayed."+ testCase);
     }
 	
 	@Given("launch browser and enter url")
