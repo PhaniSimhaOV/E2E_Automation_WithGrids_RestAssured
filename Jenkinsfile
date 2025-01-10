@@ -10,7 +10,7 @@ pipeline {
 
  parameters {
             choice(name: 'Device', choices: ['Mobile', 'Web'], description: 'Which browser to select to?')
-            choice(name: 'Module', choices: ['Lead generation','Test drive','Booking','Invoice','ExtendedWarranty','SOT'], description: 'Please select the module to built')
+            choice(name: 'Module', choices: ['Lead generation','Create test drive & followup','Booking','Invoice','ExtendedWarranty','SOT'], description: 'Please select the module to built')
         }
 
 
@@ -55,8 +55,8 @@ pipeline {
                 } else if (params.Module == 'Booking' && params.Device == 'Web') {
                     cucumberTag = '@Booking'
                 } else if (params.Module == 'Invoice' && params.Device == 'Web') {
-                    cucumberTag = '@ExtendedWarranty'
-                } else if (params.Module == 'Invoice' && params.Device == 'Web') {
+                    cucumberTag = '@Invoice'
+                } else if (params.Module == 'ExtendedWarranty' && params.Device == 'Web') {
                     cucumberTag = '@ExtendedWarranty'
                 } else if (params.Module == 'SOT' && params.Device == 'Web') {
                     cucumberTag = '@SOT'
