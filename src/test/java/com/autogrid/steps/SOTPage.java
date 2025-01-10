@@ -168,7 +168,7 @@ public class SOTPage {
 		try {
 			for (WebElement empName : employeeList) {
 
-				if (empName.getText().equals(employeeName)) {
+				if (empName.getText().trim().toUpperCase().equals(employeeName.trim().toUpperCase())) {
 					empName.click();
 					// JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
 					// js.executeScript("arguments[0].click();", empName);
@@ -186,7 +186,7 @@ public class SOTPage {
 		}
 	}
 
-	public void selectPlaceOfSupply(String placeOfSupply) {
+	public void selectPlaceOfSupply(String PlaceOfSupply) {
 		PlaceOfSupplyDrpDwn.click();
 		commonActions.explicitWait("//ul[@id='placeOfSupply_listbox']//li");
 
@@ -196,9 +196,9 @@ public class SOTPage {
 		try {
 			for (WebElement stateName : SupplyStates) {
 
-				if (stateName.getText().equals(placeOfSupply)) {
+				if (stateName.getText().trim().toUpperCase().equals(PlaceOfSupply.trim().toUpperCase())) {
 					stateName.click();
-					System.out.println("Place Of Supply after Click: " + placeOfSupply.trim().toUpperCase());
+					System.out.println("Place Of Supply after Click: " +  PlaceOfSupply.trim().toUpperCase());
 					break;
 				}
 			}

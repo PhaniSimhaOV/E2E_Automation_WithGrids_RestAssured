@@ -10,7 +10,7 @@ pipeline {
 
  parameters {
             choice(name: 'Device', choices: ['Mobile', 'Web'], description: 'Which browser to select to?')
-            choice(name: 'Module', choices: ['Lead generation','Test drive','Booking','Invoice','Exwarranty','SOT'], description: 'Please select the module to built')
+            choice(name: 'Module', choices: ['Lead generation','Test drive','Booking','Invoice','ExtendedWarranty','SOT'], description: 'Please select the module to built')
 //
 //             string(name: 'CUCUMBER_TAG', defaultValue: '@SmokeTest', description: 'Enter the tag/tags name.')
 //             string(name: 'reportsMail', defaultValue: EMAIL_RECEIVERS, description: 'Send report to these people.')

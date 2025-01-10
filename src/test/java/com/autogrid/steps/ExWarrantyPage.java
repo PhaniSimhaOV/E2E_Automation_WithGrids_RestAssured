@@ -70,6 +70,11 @@ public class ExWarrantyPage {
 	@FindBy(xpath = "//button[text()='close']")
 	private WebElement close;
 
+	
+	@FindBy(xpath = "//p[contains(text(),'Customer No. does not exist. Please enter the CustomerNo')]")
+	private WebElement InvalidVINToast;
+	
+	
 	@FindBy(xpath = "//div/div/div/div[1]/div[2]/table/tbody/tr/td[3]")
 	private WebElement ExWarrantySchemeData;
 
@@ -89,6 +94,7 @@ public class ExWarrantyPage {
 			System.err.println("Failed to click Service Icon" + e.getMessage());
 		}
 	}
+	
 
 	public void clickExtWarrantySubMenu() {
 		try {
@@ -151,6 +157,16 @@ public class ExWarrantyPage {
 			System.err.println("Error in clicking Inquire icon" + e.getMessage());
 		}
 	}
+	
+	public String getInvalidVINToast() {
+		try {
+			return InvalidVINToast.getText();
+		} catch (Exception e) {
+			System.err.println("Error fetching Invalid VIN toast message: " + e.getMessage());
+			throw e;
+		}
+	}
+	
 
 	public void enterCurrentOdoMtrReading(String odoMtrReading) {
 		try {
@@ -168,36 +184,44 @@ public class ExWarrantyPage {
 		}
 	}
 
-	public void selectEmployeeName(String employeeName) {
+	public void selectEmployeeName(String employeeName) throws Throwable {
 		EmployeeNameDrpDwn.click();
 		commonActions.explicitWait("//ul[@id='extbEmpNo_listbox']//li");
+		boolean dataEmployeeNameValue = false;
 
 		WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
 		List<WebElement> employeeList = wait.until(
 				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//ul[@id='extbEmpNo_listbox']//li")));
-		System.out.println(employeeList.size());
+		
+
 		try {
 
 			for (WebElement empName : employeeList) {
 
 				if (empName.getText().trim().toUpperCase().equals(employeeName.trim().toUpperCase())) {
 					empName.click();
+					dataEmployeeNameValue = true;
 					System.out.println("Employee Name after Click: " + empName.getText().trim().toUpperCase());
 					break;
 				}
 
+			}
+			
+			if (dataEmployeeNameValue == false)
+			{
+				throw new RuntimeException("Employee Name not found.");
 			}
 
 			// JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
 			// js.executeScript("arguments[0].value='" + employeeName + "';",
 			// EmployeeNameDrpDwn);
 		} catch (Exception e) {
-			System.err.println("Error in selecting employee Name" + e.getMessage());
+			System.err.println("Error in selecting employee Name - " + e.getMessage());
 		}
 
 	}
 
-	public void selectPlaceOfSupply(String placeOfSupply) {
+	public void selectPlaceOfSupply(String PlaceOfSupply) {
 		PlaceOfSupplyDrpDwn.click();
 		commonActions.explicitWait("//ul[@id='placeOfSupply_listbox']//li");
 
@@ -207,9 +231,9 @@ public class ExWarrantyPage {
 		try {
 			for (WebElement stateName : SupplyStates) {
 
-				if (stateName.getText().trim().toUpperCase().equals(placeOfSupply.trim().toUpperCase())) {
+				if (stateName.getText().trim().toUpperCase().equals(PlaceOfSupply.trim().toUpperCase())) {
 					stateName.click();
-					System.out.println("Place Of Supply after Click: " + placeOfSupply.trim().toUpperCase());
+					System.out.println("Place Of Supply after Click: " + PlaceOfSupply.trim().toUpperCase());
 					break;
 				}
 			}
@@ -270,5 +294,12 @@ public class ExWarrantyPage {
 			System.err.println("Error in clicking close button" + e.getMessage());
 		}
 	}
+
+
+	public WebElement getPopupElement() {
+	    return LaunchDriver.getDriver().findElement(By.xpath("//p[contains(text(),'Customer No. does not exist. Please enter the CustomerNo')]")); // Replace with the actual popup locator
+	}
+	
+
 
 }
