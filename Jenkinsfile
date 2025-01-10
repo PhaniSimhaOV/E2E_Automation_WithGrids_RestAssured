@@ -55,21 +55,6 @@ pipeline {
 
             }
         }
-
-        stage('Clean up') {
-            steps {
-                echo "Starting Tests..."
-                script {
-                  if (isUnix()) {
-                    sh 'mvn clean test -Dcucumber.filter.tags="@DatabaseConnection"'
-                    sh 'mvn clean test -Dcucumber.filter.tags="@${Module}"'
-                  } else {
-                    sh 'mvn clean test -Dcucumber.filter.tags="@DatabaseConnection"'
-                    sh 'mvn clean test -Dcucumber.filter.tags="@${Module}"'
-                  }
-                }
-            }
-        }
     }
     post {
         always {
