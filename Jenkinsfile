@@ -134,7 +134,7 @@ node {
                     sh "mvn clean test -Dcucumber.filter.tags=${cucumberTag}"
                   } else {
                     bat 'mvn clean test -Dcucumber.filter.tags="@DatabaseConnection"'
-                    bat '"mvn clean test -Dcucumber.filter.tags=${cucumberTag}"
+                    bat "mvn clean test -Dcucumber.filter.tags=${cucumberTag}"
                   }
                 }
         }
