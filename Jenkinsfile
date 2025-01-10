@@ -38,7 +38,8 @@ pipeline {
             }
         }
         stage('Run Tests') {
-            echo "Starting Tests..."
+            steps{
+                echo "Starting Tests..."
 
             
             script {
@@ -70,6 +71,8 @@ pipeline {
                     bat "mvn clean test -Dcucumber.filter.tags=${cucumberTag}"
                   }
                 }
+            }
+            
         }
 
         // stage('Interactive Input') {
