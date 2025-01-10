@@ -37,6 +37,24 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Interactive Input') {
+            def userInput = input(
+                id: 'userInput', message: 'Enter path of test reports:',
+                parameters: [
+                    string(defaultValue: 'None', description: 'Path of config file', name: 'Config'),
+                    string(defaultValue: 'None', description: 'Test Info file', name: 'Test')
+                ]
+            )
+
+            def inputConfig = userInput['Config'] ?: ''
+            def inputTest = userInput['Test'] ?: ''
+
+            echo "IQA Sheet Path: ${inputConfig}"
+            echo "Test Info file path: ${inputTest}"
+
+            writeFile file: "inputData.txt", text: "Config=${inputConfig}\r\nTest=${inputTest}"
+            archiveArtifacts 'inputData.txt'
+        }
         stage('Run Tests') {
             steps{
                 echo "Starting Tests..."
@@ -75,24 +93,7 @@ pipeline {
             
         }
 
-        // stage('Interactive Input') {
-        //     def userInput = input(
-        //         id: 'userInput', message: 'Enter path of test reports:',
-        //         parameters: [
-        //             string(defaultValue: 'None', description: 'Path of config file', name: 'Config'),
-        //             string(defaultValue: 'None', description: 'Test Info file', name: 'Test')
-        //         ]
-        //     )
-
-        //     def inputConfig = userInput['Config'] ?: ''
-        //     def inputTest = userInput['Test'] ?: ''
-
-        //     echo "IQA Sheet Path: ${inputConfig}"
-        //     echo "Test Info file path: ${inputTest}"
-
-        //     writeFile file: "inputData.txt", text: "Config=${inputConfig}\r\nTest=${inputTest}"
-        //     archiveArtifacts 'inputData.txt'
-        // }
+        
         
     }
     post {
