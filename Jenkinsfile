@@ -45,9 +45,9 @@ pipeline {
                 echo "Starting Tests..."
                 script {
                   if (isUnix()) {
-                    sh 'mvn clean test'
+                    sh 'mvn clean test -Dcucumber.filter.tags=${Module}'
                   } else {
-                    bat 'mvn clean test'
+                    bat 'mvn clean test -Dcucumber.filter.tags=${Module}'
                   }
                 }
 
@@ -59,9 +59,9 @@ pipeline {
                 echo "Starting Tests..."
                 script {
                   if (isUnix()) {
-                    sh 'mvn clean test'
+                    sh 'mvn clean test -Dcucumber.filter.tags=${Module}'
                   } else {
-                    bat 'mvn clean test'
+                    bat 'mvn clean test -Dcucumber.filter.tags=${Module}'
                   }
                 }
             }
