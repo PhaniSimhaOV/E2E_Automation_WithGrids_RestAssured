@@ -1,6 +1,6 @@
 Feature: User navigates to booking section
 
-  @testBooking
+  @Booking
   #Background: Functionality of booking
   @Booking1
   Scenario: To validate the Booking section in the Sales Operation
