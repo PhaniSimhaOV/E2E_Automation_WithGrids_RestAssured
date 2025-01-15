@@ -33,7 +33,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
-
 public class TestDriveEnquiryPage {
 
     WebDriver driver;

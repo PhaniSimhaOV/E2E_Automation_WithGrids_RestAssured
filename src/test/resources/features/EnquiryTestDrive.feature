@@ -1,5 +1,4 @@
 Feature: User performs test drive for Enqiury
-
   @testDrive
   @TestDriveEnquiry_WalkIn
   Scenario: To Validate the test drive appointment for the given enquiry
