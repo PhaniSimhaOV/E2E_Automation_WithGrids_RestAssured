@@ -42,7 +42,6 @@ public class TestDriveEnquiryPage {
     private Map<String, String> testData; // Stores data from Excel
     private List<Map<String, String>> allTestData; // List to store all data rows from Excel
     private int currentDataRowIndex = 0;
-
     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 
     public TestDriveEnquiryPage(WebDriver driver) throws Exception {
