@@ -34,7 +34,6 @@ import java.util.concurrent.TimeUnit;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
 public class TestDriveEnquiryPage {
-
     WebDriver driver;
     private static final Logger logger = LoggerFactory.getLogger(DMSLoginPage.class);
     private final CommonActions commonActions;
