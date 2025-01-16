@@ -224,63 +224,104 @@ public class TestDriveEnquiryPage {
 
     }
     public void TestDriveAppointmentTab(String test_drive_datetime) throws InterruptedException {
-        TestDriveappointmentbtn.click();
-        System.out.println("Test Drive appointment button clicked successfully");
-        iframe3();
-        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        LocalDate targetDate = LocalDate.parse(test_drive_datetime, inputFormatter);
-        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy");
-        String formattedTargetDate = targetDate.format(outputFormatter);
-        getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        WebElement currentDateElement = getDriver().findElement(By.xpath("//*[@class=\"k-lg-date-format\"]"));
-        String currentDateText = currentDateElement.getText();
-        while (!currentDateText.equals(formattedTargetDate)) {
-            WebElement nextArrow = getDriver().findElement(By.xpath("//a[@aria-label='Next' and @title='Next']"));
-            nextArrow.click();
-            System.out.println("Clicked next arrow, current date is: " + currentDateText);
-            currentDateText = getDriver().findElement(By.xpath("//*[@class=\"k-lg-date-format\"]")).getText();
-        }
-
-        System.out.println("Target date matched: " + formattedTargetDate);
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"); // 12-hour format with AM/PM
-        LocalDateTime inputDateTime = LocalDateTime.parse(test_drive_datetime, formatter);
-        int hour = inputDateTime.getHour();
-        int minute = inputDateTime.getMinute();
-        if (minute >= 30) {
-            hour = (hour == 23) ? 0 : hour + 1;
-        }
-        int displayHour = hour % 12;
-        displayHour = (displayHour == 0) ? 12 : displayHour;
-        String amPm = (hour >= 12) ? "PM" : "AM";
-        String roundedTime = String.format("%02d:00 %s", displayHour, amPm);
-
-
-        String timeSlotXPath = "//div[@class='k-scheduler-times']//th[contains(text(), '" + roundedTime + "')]";
-        String sideRowXPath = "//div[@class='k-scheduler-content']//tr[position() = (count(" +
-                timeSlotXPath + "/preceding-sibling::tr) + 1)]";
-
         try {
+            // Click on Test Drive Appointment Button
+            TestDriveappointmentbtn.click();
+            System.out.println("Test Drive appointment button clicked successfully");
+            iframe3();
 
+            // Format target date
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            LocalDate targetDate = LocalDate.parse(test_drive_datetime, inputFormatter);
+            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy");
+            String formattedTargetDate = targetDate.format(outputFormatter);
+
+            // Find and match the target date
+            getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            WebElement currentDateElement = getDriver().findElement(By.xpath("//*[@class=\"k-lg-date-format\"]"));
+            assertNotNull("Current date element not found", currentDateElement);
+
+            String currentDateText = currentDateElement.getText();
+            int maxAttempts = 50;
+            int count = 0;
+
+            while (!currentDateText.equals(formattedTargetDate)) {
+                if (count >= maxAttempts) {
+                    throw new AssertionError("Max attempts reached. Target date not found.");
+                }
+
+                try {
+                    WebElement nextArrow = getDriver().findElement(By.xpath("//a[@aria-label='Next' and @title='Next']"));
+                    assertNotNull("Next arrow element not found", nextArrow);
+
+                    nextArrow.click();
+                    count++;
+
+                    System.out.println("Clicked next arrow, current date is: " + currentDateText);
+                    currentDateText = getDriver().findElement(By.xpath("//*[@class=\"k-lg-date-format\"]")).getText();
+                } catch (NoSuchElementException e) {
+                    throw new AssertionError("Next arrow not found. Stopping execution.", e);
+                } catch (Exception e) {
+                    throw new AssertionError("An unexpected error occurred during navigation.", e);
+                }
+            }
+
+            // Verify if target date is matched
+            if (!currentDateText.equals(formattedTargetDate)) {
+                throw new AssertionError("Failed to find the target date.");
+            }
+            System.out.println("Target date matched: " + formattedTargetDate);
+
+            // Calculate and locate the nearest time slot
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            LocalDateTime inputDateTime = LocalDateTime.parse(test_drive_datetime, formatter);
+            int hour = inputDateTime.getHour();
+            int minute = inputDateTime.getMinute();
+
+            if (minute >= 30) {
+                hour = (hour == 23) ? 0 : hour + 1;
+            }
+            int displayHour = hour % 12;
+            displayHour = (displayHour == 0) ? 12 : displayHour;
+            String amPm = (hour >= 12) ? "PM" : "AM";
+            String roundedTime = String.format("%02d:00 %s", displayHour, amPm);
+
+            String timeSlotXPath = "//div[@class='k-scheduler-times']//th[contains(text(), '" + roundedTime + "')]";
+            String sideRowXPath = "//div[@class='k-scheduler-content']//tr[position() = (count(" +
+                    timeSlotXPath + "/preceding-sibling::tr) + 1)]";
+
+            // Select the time slot
             WebElement timeSlot = getDriver().findElement(By.xpath(timeSlotXPath));
+            assertNotNull("Time slot element not found", timeSlot);
             timeSlot.click();
-            //System.out.println("Time slot selected: " + roundedTime);
-            // Locate the corresponding side row
+
+            System.out.println("Time slot selected: " + roundedTime);
+
+            // Locate and interact with the side row
             Thread.sleep(3000);
             WebElement sideRow = getDriver().findElement(By.xpath(sideRowXPath));
-            Actions action = new Actions(getDriver());
+            assertNotNull("Side row element not found", sideRow);
 
+            Actions action = new Actions(getDriver());
             action.doubleClick(sideRow).perform();
-//                sideRow.click();
             System.out.println("Side row for time slot " + roundedTime + " selected.");
+
+            // Save the test drive
+            assertNotNull("Save button element not found", saveTestDrivebtn);
+            saveTestDrivebtn.click();
+            System.out.println("Successfully clicked on save button");
+
+            Thread.sleep(8000);
+            iframe3();
+            Thread.sleep(4000);
+        } catch (AssertionError e) {
+            System.err.println("Test case failed: " + e.getMessage());
+            throw e; // Rethrow to ensure the test case fails in the test framework
         } catch (Exception e) {
-            System.out.println("Error selecting time slot or side row: " + e.getMessage());
+            System.err.println("Unexpected error: " + e.getMessage());
+            throw new AssertionError("Test case encountered an unexpected error.", e);
         }
-        saveTestDrivebtn.click();
-        System.out.println("Successfully clicked on save button");
-        Thread.sleep(8000);
-        iframe3();
-        Thread.sleep(4000);
+
     }
 
 
