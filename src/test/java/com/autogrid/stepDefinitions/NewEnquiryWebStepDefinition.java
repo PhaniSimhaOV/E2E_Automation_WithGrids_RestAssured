@@ -50,7 +50,7 @@ public class NewEnquiryWebStepDefinition {
 
 	@Given("User reads data from the Excel sheet regarding New Enquiry\\(Web) feature")
 	public void user_reads_data_from_the_excel_sheet_regarding_new_enquiry_web_feature() throws IOException {
-		String filePath = "C:\\Users\\ADMIN\\Downloads/output.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
 		String sheetName = "Enquiry Lead Creation";
 
 		// Fetch all data from the Excel sheet
@@ -68,7 +68,7 @@ public class NewEnquiryWebStepDefinition {
 		int passedCount = 0;
 		int failedCount = 0;
 
-		String filePath = "C:\\Users\\ADMIN\\Downloads/output.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
 		String sheetName = "Enquiry Lead Creation";
 
 		// Add a new column for error logging
