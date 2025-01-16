@@ -134,7 +134,7 @@ public class TestDriveEnquiryPage {
         System.out.println("Successfully interacted with the element inside the iframe.");
     }
 
-    public void Sales() {
+    public void Sales() throws InterruptedException {
         Thread.sleep(3000);
         SalesBtn.click();
         Thread.sleep(3000);
