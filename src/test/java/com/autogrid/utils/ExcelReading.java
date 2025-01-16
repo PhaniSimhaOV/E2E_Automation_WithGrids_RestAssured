@@ -26,7 +26,7 @@ public class ExcelReading {
 
 			Map<String, String> rowData = new HashMap<>();
 			for (int cellIndex = 0; cellIndex < headerRow.getLastCellNum(); cellIndex++) {
-				String key = dataRow.getCell(cellIndex).getStringCellValue();
+				String key = headerRow.getCell(cellIndex).getStringCellValue();
 				Cell cell = dataRow.getCell(cellIndex);
 				String value = cell != null ? formatter.formatCellValue(cell) : "";
 				rowData.put(key, value);
