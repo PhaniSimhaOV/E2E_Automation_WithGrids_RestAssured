@@ -43,11 +43,12 @@ import java.util.Map;
 
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
-public class TestDriveEnquiryStepDefinition {
 
+public class TestDriveEnquiryStepDefinition {
     CommonActions commonActions;
     DMSLoginPage dMSLoginPage;
     TestDriveEnquiryPage testDriveEnquiryPage;
+
     BookingSalesOperationPage bookingPage;
     private Map<String, String> testData; // Stores data from Excel
     private List<Map<String, String>> allTestData; // List to store all data rows from Excel
@@ -66,7 +67,7 @@ public class TestDriveEnquiryStepDefinition {
     @And("User reads data from the Excel sheet regarding TestDrive Appointment")
     public void userReadsDataFromTheExcelSheetRegardingTestDriveAppointment() throws IOException {
 
-        String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+        String filePath = "C:/Users/Anjali/OneDrive/Desktop/output.xlsx";
         String sheetName = "Test Drive - Enquiry";
         // Fetch all data from the Excel sheet
         allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
@@ -78,13 +79,17 @@ public class TestDriveEnquiryStepDefinition {
 
 
     @And("User processes the TestDrive appointment for walk-in Enquiry for all rows from the Excel sheet")
-    public void userProcessesTheTestDriveAppointmentForWalkInEnquiryForAllRowsFromTheExcelSheet() throws IOException {
+    public void userProcessesTheTestDriveAppointmentForWalkInEnquiryForAllRowsFromTheExcelSheet() throws Throwable {
         int passedCount = 0;
         int failedCount = 0;
 
-        String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+        String filePath = "C:/Users/Anjali/OneDrive/Desktop/output.xlsx";
         String sheetName = "Test Drive - Enquiry";
+
+
+        // Add a new column for error logging
         ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
+
         for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
             System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
 
@@ -95,14 +100,23 @@ public class TestDriveEnquiryStepDefinition {
             boolean rowExecutionPassed = true;
 
             try {
+                // Reset application state for every row
                 System.out.println("Refreshing the browser to reset the application state...");
                 LaunchDriver.getDriver().navigate().refresh();
+
+                // Restart from the initial step
                 restartFromTestDriveSalesMenuStep();
+
+                // Execute all test steps for the current row
                 executeTestStepsForRow_TestDrive();
+
+                // Log success
                 System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
                 ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", "PASSED");
                 passedCount++;
             } catch (Exception e) {
+                // Handle row failure
+                // Handle application state reset on failure
                 try {
                     System.out.println("Navigating to the application's base URL...");
                     LaunchDriver.getDriver().navigate().refresh();
@@ -120,6 +134,7 @@ public class TestDriveEnquiryStepDefinition {
                 ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", errorMessage);
                 rowExecutionPassed = false;
                 failedCount++;
+                // Skip retry and move to the next row
                 System.out.println("Skipping retry for Row " + (currentDataRowIndex + 1) + ". Moving to the next row.");
             } catch (Throwable e) {
                 throw new RuntimeException(e);
@@ -131,9 +146,14 @@ public class TestDriveEnquiryStepDefinition {
                 }
             }
         }
-    }
 
-    private void restartFromTestDriveSalesMenuStep() throws Throwable {
+        // Summary after processing all rows
+        System.out.println("\nExecution Summary:");
+        System.out.println("Total Rows Processed: " + allTestData.size());
+        System.out.println("Rows Passed: " + passedCount);
+        System.out.println("Rows Failed: " + failedCount);
+    }
+        private void restartFromTestDriveSalesMenuStep() throws Throwable {
         try {
             testDriveEnquiryPage.Sales();
             testDriveEnquiryPage.CustomerEnquiry();
@@ -192,20 +212,27 @@ public class TestDriveEnquiryStepDefinition {
 
     }
     private void executeTestStepsForRow_TestDrive() throws Exception {
-        testDriveEnquiryPage.walkinEnquiry();
-        mobileNumberEntry();
-        testDriveEnquiryPage.selecttheEntry();
-        BasicData();
-        testDriveEnquiryPage.FollowUPTab();
-        followupdetails();
-        testDriveAppointement();
-        getDriver().navigate().refresh();
+        try {
+            testDriveEnquiryPage.walkinEnquiry();
+            mobileNumberEntry();
+            testDriveEnquiryPage.selecttheEntry();
+            BasicData();
+            testDriveEnquiryPage.FollowUPTab();
+            followupdetails();
+            testDriveAppointement();
+            getDriver().navigate().refresh();
+        } catch (Exception e) {
+            System.err.println("Error in executing the step: " + e.getMessage());
+            throw new RuntimeException("Failed to restart execution from Sales Menu step.", e);
+        }
+
+
         System.out.println("\nExecution Summary: The data as been picked from the excel performed required validations, and stored the enquiry number and mobile number in the new excel sheet");
     }
 
     @And("User reads data from the Excel sheet regarding TestDrive Appointment for leads")
     public void userReadsDataFromTheExcelSheetRegardingTestDriveAppointmentForLeads() throws IOException {
-        String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+        String filePath = "C:/Users/Anjali/OneDrive/Desktop/output.xlsx";
         String sheetName = "Test Drive - Leads";
         // Fetch all data from the Excel sheet
         allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
@@ -221,7 +248,7 @@ public class TestDriveEnquiryStepDefinition {
         int passedCount = 0;
         int failedCount = 0;
 
-        String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+        String filePath = "C:/Users/Anjali/OneDrive/Desktop/output.xlsx";
         String sheetName = "Test Drive - Enquiry";
         ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
         for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {

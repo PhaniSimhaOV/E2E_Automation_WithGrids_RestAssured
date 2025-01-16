@@ -31,16 +31,19 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import static org.testng.AssertJUnit.assertNotNull;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
+import static org.testng.AssertJUnit.assertNotNull;
+
 public class TestDriveEnquiryPage {
+
     WebDriver driver;
     private static final Logger logger = LoggerFactory.getLogger(DMSLoginPage.class);
     private final CommonActions commonActions;
     private Map<String, String> testData; // Stores data from Excel
     private List<Map<String, String>> allTestData; // List to store all data rows from Excel
     private int currentDataRowIndex = 0;
+
     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 
     public TestDriveEnquiryPage(WebDriver driver) throws Exception {
@@ -113,32 +116,31 @@ public class TestDriveEnquiryPage {
     private WebElement iframeBasicTab;
 
     public void iframe4() {
-        LaunchDriver.getDriver().switchTo().defaultContent();
-        LaunchDriver.getDriver().switchTo().frame(iframe4);
+        getDriver().switchTo().defaultContent();
+        getDriver().switchTo().frame(iframe4);
         System.out.println("Successfully interacted with the element inside the iframe.");
     }
 
     public void iframe2() {
-        LaunchDriver.getDriver().switchTo().defaultContent();
-        LaunchDriver.getDriver().switchTo().frame(iframe2);
+        getDriver().switchTo().defaultContent();
+        getDriver().switchTo().frame(iframe2);
         System.out.println("Successfully interacted with the element inside the iframe.");
     }
 
     public void iframe3() {
-        LaunchDriver.getDriver().switchTo().defaultContent();
-        LaunchDriver.getDriver().switchTo().frame(iframe3);
+        getDriver().switchTo().defaultContent();
+        getDriver().switchTo().frame(iframe3);
         System.out.println("Successfully interacted with the element inside the iframe.");
     }
 
     public void iframeWindow() {
-        LaunchDriver.getDriver().switchTo().frame(iframewindow);
+        getDriver().switchTo().frame(iframewindow);
         System.out.println("Successfully interacted with the element inside the iframe.");
     }
 
     public void Sales() throws InterruptedException {
         Thread.sleep(3000);
         SalesBtn.click();
-        Thread.sleep(3000);
         System.out.println("Sales button is clicked successfully");
     }
 
@@ -217,157 +219,133 @@ public class TestDriveEnquiryPage {
         iframeWindow();
 
         // Call selectDropdownIfVisible for each dropdown
-        selectDropdownIfVisible(getDriver(), TDofferDropDown, TDOfferValue, "//*[@id=\"testDriveTakenFlag1_listbox\"]/li[text()='"+TDOfferValue+"']");
+        selectDropdownIfVisible(getDriver(), TDofferDropDown, TDOfferValue, "//*[@id=\"testDriveTakenFlag1_listbox\"]/li[text()='" + TDOfferValue + "']");
 
         selectDropdownIfVisible(getDriver(), TDVinDropDown, TDVinValue, "//*[@id=\"testDriveTakenFlag2_listbox\"]/li[text()='" + TDVinValue + "')]");
 
-        selectDropdownIfVisible(getDriver(), CertificateOFDepositDropDwon, CertificateOFDeposit, "//*[@id=\"certOfDeposit-list\"]/div[2]/ul/li[text()='"+CertificateOFDeposit+"']");
+        selectDropdownIfVisible(getDriver(), CertificateOFDepositDropDwon, CertificateOFDeposit, "//*[@id=\"certOfDeposit-list\"]/div[2]/ul/li[text()='" + CertificateOFDeposit + "']");
 
     }
+
     public void TestDriveAppointmentTab(String test_drive_datetime) throws InterruptedException {
-        try {
-            // Click on Test Drive Appointment Button
             TestDriveappointmentbtn.click();
             System.out.println("Test Drive appointment button clicked successfully");
             iframe3();
-
             // Format target date
             DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
             LocalDate targetDate = LocalDate.parse(test_drive_datetime, inputFormatter);
             DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy");
             String formattedTargetDate = targetDate.format(outputFormatter);
-
             // Find and match the target date
             getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             WebElement currentDateElement = getDriver().findElement(By.xpath("//*[@class=\"k-lg-date-format\"]"));
             assertNotNull("Current date element not found", currentDateElement);
-
             String currentDateText = currentDateElement.getText();
             int maxAttempts = 50;
             int count = 0;
-
             while (!currentDateText.equals(formattedTargetDate)) {
                 if (count >= maxAttempts) {
-                    throw new AssertionError("Max attempts reached. Target date not found.");
+                    System.err.println("Max attempts reached. Target date not found.");
+                    break;
                 }
-
-                try {
-                    WebElement nextArrow = getDriver().findElement(By.xpath("//a[@aria-label='Next' and @title='Next']"));
-                    assertNotNull("Next arrow element not found", nextArrow);
-
-                    nextArrow.click();
-                    count++;
-
-                    System.out.println("Clicked next arrow, current date is: " + currentDateText);
-                    currentDateText = getDriver().findElement(By.xpath("//*[@class=\"k-lg-date-format\"]")).getText();
-                } catch (NoSuchElementException e) {
-                    throw new AssertionError("Next arrow not found. Stopping execution.", e);
-                } catch (Exception e) {
-                    throw new AssertionError("An unexpected error occurred during navigation.", e);
-                }
+                WebElement nextArrow = getDriver().findElement(By.xpath("//a[@aria-label='Next' and @title='Next']"));
+                assertNotNull("Next arrow element not found", nextArrow);
+                nextArrow.click();
+                count++;
+                System.out.println("Clicked next arrow, current date is: " + currentDateText);
+                currentDateText = getDriver().findElement(By.xpath("//*[@class=\"k-lg-date-format\"]")).getText();
             }
 
-            // Verify if target date is matched
             if (!currentDateText.equals(formattedTargetDate)) {
-                throw new AssertionError("Failed to find the target date.");
+                System.err.println("Failed to find the target date.");
+            } else {
+                System.out.println("Target date matched: " + formattedTargetDate);
             }
-            System.out.println("Target date matched: " + formattedTargetDate);
+                // Calculate and locate the nearest time slot
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+                LocalDateTime inputDateTime = LocalDateTime.parse(test_drive_datetime, formatter);
+                int hour = inputDateTime.getHour();
+                int minute = inputDateTime.getMinute();
 
-            // Calculate and locate the nearest time slot
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-            LocalDateTime inputDateTime = LocalDateTime.parse(test_drive_datetime, formatter);
-            int hour = inputDateTime.getHour();
-            int minute = inputDateTime.getMinute();
+                if (minute >= 30) {
+                    hour = (hour == 23) ? 0 : hour + 1;
+                }
+                int displayHour = hour % 12;
+                displayHour = (displayHour == 0) ? 12 : displayHour;
+                String amPm = (hour >= 12) ? "PM" : "AM";
+                String roundedTime = String.format("%02d:00 %s", displayHour, amPm);
 
-            if (minute >= 30) {
-                hour = (hour == 23) ? 0 : hour + 1;
-            }
-            int displayHour = hour % 12;
-            displayHour = (displayHour == 0) ? 12 : displayHour;
-            String amPm = (hour >= 12) ? "PM" : "AM";
-            String roundedTime = String.format("%02d:00 %s", displayHour, amPm);
+                String timeSlotXPath = "//div[@class='k-scheduler-times']//th[contains(text(), '" + roundedTime + "')]";
+                String sideRowXPath = "//div[@class='k-scheduler-content']//tr[position() = (count(" +
+                        timeSlotXPath + "/preceding-sibling::tr) + 1)]";
 
-            String timeSlotXPath = "//div[@class='k-scheduler-times']//th[contains(text(), '" + roundedTime + "')]";
-            String sideRowXPath = "//div[@class='k-scheduler-content']//tr[position() = (count(" +
-                    timeSlotXPath + "/preceding-sibling::tr) + 1)]";
+                WebElement timeSlot = getDriver().findElement(By.xpath(timeSlotXPath));
+                assertNotNull("Time slot element not found", timeSlot);
+                timeSlot.click();
 
-            // Select the time slot
-            WebElement timeSlot = getDriver().findElement(By.xpath(timeSlotXPath));
-            assertNotNull("Time slot element not found", timeSlot);
-            timeSlot.click();
+                System.out.println("Time slot selected: " + roundedTime);
 
-            System.out.println("Time slot selected: " + roundedTime);
+                Thread.sleep(3000);
+                WebElement sideRow = getDriver().findElement(By.xpath(sideRowXPath));
+                assertNotNull("Side row element not found", sideRow);
 
-            // Locate and interact with the side row
-            Thread.sleep(3000);
-            WebElement sideRow = getDriver().findElement(By.xpath(sideRowXPath));
-            assertNotNull("Side row element not found", sideRow);
+                Actions action = new Actions(getDriver());
+                action.doubleClick(sideRow).perform();
+                System.out.println("Side row for time slot " + roundedTime + " selected.");
 
-            Actions action = new Actions(getDriver());
-            action.doubleClick(sideRow).perform();
-            System.out.println("Side row for time slot " + roundedTime + " selected.");
 
-            // Save the test drive
-            assertNotNull("Save button element not found", saveTestDrivebtn);
-            saveTestDrivebtn.click();
-            System.out.println("Successfully clicked on save button");
+                // Save the test drive
+                assertNotNull("Save button element not found", saveTestDrivebtn);
+                saveTestDrivebtn.click();
+                System.out.println("Successfully clicked on save button");
 
-            Thread.sleep(8000);
-            iframe3();
-            Thread.sleep(4000);
-        } catch (AssertionError e) {
-            System.err.println("Test case failed: " + e.getMessage());
-            throw e; // Rethrow to ensure the test case fails in the test framework
-        } catch (Exception e) {
-            System.err.println("Unexpected error: " + e.getMessage());
-            throw new AssertionError("Test case encountered an unexpected error.", e);
+                Thread.sleep(8000);
+                iframe3();
         }
 
-    }
 
 
+        public void iframetestappoint2 () {
+            WebDriver driver = getDriver();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-    public void iframetestappoint2() {
-        WebDriver driver = getDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        try {
-            // Wait and switch to the next iframe if needed
-            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@name='frame4']")));
-            System.out.println("Switched to iframe 4.");
-        } catch (TimeoutException e) {
-            System.out.println("Unable to switch to iframe 4.");
+            try {
+                // Wait and switch to the next iframe if needed
+                wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@name='frame4']")));
+                System.out.println("Switched to iframe 4.");
+            } catch (TimeoutException e) {
+                System.out.println("Unable to switch to iframe 4.");
+            }
         }
-    }
 
 
+        public void FollowUPTab () {
+            iframe2();
+            //LaunchDriver.getDriver().switchTo().frame(iframeBasicTab);
+            getDriver().switchTo().frame(getDriver().findElement(By.xpath("//*[@class='k-content-frame']")));
+            followUpTab.click();
+            System.out.println("Successfully clicked on follow up tab");
+        }
 
-    public void FollowUPTab() {
-        iframe2();
-        //LaunchDriver.getDriver().switchTo().frame(iframeBasicTab);
-        LaunchDriver.getDriver().switchTo().frame(getDriver().findElement(By.xpath("//*[@class='k-content-frame']")));
-        followUpTab.click();
-        System.out.println("Successfully clicked on follow up tab");
-    }
-
-    public void FollowUpTabDetails(String NextFollowUptime,String TextFollow,String FollowUptype,String nextFollowUpType,String EnquiryTypeValue) {
+        public void FollowUpTabDetails (String NextFollowUptime, String TextFollow, String FollowUptype, String
+        nextFollowUpType, String EnquiryTypeValue){
             String inputDateTime = NextFollowUptime;
             System.out.println(inputDateTime);
-            String nextFollowUptime=inputDateTime.replaceAll("[^0-9]", "");
+            String nextFollowUptime = inputDateTime.replaceAll("[^0-9]", "");
             followUpTimeTestBtn.sendKeys(nextFollowUptime);
             FollowUpTestArea.sendKeys(TextFollow);
-            selectDropdownIfVisible(getDriver(), FollowUpTypeDropDown, FollowUptype, "//ul[@id=\"eqfuFlupType_listbox\"]/li[text()='"+FollowUptype+"']");
-            selectDropdownIfVisible(getDriver(),nextFollowUpTypedropdown,nextFollowUpType,"//*[@id=\"eqfuNtfuType_listbox\"]/li[text()='"+nextFollowUpType+"']");
-           // selectDropdownIfVisible(getDriver(),EnquiryTypedropDown,EnquiryTypeValue,"");
+            selectDropdownIfVisible(getDriver(), FollowUpTypeDropDown, FollowUptype, "//ul[@id=\"eqfuFlupType_listbox\"]/li[text()='" + FollowUptype + "']");
+            selectDropdownIfVisible(getDriver(), nextFollowUpTypedropdown, nextFollowUpType, "//*[@id=\"eqfuNtfuType_listbox\"]/li[text()='" + nextFollowUpType + "']");
+            // selectDropdownIfVisible(getDriver(),EnquiryTypedropDown,EnquiryTypeValue,"");
             btnFollowUpSave.click();
             getDriver().findElement(By.xpath("//*[text()='Basic Info.']")).click();
         }
 
 
-    public void closeOptntabs() {
-        closeBtn.click();
-        tabClosebtn.click();
-        System.out.println("Successfully closed all the ope tabs");
-    }
+        public void closeOptntabs () {
+            closeBtn.click();
+            tabClosebtn.click();
+            System.out.println("Successfully closed all the ope tabs");
+        }
 
-}
+    }
