@@ -43,6 +43,7 @@ import java.util.Map;
 
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
+
 public class TestDriveEnquiryStepDefinition {
     CommonActions commonActions;
     DMSLoginPage dMSLoginPage;
@@ -295,7 +296,6 @@ public class TestDriveEnquiryStepDefinition {
                     System.err.println("Row " + (currentDataRowIndex + 1) + " processing failed.");
                 }
             }
-        
         }
     }
 
@@ -304,4 +304,3 @@ public class TestDriveEnquiryStepDefinition {
     }
 
 }
-
