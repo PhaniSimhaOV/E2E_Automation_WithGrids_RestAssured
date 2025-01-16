@@ -1,6 +1,7 @@
 package com.autogrid.utils;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -67,5 +68,41 @@ public class ExcelUtility {
                 e.printStackTrace();
             }
         }
+    }
+    public static String getMappedValue(String lookupValue) throws IOException {
+        // Load the Excel file
+        FileInputStream file = new FileInputStream(new File("Mapping.xlsx"));
+        Workbook workbook = new XSSFWorkbook(file);
+
+        // Get the first sheet from the workbook
+        Sheet sheet = workbook.getSheetAt(0);
+
+        // Iterate through each row in the sheet (skip header if any)
+        for (Row row : sheet) {
+            // Assuming data starts from row 1 (index 0 is the header)
+            if (row.getRowNum() == 0) continue; // Skip header row if necessary
+
+            // Get the value from the first column (index 0)
+            Cell firstColumnCell = row.getCell(0);
+            if (firstColumnCell != null && firstColumnCell.getCellType() == CellType.STRING) {
+                String cellValue = firstColumnCell.getStringCellValue();
+
+                // If the lookup value matches the value in the first column, get the second column value
+                if (cellValue.equals(lookupValue)) {
+                    // Get value from second column (index 1)
+                    Cell secondColumnCell = row.getCell(1);
+                    if (secondColumnCell != null) {
+                        System.out.println("Mapped Value is: "+secondColumnCell.toString());
+                        return secondColumnCell.toString(); // Return the value from the second column
+                    }
+                }
+            }
+        }
+
+        // Close the workbook and file input stream
+        workbook.close();
+        file.close();
+
+        return null; // Return message if value is not found
     }
 }
