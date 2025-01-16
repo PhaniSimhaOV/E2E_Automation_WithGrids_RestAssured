@@ -135,7 +135,9 @@ public class TestDriveEnquiryPage {
     }
 
     public void Sales() {
+        Thread.sleep(3000);
         SalesBtn.click();
+        Thread.sleep(3000);
         System.out.println("Sales button is clicked successfully");
     }
 
