@@ -249,7 +249,9 @@ public class TestDriveEnquiryStepDefinition {
         int failedCount = 0;
 
         String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
-ndex++) {
+        String sheetName = "Test Drive - Enquiry";
+        ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
+        for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
             System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
 
             // Fetch and log current row data
@@ -294,6 +296,7 @@ ndex++) {
                     System.err.println("Row " + (currentDataRowIndex + 1) + " processing failed.");
                 }
             }
+        
         }
     }
 
