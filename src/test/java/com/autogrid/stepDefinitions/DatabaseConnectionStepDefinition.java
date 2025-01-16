@@ -24,7 +24,7 @@ public class DatabaseConnectionStepDefinition {
 			// Load database credentials from properties file
 			Properties properties = new Properties();
 			FileInputStream fis = new FileInputStream(
-					'src/test/resources/config/project.properties');
+					"src/test/resources/config/project.properties");
 			properties.load(fis);
 
 			String dbUrl = properties.getProperty("db.url");
