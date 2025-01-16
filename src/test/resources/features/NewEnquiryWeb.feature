@@ -1,6 +1,6 @@
 Feature: User tries to verify the New Enquiry functionality through Web Application
 
-  @web @test @WebEnquiry
+  @WebEnquiry
   Scenario: User tries to verify the New Enquiry functionality through Web Application
     Given launch browser and enter url
     When user enters a valid username

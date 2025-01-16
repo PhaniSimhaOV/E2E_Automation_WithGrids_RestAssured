@@ -10,7 +10,10 @@ pipeline {
         choice(name: 'Device', choices: ['Mobile', 'Web'], description: 'Select the device')
         choice(name: 'Module', choices: [
             'Lead generation', 
-            'Create test drive & followup', 
+            'Create test drive & followup',
+            'WebEnquiry',
+            'TestDriveEnquiryLead',
+            'TestDriveEnquiryWalkIn',
             'Booking', 
             'Invoice', 
             'ExtendedWarranty', 
