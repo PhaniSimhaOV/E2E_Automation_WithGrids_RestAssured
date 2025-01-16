@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import com.autogrid.steps.DMSLoginPage;
 import com.autogrid.steps.InvoicePage;
-import com.autogrid.steps.NewEnquiryPage;
 import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.ExcelReading;
 import com.autogrid.utils.ExcelWriting;
@@ -25,7 +24,6 @@ import java.time.Duration;
 public class InvoiceStepDefinition {
 	CommonActions commonActions;
 	DMSLoginPage dMSLoginPage;
-	NewEnquiryPage newenquirypage;
 	InvoicePage invoicepage;
 	DatabaseConnectionStepDefinition DatabaseConnectionStepDefinition;
 	private Map<String, String> testData; // Stores data from Excel
@@ -50,7 +48,7 @@ public class InvoiceStepDefinition {
 
 	@Given("User reads data from the Excel sheet regarding Invoice feature")
 	public void user_reads_data_from_the_excel_sheet_regarding_invoice_feature() throws IOException {
-		String filePath = "src/test/resources/config/output.xlsx";
+		String filePath = "C:/Users/Anjali/OneDrive/Desktop/output.xlsx";
 		String sheetName = "Invoice Leads";
 
 		// Fetch all data from the Excel sheet
@@ -68,7 +66,7 @@ public class InvoiceStepDefinition {
 		int passedCount = 0;
 	    int failedCount = 0;
 
-	    String filePath = "src/test/resources/config/output.xlsx";
+	    String filePath = "C:/Users/Anjali/OneDrive/Desktop/output.xlsx";
 	    String sheetName = "Invoice Leads";
 
 	    // Add a new column for error logging

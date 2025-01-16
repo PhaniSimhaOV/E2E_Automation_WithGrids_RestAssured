@@ -7,8 +7,8 @@ Feature: User performs test drive for Enqiury
     When user enters a valid username
     And user enter a valid password
     And clicks on Send OTP for booking
-#    And user enters a valid OTP
-#    And clicks on login
+   And user enters a valid OTP
+   And clicks on login
     And User reads data from the Excel sheet regarding TestDrive Appointment
     And User processes the TestDrive appointment for walk-in Enquiry for all rows from the Excel sheet
 
@@ -18,7 +18,7 @@ Feature: User performs test drive for Enqiury
     When user enters a valid username
     And user enter a valid password
     And clicks on Send OTP for booking
-#    And user enters a valid OTP
-#    And clicks on login
+    And user enters a valid OTP
+    And clicks on login
     And User reads data from the Excel sheet regarding TestDrive Appointment for leads
     And User processes the TestDrive appointment for Leads Enquiry for all rows from the Excel sheet
