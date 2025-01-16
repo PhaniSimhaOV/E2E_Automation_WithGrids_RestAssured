@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import static org.testng.AssertJUnit.assertNotNull;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
 public class TestDriveEnquiryPage {
