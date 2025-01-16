@@ -43,7 +43,7 @@ import java.util.Map;
 
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
-
+public class TestDriveEnquiryStepDefinition {
 public class TestDriveEnquiryStepDefinition {
     CommonActions commonActions;
     DMSLoginPage dMSLoginPage;
@@ -67,7 +67,7 @@ public class TestDriveEnquiryStepDefinition {
     @And("User reads data from the Excel sheet regarding TestDrive Appointment")
     public void userReadsDataFromTheExcelSheetRegardingTestDriveAppointment() throws IOException {
 
-        String filePath = "C:/Users/Anjali/OneDrive/Desktop/output.xlsx";
+        String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
         String sheetName = "Test Drive - Enquiry";
         // Fetch all data from the Excel sheet
         allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
@@ -83,7 +83,7 @@ public class TestDriveEnquiryStepDefinition {
         int passedCount = 0;
         int failedCount = 0;
 
-        String filePath = "C:/Users/Anjali/OneDrive/Desktop/output.xlsx";
+        String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
         String sheetName = "Test Drive - Enquiry";
 
 
@@ -232,7 +232,7 @@ public class TestDriveEnquiryStepDefinition {
 
     @And("User reads data from the Excel sheet regarding TestDrive Appointment for leads")
     public void userReadsDataFromTheExcelSheetRegardingTestDriveAppointmentForLeads() throws IOException {
-        String filePath = "C:/Users/Anjali/OneDrive/Desktop/output.xlsx";
+        String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
         String sheetName = "Test Drive - Leads";
         // Fetch all data from the Excel sheet
         allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
@@ -248,10 +248,8 @@ public class TestDriveEnquiryStepDefinition {
         int passedCount = 0;
         int failedCount = 0;
 
-        String filePath = "C:/Users/Anjali/OneDrive/Desktop/output.xlsx";
-        String sheetName = "Test Drive - Enquiry";
-        ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
-        for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
+        String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+ndex++) {
             System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
 
             // Fetch and log current row data
