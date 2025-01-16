@@ -11,9 +11,9 @@ pipeline {
         choice(name: 'Module', choices: [
             'Lead generation', 
             'Create test drive & followup',
-            'WebEnquiry',
-            'TestDriveEnquiryLead',
-            'TestDriveEnquiryWalkIn',
+            'Web Enquiry',
+            'Test Drive Enquiry Lead',
+            'Test Drive Enquiry WalkIn',
             'Booking', 
             'Invoice', 
             'ExtendedWarranty', 
@@ -68,6 +68,12 @@ pipeline {
                         cucumberTag = '@ExtendedWarranty'
                     } else if (params.Module == 'SOT' && params.Device == 'Web') {
                         cucumberTag = '@SOT'
+                    }else if (params.Module == 'Web Enquiry' && params.Device == 'Web') {
+                        cucumberTag = '@WebEnquiry'
+                    }else if (params.Module == 'Test Drive Enquiry Lead' && params.Device == 'Web') {
+                        cucumberTag = '@TestDriveEnquiryLead'
+                    }else if (params.Module == 'Test Drive Enquiry WalkIn' && params.Device == 'Web') {
+                        cucumberTag = '@TestDriveEnquiryWalkIn'
                     }
 
                     echo "CUCUMBER_TAG: ${cucumberTag}"
