@@ -12,9 +12,10 @@ pipeline {
             'Lead generation', 
             'Create test drive & followup',
             'Web Enquiry',
-            'Test Drive Enquiry Lead',
-            'Test Drive Enquiry WalkIn',
+            'Test Drive Enquiry',
             'Booking', 
+            'Booking- validate by account manager',
+            'Booking- Verify VIN number',
             'Invoice', 
             'ExtendedWarranty', 
             'SOT'
@@ -61,8 +62,12 @@ pipeline {
                     } else if (params.Module == 'Create test drive & followup' && params.Device == 'Mobile') {
                         cucumberTag = '@StartTestDriveAndAddFollowUp'
                     } else if (params.Module == 'Booking' && params.Device == 'Web') {
-                        cucumberTag = '@Booking'
-                    } else if (params.Module == 'Invoice' && params.Device == 'Web') {
+                        cucumberTag = '@Booking1'
+                    } else if (params.Module == 'Booking- validate by account manager' && params.Device == 'Web') {
+                        cucumberTag = '@Booking2'
+                    } else if (params.Module == 'Booking- Verify VIN number' && params.Device == 'Web') {
+                        cucumberTag = '@Booking3'
+                    }  else if (params.Module == 'Invoice' && params.Device == 'Web') {
                         cucumberTag = '@Invoice'
                     } else if (params.Module == 'ExtendedWarranty' && params.Device == 'Web') {
                         cucumberTag = '@ExtendedWarranty'
@@ -72,7 +77,7 @@ pipeline {
                         cucumberTag = '@WebEnquiry'
                     }else if (params.Module == 'Test Drive Enquiry Lead' && params.Device == 'Web') {
                         cucumberTag = '@TestDriveEnquiryLead'
-                    }else if (params.Module == 'Test Drive Enquiry WalkIn' && params.Device == 'Web') {
+                    }else if (params.Module == 'Test Drive Enquiry' && params.Device == 'Web') {
                         cucumberTag = '@TestDriveEnquiryWalkIn'
                     }
 

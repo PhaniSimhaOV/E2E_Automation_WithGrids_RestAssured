@@ -13,7 +13,7 @@ Feature: User navigates to booking section
     And User reads data from the Excel sheet regarding Booking Feature
     And User processes the Booking for all rows from the Excel sheet from the sheet Name Booking Leads
 
-@Booking2
+  @Booking2
   Scenario: to Validate the booking section by providing the account details
   Given launch browser and enter url
   When user enters a valid username for account
