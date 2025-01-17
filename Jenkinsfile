@@ -14,8 +14,6 @@ pipeline {
             'Web Enquiry',
             'Test Drive Enquiry',
             'Booking', 
-            'Booking- validate by account manager',
-            'Booking- Verify VIN number',
             'Invoice', 
             'ExtendedWarranty', 
             'SOT'
