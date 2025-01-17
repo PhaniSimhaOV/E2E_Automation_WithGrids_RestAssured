@@ -153,7 +153,7 @@ public class DMSLoginStepDefinition {
 			// Load database credentials from properties file
 			Properties properties = new Properties();
 			FileInputStream fis = new FileInputStream(
-					"D:\\E2E_Automation_WithGrids_RestAssured\\src\\test\\resources\\config\\project.properties");
+					"src\\test\\resources\\config\\project.properties");
 			properties.load(fis);
 
 			String dbUrl = properties.getProperty("db.url");
