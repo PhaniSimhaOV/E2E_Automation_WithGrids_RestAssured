@@ -8,8 +8,9 @@ Feature: User navigates to booking section
     When user enters a valid username
     And user enter a valid password
     And clicks on Send OTP for booking
-    #And user enters a valid OTP
-    #And clicks on login
+    And reads OTP from the database
+    And enters the OTP into the OTP field
+    And clicks on login
     And User reads data from the Excel sheet regarding Booking Feature
     And User processes the Booking for all rows from the Excel sheet from the sheet Name Booking Leads
 
