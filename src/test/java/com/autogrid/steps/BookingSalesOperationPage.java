@@ -232,7 +232,7 @@ public class BookingSalesOperationPage {
 //            System.out.println("Enquiry Number: " + enquiryNumber);
 //
 //            // Path to your existing Excel file
-//            String excelFilePath = "src/test/resources/config/BookingDetails.xlsx";
+//            String excelFilePath = "C:/Users/Anjali/OneDrive/Desktop/BookingDetails.xlsx";
 //            FileInputStream fis = new FileInputStream(new File(excelFilePath));
 //            Workbook workbook = new XSSFWorkbook(fis);
 //
@@ -389,7 +389,7 @@ public class BookingSalesOperationPage {
             String contactNumber = contactField.getAttribute("value");
 
             System.out.println("Enquiry Number: " + enquiryNumber);
-            String filePath = "src/test/resources/config/output.xlsx";
+            String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
             String sheetName = "BookingDetails";
 
                 File excelFile = new File(filePath);
@@ -786,7 +786,7 @@ public void mgtListSalesvin() throws InterruptedException {
         String ContactNumber=getDriver().findElement(By.xpath("//*[@id=\"contactNo\"]")).getText();
         String Enquirynumber = getDriver().findElement(By.xpath("//*[@id=\"enquiryNo\"]")).getText();
         // Path to your existing Excel file
-        String excelFilePath = "src/test/resources/config/BookingDetails.xlsx";
+        String excelFilePath = "C:/Users/Anjali/OneDrive/Desktop/BookingDetails.xlsx";
         // Load the Excel file
         FileInputStream fis = new FileInputStream(new File(excelFilePath));
         Workbook workbook = new XSSFWorkbook(fis);
