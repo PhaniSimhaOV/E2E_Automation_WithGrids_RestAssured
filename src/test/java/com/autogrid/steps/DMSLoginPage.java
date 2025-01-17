@@ -267,4 +267,8 @@ public class DMSLoginPage {
             return false;
         }
     }
+
+    public WebElement getEnterOTP() {
+		return EnterOTP;
+	}
 }

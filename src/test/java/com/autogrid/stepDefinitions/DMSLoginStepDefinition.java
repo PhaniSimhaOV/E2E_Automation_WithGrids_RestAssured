@@ -13,7 +13,11 @@ import io.cucumber.java.en.And;
 import java.util.Scanner;
 import java.util.List;
 import java.util.Arrays;
-
+import java.io.FileInputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.Properties;
 
 public class DMSLoginStepDefinition {
 	CommonActions commonActions;
@@ -133,7 +137,7 @@ public class DMSLoginStepDefinition {
     }
 
 	@When("clicks on login")
-	public void clicks_on_login() {
+	public void clicks_on_login() throws Throwable {
 		try {
 			Thread.sleep(2000);
 			dMSLoginPage.clickLoginButton();
@@ -141,7 +145,51 @@ public class DMSLoginStepDefinition {
         } catch (Exception e) {
             System.err.println("Error during login button click: " + e.getMessage());
         }
+		DeleteOTPFromDatabase();
     }
+	private void DeleteOTPFromDatabase() throws Throwable {
+		// Example: Call test methods for each step
+		try {
+			// Load database credentials from properties file
+			Properties properties = new Properties();
+			FileInputStream fis = new FileInputStream(
+					"D:\\E2E_Automation_WithGrids_RestAssured\\src\\test\\resources\\config\\project.properties");
+			properties.load(fis);
+
+			String dbUrl = properties.getProperty("db.url");
+			String dbUsername = properties.getProperty("db.username");
+			String dbPassword = properties.getProperty("db.password");
+
+			// SQL Queries
+			String disableSafeUpdates = "SET SQL_SAFE_UPDATES = 0;";
+			String deleteOtpQuery = "UPDATE dms_oem_dual_punching_job SET otp = NULL WHERE org_id = 16;";
+			String enableSafeUpdates = "SET SQL_SAFE_UPDATES = 1;";
+
+			// Establish database connection
+			try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+					Statement statement = connection.createStatement()) {
+
+				// Disable safe updates
+				statement.execute(disableSafeUpdates);
+				System.out.println("Safe updates disabled.");
+
+				// Execute the delete query
+				int rowsAffected = statement.executeUpdate(deleteOtpQuery);
+				if (rowsAffected > 0) {
+					System.out.println("Deleted OTP successfully. Rows affected: " + rowsAffected);
+				} else {
+					System.out.println("No OTP found to delete for org_id=16.");
+				}
+
+				// Re-enable safe updates
+				statement.execute(enableSafeUpdates);
+				System.out.println("Safe updates re-enabled.");
+			}
+		} catch (Exception e) {
+			System.err.println("Error while deleting OTP from the database: " + e.getMessage());
+			throw new RuntimeException(e);
+		}
+	}
 
 	@Then("user able to see validation message for UserID")
 	public void user_able_to_see_validation_message_for_userid() throws Exception {

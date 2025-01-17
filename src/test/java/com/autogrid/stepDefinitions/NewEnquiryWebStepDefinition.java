@@ -21,6 +21,14 @@ import com.autogrid.utils.ExcelWriting;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Properties;
+import java.io.FileInputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class NewEnquiryWebStepDefinition {
 	CommonActions commonActions;
@@ -36,6 +44,8 @@ public class NewEnquiryWebStepDefinition {
 		WebDriver driver = LaunchDriver.getDriver();
 		this.newenquirypage = new NewEnquiryWebPage(driver);
 		PageFactory.initElements(driver, newenquirypage);
+		this.dMSLoginPage = new DMSLoginPage(driver);
+		PageFactory.initElements(driver, dMSLoginPage);
 	}
 
 	private void waitForVisibilityOfElement(WebElement element) {
@@ -61,7 +71,102 @@ public class NewEnquiryWebStepDefinition {
 		}
 		System.out.println("All Test Data Loaded: " + allTestData.size() + " rows.");
 	}
+	@When("reads OTP from the database")
+	public void reads_otp_from_the_database() {
+		try {
+			// Ensure testData is initialized
+			if (testData == null) {
+				testData = new HashMap<>(); // Initialize testData if it's null
+			}
 
+			// Load database credentials from properties file
+			Properties properties = new Properties();
+			FileInputStream fis = new FileInputStream(
+					"D:\\E2E_Automation_WithGrids_RestAssured\\src\\test\\resources\\config\\project.properties");
+			properties.load(fis);
+
+			String dbUrl = properties.getProperty("db.url");
+			String dbUsername = properties.getProperty("db.username");
+			String dbPassword = properties.getProperty("db.password");
+			int maxRetries = Integer.parseInt(properties.getProperty("db.retry.OTP.count")); // Default to 12 retries if
+																								// not defined
+
+			// Query to fetch the latest OTP
+			String otpQuery = "select otp from dms_oem_dual_punching_job where org_id=16;";
+
+			// Initialize variables for retry logic
+			int retryCount = 0;
+			boolean otpFound = false;
+
+			while (retryCount < maxRetries && !otpFound) {
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
+				ResultSet resultSet = null;
+
+				try {
+					// Establish database connection
+					connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+					preparedStatement = connection.prepareStatement(otpQuery);
+
+					// Execute query
+					resultSet = preparedStatement.executeQuery();
+					if (resultSet.next()) {
+						String otp = resultSet.getString("otp");
+						if (otp != null && !otp.trim().isEmpty()) {
+							testData.put("otp", otp); // Store OTP in test data
+							System.out.println("Fetched OTP from database: " + otp);
+							otpFound = true; // Exit loop
+						}
+					}
+
+					if (!otpFound) {
+						System.out.println("No OTP found. Retrying in 5 seconds...");
+						Thread.sleep(5000); // Wait for 5 seconds before retrying
+						retryCount++;
+					}
+				} catch (Exception e) {
+					System.err.println("Error during database query execution: " + e.getMessage());
+					throw new RuntimeException(e);
+				} finally {
+					// Close database resources
+					if (resultSet != null)
+						resultSet.close();
+					if (preparedStatement != null)
+						preparedStatement.close();
+					if (connection != null)
+						connection.close();
+				}
+			}
+
+			// If OTP is not found after max retries, throw an exception
+			if (!otpFound) {
+				throw new RuntimeException("No OTP found in the database after maximum retries.");
+			}
+
+		} catch (Exception e) {
+			System.err.println("Error while fetching OTP from the database: " + e.getMessage());
+			throw new RuntimeException(e);
+		}
+	}
+
+	@When("enters the OTP into the OTP field")
+	public void enters_the_otp_into_the_otp_field() throws Throwable {
+		try {
+			// Fetch the OTP from test data
+			String otp = testData.get("otp");
+			if (otp == null || otp.isEmpty()) {
+				throw new RuntimeException("OTP is not available in test data.");
+			}
+
+			// Wait for visibility of OTP field and enter the OTP
+			waitForVisibilityOfElement(dMSLoginPage.getEnterOTP());
+			dMSLoginPage.enterOTP(otp);
+			System.out.println("Entered OTP into the OTP field: " + otp);
+		} catch (Exception e) {
+			System.err.println("Error while entering OTP into the OTP field: " + e.getMessage());
+			throw new RuntimeException(e);
+		}
+	}
 	@When("User processes the New Enquiry\\(Web) for all rows from the Excel sheet of sheet Name Enquiry Lead Creation")
 	public void user_processes_the__new_enquiry_web_for_all_rows_from_the_excel_sheet_of_sheet_name_enquiry_lead_creation()
 			throws Throwable {
