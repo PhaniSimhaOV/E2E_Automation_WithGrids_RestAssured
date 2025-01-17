@@ -20,12 +20,14 @@ import io.cucumber.java.en.And;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import com.autogrid.steps.NewEnquiryWebPage;
 
 public class InvoiceStepDefinition {
 	CommonActions commonActions;
 	DMSLoginPage dMSLoginPage;
 	InvoicePage invoicepage;
 	DatabaseConnectionStepDefinition DatabaseConnectionStepDefinition;
+	NewEnquiryWebPage newEnquiryWebPage;
 	private Map<String, String> testData; // Stores data from Excel
 	private List<Map<String, String>> allTestData; // List to store all data rows from Excel
 	private int currentDataRowIndex = 0; // To keep track of the current row index
@@ -34,6 +36,8 @@ public class InvoiceStepDefinition {
 		WebDriver driver = LaunchDriver.getDriver();
 		this.invoicepage = new InvoicePage(driver);
 		PageFactory.initElements(driver, invoicepage);
+		this.newEnquiryWebPage = new NewEnquiryWebPage(driver);
+		PageFactory.initElements(driver, newEnquiryWebPage);
 	}
 
 	private void waitForVisibilityOfElement(WebElement element) {

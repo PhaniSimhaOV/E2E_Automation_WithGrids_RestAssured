@@ -40,7 +40,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+import com.autogrid.steps.NewEnquiryWebPage;
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
 
@@ -48,7 +48,7 @@ public class TestDriveEnquiryStepDefinition {
     CommonActions commonActions;
     DMSLoginPage dMSLoginPage;
     TestDriveEnquiryPage testDriveEnquiryPage;
-
+    NewEnquiryWebPage newEnquiryWebPage;
     BookingSalesOperationPage bookingPage;
     private Map<String, String> testData; // Stores data from Excel
     private List<Map<String, String>> allTestData; // List to store all data rows from Excel
@@ -62,6 +62,8 @@ public class TestDriveEnquiryStepDefinition {
         PageFactory.initElements(driver, dMSLoginPage);
         this.testDriveEnquiryPage = new TestDriveEnquiryPage(driver);
         PageFactory.initElements(driver, testDriveEnquiryPage);
+        this.newEnquiryWebPage = new NewEnquiryWebPage(driver);
+		PageFactory.initElements(driver, newEnquiryWebPage);
     }
 
     @And("User reads data from the Excel sheet regarding TestDrive Appointment")

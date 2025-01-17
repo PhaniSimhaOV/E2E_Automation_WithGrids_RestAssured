@@ -36,6 +36,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import com.autogrid.steps.NewEnquiryWebPage;
 
 
 import static com.autogrid.utils.LaunchDriver.getDriver;
@@ -43,7 +44,7 @@ import static com.autogrid.utils.LaunchDriver.getDriver;
 public class BookingSalesOperationStepDefinition {
     CommonActions commonActions;
     DMSLoginPage dMSLoginPage;
-
+    NewEnquiryWebPage newEnquiryWebPage;
     BookingSalesOperationPage bookingPage;
     private Map<String, String> testData; // Stores data from Excel
     private List<Map<String, String>> allTestData; // List to store all data rows from Excel
@@ -55,6 +56,8 @@ public class BookingSalesOperationStepDefinition {
         PageFactory.initElements(driver, bookingPage);
         this.dMSLoginPage = new DMSLoginPage(driver);
         PageFactory.initElements(driver, dMSLoginPage);
+        this.newEnquiryWebPage = new NewEnquiryWebPage(driver);
+		PageFactory.initElements(driver, newEnquiryWebPage);
     }
 
     @Given("User clicks on the Sales icon")

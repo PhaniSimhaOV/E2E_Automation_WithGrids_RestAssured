@@ -19,6 +19,7 @@ import com.autogrid.utils.ExcelReading;
 import com.autogrid.utils.ExcelWriting;
 import com.autogrid.utils.LaunchDriver;
 import io.cucumber.java.en.*;
+import com.autogrid.steps.NewEnquiryWebPage;
 
 public class ExWarrantyAndSOTStepDefinition {
 
@@ -26,6 +27,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	ExWarrantyPage exWarranty;
 	SOTPage sot;
 	DatabaseConnectionStepDefinition DatabaseConnectionStepDefinition;
+	NewEnquiryWebPage newEnquiryWebPage;
 	private Map<String, String> testData; // Stores data from Excel
 	private List<Map<String, String>> allTestData; // List to store all data rows from Excel
 	private int currentDataRowIndex = 0; // To keep track of the current row index
@@ -37,6 +39,8 @@ public class ExWarrantyAndSOTStepDefinition {
 		PageFactory.initElements(driver, exWarranty);
 		this.sot = new SOTPage(driver);
 		PageFactory.initElements(driver, sot);
+		this.newEnquiryWebPage = new NewEnquiryWebPage(driver);
+		PageFactory.initElements(driver, newEnquiryWebPage);
 	}
 	
 	
