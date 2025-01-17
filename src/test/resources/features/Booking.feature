@@ -7,7 +7,7 @@ Feature: User navigates to booking section
     Given launch browser and enter url
     When user enters a valid username
     And user enter a valid password
-    And clicks on Send OTP for booking
+    And clicks on Send OTP
     And reads OTP from the database
     And enters the OTP into the OTP field
     And clicks on login
