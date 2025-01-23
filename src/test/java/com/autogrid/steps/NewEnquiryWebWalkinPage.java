@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class NewEnquiryWebPage {
+public class NewEnquiryWebWalkinPage {
 	private static final Logger logger = LoggerFactory.getLogger(NewEnquiryWebWalkinPage.class);
 	private final CommonActions commonActions;
 	private WebDriver driver;
@@ -31,25 +31,25 @@ public class NewEnquiryWebPage {
 	@FindBy(xpath = "//li[@class='active']//ul//li//a[@class='menuItem'][normalize-space()='Customer Enquiry']")
 	private WebElement CustomerEnquiryLink;
 
-	@FindBy(xpath = "//a[normalize-space()='Lead']")
-	private WebElement LeadEnquiryTab;
+	@FindBy(xpath = "//a[normalize-space()='Walk-in Enquiry']")
+	private WebElement WalkinEnquiryTab;
 
 	@FindBy(xpath = "//button[contains(text(), 'New')]")
 	private WebElement NewEnquiry;
 
-	@FindBy(xpath = "//*[@id='ddMobileNo']/div/span/span/input[1]")
+	@FindBy(xpath = "//*[@id=\"customerInfoForm\"]/dl[1]/dd[3]/div/span/span/input[1]")
 	private WebElement MobileNumber;
 
 	@FindBy(xpath = "//a[@id='searchCustomer']")
 	private WebElement MobileSearchIcon;
 
-	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[2]/dl[1]/dd[1]/span")
+	@FindBy(xpath = "//*[@id=\"customerInfoForm\"]/dl[1]/dd[1]/span")
 	private WebElement CustTypeField;
 
 	@FindBy(xpath = "//*[@id='custName'][@data-name='Cust. Name']")
 	private WebElement CustName;
 
-	@FindBy(xpath = "//*[@id=\"corp5\"]/span")
+	@FindBy(xpath = "//*[@id=\"customerInfoForm\"]/dl[2]/dd[2]/span")
 	private WebElement GenderField;
 
 	@FindBy(xpath = "//*[@id='email']")
@@ -76,43 +76,43 @@ public class NewEnquiryWebPage {
 	@FindBy(xpath = "//button[@id='btnAddSelected']")
 	private WebElement AddSelectedButton;
 
-	@FindBy(xpath = "//*[@id=\"villName\"]")
+	@FindBy(xpath = "//*[@id=\"village\"]")
 	private WebElement Village;
 
-	@FindBy(xpath = "//*[@id=\"addr\"]")
+	@FindBy(xpath = "//*[@id=\"address\"]")
 	private WebElement Address;
 
-	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[4]/dl[1]/dd[1]/span")
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[1]/dd[2]/span")
 	private WebElement EnquirySourceField;
 
-	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[4]/dl[1]/dd[2]/span")
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[1]/dd[3]/span")
 	private WebElement EnquirySubSourceField;
 
-	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[4]/dl[1]/dd[3]/span")
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[1]/dd[4]/span")
 	private WebElement EnquiryCategoryField;
 
-	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[4]/dl[2]/dd[1]/span")
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[2]/dd[1]/span")
 	private WebElement ModelField;
 
-	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[4]/dl[2]/dd[2]/span")
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[2]/dd[2]/span")
 	private WebElement FuelTypeField;
 
-	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[4]/dl[2]/dd[3]/span")
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[2]/dd[3]/span")
 	private WebElement VariantField;
 
-	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[4]/dl[2]/dd[4]/span")
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[2]/dd[4]/span")
 	private WebElement SubVariantField;
 
-	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[4]/dl[3]/dd[1]/span")
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[3]/dd[1]/span")
 	private WebElement ExtColorField;
 
-	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[4]/dl[3]/dd[2]/span")
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[3]/dd[2]/span")
 	private WebElement IntColorField;
 
-	@FindBy(xpath = "//*[@id=\"enquiry_info\"]/div[4]/dl[1]/dd[4]/span")
-	private WebElement PersonInChargeField;
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[5]/dd[2]/span")
+	private WebElement SalesConsultantField;
 
-	@FindBy(xpath = "//button[@id='btnSave']")
+	@FindBy(xpath = "//*[@id=\"btnBasicSaveNew\"]")
 	private WebElement SaveButton;
 
 	@FindBy(xpath = "//a[@class='k-button k-bare k-button-icon k-window-action k-state-hover']//span[@class='k-icon k-i-close']")
@@ -124,13 +124,40 @@ public class NewEnquiryWebPage {
 	@FindBy(xpath = "//*[@id='custName'][@data-name='Cust. Name']")
 	private WebElement CompanyName;
 
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[4]/dd[1]/span")
+	private WebElement FinanceReqYN;
+
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[4]/dd[2]/span")
+	private WebElement Financier;
+
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[6]/dd[3]/span")
+	private WebElement CftOfDeposit;
+
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[7]/dd[1]/span")
+	private WebElement FinanceOptions;
+
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[7]/dd[2]/span")
+	private WebElement Expectedplan;
+
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[7]/dd[4]/span")
+	private WebElement VisitedwithFamily;
+
+	@FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[8]/dd/span")
+	private WebElement ImmediateBook;
+
+	@FindBy(xpath = "//*[@id='btnBasicSave']")
+	private WebElement BasicInfoTabSaveButton;
+
+	@FindBy(xpath = "//*[@id=\"usedCarForm\"]/dl[1]/dd[1]/span")
+	private WebElement PresentCarDropdown;
+
 	@FindBy(xpath = "//*[@id=\"mobileNo\"]")
 	private WebElement MobileFilter;
 
 	@FindBy(xpath = "//*[@id=\"btnSearch\"]")
 	private WebElement ManageScreenSearchButton;
-
-	@FindBy(xpath = "//*[@id='grid']/div[2]/table/tbody/tr/td[3]")
+	
+	@FindBy(xpath = "//*[@id='grid']/div[2]/table/tbody/tr/td[2]")
 	private WebElement EnquiryNoField;
 
 	// Locator for iframe
@@ -143,7 +170,7 @@ public class NewEnquiryWebPage {
 	@FindBy(xpath = "//iframe[contains(@title, 'Pin Code Search')]")
 	private WebElement PincodeSearchiframe;
 
-	public NewEnquiryWebPage(WebDriver driver) {
+	public NewEnquiryWebWalkinPage(WebDriver driver) {
 		this.commonActions = new CommonActions(driver);
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
@@ -203,12 +230,14 @@ public class NewEnquiryWebPage {
 		}
 	}
 
-	public void clickMobileSearchIcon() {
+	// Action to enter Mobile Number in filter
+	public void enterMobileNumberFilter(String mobile) throws Exception {
 		try {
-			waitForElementToBeClickable(MobileSearchIcon);
-			MobileSearchIcon.click();
+			waitForElementToBeClickable(MobileFilter);
+			Thread.sleep(5000);
+			MobileFilter.sendKeys(mobile);
 		} catch (Exception e) {
-			System.err.println("Error clicking Mobile Search Icon: " + e.getMessage());
+			System.err.println("Error entering MobileNumber in filter: " + e.getMessage());
 			throw e;
 		}
 	}
@@ -219,6 +248,26 @@ public class NewEnquiryWebPage {
 			ManageScreenSearchButton.click();
 		} catch (Exception e) {
 			System.err.println("Error clicking Mobile Search Icon: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	public void clickMobileSearchIcon() {
+		try {
+			waitForElementToBeClickable(MobileSearchIcon);
+			MobileSearchIcon.click();
+		} catch (Exception e) {
+			System.err.println("Error clicking Mobile Search Icon: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	// Action to get the value in the Enquiry No field
+	public String getEnquiryNoFieldValue() {
+		try {
+			return EnquiryNoField.getText();
+		} catch (Exception e) {
+			System.err.println("Error retrieving Enquiry No Field value: " + e.getMessage());
 			throw e;
 		}
 	}
@@ -253,22 +302,12 @@ public class NewEnquiryWebPage {
 		}
 	}
 
-	// Action to get the value in the Enquiry No field
-	public String getEnquiryNoFieldValue() {
+	public void clickWalkinEnquiryTab() {
 		try {
-			return EnquiryNoField.getText();
+			waitForElementToBeClickable(WalkinEnquiryTab);
+			WalkinEnquiryTab.click();
 		} catch (Exception e) {
-			System.err.println("Error retrieving Enquiry No Field value: " + e.getMessage());
-			throw e;
-		}
-	}
-
-	public void clickLeadEnquiryTab() {
-		try {
-			waitForElementToBeClickable(LeadEnquiryTab);
-			LeadEnquiryTab.click();
-		} catch (Exception e) {
-			System.err.println("Error clicking Lead Enquiry Tab: " + e.getMessage());
+			System.err.println("Error clicking Walkin Enquiry Tab: " + e.getMessage());
 			throw e;
 		}
 	}
@@ -363,18 +402,6 @@ public class NewEnquiryWebPage {
 		}
 	}
 
-	// Action to enter Mobile Number in filter
-	public void enterMobileNumberFilter(String mobile) throws Exception {
-		try {
-			waitForElementToBeClickable(MobileFilter);
-			Thread.sleep(5000);
-			MobileFilter.sendKeys(mobile);
-		} catch (Exception e) {
-			System.err.println("Error entering MobileNumber in filter: " + e.getMessage());
-			throw e;
-		}
-	}
-
 	// Action to enter Email Id
 	public void enterEmail(String email) throws Exception {
 		try {
@@ -462,6 +489,45 @@ public class NewEnquiryWebPage {
 		}
 	}
 
+	public void selectPresentCarDropdown(String presentCarDropdown) throws Exception {
+		try {
+			waitForElementToBeClickable(PresentCarDropdown);
+			PresentCarDropdown.click();
+			Thread.sleep(5000);
+			PresentCarDropdown.sendKeys(presentCarDropdown); // Enter the desired present Car Dropdown
+			PresentCarDropdown.sendKeys(Keys.ENTER);
+		} catch (Exception e) {
+			System.err.println("An error occurred while selecting present Car Dropdown: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	public void selectFinancier(String financier) throws Exception {
+		try {
+			waitForElementToBeClickable(Financier);
+			Financier.click();
+			Thread.sleep(5000);
+			Financier.sendKeys(financier); // Enter the desired Financier
+			Financier.sendKeys(Keys.ENTER);
+		} catch (Exception e) {
+			System.err.println("An error occurred while selecting financier: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	public void selectFinanceReq(String FinanceReq) throws Exception {
+		try {
+			waitForElementToBeClickable(FinanceReqYN);
+			FinanceReqYN.click();
+			Thread.sleep(5000);
+			FinanceReqYN.sendKeys(FinanceReq); // Enter the desired FinanceReq
+			FinanceReqYN.sendKeys(Keys.ENTER);
+		} catch (Exception e) {
+			System.err.println("An error occurred while selecting Finance Req: " + e.getMessage());
+			throw e;
+		}
+	}
+
 	public void selectGender(String Gender) throws Exception {
 		try {
 			waitForElementToBeClickable(GenderField);
@@ -483,7 +549,7 @@ public class NewEnquiryWebPage {
 			LocationField.sendKeys(Location); // Enter the desired Location
 			LocationField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("An error occurred while selecting Gender: " + e.getMessage());
+			System.err.println("An error occurred while selecting Location: " + e.getMessage());
 			throw e;
 		}
 	}
@@ -587,6 +653,17 @@ public class NewEnquiryWebPage {
 	}
 
 	public void selectSubVariant(String SubVariant) throws Exception {
+//		try {
+//			waitForElementToBeClickable(SubVariantField);
+//			SubVariantField.click();
+//			Thread.sleep(5000);
+//			SubVariantField.sendKeys(SubVariant);
+//			SubVariantField.sendKeys(Keys.ENTER);
+//		} catch (Exception e) {
+//			System.err.println("An error occurred while selecting Sub Variant: " + e.getMessage());
+//			throw e;
+//		}
+//	}
 		try {
 			waitForElementToBeClickable(SubVariantField);
 			SubVariantField.click();
@@ -645,15 +722,80 @@ public class NewEnquiryWebPage {
 		}
 	}
 
-	public void selectPersonInCharge(String PersonInCharge) throws Exception {
+	public void selectSalesConsultant(String SalesConsultant) throws Exception {
 		try {
-			waitForElementToBeClickable(PersonInChargeField);
-			PersonInChargeField.click();
+			waitForElementToBeClickable(SalesConsultantField);
+			SalesConsultantField.click();
 			Thread.sleep(5000);
-			PersonInChargeField.sendKeys(PersonInCharge);
-			PersonInChargeField.sendKeys(Keys.ENTER);
+			SalesConsultantField.sendKeys(SalesConsultant);
+			SalesConsultantField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
-			System.err.println("An error occurred while selecting Person In Charge: " + e.getMessage());
+			System.err.println("An error occurred while selecting Sales Consultant: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	public void selectCftOfDeposit(String cftOfDeposit) throws Exception {
+		try {
+			waitForElementToBeClickable(CftOfDeposit);
+			CftOfDeposit.click();
+			Thread.sleep(5000);
+			CftOfDeposit.sendKeys(cftOfDeposit);
+			CftOfDeposit.sendKeys(Keys.ENTER);
+		} catch (Exception e) {
+			System.err.println("An error occurred while selecting Certificate Of Deposit: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	public void selectFinanceOptions(String financeOptions) throws Exception {
+		try {
+			waitForElementToBeClickable(FinanceOptions);
+			FinanceOptions.click();
+			Thread.sleep(5000);
+			FinanceOptions.sendKeys(financeOptions);
+			FinanceOptions.sendKeys(Keys.ENTER);
+		} catch (Exception e) {
+			System.err.println("An error occurred while selecting Finance Options: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	public void selectVisitedwithFamily(String visitedwithFamily) throws Exception {
+		try {
+			waitForElementToBeClickable(VisitedwithFamily);
+			VisitedwithFamily.click();
+			Thread.sleep(5000);
+			VisitedwithFamily.sendKeys(visitedwithFamily);
+			VisitedwithFamily.sendKeys(Keys.ENTER);
+		} catch (Exception e) {
+			System.err.println("An error occurred while selecting Visited with Family: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	public void selectExpectedplan(String expectedplan) throws Exception {
+		try {
+			waitForElementToBeClickable(Expectedplan);
+			Expectedplan.click();
+			Thread.sleep(5000);
+			Expectedplan.sendKeys(expectedplan);
+			Expectedplan.sendKeys(Keys.ENTER);
+		} catch (Exception e) {
+			System.err.println("An error occurred while selecting Expected plan: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	public void selectImmediatebooking(String immediateBook) throws Exception {
+		try {
+			waitForElementToBeClickable(ImmediateBook);
+			ImmediateBook.click();
+			Thread.sleep(5000);
+			ImmediateBook.sendKeys(immediateBook);
+			ImmediateBook.sendKeys(Keys.ENTER);
+		} catch (Exception e) {
+			System.err.println("An error occurred while selecting Immediate booking: " + e.getMessage());
 			throw e;
 		}
 	}
@@ -671,8 +813,8 @@ public class NewEnquiryWebPage {
 		return CustomerEnquiryLink;
 	}
 
-	public WebElement getLeadEnquiryTab() {
-		return LeadEnquiryTab;
+	public WebElement getWalkinEnquiryTab() {
+		return WalkinEnquiryTab;
 	}
 
 	public WebElement getNewEnquiry() {
@@ -689,6 +831,10 @@ public class NewEnquiryWebPage {
 
 	public WebElement getCustTypeField() {
 		return CustTypeField;
+	}
+
+	public WebElement getPresentCarDropdown() {
+		return PresentCarDropdown;
 	}
 
 	public WebElement getCustName() {
@@ -743,10 +889,6 @@ public class NewEnquiryWebPage {
 		return AddSelectedButton;
 	}
 
-	public WebElement getEnquirySource() {
-		return EnquirySourceField;
-	}
-
 	public WebElement getEnquirySubSource() {
 		return EnquirySubSourceField;
 	}
@@ -771,6 +913,14 @@ public class NewEnquiryWebPage {
 		return SubVariantField;
 	}
 
+	public WebElement getFinanceReq() {
+		return FinanceReqYN;
+	}
+
+	public WebElement getFinancier() {
+		return Financier;
+	}
+
 	public WebElement getExtColor() {
 		return ExtColorField;
 	}
@@ -779,23 +929,51 @@ public class NewEnquiryWebPage {
 		return IntColorField;
 	}
 
-	public WebElement getPersonInCharge() {
-		return PersonInChargeField;
+	public WebElement getSalesConsultant() {
+		return SalesConsultantField;
+	}
+
+	public WebElement getCftOfDeposit() {
+		return CftOfDeposit;
+	}
+
+	public WebElement getFinanceOptions() {
+		return FinanceOptions;
+	}
+
+	public WebElement getExpectedplan() {
+		return Expectedplan;
+	}
+
+	public WebElement getVisitedwithFamily() {
+		return VisitedwithFamily;
+	}
+
+	public WebElement getImmediatebooking() {
+		return ImmediateBook;
 	}
 
 	public WebElement getSaveButton() {
 		return SaveButton;
 	}
 
+	public WebElement getPincodesearchScreenClose() {
+		return PincodesearchScreenClose;
+	}
+
 	public WebElement getMobileFilter() {
 		return MobileFilter;
 	}
-	public boolean isLeadEnquiryTabDisplayed() {
+	public WebElement getCustomerEnquiryScreenHeader() {
+	    return WalkinEnquiryTab ; 
+	}
+	public boolean isCustomerEnquiryScreenDisplayed() {
 	    try {
-	        WebElement header = getLeadEnquiryTab();
+	        WebElement header = getCustomerEnquiryScreenHeader();
 	        return header.isDisplayed();
 	    } catch (NoSuchElementException e) {
 	        return false;
 	    }
 	}
+
 }

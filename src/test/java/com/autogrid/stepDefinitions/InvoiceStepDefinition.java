@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.autogrid.steps.DMSLoginPage;
 import com.autogrid.steps.InvoicePage;
 import com.autogrid.utils.CommonActions;
+import com.autogrid.steps.NewEnquiryWebWalkinPage;
 import com.autogrid.utils.ExcelReading;
 import com.autogrid.utils.ExcelWriting;
 import com.autogrid.utils.LaunchDriver;
@@ -20,14 +21,13 @@ import io.cucumber.java.en.And;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-import com.autogrid.steps.NewEnquiryWebPage;
 
 public class InvoiceStepDefinition {
 	CommonActions commonActions;
 	DMSLoginPage dMSLoginPage;
 	InvoicePage invoicepage;
+	NewEnquiryWebWalkinPage newEnquiryWebPage;
 	DatabaseConnectionStepDefinition DatabaseConnectionStepDefinition;
-	NewEnquiryWebPage newEnquiryWebPage;
 	private Map<String, String> testData; // Stores data from Excel
 	private List<Map<String, String>> allTestData; // List to store all data rows from Excel
 	private int currentDataRowIndex = 0; // To keep track of the current row index
@@ -36,7 +36,7 @@ public class InvoiceStepDefinition {
 		WebDriver driver = LaunchDriver.getDriver();
 		this.invoicepage = new InvoicePage(driver);
 		PageFactory.initElements(driver, invoicepage);
-		this.newEnquiryWebPage = new NewEnquiryWebPage(driver);
+		this.newEnquiryWebPage = new NewEnquiryWebWalkinPage(driver);
 		PageFactory.initElements(driver, newEnquiryWebPage);
 	}
 
@@ -52,7 +52,7 @@ public class InvoiceStepDefinition {
 
 	@Given("User reads data from the Excel sheet regarding Invoice feature")
 	public void user_reads_data_from_the_excel_sheet_regarding_invoice_feature() throws IOException {
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/output.xlsx";
 		String sheetName = "Invoice Leads";
 
 		// Fetch all data from the Excel sheet
@@ -68,73 +68,73 @@ public class InvoiceStepDefinition {
 	public void user_processes_the_invoice_for_all_rows_from_the_excel_sheet_of_sheet_name_invoice_leads()
 			throws Throwable {
 		int passedCount = 0;
-	    int failedCount = 0;
+		int failedCount = 0;
 
-	    String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
-	    String sheetName = "Invoice Leads";
+		String filePath = "src/test/resources/config/output.xlsx";
+		String sheetName = "Invoice Leads";
 
-	    // Add a new column for error logging
-	    ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
-	    
-	    for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
-	        System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
+		// Add a new column for error logging
+		ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
 
-	        // Fetch and log current row data
-	        testData = allTestData.get(currentDataRowIndex);
-	        System.out.println("Current Test Data: " + testData);
+		for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
+			System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
 
-	        boolean rowExecutionPassed = true;
+			// Fetch and log current row data
+			testData = allTestData.get(currentDataRowIndex);
+			System.out.println("Current Test Data: " + testData);
 
-	        try {
-	            // Reset application state for every row
-	            System.out.println("Refreshing the browser to reset the application state...");
-	            LaunchDriver.getDriver().navigate().refresh();
+			boolean rowExecutionPassed = true;
 
-	            // Restart from the initial step
-	            restartFromSalesMenuStep();
+			try {
+				// Reset application state for every row
+				System.out.println("Refreshing the browser to reset the application state...");
+				LaunchDriver.getDriver().navigate().refresh();
 
-	            // Execute all test steps for the current row
-	            executeTestStepsForRow();
+				// Restart from the initial step
+				restartFromSalesMenuStep();
 
-	            // Log success
-	            System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
-	            ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", "PASSED");
-	            passedCount++;
-	        } catch (Exception e) {
-	            // Handle row failure
-	        	// Handle application state reset on failure
-		        try {
-		            System.out.println("Navigating to the application's base URL...");
-		            LaunchDriver.getDriver().navigate().refresh();
-		            restartFromSalesMenuStep();
-		            executeTestStepsForRow();
-		        } catch (Exception navigationException) {
-		            System.err.println("Error while navigating to the base URL: " + navigationException.getMessage());
-		            navigationException.printStackTrace();
-		        }
-		        String errorMessage = "Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage();
-	            System.err.println(errorMessage);
-	            e.printStackTrace();
-	            ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", errorMessage);
-	            rowExecutionPassed = false;
-	            failedCount++;
+				// Execute all test steps for the current row
+				executeTestStepsForRow();
 
-	            // Skip retry and move to the next row
-	            System.out.println("Skipping retry for Row " + (currentDataRowIndex + 1) + ". Moving to the next row.");
-	        } finally {
-	            if (rowExecutionPassed) {
-	                System.out.println("Row " + (currentDataRowIndex + 1) + " processed successfully.");
-	            } else {
-	                System.err.println("Row " + (currentDataRowIndex + 1) + " processing failed.");
-	            }
-	        }
-	    }
+				// Log success
+				System.out.println("Row " + (currentDataRowIndex + 1) + " execution PASSED.");
+				ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", "PASSED");
+				passedCount++;
+			} catch (Exception e) {
+				// Handle row failure
+				// Handle application state reset on failure
+				try {
+					System.out.println("Navigating to the application's base URL...");
+					LaunchDriver.getDriver().navigate().refresh();
+					restartFromSalesMenuStep();
+					executeTestStepsForRow();
+				} catch (Exception navigationException) {
+					System.err.println("Error while navigating to the base URL: " + navigationException.getMessage());
+					navigationException.printStackTrace();
+				}
+				String errorMessage = "Row " + (currentDataRowIndex + 1) + " execution FAILED: " + e.getMessage();
+				System.err.println(errorMessage);
+				e.printStackTrace();
+				ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Error Logs", errorMessage);
+				rowExecutionPassed = false;
+				failedCount++;
 
-	    // Summary after processing all rows
-	    System.out.println("\nExecution Summary:");
-	    System.out.println("Total Rows Processed: " + allTestData.size());
-	    System.out.println("Rows Passed: " + passedCount);
-	    System.out.println("Rows Failed: " + failedCount);
+				// Skip retry and move to the next row
+				System.out.println("Skipping retry for Row " + (currentDataRowIndex + 1) + ". Moving to the next row.");
+			} finally {
+				if (rowExecutionPassed) {
+					System.out.println("Row " + (currentDataRowIndex + 1) + " processed successfully.");
+				} else {
+					System.err.println("Row " + (currentDataRowIndex + 1) + " processing failed.");
+				}
+			}
+		}
+
+		// Summary after processing all rows
+		System.out.println("\nExecution Summary:");
+		System.out.println("Total Rows Processed: " + allTestData.size());
+		System.out.println("Rows Passed: " + passedCount);
+		System.out.println("Rows Failed: " + failedCount);
 	}
 
 	private void restartFromSalesMenuStep() throws Throwable {
@@ -173,7 +173,7 @@ public class InvoiceStepDefinition {
 			user_tries_to_clicks_on_add_selected_button_in_the_promotion_pop_up();
 			user_tries_to_click_on_the_modify_button_in_basic_info_section_in_the_customer_booking_management_screen();
 			user_tries_to_clicks_on_confirm_button_in_do_you_want_to_modify_it_popup();
-			user_tries_to_selects_valid_data_in_vehicle_usage_type_field_in_customer_info_section_in_the_customer_booking_management_screen();
+			user_tries_to_select_valid_data_in_vehicle_usage_type_field_in_customer_info_section_in_the_customer_booking_management_screen();
 			user_tries_to_clicks_on_the_register_button_in_invoice_tab_in_the_customer_booking_management_screen();
 			user_tries_to_clicks_on_confirm_button_in_do_you_want_to_save_it_popup_in_the_customer_booking_management_screen();
 			user_tries_to_click_on_the_modify_button_in_invoice_tab_in_the_customer_booking_management_screen();
@@ -181,7 +181,7 @@ public class InvoiceStepDefinition {
 			user_tries_to_clicks_on_invoice_confirm_button_in_invoice_tab_in_the_customer_booking_management_screen();
 			user_tries_to_clicks_on_confirm_button_in_do_you_want_to_confirm_it_popup();
 		} catch (Exception e) {
-	        throw new RuntimeException("Error during execution due to"+ ": " + e.getMessage(), e);
+			throw new RuntimeException("Error during execution due to" + ": " + e.getMessage(), e);
 		}
 	}
 
@@ -197,18 +197,19 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User clicks On Sales Menu Item")
-	public void user_clicks_on_sales_menu_item() {
+	public void user_clicks_on_sales_menu_item() throws Throwable {
 		try {
 			Thread.sleep(3000);
 			invoicepage.clickSalesMenu();
 			System.out.println("Sales Menu clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Sales Menu click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks On Sales Menu Item.", e);
 		}
 	}
 
 	@Then("User clicks on the Sales Operation Sub Menu Item")
-	public void user_clicks_on_the_sales_operation_sub_menu_item() {
+	public void user_clicks_on_the_sales_operation_sub_menu_item() throws Throwable {
 		try {
 			Thread.sleep(3000);
 			waitForElementToBeClickable(invoicepage.getSalesOperationSubmenu());
@@ -216,11 +217,12 @@ public class InvoiceStepDefinition {
 			System.out.println("Sales Operation Sub Menu Item clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Sales Operation Sub Menu Item click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on the Sales Operation Sub Menu Item.", e);
 		}
 	}
 
 	@Then("User clicks on the Customer Booking Mgt List link")
-	public void user_clicks_on_the_customer_booking_mgt_list_link() {
+	public void user_clicks_on_the_customer_booking_mgt_list_link() throws Throwable {
 		try {
 			Thread.sleep(3000);
 			waitForElementToBeClickable(invoicepage.getCustomerBookingMgtListLink());
@@ -228,11 +230,13 @@ public class InvoiceStepDefinition {
 			System.out.println("Customer Booking Mgt List Link clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Customer Booking Mgt List Link click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on the Customer Booking Mgt List link.", e);
 		}
 	}
 
 	@When("User tries to Selects Mobile Number in the Based On Auto-Suggestion in Customer Booking Mgt List Screen")
-	public void user_tries_to_selects_mobile_number_in_the_based_on_auto_suggestion_in_customer_booking_mgt_list_screen() {
+	public void user_tries_to_selects_mobile_number_in_the_based_on_auto_suggestion_in_customer_booking_mgt_list_screen()
+			throws Throwable {
 		try {
 			invoicepage.interactWithIframeElement1();
 			Thread.sleep(5000);
@@ -243,6 +247,9 @@ public class InvoiceStepDefinition {
 			invoicepage.selectBasedOn("Mobile No");
 		} catch (Exception e) {
 			System.err.println("Error during entering & selecting Based On Type: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to Selects Mobile Number in the Based On Auto-Suggestion in Customer Booking Mgt List Screen.",
+					e);
 		}
 	}
 
@@ -258,6 +265,7 @@ public class InvoiceStepDefinition {
 			}
 		} catch (Exception e) {
 			System.err.println("Error during entering Lead Mobile Number : " + e.getMessage());
+			throw new RuntimeException("Failed to enters Lead Mobile Number in the Based On Field.", e);
 		}
 	}
 
@@ -269,6 +277,7 @@ public class InvoiceStepDefinition {
 			System.out.println("Customer Booking Mgt List Search Button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Customer Booking Mgt List Search Button click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on the Search button in Customer Booking Mgt List Screen.", e);
 		}
 	}
 
@@ -279,7 +288,9 @@ public class InvoiceStepDefinition {
 			invoicepage.doubleClickOnEnquiry();
 		} catch (Exception e) {
 			System.err.println("Error performing double-click on the enquiry: " + e.getMessage());
-			throw new RuntimeException("Failed to double-click on the enquiry.", e);
+			throw new RuntimeException(
+					"Failed to select Enquiry from the list after applying filters in Customer Booking Mgt List Screen.",
+					e);
 		}
 	}
 
@@ -293,6 +304,8 @@ public class InvoiceStepDefinition {
 			System.out.println("Invoice Tab clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Invoice Tab click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on the Invoice Tab in the Customer Booking Management Screen.",
+					e);
 		}
 	}
 
@@ -304,12 +317,16 @@ public class InvoiceStepDefinition {
 			System.out.println("Scheme button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Scheme button click: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to clicks on Scheme button in the Invoice Tab in the Customer Booking Management Screen.",
+					e);
 		}
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
-	
+
 	@Then("User tries to enters valid data in the Payable By Dealer Amount in TAX Adjustment Allowed Table")
-	public void user_tries_to_enters_valid_data_in_the_payable_by_dealer_amount_in_tax_adjustment_allowed_table() {
+	public void user_tries_to_enters_valid_data_in_the_payable_by_dealer_amount_in_tax_adjustment_allowed_table()
+			throws Throwable {
 		try {
 			invoicepage.interactWithIframeElement2();
 			invoicepage.interactWithIframeElement3();
@@ -322,11 +339,14 @@ public class InvoiceStepDefinition {
 			}
 		} catch (Exception e) {
 			System.err.println("Error during entering Payable By Dealer Amount: " + e.getMessage());
+			throw new RuntimeException(
+					"enters valid data in the Payable By Dealer Amount in TAX Adjustment Allowed Table.", e);
 		}
 	}
 
 	@Then("User tries to enters valid data in the Adjustment Credit Note Amount in TAX Adjustment Allowed Table")
-	public void user_tries_to_enters_valid_data_in_the_adjustment_credit_note_amount_in_tax_adjustment_allowed_table() {
+	public void user_tries_to_enters_valid_data_in_the_adjustment_credit_note_amount_in_tax_adjustment_allowed_table()
+			throws Throwable {
 		try {
 			if (testData != null) {
 				Thread.sleep(5000);
@@ -337,25 +357,32 @@ public class InvoiceStepDefinition {
 			}
 		} catch (Exception e) {
 			System.err.println("Error during entering Adjustment Credit Note Amount: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to enters valid data in the Adjustment Credit Note Amount in TAX Adjustment Allowed Table.",
+					e);
 		}
 	}
 
 	@Then("User tries to enters valid data in the Basic Insurance Amount in Chargeable\\/Sharing Table")
-	public void user_tries_to_enters_valid_data_in_the_basic_insurance_amount_in_chargeable_sharing_table() {
+	public void user_tries_to_enters_valid_data_in_the_basic_insurance_amount_in_chargeable_sharing_table()
+			throws Throwable {
 		try {
 			if (testData != null) {
-				invoicepage.enterBasicInsuranceAmountField(testData.get("basicInsuranceAmont"));
-				System.out.println("Entered Basic Insurance Amount: " + testData.get("basicInsuranceAmont"));
+				Thread.sleep(3000);
+				invoicepage.enterBasicInsuranceAmountField(testData.get("basicInsuranceAmount"));
+				System.out.println("Entered Basic Insurance Amount: " + testData.get("basicInsuranceAmount"));
 			} else {
 				throw new RuntimeException("Test data is not initialized.");
 			}
 		} catch (Exception e) {
 			System.err.println("Error during entering Basic Insurance Amount: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to enters valid data in the Basic Insurance Amount in Chargeable/Sharing Table.", e);
 		}
 	}
 
 	@Then("User tries to enters valid data in the RTO Amount in Chargeable\\/Sharing Table")
-	public void user_tries_to_enters_valid_data_in_the_rto_amount_in_chargeable_sharing_table() {
+	public void user_tries_to_enters_valid_data_in_the_rto_amount_in_chargeable_sharing_table() throws Throwable {
 		try {
 			if (testData != null) {
 				invoicepage.enterRTOAmountField(testData.get("rtoCharges"));
@@ -365,11 +392,12 @@ public class InvoiceStepDefinition {
 			}
 		} catch (Exception e) {
 			System.err.println("Error during entering RTO Amount: " + e.getMessage());
+			throw new RuntimeException("Failed to enters valid data in the RTO Amount in Chargeable/Sharing Table.", e);
 		}
 	}
 
 	@Then("User tries to enters valid data in the Road Tax Amount in Chargeable\\/Sharing Table")
-	public void user_tries_to_enters_valid_data_in_the_road_tax_amount_in_chargeable_sharing_table() {
+	public void user_tries_to_enters_valid_data_in_the_road_tax_amount_in_chargeable_sharing_table() throws Throwable {
 		try {
 			if (testData != null) {
 				invoicepage.enterRoadTaxAmountField(testData.get("roadTax"));
@@ -379,11 +407,14 @@ public class InvoiceStepDefinition {
 			}
 		} catch (Exception e) {
 			System.err.println("Error during entering Road Tax Amount: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to enters valid data in the Road Tax Amount in Chargeable/Sharing Table.", e);
 		}
 	}
 
 	@Then("User tries to enters valid data in the Other Charges Amount in Chargeable\\/Sharing Table")
-	public void user_tries_to_enters_valid_data_in_the_other_charges_amount_in_chargeable_sharing_table() {
+	public void user_tries_to_enters_valid_data_in_the_other_charges_amount_in_chargeable_sharing_table()
+			throws Throwable {
 		try {
 			if (testData != null) {
 				invoicepage.enterOtherChargesAmountField(testData.get("otherCharges"));
@@ -393,11 +424,13 @@ public class InvoiceStepDefinition {
 			}
 		} catch (Exception e) {
 			System.err.println("Error during entering Other Charges Amount: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to enters valid data in the Other Charges Amount in Chargeable/Sharing Table.", e);
 		}
 	}
 
 	@Then("User tries to enters valid data in the Life Tax Amount in Chargeable\\/Sharing Table")
-	public void user_tries_to_enters_valid_data_in_the_life_tax_amount_in_chargeable_sharing_table() {
+	public void user_tries_to_enters_valid_data_in_the_life_tax_amount_in_chargeable_sharing_table() throws Throwable {
 		try {
 			if (testData != null) {
 				invoicepage.enterLifeTaxAmountField(testData.get("lifeTax"));
@@ -407,6 +440,8 @@ public class InvoiceStepDefinition {
 			}
 		} catch (Exception e) {
 			System.err.println("Error during entering Life Tax Amount: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to enters valid data in the Life Tax Amount in Chargeable/Sharing Table.", e);
 		}
 	}
 
@@ -418,10 +453,11 @@ public class InvoiceStepDefinition {
 			System.out.println("Save button in Scheme Popup screen clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Save button in Scheme Popup screen click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on Save button in Scheme Popup screen.", e);
 		}
-		
+
 	}
-	
+
 	@Then("User tries to clicks on Confirm button in Do you want to save it? Popup")
 	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_save_it_popup() {
 		try {
@@ -434,11 +470,12 @@ public class InvoiceStepDefinition {
 		} catch (Exception e) {
 			System.err.println(
 					"Error during Confirm button in Do you want to save it? Popup screen click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on Confirm button in Do you want to save it? Popup.", e);
 		}
 	}
 
 	@Then("User tries to clicks on Close button in Scheme Popup screen")
-	public void user_tries_to_clicks_on_close_button_in_scheme_popup_screen() {
+	public void user_tries_to_clicks_on_close_button_in_scheme_popup_screen() throws Throwable {
 		try {
 			Thread.sleep(12000);
 			waitForElementToBeClickable(invoicepage.getSchemePopupCloseButton());
@@ -446,6 +483,7 @@ public class InvoiceStepDefinition {
 			System.out.println("Close button in Scheme Popup screen clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Close button in Scheme Popup screen click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on Close button in Scheme Popup screen.", e);
 		}
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
@@ -459,11 +497,15 @@ public class InvoiceStepDefinition {
 			System.out.println("More Promotions button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during More Promotions button click: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to clicks on the More Promotions button in Basic info Section in the Customer Booking Management Screen.",
+					e);
 		}
 	}
 
 	@Then("User tries to clicks on the Plus icon in Promotions Section in the Customer Booking Management Screen")
-	public void user_tries_to_clicks_on_the_plus_icon_in_promotions_section_in_the_customer_booking_management_screen() {
+	public void user_tries_to_clicks_on_the_plus_icon_in_promotions_section_in_the_customer_booking_management_screen()
+			throws Throwable {
 		try {
 			Thread.sleep(14000);
 			waitForElementToBeClickable(invoicepage.getPromotionsSectionPlusIcon());
@@ -471,6 +513,9 @@ public class InvoiceStepDefinition {
 			System.out.println("Plus icon in Promotions Section clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Plus icon in Promotions Section click: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to clicks on the Plus icon in Promotions Section in the Customer Booking Management Screen.",
+					e);
 		}
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
@@ -485,6 +530,8 @@ public class InvoiceStepDefinition {
 			System.out.println("Checks the All the promotions clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Checks the All the promotions click: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to Checks the All the promotions from promotions table in the Promotion Pop-up.", e);
 		}
 	}
 
@@ -496,6 +543,7 @@ public class InvoiceStepDefinition {
 			System.out.println("Add Selected button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Add Selected button click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on Add Selected button in the Promotion Pop-up.", e);
 		}
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
@@ -509,6 +557,9 @@ public class InvoiceStepDefinition {
 			System.out.println("Modify button in Basic info Section clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Modify button in Basic info Sectionclick: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to click on the Modify button in Basic info Section in the Customer Booking Management Screen.",
+					e);
 		}
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
@@ -522,20 +573,24 @@ public class InvoiceStepDefinition {
 			System.out.println("Confirm button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Confirm button click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on Confirm button in Do you want to Modify it? Popup.", e);
 		}
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
 
-	@When("User tries to selects valid data in Vehicle usage Type field in customer info Section in the Customer Booking Management Screen")
-	public void user_tries_to_selects_valid_data_in_vehicle_usage_type_field_in_customer_info_section_in_the_customer_booking_management_screen() {
+	@When("User tries to select valid data in Vehicle usage Type field in customer info Section in the Customer Booking Management Screen")
+	public void user_tries_to_select_valid_data_in_vehicle_usage_type_field_in_customer_info_section_in_the_customer_booking_management_screen() {
 		try {
 			Thread.sleep(12000);
 			invoicepage.interactWithIframeElement2();
 			waitForVisibilityOfElement(invoicepage.getVehicleUsageTypeField());
-			if (testData != null) {
+
+			if (testData != null && testData.get("vehicleUsageType") != null) {
 				invoicepage.selectVehicleUsageType(testData.get("vehicleUsageType"));
 			} else {
-				throw new RuntimeException("Test data is not initialized.");
+				System.out.println(
+						"Test data is not initialized or Vehicle Usage Type is empty. Selecting first auto-suggestion.");
+				invoicepage.selectVehicleUsageType(""); // Pass an empty string to trigger auto-suggestion logic
 			}
 		} catch (Exception e) {
 			System.err.println("Error during Vehicle usage Type selection: " + e.getMessage());
@@ -550,6 +605,9 @@ public class InvoiceStepDefinition {
 			System.out.println("Register button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Register button click: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to clicks on the Register button in invoice tab in the Customer Booking Management Screen.",
+					e);
 		}
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
@@ -563,12 +621,14 @@ public class InvoiceStepDefinition {
 			System.out.println("Confirm button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Confirm button click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on Confirm button in Do you want to save it? Popup.", e);
 		}
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
 
 	@When("User tries to click on the Modify button in invoice tab in the Customer Booking Management Screen")
-	public void user_tries_to_click_on_the_modify_button_in_invoice_tab_in_the_customer_booking_management_screen() {
+	public void user_tries_to_click_on_the_modify_button_in_invoice_tab_in_the_customer_booking_management_screen()
+			throws Throwable {
 		try {
 			Thread.sleep(12000);
 			invoicepage.interactWithIframeElement2();
@@ -577,6 +637,7 @@ public class InvoiceStepDefinition {
 			System.out.println("Modify button in invoice tab clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Modify button in invoice tab click: " + e.getMessage());
+			throw new RuntimeException("Failed to click on the Modify button in invoice tab.", e);
 		}
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
@@ -590,12 +651,14 @@ public class InvoiceStepDefinition {
 			System.out.println("Confirm button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Confirm button click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on Confirm button in Do you want to Modify it? Popup.", e);
 		}
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
 
 	@When("User tries to clicks on Invoice Confirm button in invoice tab in the Customer Booking Management Screen")
-	public void user_tries_to_clicks_on_invoice_confirm_button_in_invoice_tab_in_the_customer_booking_management_screen() {
+	public void user_tries_to_clicks_on_invoice_confirm_button_in_invoice_tab_in_the_customer_booking_management_screen()
+			throws Throwable {
 		try {
 			Thread.sleep(12000);
 			invoicepage.interactWithIframeElement2();
@@ -604,10 +667,10 @@ public class InvoiceStepDefinition {
 			System.out.println("Invoice Confirm button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Invoice Confirm button click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on Invoice Confirm button in invoice tab.", e);
 		}
 		LaunchDriver.getDriver().switchTo().defaultContent();
 	}
-
 
 	@When("User tries to clicks on Confirm button in Do you want to confirm it? Popup")
 	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_confirm_it_popup() {
@@ -618,11 +681,7 @@ public class InvoiceStepDefinition {
 			System.out.println("Confirm button clicked.");
 		} catch (Exception e) {
 			System.err.println("Error during Confirm button click: " + e.getMessage());
+			throw new RuntimeException("Failed to clicks on Confirm button in Do you want to confirm it? Popup.", e);
 		}
-//		LaunchDriver.getDriver().switchTo().defaultContent();
-//		invoicepage.clickCloseCustomerBookingMgt();
-//		invoicepage.clickCloseCustomerBookingMgtList();
-//		invoicepage.clickSalesMenu();
-//		invoicepage.clickSalesOperationSubmenu();
 	}
 }

@@ -649,7 +649,13 @@ public class InvoicePage {
 		try {
 			waitForElementToBeClickable(VehicleUsageTypeField);
 			VehicleUsageTypeField.click();
-			VehicleUsageTypeField.sendKeys(VehicleUsageType); // Enter the desired VehicleUsageType
+
+			if (VehicleUsageType != null && !VehicleUsageType.isEmpty()) {
+				VehicleUsageTypeField.sendKeys(VehicleUsageType); // Enter the desired VehicleUsageType
+			} else {
+				// If no data is provided, simulate selecting the first auto-suggested value
+				VehicleUsageTypeField.sendKeys(Keys.DOWN); // Navigate to the first suggestion
+			}
 			VehicleUsageTypeField.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
 			System.err.println("An error occurred while selecting Vehicle Usage Type: " + e.getMessage());

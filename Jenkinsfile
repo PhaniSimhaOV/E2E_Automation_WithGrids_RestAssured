@@ -12,6 +12,7 @@ pipeline {
             'Lead generation', 
             'Create test drive & followup',
             'Web Enquiry',
+            'Web Walkin Enquiry',
             'Test Drive Enquiry',
             'Booking', 
             'Invoice', 
@@ -72,7 +73,9 @@ pipeline {
                     } else if (params.Module == 'SOT' && params.Device == 'Web') {
                         cucumberTag = '@SOT'
                     }else if (params.Module == 'Web Enquiry' && params.Device == 'Web') {
-                        cucumberTag = '@WebEnquiry'
+                        cucumberTag = '@WebDigitalEnquiry'
+                    }else if (params.Module == 'Web Walkin Enquiry' && params.Device == 'Web') {
+                        cucumberTag = '@WebWalkinEnquiry'
                     }else if (params.Module == 'Test Drive Enquiry Lead' && params.Device == 'Web') {
                         cucumberTag = '@TestDriveEnquiryLead'
                     }else if (params.Module == 'Test Drive Enquiry' && params.Device == 'Web') {
