@@ -52,7 +52,7 @@ public class InvoiceStepDefinition {
 
 	@Given("User reads data from the Excel sheet regarding Invoice feature")
 	public void user_reads_data_from_the_excel_sheet_regarding_invoice_feature() throws IOException {
-		String filePath = "src/test/resources/config/output.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
 		String sheetName = "Invoice Leads";
 
 		// Fetch all data from the Excel sheet
@@ -70,7 +70,7 @@ public class InvoiceStepDefinition {
 		int passedCount = 0;
 		int failedCount = 0;
 
-		String filePath = "src/test/resources/config/output.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
 		String sheetName = "Invoice Leads";
 
 		// Add a new column for error logging

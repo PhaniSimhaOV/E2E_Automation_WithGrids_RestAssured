@@ -141,38 +141,59 @@ public class NewEnquiryWebStepDefinition {
 	}
 
 	private void executeTestStepsForWebDigitalEnquiryLeadGeneration() throws Throwable {
-		// Example: Call test methods for each step
-		try {
-			user_tries_to_clicks_sales_menu_item();
-			user_tries_to_clicks_on_the_customer_enquiry_sub_menu_item();
-			user_tries_to_clicks_on_the_customer_enquiry_link();
-			user_tries_to_clicks_on_the_lead_enquiry_tab();
-			user_clicks_on_new_button_in_lead_enquiry_tab();
-			user_tries_to_enters_a_mobile_number_which_not_registered();
-			user_clicks_on_the_mobile_number_search_icon();
-			i_enters_valid_data_in_email_id_field();
-			i_selects_valid_data_in_cust_type_field();
-			i_enters_valid_data_in_address_field();
-			i_enters_valid_data_in_village_field();
-			i_selects_valid_data_enquiry_source_field();
-			i_selects_valid_data_enquiry_sub_source_field();
-			i_selects_valid_data_enquiry_category_field();
-			i_selects_valid_data_in_model_field();
-			i_selects_valid_data_fuel_type_field();
-			i_selects_valid_data_in_variant_field();
-			i_selects_valid_data_in_sub_variant_field();
-			i_selects_valid_data_in_ext_color_field();
-			i_selects_valid_data_in_int_color_field();
-			i_selects_valid_data_in_person_in_charge_field();
-			user_clicks_on_pincode_search_icon_beside_pin_field();
-			user_tries_to_enter_pincode_in_the_pincode_field();
-			user_tries_to_clicks_on_the_search_button_in_the_pincode_search_screen();
-			user_tries_to_select_any_one_pincode_from_the_list();
-			user_tries_to_clicks_on_the_add_selected_button_in_pincode_search_screen();
-			user_clicks_on_the_save_button();
-		} catch (Exception e) {
-			throw new RuntimeException("Error during execution due to" + ": " + e.getMessage(), e);
-		}
+	    try {
+	        user_tries_to_clicks_sales_menu_item();
+	        user_tries_to_clicks_on_the_customer_enquiry_sub_menu_item();
+	        user_tries_to_clicks_on_the_customer_enquiry_link();
+	        user_tries_to_clicks_on_the_lead_enquiry_tab();
+	        user_clicks_on_new_button_in_lead_enquiry_tab();
+	        user_tries_to_enters_a_mobile_number_which_not_registered();
+	        user_clicks_on_the_mobile_number_search_icon();
+
+	        // Conditional execution based on screen visibility
+	        if (isFindCustomerInfoScreenVisible()) {
+	        	i_selected_Previouesly_added_Customer_Details();
+	            i_selects_valid_data_enquiry_source_field();
+	            i_selects_valid_data_enquiry_sub_source_field();
+	            i_selects_valid_data_enquiry_category_field();
+	            i_selects_valid_data_in_model_field();
+	            i_selects_valid_data_fuel_type_field();
+	            i_selects_valid_data_in_variant_field();
+	            i_selects_valid_data_in_sub_variant_field();
+	            i_selects_valid_data_in_ext_color_field();
+	            i_selects_valid_data_in_int_color_field();
+	            i_selects_valid_data_in_person_in_charge_field();
+	            user_clicks_on_pincode_search_icon_beside_pin_field();
+	            user_tries_to_enter_pincode_in_the_pincode_field();
+	            user_tries_to_clicks_on_the_search_button_in_the_pincode_search_screen();
+	            user_tries_to_select_any_one_pincode_from_the_list();
+	            user_tries_to_clicks_on_the_add_selected_button_in_pincode_search_screen();
+	            user_clicks_on_the_save_button();
+	        } else {
+	            i_enters_valid_data_in_email_id_field();
+	            i_selects_valid_data_in_cust_type_field();
+	            i_enters_valid_data_in_address_field();
+	            i_enters_valid_data_in_village_field();
+	            i_selects_valid_data_enquiry_source_field();
+	            i_selects_valid_data_enquiry_sub_source_field();
+	            i_selects_valid_data_enquiry_category_field();
+	            i_selects_valid_data_in_model_field();
+	            i_selects_valid_data_fuel_type_field();
+	            i_selects_valid_data_in_variant_field();
+	            i_selects_valid_data_in_sub_variant_field();
+	            i_selects_valid_data_in_ext_color_field();
+	            i_selects_valid_data_in_int_color_field();
+	            i_selects_valid_data_in_person_in_charge_field();
+	            user_clicks_on_pincode_search_icon_beside_pin_field();
+	            user_tries_to_enter_pincode_in_the_pincode_field();
+	            user_tries_to_clicks_on_the_search_button_in_the_pincode_search_screen();
+	            user_tries_to_select_any_one_pincode_from_the_list();
+	            user_tries_to_clicks_on_the_add_selected_button_in_pincode_search_screen();
+	            user_clicks_on_the_save_button();
+	        }
+	    } catch (Exception e) {
+	        throw new RuntimeException("Error during execution due to: " + e.getMessage(), e);
+	    }
 	}
 
 	@When("User tries to clicks Sales Menu Item")
@@ -272,10 +293,27 @@ public class NewEnquiryWebStepDefinition {
 			throw new RuntimeException("Failed to clicks mobile number search Icon.", e);
 		}
 	}
-
+	
+	
+	@When("i selected Previouesly added Customer Details")
+	public void i_selected_Previouesly_added_Customer_Details() {
+		try {
+			Thread.sleep(5000);
+			newenquirypage.interactWithFindACustomeriframeElement();
+			waitForElementToBeClickable(newenquirypage.getSelectCustomerDetails());
+			newenquirypage.doubleClickOnCustomerDetails();
+		} catch (Exception e) {
+			System.err.println("Error performing double-click on the Customer Details: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to select Customer Details from the list after applying filters.",
+					e);
+		}
+	}
 	@When("I enters valid data in Email id field")
 	public void i_enters_valid_data_in_email_id_field() throws Throwable {
 		try {
+			newenquirypage.interactWithIframeElement();
+			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
 			Thread.sleep(5000);
 			if (testData != null) {
 				waitForVisibilityOfElement(newenquirypage.getEmail());
@@ -404,6 +442,18 @@ public class NewEnquiryWebStepDefinition {
 			throw new RuntimeException("Failed to select any one pincode from the list.", e);
 		}
 	}
+	
+	@Then("^User should see the Find Customer Info screen$")
+    public boolean isFindCustomerInfoScreenVisible() {
+		newenquirypage.interactWithIframeElement();        
+		boolean isVisible = newenquirypage.isFindCustomerInfoScreenVisible();
+        if (isVisible) {
+            System.out.println("Find Customer Info screen is visible.");
+        } else {
+            System.out.println("Find Customer Info screen is not visible.");
+        }
+        return isVisible;
+    }
 
 	@Then("User tries to clicks on the Add Selected button in Pincode search Screen")
 	public void user_tries_to_clicks_on_the_add_selected_button_in_pincode_search_screen() {
@@ -553,6 +603,8 @@ public class NewEnquiryWebStepDefinition {
 	@Given("I selects valid data enquiry source field")
 	public void i_selects_valid_data_enquiry_source_field() throws Throwable {
 		try {
+			newenquirypage.interactWithIframeElement();
+			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
 			if (testData != null) {
 				waitForVisibilityOfElement(newenquirypage.getEnquirySource());
 				String EnquirySource = ExcelUtility.getMappedValue(testData.get("source"));
@@ -604,6 +656,7 @@ public class NewEnquiryWebStepDefinition {
 	@Given("I selects valid data in person in charge field")
 	public void i_selects_valid_data_in_person_in_charge_field() throws Throwable {
 		try {
+			Thread.sleep(2000);
 			if (testData != null) {
 				waitForVisibilityOfElement(newenquirypage.getPersonInCharge());
 				newenquirypage.selectPersonInCharge(testData.get("sales_consultant"));
@@ -618,7 +671,7 @@ public class NewEnquiryWebStepDefinition {
 	}
 
 	@When("User clicks on the Save button")
-	public void user_clicks_on_the_save_button() {
+	public void user_clicks_on_the_save_button() throws Throwable {
 		try {
 			newenquirypage.interactWithIframeElement();
 			newenquirypage.interactWithCustomerEnquiryPopupIframeElement();
@@ -628,7 +681,7 @@ public class NewEnquiryWebStepDefinition {
 		} catch (Exception e) {
 			System.err.println("Error during Save button click: " + e.getMessage());
 			throw new RuntimeException("Failed to clicks on the Save button.", e);
-		}
+		}Thread.sleep(10000);
 	}
 	
 	@When("user tries to fetch and Print the Enquiry Id In The Excel Sheet")
@@ -687,7 +740,7 @@ public class NewEnquiryWebStepDefinition {
 
 	@When("update the gdms_stage and enquiry number in the database based on the result")
 	public void update_the_gdms_stage_and_enquiry_number_in_the_database_based_on_the_result() throws Throwable {
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "C:\\Users\\ADMIN\\Downloads\\output.xlsx";
 		String sheetName = "Enquiry Lead Creation";
 
 		// Load Excel data into allTestData

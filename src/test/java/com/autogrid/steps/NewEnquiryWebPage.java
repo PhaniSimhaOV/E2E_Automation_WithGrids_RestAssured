@@ -114,6 +114,9 @@ public class NewEnquiryWebPage {
 
 	@FindBy(xpath = "//button[@id='btnSave']")
 	private WebElement SaveButton;
+	
+	@FindBy(xpath = "//*[@class=\"table_grid mt10\"]/div/div[2]/table[1]/tbody[1]/tr[1]")
+	private WebElement SelectCustomerDetails;
 
 	@FindBy(xpath = "//a[@class='k-button k-bare k-button-icon k-window-action k-state-hover']//span[@class='k-icon k-i-close']")
 	private WebElement PincodesearchScreenClose;
@@ -132,6 +135,9 @@ public class NewEnquiryWebPage {
 
 	@FindBy(xpath = "//*[@id='grid']/div[2]/table/tbody/tr/td[3]")
 	private WebElement EnquiryNoField;
+	
+    @FindBy(xpath = "//*[@id=\"customerInfoSearchPopupWin_wnd_title\"]")
+    private WebElement findCustomerInfoScreen;
 
 	// Locator for iframe
 	@FindBy(xpath = "(//*[starts-with(@id, 'tabMenuFrame')])[2]")
@@ -142,6 +148,9 @@ public class NewEnquiryWebPage {
 
 	@FindBy(xpath = "//iframe[contains(@title, 'Pin Code Search')]")
 	private WebElement PincodeSearchiframe;
+	
+	@FindBy(xpath = "//*[@id=\"customerInfoSearchPopupWin\"]/iframe")
+	private WebElement FindACustomeriframe;
 
 	public NewEnquiryWebPage(WebDriver driver) {
 		this.commonActions = new CommonActions(driver);
@@ -175,6 +184,15 @@ public class NewEnquiryWebPage {
 			System.out.println("Successfully interacted with the element inside the iframe.");
 		} catch (Exception e) {
 			System.err.println("Error interacting with iframe: " + e.getMessage());
+		}
+	}
+	
+	public void interactWithFindACustomeriframeElement() {
+		try {
+			LaunchDriver.getDriver().switchTo().frame(FindACustomeriframe);
+			System.out.println("Successfully interacted with the element inside the FindACustomeriframe.");
+		} catch (Exception e) {
+			System.err.println("Error interacting with FindACustomeriframe: " + e.getMessage());
 		}
 	}
 
@@ -283,6 +301,18 @@ public class NewEnquiryWebPage {
 		}
 	}
 
+	public void doubleClickOnCustomerDetails() {
+		try {
+			// Perform double-click action
+			Actions actions = new Actions(driver);
+			actions.doubleClick(SelectCustomerDetails).perform();
+			System.out.println("Successfully double-clicked on the Customer Details.");
+		} catch (Exception e) {
+			System.err.println("Error performing double-click on the Customer Details: " + e.getMessage());
+			throw new RuntimeException("Failed to double-click on the Customer Details.", e);
+		}
+	}
+	
 	public void clickPincodeSearchIcon() {
 		try {
 			waitForElementToBeClickable(PinCodeSearchIcon);
@@ -695,6 +725,10 @@ public class NewEnquiryWebPage {
 		return CustName;
 	}
 
+	public WebElement getSelectCustomerDetails() {
+		return SelectCustomerDetails;
+	}
+	
 	public WebElement getGenderField() {
 		return GenderField;
 	}
@@ -798,4 +832,16 @@ public class NewEnquiryWebPage {
 	        return false;
 	    }
 	}
+	
+	public boolean isFindCustomerInfoScreenVisible() {
+        try {
+            // Wait until the element is visible (adjust timeout as needed)
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.visibilityOf(findCustomerInfoScreen));
+            return findCustomerInfoScreen.isDisplayed();
+        } catch (Exception e) {
+            // Return false if the element is not found or visible
+            return false;
+        }
+    }
 }

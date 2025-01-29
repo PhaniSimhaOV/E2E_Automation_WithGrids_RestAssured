@@ -1,4 +1,3 @@
-
 package com.autogrid.steps;
 
 import java.time.Duration;
@@ -13,7 +12,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.LaunchDriver;
 
@@ -43,7 +41,7 @@ public class ExWarrantyPage {
 	@FindBy(xpath = "//input[@id='sKeyword']")
 	private WebElement VIN;
 
-	@FindBy(xpath = "//input[@class='k-formatted-value form_numeric ar k-input']") 
+	@FindBy(xpath = "//input[@class='k-formatted-value form_numeric ar k-input']")
 	private WebElement OdometerReading;
 
 	@FindBy(xpath = "//*[@id='frm1']/div[2]/dl[8]/dd[1]/span/span[1]")
@@ -70,13 +68,11 @@ public class ExWarrantyPage {
 	@FindBy(xpath = "//button[text()='close']")
 	private WebElement close;
 
-	
-	@FindBy(xpath = "//p[contains(text(),'Customer No. does not exist. Please enter the CustomerNo')]")
-	private WebElement InvalidVINToast;
-	
-	
 	@FindBy(xpath = "//div/div/div/div[1]/div[2]/table/tbody/tr/td[3]")
 	private WebElement ExWarrantySchemeData;
+
+	@FindBy(xpath = "//p[contains(text(),'Customer No. does not exist. Please enter the CustomerNo')]")
+	private WebElement isCustomerNotExistPopupVisible;
 
 	public void clickServiceIcon() {
 		try {
@@ -94,7 +90,6 @@ public class ExWarrantyPage {
 			System.err.println("Failed to click Service Icon" + e.getMessage());
 		}
 	}
-	
 
 	public void clickExtWarrantySubMenu() {
 		try {
@@ -157,16 +152,6 @@ public class ExWarrantyPage {
 			System.err.println("Error in clicking Inquire icon" + e.getMessage());
 		}
 	}
-	
-	public String getInvalidVINToast() {
-		try {
-			return InvalidVINToast.getText();
-		} catch (Exception e) {
-			System.err.println("Error fetching Invalid VIN toast message: " + e.getMessage());
-			throw e;
-		}
-	}
-	
 
 	public void enterCurrentOdoMtrReading(String odoMtrReading) {
 		try {
@@ -184,44 +169,34 @@ public class ExWarrantyPage {
 		}
 	}
 
-	public void selectEmployeeName(String employeeName) throws Throwable {
+	public void selectEmployeeName(String employeeName) {
 		EmployeeNameDrpDwn.click();
 		commonActions.explicitWait("//ul[@id='extbEmpNo_listbox']//li");
-		boolean dataEmployeeNameValue = false;
-
 		WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
 		List<WebElement> employeeList = wait.until(
 				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//ul[@id='extbEmpNo_listbox']//li")));
-		
-
 		try {
 
 			for (WebElement empName : employeeList) {
 
 				if (empName.getText().trim().toUpperCase().equals(employeeName.trim().toUpperCase())) {
 					empName.click();
-					dataEmployeeNameValue = true;
 					System.out.println("Employee Name after Click: " + empName.getText().trim().toUpperCase());
 					break;
 				}
 
-			}
-			
-			if (dataEmployeeNameValue == false)
-			{
-				throw new RuntimeException("Employee Name not found.");
 			}
 
 			// JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
 			// js.executeScript("arguments[0].value='" + employeeName + "';",
 			// EmployeeNameDrpDwn);
 		} catch (Exception e) {
-			System.err.println("Error in selecting employee Name - " + e.getMessage());
+			System.err.println("Error in selecting employee Name" + e.getMessage());
 		}
 
 	}
 
-	public void selectPlaceOfSupply(String PlaceOfSupply) {
+	public void selectPlaceOfSupply(String placeOfSupply) {
 		PlaceOfSupplyDrpDwn.click();
 		commonActions.explicitWait("//ul[@id='placeOfSupply_listbox']//li");
 
@@ -231,9 +206,9 @@ public class ExWarrantyPage {
 		try {
 			for (WebElement stateName : SupplyStates) {
 
-				if (stateName.getText().trim().toUpperCase().equals(PlaceOfSupply.trim().toUpperCase())) {
+				if (stateName.getText().trim().toUpperCase().equals(placeOfSupply.trim().toUpperCase())) {
 					stateName.click();
-					System.out.println("Place Of Supply after Click: " + PlaceOfSupply.trim().toUpperCase());
+					System.out.println("Place Of Supply after Click: " + placeOfSupply.trim().toUpperCase());
 					break;
 				}
 			}
@@ -247,26 +222,54 @@ public class ExWarrantyPage {
 		}
 	}
 
+	// Method to find and select the scheme from the "Scheme Description" column
 	public void setExtdWarrantyType(String SchemeDes) {
-
-		WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
-		List<WebElement> ExWarrantySchemeData = wait.until(ExpectedConditions
-				.visibilityOfAllElementsLocatedBy(By.xpath("//div/div/div/div[1]/div[2]/table/tbody/tr/td[3]")));
-
 		try {
-			for (WebElement ExWarScheme : ExWarrantySchemeData) {
-				if (ExWarScheme.getText().trim().toUpperCase().equals(SchemeDes.trim().toUpperCase())) {
-					ExWarScheme.click();
-					System.out.println("Scheme after Click: " + ExWarScheme.getText().trim().toUpperCase());
+			// XPath to target the rows of the table containing the scheme descriptions
+			String xpathForTableRows = "//*[@id='grid']//tbody/tr"; // Adjust this XPath based on the actual HTML
+																	// structure
+
+			// Wait for the rows to become visible
+			WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
+			List<WebElement> tableRows = wait
+					.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(xpathForTableRows)));
+
+			System.out.println("Number of rows in the table: " + tableRows.size());
+
+			// Flag to track if the scheme is found
+			boolean schemeFound = false;
+
+			// Iterate through each row in the table
+			for (WebElement row : tableRows) {
+				// Locate the specific column containing the "Scheme Description" text
+				WebElement schemeColumn = row.findElement(By.xpath(".//td[3]")); // Adjust the column index (td[3]) if
+																					// necessary
+				String schemeText = schemeColumn.getText().trim();
+
+				System.out.println("Checking scheme: " + schemeText);
+
+				// Compare with the provided scheme description
+				if (schemeText.equalsIgnoreCase(SchemeDes.trim())) {
+					// Scroll to the element if it's not in view
+					JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
+					js.executeScript("arguments[0].scrollIntoView(true);", row);
+
+					// Click on the matching row (or a specific element within the row if needed)
+					row.click();
+					System.out.println("Scheme selected: " + schemeText);
+					schemeFound = true;
 					break;
 				}
 			}
-		}
 
-		catch (Exception e) {
-			System.err.println("Error in selecting Scheme" + e.getMessage());
+			// If no matching scheme is found, throw an exception
+			if (!schemeFound) {
+				throw new RuntimeException("Scheme description '" + SchemeDes + "' not found in the table.");
+			}
+		} catch (Exception e) {
+			System.err.println("Error in selecting Scheme: " + e.getMessage());
+			throw new RuntimeException("Failed to select the scheme.", e);
 		}
-
 	}
 
 	public void clickSubmitBtn() {
@@ -295,11 +298,17 @@ public class ExWarrantyPage {
 		}
 	}
 
-
-	public WebElement getPopupElement() {
-	    return LaunchDriver.getDriver().findElement(By.xpath("//p[contains(text(),'Customer No. does not exist. Please enter the CustomerNo')]")); // Replace with the actual popup locator
+	public boolean isCustomerNotExistToastVisible() {
+		try {
+			// Wait for up to 3 seconds for the toast message to appear
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+			WebElement toastMessage = wait.until(ExpectedConditions.presenceOfElementLocated(
+					By.xpath("//p[contains(text(),'Customer No. does not exist. Please enter the CustomerNo')]"))); 																							// needed
+			return toastMessage.isDisplayed();
+		} catch (Exception e) {
+			// Return false if the element is not found or visible within the timeout
+			return false;
+		}
 	}
-	
-
 
 }

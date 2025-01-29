@@ -249,6 +249,31 @@ public class NewEnquiryWebWalkinStepDefinition {
 			user_clicks_on_new_button();
 			user_tries_to_enters_mobile_number_which_not_registered();
 			user_clicks_on_mobile_number_search_icon();
+			
+			// Conditional execution based on screen visibility
+	        if (isWalkinFindCustomerInfoScreenVisible()) {
+	        	i_selected_Previouesly_added_Walkin_Customer_Details();
+	        	i_selects_valid_data_enquiry_sub_source();
+				i_selects_valid_data_enquiry_category();
+				i_selects_valid_data_in_model();
+				i_selects_valid_data_fuel_type();
+				i_selects_valid_data_in_variant();
+				i_selects_valid_data_in_sub_variant();
+				i_selects_valid_data_in_finance_req();
+				i_selects_valid_data_in_ext_color();
+				i_selects_valid_data_in_int_color();
+				i_selects_valid_data_in_sales_consultant();
+				i_selects_valid_data_in_certificate_of_deposit();
+				i_selects_valid_data_in_expected_plan();
+				i_selects_valid_data_in_visited_with_family();
+				i_selects_valid_data_in_immediate_booking();
+				user_clicks_on_pincode_search_icon_from_pin_field();
+				user_tries_to_enter_pincode_in_pincode_field();
+				user_tries_to_clicks_on_search_button_in_pincode_search_screen();
+				user_tries_to_select_one_pincode_from_the_list();
+				user_tries_to_clicks_on_add_selected_button_in_pincode_search_screen();
+				user_clicks_on_save_button();
+	        } else {
 			i_enters_valid_data_in_email_id();
 			i_selects_valid_data_in_cust_type();
 			i_enters_valid_data_in_address();
@@ -273,11 +298,27 @@ public class NewEnquiryWebWalkinStepDefinition {
 			user_tries_to_select_one_pincode_from_the_list();
 			user_tries_to_clicks_on_add_selected_button_in_pincode_search_screen();
 			user_clicks_on_save_button();
+	        }
 		} catch (Exception e) {
 			throw new RuntimeException("Error during execution due to" + ": " + e.getMessage(), e);
 		}
 	}
 
+	@When("i selected Previouesly added Walkin Customer Details")
+	public void i_selected_Previouesly_added_Walkin_Customer_Details() {
+		try {
+			Thread.sleep(5000);
+			newenquirywebpage.interactWithWalkinFindACustomeriframeElement();
+			waitForElementToBeClickable(newenquirywebpage.getSelectWalkinCustomerDetails());
+			newenquirywebpage.doubleClickOnWalkinCustomerDetails();
+		} catch (Exception e) {
+			System.err.println("Error performing double-click on the Walkin Customer Details: " + e.getMessage());
+			throw new RuntimeException(
+					"Failed to select Customer Details from the list after applying filters.",
+					e);
+		}
+	}
+	
 	@When("User clicks Sales Menu Item")
 	public void user_clicks_sales_menu_item() throws Throwable {
 		try {
@@ -379,6 +420,8 @@ public class NewEnquiryWebWalkinStepDefinition {
 	@When("I enters valid data in Email id")
 	public void i_enters_valid_data_in_email_id() throws Throwable {
 		try {
+			newenquirywebpage.interactWithIframeElement();
+			newenquirywebpage.interactWithCustomerEnquiryPopupIframeElement();
 			Thread.sleep(5000);
 			if (testData != null) {
 				waitForVisibilityOfElement(newenquirywebpage.getEmail());
@@ -392,6 +435,18 @@ public class NewEnquiryWebWalkinStepDefinition {
 			throw new RuntimeException("Failed to enters valid data in Email id.", e);
 		}
 	}
+	
+	@Then("^User should see the Walkin Find Customer Info screen$")
+    public boolean isWalkinFindCustomerInfoScreenVisible() {
+		newenquirywebpage.interactWithIframeElement();        
+		boolean isVisible = newenquirywebpage.isWalkinFindCustomerInfoScreenVisible();
+        if (isVisible) {
+            System.out.println("Walkin Find Customer Info screen is visible.");
+        } else {
+            System.out.println("Walkin Find Customer Info screen is not visible.");
+        }
+        return isVisible;
+    }
 
 	@Given("I selects valid data in Cust. Type")
 	public void i_selects_valid_data_in_cust_type() throws Throwable {
@@ -542,6 +597,8 @@ public class NewEnquiryWebWalkinStepDefinition {
 	@Given("I selects valid data Enquiry Sub Source")
 	public void i_selects_valid_data_enquiry_sub_source() throws Throwable {
 		try {
+			newenquirywebpage.interactWithIframeElement();
+			newenquirywebpage.interactWithCustomerEnquiryPopupIframeElement();
 			waitForVisibilityOfElement(newenquirywebpage.getEnquirySubSource());
 			newenquirywebpage.selectEnquirySubSource("Walkin");
 		} catch (Exception e) {
@@ -860,7 +917,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 	}
 
 	@When("User clicks on Save button")
-	public void user_clicks_on_save_button() {
+	public void user_clicks_on_save_button() throws Throwable {
 		try {
 			newenquirywebpage.interactWithIframeElement();
 			newenquirywebpage.interactWithCustomerEnquiryPopupIframeElement();
@@ -870,15 +927,16 @@ public class NewEnquiryWebWalkinStepDefinition {
 		} catch (Exception e) {
 			System.err.println("Error during Save button click: " + e.getMessage());
 			throw new RuntimeException("Failed to clicks on Save button.", e);
-		}
+		}Thread.sleep(10000);
 	}
+	
 	@When("user tries to fetch and Print the Enquiry Id In Excel Sheet")
 	public void user_tries_to_fetch_and_print_the_enquiry_id_in_excel_sheet() throws Throwable {
 		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
 		String sheetName = "Enquiry Lead Creation";
 
 		// Add a new column for "Enquiry Number"
-		ExcelWriting.addColumnToSheet(filePath, sheetName, "Enquiry Number");
+		ExcelWriting.addColumnToSheet(filePath, sheetName, "EnquiryNumber");
 
 		for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
 			System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
@@ -914,7 +972,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 			}
 			// Update the enquiry number column in the Excel sheet
 			try {
-				ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "Enquiry Number", enquiryNo);
+				ExcelWriting.updateCell(filePath, sheetName, currentDataRowIndex, "EnquiryNumber", enquiryNo);
 			} catch (Exception e) {
 				System.err.println(
 						"Error updating Enquiry Number for Row " + (currentDataRowIndex + 1) + ": " + e.getMessage());
@@ -925,7 +983,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 	
 @When("update the gdms_stage and enquiry number columns data in the database based on the result")
 public void update_the_gdms_stage_and_enquiry_number_columns_data_in_the_database_based_on_the_result() throws Throwable {
-	String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+	String filePath = "C:\\Users\\ADMIN\\Downloads\\output.xlsx";
 	String sheetName = "Enquiry Lead Creation";
 
 	// Load Excel data into allTestData

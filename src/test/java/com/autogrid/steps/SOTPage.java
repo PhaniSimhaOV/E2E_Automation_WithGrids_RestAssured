@@ -2,7 +2,6 @@ package com.autogrid.steps;
 
 import java.time.Duration;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +12,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.LaunchDriver;
 
@@ -71,7 +69,6 @@ public class SOTPage {
 	public void clickServiceIcon() {
 		try {
 			ServiceIcon.click();
-
 		} catch (Exception e) {
 			System.err.println("Failed to click Service Icon" + e.getMessage());
 		}
@@ -88,40 +85,29 @@ public class SOTPage {
 
 	public void clickHyundaiShieldOfTrustPackageRegisterLink() {
 		try {
-			// commonActions.explicitWait("(//a[text()='Hyundai Shield of Trust Package
-			// Register'])");
-			// HyundaiShieldOfTrustPackageRegLink.click();
-
 			JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
 			js.executeScript("arguments[0].click();", HyundaiShieldOfTrustPackageRegLink);
-
 		} catch (Exception e) {
 			System.err.println("Failed to click HyundaiShieldOfTrustPackageRegLink " + e.getMessage());
 		}
-
 	}
 
 	// method to check if Hyundai SOT Package Register Header is displayed
 	public boolean HyundaiSOTPackageRegisterHeaderisDisplayed() {
 		try {
 			return HyundaiSOTPackageRegisterHeader.isDisplayed();
-
 		} catch (Exception e) {
-
 			return false;
 		}
 	}
 
 	public void interactWithIframeSOT() {
-
 		try {
 			LaunchDriver.getDriver().switchTo().frame(SOTIframe);
 			System.out.println("Successfully interacted with iFrame of SOTPage");
 		} catch (Exception e) {
-
 			System.err.println("Error in interacting with iFrame of ExWarranty" + e.getMessage());
 		}
-
 	}
 
 	public void enterVIN(String vin) {
@@ -168,25 +154,18 @@ public class SOTPage {
 		try {
 			for (WebElement empName : employeeList) {
 
-				if (empName.getText().trim().toUpperCase().equals(employeeName.trim().toUpperCase())) {
+				if (empName.getText().equals(employeeName)) {
 					empName.click();
-					// JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-					// js.executeScript("arguments[0].click();", empName);
-
 					System.out.println("Employee Name after Click: " + empName.getText().trim().toUpperCase());
 					break;
 				}
 			}
-
-			// JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-			// js.executeScript("arguments[0].value='" + employeeName +
-			// "';",EmployeeNameDrpDwn);
 		} catch (Exception e) {
 			System.err.println("Error in selecting employee Name" + e.getMessage());
 		}
 	}
 
-	public void selectPlaceOfSupply(String PlaceOfSupply) {
+	public void selectPlaceOfSupply(String placeOfSupply) {
 		PlaceOfSupplyDrpDwn.click();
 		commonActions.explicitWait("//ul[@id='placeOfSupply_listbox']//li");
 
@@ -196,43 +175,64 @@ public class SOTPage {
 		try {
 			for (WebElement stateName : SupplyStates) {
 
-				if (stateName.getText().trim().toUpperCase().equals(PlaceOfSupply.trim().toUpperCase())) {
+				if (stateName.getText().equals(placeOfSupply)) {
 					stateName.click();
-					System.out.println("Place Of Supply after Click: " +  PlaceOfSupply.trim().toUpperCase());
+					System.out.println("Place Of Supply after Click: " + placeOfSupply.trim().toUpperCase());
 					break;
 				}
 			}
-
-			// JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-			// js.executeScript("arguments[0].value='" + placeOfSupply + "';",
-			// PlaceOfSupplyDrpDwn);
-
 		} catch (Exception e) {
 			System.err.println("Error in selecting State Name" + e.getMessage());
 		}
 	}
 
 	public void setRequiredSOTSchemeType(String SOTSchemeDes) {
-
-		WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
-		List<WebElement> SOTSchemeData = wait.until(ExpectedConditions
-				.visibilityOfAllElementsLocatedBy(By.xpath("//div/div/div/div[1]/div[2]/table/tbody/tr/td[3]")));
-
 		try {
-			for (WebElement SOTScheme : SOTSchemeData) {
+			// XPath to target the rows of the table containing the scheme descriptions
+			String xpathForTableRows = "//*[@id='grid']//tbody/tr"; // Adjust this XPath based on the actual HTML
+																	// structure
 
-				if (SOTScheme.getText().trim().toUpperCase().equals(SOTSchemeDes.trim().toUpperCase())) {
-					SOTScheme.click();
-					System.out.println("Scheme after Click: " + SOTScheme.getText().trim().toUpperCase());
+			// Wait for the rows to become visible
+			WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
+			List<WebElement> tableRows = wait
+					.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(xpathForTableRows)));
+
+			System.out.println("Number of rows in the table: " + tableRows.size());
+
+			// Flag to track if the scheme is found
+			boolean schemeFound = false;
+
+			// Iterate through each row in the table
+			for (WebElement row : tableRows) {
+				// Locate the specific column containing the "Scheme Description" text
+				WebElement schemeColumn = row.findElement(By.xpath(".//td[3]")); // Adjust the column index (td[3]) if
+																					// necessary
+				String schemeText = schemeColumn.getText().trim();
+
+				System.out.println("Checking scheme: " + schemeText);
+
+				// Compare with the provided scheme description
+				if (schemeText.equalsIgnoreCase(SOTSchemeDes.trim())) {
+					// Scroll to the element if it's not in view
+					JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
+					js.executeScript("arguments[0].scrollIntoView(true);", row);
+
+					// Click on the matching row (or a specific element within the row if needed)
+					row.click();
+					System.out.println("Scheme selected: " + schemeText);
+					schemeFound = true;
 					break;
 				}
 			}
-		}
 
-		catch (Exception e) {
-			System.err.println("Error in selecting Scheme" + e.getMessage());
+			// If no matching scheme is found, throw an exception
+			if (!schemeFound) {
+				throw new RuntimeException("Scheme description '" + SOTSchemeDes + "' not found in the table.");
+			}
+		} catch (Exception e) {
+			System.err.println("Error in selecting Scheme: " + e.getMessage());
+			throw new RuntimeException("Failed to select the scheme.", e);
 		}
-
 	}
 
 	public void clickSubmitBtn() {

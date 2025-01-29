@@ -51,7 +51,16 @@ public class NewEnquiryWebWalkinPage {
 
 	@FindBy(xpath = "//*[@id=\"customerInfoForm\"]/dl[2]/dd[2]/span")
 	private WebElement GenderField;
+	
+	@FindBy(xpath = "//*[@class=\"table_grid mt10\"]/div/div[2]/table[1]/tbody[1]/tr[1]")
+	private WebElement SelectWalkinCustomerDetails;
 
+	@FindBy(xpath = "//*[@id=\"customerInfoSearchPopupWin_wnd_title\"]")
+    private WebElement WalkinfindCustomerInfoScreen;
+	
+	@FindBy(xpath = "//*[@id=\"customerInfoSearchPopupWin\"]/iframe")
+	private WebElement WalkinFindACustomeriframe;
+	
 	@FindBy(xpath = "//*[@id='email']")
 	private WebElement Email;
 
@@ -204,6 +213,15 @@ public class NewEnquiryWebWalkinPage {
 			System.err.println("Error interacting with iframe: " + e.getMessage());
 		}
 	}
+	
+	public void interactWithWalkinFindACustomeriframeElement() {
+		try {
+			LaunchDriver.getDriver().switchTo().frame(WalkinFindACustomeriframe);
+			System.out.println("Successfully interacted with the element inside the FindACustomeriframe.");
+		} catch (Exception e) {
+			System.err.println("Error interacting with FindACustomeriframe: " + e.getMessage());
+		}
+	}
 
 	public void interactWithCustomerEnquiryPopupIframeElement() {
 		try {
@@ -269,6 +287,18 @@ public class NewEnquiryWebWalkinPage {
 		} catch (Exception e) {
 			System.err.println("Error retrieving Enquiry No Field value: " + e.getMessage());
 			throw e;
+		}
+	}
+	
+	public void doubleClickOnWalkinCustomerDetails() {
+		try {
+			// Perform double-click action
+			Actions actions = new Actions(driver);
+			actions.doubleClick(SelectWalkinCustomerDetails).perform();
+			System.out.println("Successfully double-clicked on the Walkin Customer Details.");
+		} catch (Exception e) {
+			System.err.println("Error performing double-click on the Walkin Customer Details: " + e.getMessage());
+			throw new RuntimeException("Failed to double-click on the Walkin Customer Details.", e);
 		}
 	}
 
@@ -653,17 +683,6 @@ public class NewEnquiryWebWalkinPage {
 	}
 
 	public void selectSubVariant(String SubVariant) throws Exception {
-//		try {
-//			waitForElementToBeClickable(SubVariantField);
-//			SubVariantField.click();
-//			Thread.sleep(5000);
-//			SubVariantField.sendKeys(SubVariant);
-//			SubVariantField.sendKeys(Keys.ENTER);
-//		} catch (Exception e) {
-//			System.err.println("An error occurred while selecting Sub Variant: " + e.getMessage());
-//			throw e;
-//		}
-//	}
 		try {
 			waitForElementToBeClickable(SubVariantField);
 			SubVariantField.click();
@@ -967,6 +986,11 @@ public class NewEnquiryWebWalkinPage {
 	public WebElement getCustomerEnquiryScreenHeader() {
 	    return WalkinEnquiryTab ; 
 	}
+	
+	public WebElement getSelectWalkinCustomerDetails() {
+		return SelectWalkinCustomerDetails;
+	}
+	
 	public boolean isCustomerEnquiryScreenDisplayed() {
 	    try {
 	        WebElement header = getCustomerEnquiryScreenHeader();
@@ -975,5 +999,17 @@ public class NewEnquiryWebWalkinPage {
 	        return false;
 	    }
 	}
+	
+	public boolean isWalkinFindCustomerInfoScreenVisible() {
+        try {
+            // Wait until the element is visible (adjust timeout as needed)
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.visibilityOf(WalkinfindCustomerInfoScreen));
+            return WalkinfindCustomerInfoScreen.isDisplayed();
+        } catch (Exception e) {
+            // Return false if the element is not found or visible
+            return false;
+        }
+    }
 
 }

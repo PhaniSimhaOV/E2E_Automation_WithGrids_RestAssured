@@ -2,7 +2,7 @@ Feature: Extended Warranty Punching and SOT
 
   @ExtendedWarranty
   Scenario: User tries to verify Extended Warranty Submit functionality
-   Given launch browser and enter url
+    Given launch browser and enter url
     When user enters a valid username
     And user enter a valid password
     And clicks on Send OTP
