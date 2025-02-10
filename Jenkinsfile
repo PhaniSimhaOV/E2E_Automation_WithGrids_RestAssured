@@ -100,15 +100,16 @@ pipeline {
         always {
             echo "Publishing reports..."
 
-            // Archive Cucumber HTML Report
-            // publishHTML([
-            //     reportDir: 'target/cucumber-html-reports',
-            //     reportFiles: 'index.html',
-            //     reportName: 'Cucumber HTML Report'
-            // ])
-
-            // // Archive Cucumber JSON Report
-            // cucumber buildStatus: 'UNSTABLE', fileIncludePattern: 'target/cucumber.json', trendsLimit: 10
+            success {
+                emailext subject: "Build Success",
+                        body: "The build was successful!",
+                        to: "simhaphani@gmail.com"
+            }
+            failure {
+                emailext subject: "Build Failed",
+                        body: "The build failed. Please check Jenkins.",
+                        to: "simhaphani@gmail.com"
+            }
         }
     }
 }
