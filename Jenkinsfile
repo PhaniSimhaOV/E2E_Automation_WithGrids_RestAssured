@@ -97,18 +97,18 @@ pipeline {
         }
     }
     post {
-        // always {
-        //     echo "Publishing reports..."
+        always {
+            echo "Publishing reports..."
 
-        //     // Archive Cucumber HTML Report
-        //     publishHTML([
-        //         reportDir: 'target/cucumber-html-reports',
-        //         reportFiles: 'index.html',
-        //         reportName: 'Cucumber HTML Report'
-        //     ])
+            // Archive Cucumber HTML Report
+            // publishHTML([
+            //     reportDir: 'target/cucumber-html-reports',
+            //     reportFiles: 'index.html',
+            //     reportName: 'Cucumber HTML Report'
+            // ])
 
-        //     // Archive Cucumber JSON Report
-        //     cucumber buildStatus: 'UNSTABLE', fileIncludePattern: 'target/cucumber.json', trendsLimit: 10
-        // }
+            // // Archive Cucumber JSON Report
+            // cucumber buildStatus: 'UNSTABLE', fileIncludePattern: 'target/cucumber.json', trendsLimit: 10
+        }
     }
 }
