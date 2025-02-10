@@ -43,7 +43,7 @@ public class TestDriveEnquiryStepDefinition {
 	@And("User reads data from the Excel sheet regarding TestDrive Appointment")
 	public void userReadsDataFromTheExcelSheetRegardingTestDriveAppointment() throws Throwable  {
 
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb-1.xlsx";
 		String sheetName = "Test Drive - Enquiry";
 		// Fetch all data from the Excel sheet
 		allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
@@ -58,7 +58,7 @@ public class TestDriveEnquiryStepDefinition {
 		int passedCount = 0;
 		int failedCount = 0;
 
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb-1.xlsx";
 		String sheetName = "Test Drive - Enquiry";
 		ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
 		for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
@@ -199,7 +199,7 @@ public class TestDriveEnquiryStepDefinition {
 
 	@And("User reads data from the Excel sheet regarding TestDrive Appointment for leads")
 	public void userReadsDataFromTheExcelSheetRegardingTestDriveAppointmentForLeads() throws IOException {
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb-1.xlsx";
 		String sheetName = "Test Drive - Leads";
 		// Fetch all data from the Excel sheet
 		allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
@@ -215,7 +215,7 @@ public class TestDriveEnquiryStepDefinition {
 		int passedCount = 0;
 		int failedCount = 0;
 
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb-1.xlsx";
 		String sheetName = "Test Drive - Enquiry";
 		ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
 		for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {

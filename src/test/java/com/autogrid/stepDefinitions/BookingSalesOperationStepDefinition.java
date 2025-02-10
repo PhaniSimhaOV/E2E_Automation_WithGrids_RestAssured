@@ -260,7 +260,7 @@ public class BookingSalesOperationStepDefinition {
 
 	@And("User reads data from the Excel sheet regarding Booking Feature")
 	public void userReadsDataFromTheExcelSheetRegardingBookingFeature() throws IOException {
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb-1.xlsx";
 		String sheetName = "Booking Leads";
 		// Fetch all data from the Excel sheet
 		allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
@@ -276,7 +276,7 @@ public class BookingSalesOperationStepDefinition {
 		int passedCount = 0;
 		int failedCount = 0;
 
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb-1.xlsx";
 		String sheetName = "Booking Leads";
 
 		// Add a new column for error logging
@@ -409,7 +409,7 @@ public class BookingSalesOperationStepDefinition {
 		int passedCount = 0;
 		int failedCount = 0;
 
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb-1.xlsx";
 		String sheetName = "Booking Leads";
 
 		// Add a new column for error logging
@@ -519,7 +519,7 @@ public class BookingSalesOperationStepDefinition {
 		int passedCount = 0;
 		int failedCount = 0;
 
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb-1.xlsx";
 		String sheetName = "Booking Leads";
 
 		// Add a new column for error logging

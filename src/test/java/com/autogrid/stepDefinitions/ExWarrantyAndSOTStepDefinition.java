@@ -41,7 +41,7 @@ public class ExWarrantyAndSOTStepDefinition {
 
 	@Given("User reads data from the Excel sheet regarding ExWarranty feature")
 	public void User_reads_data_from_the_Excel_sheet_regarding_ExWarranty_feature() throws IOException {
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb-1.xlsx";
 		String sheetName = "ExWarranty Leads";
 
 		// Fetch all data from the Excel sheet
@@ -59,7 +59,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		int passedCount = 0;
 		int failedCount = 0;
 
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb-1.xlsx";
 		String sheetName = "ExWarranty Leads";
 		// Add a new column for error logging
 		ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
@@ -344,7 +344,7 @@ public class ExWarrantyAndSOTStepDefinition {
 
 	@Given("User reads data from the Excel sheet regarding SOT feature")
 	public void User_reads_data_from_the_Excel_sheet_regarding_Sot_feature() throws IOException {
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb-1.xlsx";
 		String sheetName = "SOT Leads";
 
 		// Fetch all data from the Excel sheet
@@ -363,7 +363,7 @@ public class ExWarrantyAndSOTStepDefinition {
 		int passedCount = 0;
 		int failedCount = 0;
 
-		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb-1.xlsx";
 		String sheetName = "SOT Leads";
 		// Add a new column for error logging
 		ExcelWriting.addColumnToSheet(filePath, sheetName, "Error Logs");
