@@ -16,7 +16,7 @@ public class Hooks {
     public void initializeDriver() throws MalformedURLException {
         LaunchDriver.setUpDriver();
     }
-    @After
+    //@After
     public void killDriver() {
         LaunchDriver.tearDown();
     }
