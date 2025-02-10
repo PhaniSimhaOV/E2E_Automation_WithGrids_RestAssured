@@ -46,6 +46,8 @@ public class NewEnquiryWebStepDefinition {
 		WebDriver driver = LaunchDriver.getDriver();
 		this.newenquirypage = new NewEnquiryWebPage(driver);
 		PageFactory.initElements(driver, newenquirypage);
+		this.dMSLoginPage = new DMSLoginPage(driver);
+		PageFactory.initElements(driver, dMSLoginPage);
 	}
 
 	private void waitForVisibilityOfElement(WebElement element) {
@@ -236,7 +238,7 @@ public class NewEnquiryWebStepDefinition {
 	}
 
 	@When("User tries to clicks on the lead Enquiry Tab")
-	public void user_tries_to_clicks_on_the_lead_enquiry_tab() {
+	public void user_tries_to_clicks_on_the_lead_enquiry_tab() throws Throwable {
 		try {
 			newenquirypage.interactWithIframeElement();
 			waitForElementToBeClickable(newenquirypage.getLeadEnquiryTab());
@@ -283,7 +285,7 @@ public class NewEnquiryWebStepDefinition {
 	}
 
 	@When("User clicks on the mobile number search Icon")
-	public void user_clicks_on_the_mobile_number_search_icon() {
+	public void user_clicks_on_the_mobile_number_search_icon() throws Throwable {
 		try {
 			waitForElementToBeClickable(newenquirypage.getMobileSearchIcon());
 			newenquirypage.clickMobileSearchIcon();
@@ -296,7 +298,7 @@ public class NewEnquiryWebStepDefinition {
 	
 	
 	@When("i selected Previouesly added Customer Details")
-	public void i_selected_Previouesly_added_Customer_Details() {
+	public void i_selected_Previouesly_added_Customer_Details() throws Throwable {
 		try {
 			Thread.sleep(5000);
 			newenquirypage.interactWithFindACustomeriframeElement();
@@ -389,7 +391,7 @@ public class NewEnquiryWebStepDefinition {
 	}
 
 	@When("User clicks on Pincode Search Icon beside PIN field")
-	public void user_clicks_on_pincode_search_icon_beside_pin_field() {
+	public void user_clicks_on_pincode_search_icon_beside_pin_field() throws Throwable {
 		try {
 			waitForElementToBeClickable(newenquirypage.getPincodeSearchIcon());
 			newenquirypage.clickPincodeSearchIcon();
@@ -420,7 +422,7 @@ public class NewEnquiryWebStepDefinition {
 	}
 
 	@Then("User tries to clicks on the search button in the Pincode search Screen")
-	public void user_tries_to_clicks_on_the_search_button_in_the_pincode_search_screen() {
+	public void user_tries_to_clicks_on_the_search_button_in_the_pincode_search_screen() throws Throwable {
 		try {
 			waitForElementToBeClickable(newenquirypage.getPinCodeSearchButton());
 			newenquirypage.clickPinCodeSearchButton();
@@ -432,7 +434,7 @@ public class NewEnquiryWebStepDefinition {
 	}
 
 	@Then("User tries to select any one pincode from the list")
-	public void user_tries_to_select_any_one_pincode_from_the_list() {
+	public void user_tries_to_select_any_one_pincode_from_the_list() throws Throwable {
 		try {
 			waitForElementToBeClickable(newenquirypage.getLocationSelection());
 			newenquirypage.clickLocationSelection();
@@ -456,7 +458,7 @@ public class NewEnquiryWebStepDefinition {
     }
 
 	@Then("User tries to clicks on the Add Selected button in Pincode search Screen")
-	public void user_tries_to_clicks_on_the_add_selected_button_in_pincode_search_screen() {
+	public void user_tries_to_clicks_on_the_add_selected_button_in_pincode_search_screen() throws Throwable {
 		try {
 			waitForElementToBeClickable(newenquirypage.getAddSelectedButton());
 			newenquirypage.clickAddSelectedButton();
@@ -468,7 +470,7 @@ public class NewEnquiryWebStepDefinition {
 	}
 
 	@Given("I enters valid data in Address field")
-	public void i_enters_valid_data_in_address_field() {
+	public void i_enters_valid_data_in_address_field() throws Throwable {
 		try {
 			if (testData != null) {
 				waitForVisibilityOfElement(newenquirypage.getAddress());
@@ -484,7 +486,7 @@ public class NewEnquiryWebStepDefinition {
 	}
 
 	@Given("I enters valid data in Village field")
-	public void i_enters_valid_data_in_village_field() {
+	public void i_enters_valid_data_in_village_field() throws Throwable {
 		try {
 			if (testData != null) {
 				waitForVisibilityOfElement(newenquirypage.getVillage());
@@ -740,7 +742,7 @@ public class NewEnquiryWebStepDefinition {
 
 	@When("update the gdms_stage and enquiry number in the database based on the result")
 	public void update_the_gdms_stage_and_enquiry_number_in_the_database_based_on_the_result() throws Throwable {
-		String filePath = "C:\\Users\\ADMIN\\Downloads\\output.xlsx";
+		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
 		String sheetName = "Enquiry Lead Creation";
 
 		// Load Excel data into allTestData
@@ -760,7 +762,7 @@ public class NewEnquiryWebStepDefinition {
 			// Load database credentials from properties file
 			Properties properties = new Properties();
 			FileInputStream fis = new FileInputStream(
-					"D:\\E2E_Automation_WithGrids_RestAssured\\src\\test\\resources\\config\\project.properties"); // path
+					"src/test/resources/config/project.properties"); // path
 			properties.load(fis);
 
 			String dbUrl = properties.getProperty("db.url");

@@ -186,7 +186,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@Then("user should be able to see the Home Icon on the dashboard")
-	public void user_should_be_able_to_see_the_home_icon_on_dashboard() {
+	public void user_should_be_able_to_see_the_home_icon_on_dashboard() throws Throwable {
 		try {
 			Assert.assertTrue(dMSLoginPage.isHomepageIconDisplayed(), "Home Icon is not displayed on the dashboard.");
 			System.out.println("Home Icon is displayed on the dashboard.");
@@ -254,7 +254,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User tries to enters Lead Mobile Number in the Based On Field")
-	public void user_tries_to_enters_lead_mobile_number_in_the_based_on_field() {
+	public void user_tries_to_enters_lead_mobile_number_in_the_based_on_field() throws Throwable {
 		try {
 			if (testData != null) {
 				waitForVisibilityOfElement(invoicepage.getBasedOnField());
@@ -270,7 +270,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@And("User tries to clicks on the Search button in Customer Booking Mgt List Screen")
-	public void user_tries_to_clicks_on_the_search_button_in_customer_booking_mgt_list_screen() {
+	public void user_tries_to_clicks_on_the_search_button_in_customer_booking_mgt_list_screen() throws Throwable {
 		try {
 			waitForElementToBeClickable(invoicepage.getCustomerBookingMgtListSearch());
 			invoicepage.clickCustomerBookingMgtListSearch();
@@ -282,7 +282,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User tries to select Enquiry from the list after applying filters in Customer Booking Mgt List Screen")
-	public void user_tries_to_select_enquiry_from_the_list_after_applying_filters_in_customer_booking_mgt_list_screen() {
+	public void user_tries_to_select_enquiry_from_the_list_after_applying_filters_in_customer_booking_mgt_list_screen() throws Throwable {
 		try {
 			waitForElementToBeClickable(invoicepage.getSelectEnquiryFromCustomerBookingMgtList());
 			invoicepage.doubleClickOnEnquiry();
@@ -295,7 +295,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User tries to clicks on the Invoice Tab in the Customer Booking Management Screen")
-	public void user_tries_to_clicks_on_the_invoice_tab_in_the_customer_booking_management_screen() {
+	public void user_tries_to_clicks_on_the_invoice_tab_in_the_customer_booking_management_screen() throws Throwable {
 		try {
 			LaunchDriver.getDriver().switchTo().defaultContent();
 			invoicepage.interactWithIframeElement2();
@@ -310,7 +310,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User tries to clicks on Scheme button in the Invoice Tab in the Customer Booking Management Screen")
-	public void user_tries_to_clicks_on_scheme_button_in_the_invoice_tab_in_the_customer_booking_management_screen() {
+	public void user_tries_to_clicks_on_scheme_button_in_the_invoice_tab_in_the_customer_booking_management_screen() throws Throwable {
 		try {
 			waitForElementToBeClickable(invoicepage.getSchemeButton());
 			invoicepage.clickSchemeButton();
@@ -446,7 +446,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@Then("User tries to clicks on Save button in Scheme Popup screen")
-	public void user_tries_to_clicks_on_save_button_in_scheme_popup_screen() {
+	public void user_tries_to_clicks_on_save_button_in_scheme_popup_screen() throws Throwable {
 		try {
 			waitForElementToBeClickable(invoicepage.getSchemePopupSaveButton());
 			invoicepage.clickSchemePopupSaveButton();
@@ -459,7 +459,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@Then("User tries to clicks on Confirm button in Do you want to save it? Popup")
-	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_save_it_popup() {
+	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_save_it_popup() throws Throwable {
 		try {
 			LaunchDriver.getDriver().switchTo().defaultContent();
 			invoicepage.interactWithIframeElement2();
@@ -489,7 +489,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User tries to clicks on the More Promotions button in Basic info Section in the Customer Booking Management Screen")
-	public void user_tries_to_clicks_on_the_more_promotions_button_in_basic_info_section_in_the_customer_booking_management_screen() {
+	public void user_tries_to_clicks_on_the_more_promotions_button_in_basic_info_section_in_the_customer_booking_management_screen() throws Throwable {
 		try {
 			invoicepage.interactWithIframeElement2();
 			waitForElementToBeClickable(invoicepage.getMorePromotionsButton());
@@ -521,7 +521,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@Then("User tries to Checks the All the promotions from promotions table in the Promotion Pop-up")
-	public void user_tries_to_checks_the_all_the_promotions_from_promotions_table_in_the_promotion_pop_up() {
+	public void user_tries_to_checks_the_all_the_promotions_from_promotions_table_in_the_promotion_pop_up() throws Throwable {
 		try {
 			invoicepage.interactWithIframeElement2();
 			invoicepage.interactWithIframeElement3();
@@ -536,7 +536,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@Then("User tries to clicks on Add Selected button in the Promotion Pop-up")
-	public void user_tries_to_clicks_on_add_selected_button_in_the_promotion_pop_up() {
+	public void user_tries_to_clicks_on_add_selected_button_in_the_promotion_pop_up() throws Throwable {
 		try {
 			waitForElementToBeClickable(invoicepage.getPromotionAddSelectedButton());
 			invoicepage.clickPromotionAddSelectedButton();
@@ -549,7 +549,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User tries to click on the Modify button in Basic info Section in the Customer Booking Management Screen")
-	public void user_tries_to_click_on_the_modify_button_in_basic_info_section_in_the_customer_booking_management_screen() {
+	public void user_tries_to_click_on_the_modify_button_in_basic_info_section_in_the_customer_booking_management_screen() throws Throwable {
 		try {
 			invoicepage.interactWithIframeElement2();
 			waitForElementToBeClickable(invoicepage.getCustomerBookingMgtModifyButton());
@@ -565,7 +565,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User tries to clicks on Confirm button in Do you want to Modify it? Popup")
-	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_modify_it_popup() {
+	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_modify_it_popup() throws Throwable {
 		try {
 			invoicepage.interactWithIframeElement2();
 			waitForElementToBeClickable(invoicepage.getCustomerBookingMgtModifyConfirmationPopupConfirmButton());
@@ -579,7 +579,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User tries to select valid data in Vehicle usage Type field in customer info Section in the Customer Booking Management Screen")
-	public void user_tries_to_select_valid_data_in_vehicle_usage_type_field_in_customer_info_section_in_the_customer_booking_management_screen() {
+	public void user_tries_to_select_valid_data_in_vehicle_usage_type_field_in_customer_info_section_in_the_customer_booking_management_screen() throws Throwable {
 		try {
 			Thread.sleep(12000);
 			invoicepage.interactWithIframeElement2();
@@ -598,7 +598,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User tries to clicks on the Register button in invoice tab in the Customer Booking Management Screen")
-	public void user_tries_to_clicks_on_the_register_button_in_invoice_tab_in_the_customer_booking_management_screen() {
+	public void user_tries_to_clicks_on_the_register_button_in_invoice_tab_in_the_customer_booking_management_screen() throws Throwable {
 		try {
 			waitForElementToBeClickable(invoicepage.getRegisterButton());
 			invoicepage.clickRegisterButton();
@@ -613,7 +613,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User tries to clicks on Confirm button in Do you want to save it? Popup in the Customer Booking Management Screen")
-	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_save_it_popup_in_the_customer_booking_management_screen() {
+	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_save_it_popup_in_the_customer_booking_management_screen() throws Throwable {
 		try {
 			invoicepage.interactWithIframeElement2();
 			waitForElementToBeClickable(invoicepage.getRegisterConfirmationPopupConfirmButton());
@@ -643,7 +643,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User tries to clicks on Confirm button in Do you want to Modify it? Popup in the Customer Booking Management Screen")
-	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_modify_it_popup_in_the_customer_booking_management_screen() {
+	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_modify_it_popup_in_the_customer_booking_management_screen() throws Throwable {
 		try {
 			invoicepage.interactWithIframeElement2();
 			waitForElementToBeClickable(invoicepage.getInvoiceModifyConfirmationPopupConfirmButton());
@@ -673,7 +673,7 @@ public class InvoiceStepDefinition {
 	}
 
 	@When("User tries to clicks on Confirm button in Do you want to confirm it? Popup")
-	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_confirm_it_popup() {
+	public void user_tries_to_clicks_on_confirm_button_in_do_you_want_to_confirm_it_popup() throws Throwable {
 		try {
 			invoicepage.interactWithIframeElement2();
 			waitForElementToBeClickable(invoicepage.getInvoiceConfirmConfirmationPopupConfirmButton());

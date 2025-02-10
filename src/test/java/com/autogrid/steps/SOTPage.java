@@ -1,7 +1,9 @@
 package com.autogrid.steps;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -13,62 +15,62 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.autogrid.utils.CommonActions;
+import com.autogrid.utils.ExcelReading;
 import com.autogrid.utils.LaunchDriver;
 
 public class SOTPage {
 	private static final Logger logger = LoggerFactory.getLogger(SOTPage.class);
 	private final CommonActions commonActions;
+	private final WebDriver driver;
+    private final String featureName = "SOT Screen Locators"; // Updated for SOT Page
 
 	public SOTPage(WebDriver driver) {
 		this.commonActions = new CommonActions(driver);
 		PageFactory.initElements(driver, this);
+		this.driver = driver;
 	}
+	/**
+     * Fetches the WebElement dynamically from Excel.
+     *
+     * @param elementName - The logical name of the element from Excel.
+     * @return WebElement - The located web element.
+     * @throws IOException If there is an issue with reading the Excel file.
+     */
+    private WebElement getElement(String elementName) throws IOException {
+        try {
+            Map<String, String> locator = ExcelReading.getLocator(featureName, elementName);
+            String locatorType = locator.get("type");
+            String locatorValue = locator.get("value");
 
-	@FindBy(xpath = "//*[text()='Service']")
-	private WebElement ServiceIcon;
+            switch (locatorType.toLowerCase()) {
+                case "xpath":
+                    return driver.findElement(By.xpath(locatorValue));
+                case "css":
+                    return driver.findElement(By.cssSelector(locatorValue));
+                case "id":
+                    return driver.findElement(By.id(locatorValue));
+                case "name":
+                    return driver.findElement(By.name(locatorValue));
+                case "class":
+                    return driver.findElement(By.className(locatorValue));
+                case "linktext":
+                    return driver.findElement(By.linkText(locatorValue));
+                default:
+                    throw new IllegalArgumentException("Invalid locator type: " + locatorType);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error locating element '" + elementName + "': " + e.getMessage());
+        }
+    }
 
-	@FindBy(xpath = "//*[text()='Extended Warranty']")
-	private WebElement ExtendedWarrantySubMenu;
-
-	@FindBy(xpath = "//a[text()='Hyundai Shield of Trust Package Register']")
-	private WebElement HyundaiShieldOfTrustPackageRegLink;
-
-	@FindBy(xpath = "//span[text()='Hyundai Shield of Trust Package Register']")
-	private WebElement HyundaiSOTPackageRegisterHeader;
-
-	@FindBy(xpath = "//button[@id='btnInquire']")
-	private WebElement InquireIcon;
-
-	@FindBy(xpath = "//button[@id='btnClear']")
-	private WebElement ClearBtn;
-
-	@FindBy(xpath = "//*[@id='frm1']/div[2]/dl[8]/dd[1]/span/span")
-	private WebElement EmployeeNameDrpDwn;
-
-	@FindBy(xpath = "//*[@id='grid']/div[2]/table/tbody/tr[4]/td[2]")
-	private WebElement RequiredSOTScheme;
-
-	@FindBy(xpath = "//*[@id='frm1']/div[2]/dl[9]/dd[3]/span/span")
-	private WebElement PlaceOfSupplyDrpDwn;
-
-	@FindBy(xpath = "//button[@id='btnSubmit']")
-	private WebElement SubmitBtn;
-
-	@FindBy(xpath = "//input[@class='k-formatted-value form_numeric ar k-input']")
-	private WebElement OdometerReading;
-
-	@FindBy(xpath = "//input[@id='sKeyword']")
-	private WebElement VIN;
-
-	@FindBy(xpath = "//*[@src='/ser/serf/selectHyundaiKeralaRRSchemeRegisterMain.dms']")
-	private WebElement SOTIframe;
-
-	@FindBy(xpath = "//button[text()='close']")
-	private WebElement close;
-
+    private void waitForVisibilityOfElement(WebElement element) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+    
 	public void clickServiceIcon() {
 		try {
-			ServiceIcon.click();
+			getElement("ServiceIcon").click();
 		} catch (Exception e) {
 			System.err.println("Failed to click Service Icon" + e.getMessage());
 		}
@@ -76,8 +78,8 @@ public class SOTPage {
 
 	public void clickExtWarrantySubMenu() {
 		try {
-			commonActions.explicitWait("//*[text()='Extended Warranty']");
-			ExtendedWarrantySubMenu.click();
+			waitForVisibilityOfElement(getElement("ExtendedWarrantySubMenu"));
+			getElement("ExtendedWarrantySubMenu").click();
 		} catch (Exception e) {
 			System.err.println("Failed to click Extended Warranty Sub Menu" + e.getMessage());
 		}
@@ -86,7 +88,7 @@ public class SOTPage {
 	public void clickHyundaiShieldOfTrustPackageRegisterLink() {
 		try {
 			JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-			js.executeScript("arguments[0].click();", HyundaiShieldOfTrustPackageRegLink);
+			js.executeScript("arguments[0].click();", getElement("HyundaiShieldOfTrustPackageRegLink"));
 		} catch (Exception e) {
 			System.err.println("Failed to click HyundaiShieldOfTrustPackageRegLink " + e.getMessage());
 		}
@@ -95,7 +97,7 @@ public class SOTPage {
 	// method to check if Hyundai SOT Package Register Header is displayed
 	public boolean HyundaiSOTPackageRegisterHeaderisDisplayed() {
 		try {
-			return HyundaiSOTPackageRegisterHeader.isDisplayed();
+			return getElement("HyundaiSOTPackageRegisterHeader").isDisplayed();
 		} catch (Exception e) {
 			return false;
 		}
@@ -103,7 +105,7 @@ public class SOTPage {
 
 	public void interactWithIframeSOT() {
 		try {
-			LaunchDriver.getDriver().switchTo().frame(SOTIframe);
+			LaunchDriver.getDriver().switchTo().frame(getElement("SOTIframe"));
 			System.out.println("Successfully interacted with iFrame of SOTPage");
 		} catch (Exception e) {
 			System.err.println("Error in interacting with iFrame of ExWarranty" + e.getMessage());
@@ -112,9 +114,9 @@ public class SOTPage {
 
 	public void enterVIN(String vin) {
 		try {
-			commonActions.explicitWait("//input[@id='sKeyword']");
-			VIN.clear();
-			VIN.sendKeys(vin);
+			waitForVisibilityOfElement(getElement("VIN"));
+			getElement("VIN").clear();
+			getElement("VIN").sendKeys(vin);
 		} catch (Exception e) {
 			System.err.println("Error in entering VIN " + e.getMessage());
 		}
@@ -122,8 +124,7 @@ public class SOTPage {
 
 	public void clickOnInquire() {
 		try {
-			InquireIcon.click();
-
+			getElement("InquireIcon").click();
 		} catch (Exception e) {
 			System.err.println("Error in clicking Inquire icon" + e.getMessage());
 		}
@@ -131,21 +132,21 @@ public class SOTPage {
 
 	public void enterCurrentOdoMtrReading(String odoMtrReading) {
 		try {
-			commonActions.explicitWait("//input[@class='k-formatted-value form_numeric ar k-input']");
-			if (OdometerReading.isDisplayed()) {
+			waitForVisibilityOfElement(getElement("OdometerReading"));
+			if (getElement("OdometerReading").isDisplayed()) {
 
 				JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-				js.executeScript("arguments[0].value='" + odoMtrReading + "';", OdometerReading);
+				js.executeScript("arguments[0].value='" + odoMtrReading + "';", getElement("OdometerReading"));
 			} else {
-				System.out.println(OdometerReading + "Element is not visible");
+				System.out.println(getElement("OdometerReading") + "Element is not visible");
 			}
 		} catch (Exception e) {
 			System.err.println("Error in entering OdomtrReading" + e.getMessage());
 		}
 	}
 
-	public void selectEmployeeName(String employeeName) {
-		EmployeeNameDrpDwn.click();
+	public void selectEmployeeName(String employeeName) throws Throwable {
+		getElement("EmployeeNameDrpDwn").click();
 		commonActions.explicitWait("//ul[@id='hssdEmpNo_listbox']//li");
 
 		WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
@@ -165,8 +166,8 @@ public class SOTPage {
 		}
 	}
 
-	public void selectPlaceOfSupply(String placeOfSupply) {
-		PlaceOfSupplyDrpDwn.click();
+	public void selectPlaceOfSupply(String placeOfSupply) throws Throwable {
+		getElement("PlaceOfSupplyDrpDwn").click();
 		commonActions.explicitWait("//ul[@id='placeOfSupply_listbox']//li");
 
 		WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
@@ -237,7 +238,7 @@ public class SOTPage {
 
 	public void clickSubmitBtn() {
 		try {
-			SubmitBtn.click();
+			getElement("SubmitBtn").click();
 		} catch (Exception e) {
 			System.err.println("Error in clicking Submit Button" + e.getMessage());
 		}
@@ -245,7 +246,7 @@ public class SOTPage {
 
 	public void clickClearBtn() {
 		try {
-			ClearBtn.click();
+			getElement("ClearBtn").click();
 		} catch (Exception e) {
 			System.err.println("Error in clicking clear button" + e.getMessage());
 		}
@@ -255,7 +256,7 @@ public class SOTPage {
 		try {
 			Thread.sleep(2000);
 			LaunchDriver.getDriver().switchTo().defaultContent();
-			close.click();
+			getElement("close").click();
 		} catch (Exception e) {
 			System.err.println("Error in clicking close button" + e.getMessage());
 		}

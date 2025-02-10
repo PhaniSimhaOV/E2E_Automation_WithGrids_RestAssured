@@ -2,6 +2,7 @@ package com.autogrid.stepDefinitions;
 
 import com.autogrid.steps.BookingSalesOperationPage;
 import com.autogrid.steps.DMSLoginPage;
+import com.autogrid.steps.NewEnquiryWebPage;
 import com.autogrid.steps.TestDriveEnquiryPage;
 import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.ExcelReading;
@@ -19,9 +20,10 @@ import static com.autogrid.utils.LaunchDriver.getDriver;
 public class TestDriveEnquiryStepDefinition {
 	CommonActions commonActions;
 	DMSLoginPage dMSLoginPage;
+	NewEnquiryWebPage newenquirypage;
 	TestDriveEnquiryPage testDriveEnquiryPage;
-
 	BookingSalesOperationPage bookingPage;
+	
 	private Map<String, String> testData; // Stores data from Excel
 	private List<Map<String, String>> allTestData; // List to store all data rows from Excel
 	private int currentDataRowIndex = 0;
@@ -34,10 +36,12 @@ public class TestDriveEnquiryStepDefinition {
 		PageFactory.initElements(driver, dMSLoginPage);
 		this.testDriveEnquiryPage = new TestDriveEnquiryPage(driver);
 		PageFactory.initElements(driver, testDriveEnquiryPage);
+		this.newenquirypage = new NewEnquiryWebPage(driver);
+		PageFactory.initElements(driver, newenquirypage);
 	}
 
 	@And("User reads data from the Excel sheet regarding TestDrive Appointment")
-	public void userReadsDataFromTheExcelSheetRegardingTestDriveAppointment() throws IOException {
+	public void userReadsDataFromTheExcelSheetRegardingTestDriveAppointment() throws Throwable  {
 
 		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
 		String sheetName = "Test Drive - Enquiry";
@@ -50,7 +54,7 @@ public class TestDriveEnquiryStepDefinition {
 	}
 
 	@And("User processes the TestDrive appointment for walk-in Enquiry for all rows from the Excel sheet")
-	public void userProcessesTheTestDriveAppointmentForWalkInEnquiryForAllRowsFromTheExcelSheet() throws IOException {
+	public void userProcessesTheTestDriveAppointmentForWalkInEnquiryForAllRowsFromTheExcelSheet() throws Throwable  {
 		int passedCount = 0;
 		int failedCount = 0;
 
@@ -122,7 +126,7 @@ public class TestDriveEnquiryStepDefinition {
 		}
 	}
 
-	public void mobileNumberEntry() {
+	public void mobileNumberEntry() throws Throwable {
 		try {
 			if (testData != null) {
 				String mobileNumber = testData.get("Mobile");
@@ -137,7 +141,7 @@ public class TestDriveEnquiryStepDefinition {
 		}
 	}
 
-	public void BasicData() {
+	public void BasicData() throws Throwable {
 		try {
 			if (testData != null) {
 				testDriveEnquiryPage.BasicInfo(testData.get("TDOffer"), testData.get("TDVin"),
@@ -151,7 +155,7 @@ public class TestDriveEnquiryStepDefinition {
 		}
 	}
 
-	public void testDriveAppointement() {
+	public void testDriveAppointement() throws Throwable {
 		try {
 			if (testData != null) {
 				testDriveEnquiryPage.TestDriveAppointmentTab(testData.get("test_drive_datetime"));
@@ -164,7 +168,7 @@ public class TestDriveEnquiryStepDefinition {
 		}
 	}
 
-	public void followupdetails() {
+	public void followupdetails() throws Throwable {
 		try {
 			if (testData != null) {
 				testDriveEnquiryPage.FollowUpTabDetails(testData.get("NextFollowUptime"), testData.get("TextFollow"),
@@ -180,7 +184,7 @@ public class TestDriveEnquiryStepDefinition {
 
 	}
 
-	private void executeTestStepsForRow_TestDrive() throws Exception {
+	private void executeTestStepsForRow_TestDrive() throws Throwable {
 		testDriveEnquiryPage.walkinEnquiry();
 		mobileNumberEntry();
 		testDriveEnquiryPage.selecttheEntry();

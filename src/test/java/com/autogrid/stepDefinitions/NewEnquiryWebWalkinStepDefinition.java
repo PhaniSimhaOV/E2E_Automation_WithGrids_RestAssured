@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import com.autogrid.steps.DMSLoginPage;
 import com.autogrid.steps.InvoicePage;
+import com.autogrid.steps.NewEnquiryWebPage;
 import com.autogrid.steps.NewEnquiryWebWalkinPage;
 import com.autogrid.utils.CommonActions;
 import com.autogrid.utils.LaunchDriver;
@@ -22,7 +23,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import org.openqa.selenium.WebElement;
 import com.autogrid.utils.ExcelReading;
 import com.autogrid.utils.ExcelUtility;
@@ -35,6 +35,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 	CommonActions commonActions;
 	DMSLoginPage dMSLoginPage;
 	NewEnquiryWebWalkinPage newenquirywebpage;
+	NewEnquiryWebPage newenquirypage;
 	InvoicePage invoicepage;
 	DatabaseConnectionStepDefinition DatabaseConnectionStepDefinition;
 	private Map<String, String> testData; // Stores data from Excel
@@ -47,6 +48,8 @@ public class NewEnquiryWebWalkinStepDefinition {
 		PageFactory.initElements(driver, newenquirywebpage);
 		this.dMSLoginPage = new DMSLoginPage(driver);
 		PageFactory.initElements(driver, dMSLoginPage);
+		this.newenquirypage = new NewEnquiryWebPage(driver);
+		PageFactory.initElements(driver, newenquirypage);
 	}
 
 	private void waitForVisibilityOfElement(WebElement element) {
@@ -70,7 +73,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 			// Load database credentials from properties file
 			Properties properties = new Properties();
 			FileInputStream fis = new FileInputStream(
-					"D:\\E2E_Automation_WithGrids_RestAssured\\src\\test\\resources\\config\\project.properties");
+					"src/test/resources/config/project.properties");
 			properties.load(fis);
 
 			String dbUrl = properties.getProperty("db.url");
@@ -249,11 +252,11 @@ public class NewEnquiryWebWalkinStepDefinition {
 			user_clicks_on_new_button();
 			user_tries_to_enters_mobile_number_which_not_registered();
 			user_clicks_on_mobile_number_search_icon();
-			
+
 			// Conditional execution based on screen visibility
-	        if (isWalkinFindCustomerInfoScreenVisible()) {
-	        	i_selected_Previouesly_added_Walkin_Customer_Details();
-	        	i_selects_valid_data_enquiry_sub_source();
+			if (isWalkinFindCustomerInfoScreenVisible()) {
+				i_selected_Previouesly_added_Walkin_Customer_Details();
+				i_selects_valid_data_enquiry_sub_source();
 				i_selects_valid_data_enquiry_category();
 				i_selects_valid_data_in_model();
 				i_selects_valid_data_fuel_type();
@@ -273,39 +276,39 @@ public class NewEnquiryWebWalkinStepDefinition {
 				user_tries_to_select_one_pincode_from_the_list();
 				user_tries_to_clicks_on_add_selected_button_in_pincode_search_screen();
 				user_clicks_on_save_button();
-	        } else {
-			i_enters_valid_data_in_email_id();
-			i_selects_valid_data_in_cust_type();
-			i_enters_valid_data_in_address();
-			i_enters_valid_data_in_village();
-			i_selects_valid_data_enquiry_sub_source();
-			i_selects_valid_data_enquiry_category();
-			i_selects_valid_data_in_model();
-			i_selects_valid_data_fuel_type();
-			i_selects_valid_data_in_variant();
-			i_selects_valid_data_in_sub_variant();
-			i_selects_valid_data_in_finance_req();
-			i_selects_valid_data_in_ext_color();
-			i_selects_valid_data_in_int_color();
-			i_selects_valid_data_in_sales_consultant();
-			i_selects_valid_data_in_certificate_of_deposit();
-			i_selects_valid_data_in_expected_plan();
-			i_selects_valid_data_in_visited_with_family();
-			i_selects_valid_data_in_immediate_booking();
-			user_clicks_on_pincode_search_icon_from_pin_field();
-			user_tries_to_enter_pincode_in_pincode_field();
-			user_tries_to_clicks_on_search_button_in_pincode_search_screen();
-			user_tries_to_select_one_pincode_from_the_list();
-			user_tries_to_clicks_on_add_selected_button_in_pincode_search_screen();
-			user_clicks_on_save_button();
-	        }
+			} else {
+				i_enters_valid_data_in_email_id();
+				i_selects_valid_data_in_cust_type();
+				i_enters_valid_data_in_address();
+				i_enters_valid_data_in_village();
+				i_selects_valid_data_enquiry_sub_source();
+				i_selects_valid_data_enquiry_category();
+				i_selects_valid_data_in_model();
+				i_selects_valid_data_fuel_type();
+				i_selects_valid_data_in_variant();
+				i_selects_valid_data_in_sub_variant();
+				i_selects_valid_data_in_finance_req();
+				i_selects_valid_data_in_ext_color();
+				i_selects_valid_data_in_int_color();
+				i_selects_valid_data_in_sales_consultant();
+				i_selects_valid_data_in_certificate_of_deposit();
+				i_selects_valid_data_in_expected_plan();
+				i_selects_valid_data_in_visited_with_family();
+				i_selects_valid_data_in_immediate_booking();
+				user_clicks_on_pincode_search_icon_from_pin_field();
+				user_tries_to_enter_pincode_in_pincode_field();
+				user_tries_to_clicks_on_search_button_in_pincode_search_screen();
+				user_tries_to_select_one_pincode_from_the_list();
+				user_tries_to_clicks_on_add_selected_button_in_pincode_search_screen();
+				user_clicks_on_save_button();
+			}
 		} catch (Exception e) {
 			throw new RuntimeException("Error during execution due to" + ": " + e.getMessage(), e);
 		}
 	}
 
 	@When("i selected Previouesly added Walkin Customer Details")
-	public void i_selected_Previouesly_added_Walkin_Customer_Details() {
+	public void i_selected_Previouesly_added_Walkin_Customer_Details() throws Throwable {
 		try {
 			Thread.sleep(5000);
 			newenquirywebpage.interactWithWalkinFindACustomeriframeElement();
@@ -313,12 +316,10 @@ public class NewEnquiryWebWalkinStepDefinition {
 			newenquirywebpage.doubleClickOnWalkinCustomerDetails();
 		} catch (Exception e) {
 			System.err.println("Error performing double-click on the Walkin Customer Details: " + e.getMessage());
-			throw new RuntimeException(
-					"Failed to select Customer Details from the list after applying filters.",
-					e);
+			throw new RuntimeException("Failed to select Customer Details from the list after applying filters.", e);
 		}
 	}
-	
+
 	@When("User clicks Sales Menu Item")
 	public void user_clicks_sales_menu_item() throws Throwable {
 		try {
@@ -359,7 +360,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 	}
 
 	@When("User tries to clicks on Walkin Enquiry Tab")
-	public void user_tries_to_clicks_on_walkin_enquiry_tab() {
+	public void user_tries_to_clicks_on_walkin_enquiry_tab() throws Throwable {
 		try {
 			newenquirywebpage.interactWithIframeElement();
 			waitForElementToBeClickable(newenquirywebpage.getWalkinEnquiryTab());
@@ -406,7 +407,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 	}
 
 	@When("User clicks on mobile number search Icon")
-	public void user_clicks_on_mobile_number_search_icon() {
+	public void user_clicks_on_mobile_number_search_icon() throws Throwable {
 		try {
 			waitForElementToBeClickable(newenquirywebpage.getMobileSearchIcon());
 			newenquirywebpage.clickMobileSearchIcon();
@@ -435,18 +436,18 @@ public class NewEnquiryWebWalkinStepDefinition {
 			throw new RuntimeException("Failed to enters valid data in Email id.", e);
 		}
 	}
-	
+
 	@Then("^User should see the Walkin Find Customer Info screen$")
-    public boolean isWalkinFindCustomerInfoScreenVisible() {
-		newenquirywebpage.interactWithIframeElement();        
+	public boolean isWalkinFindCustomerInfoScreenVisible() {
+		newenquirywebpage.interactWithIframeElement();
 		boolean isVisible = newenquirywebpage.isWalkinFindCustomerInfoScreenVisible();
-        if (isVisible) {
-            System.out.println("Walkin Find Customer Info screen is visible.");
-        } else {
-            System.out.println("Walkin Find Customer Info screen is not visible.");
-        }
-        return isVisible;
-    }
+		if (isVisible) {
+			System.out.println("Walkin Find Customer Info screen is visible.");
+		} else {
+			System.out.println("Walkin Find Customer Info screen is not visible.");
+		}
+		return isVisible;
+	}
 
 	@Given("I selects valid data in Cust. Type")
 	public void i_selects_valid_data_in_cust_type() throws Throwable {
@@ -496,7 +497,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 	}
 
 	@When("User clicks on Pincode Search Icon from PIN field")
-	public void user_clicks_on_pincode_search_icon_from_pin_field() {
+	public void user_clicks_on_pincode_search_icon_from_pin_field() throws Throwable {
 		try {
 			waitForElementToBeClickable(newenquirywebpage.getPincodeSearchIcon());
 			newenquirywebpage.clickPincodeSearchIcon();
@@ -527,7 +528,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 	}
 
 	@Then("User tries to clicks on search button in Pincode search Screen")
-	public void user_tries_to_clicks_on_search_button_in_pincode_search_screen() {
+	public void user_tries_to_clicks_on_search_button_in_pincode_search_screen() throws Throwable {
 		try {
 			waitForElementToBeClickable(newenquirywebpage.getPinCodeSearchButton());
 			newenquirywebpage.clickPinCodeSearchButton();
@@ -539,7 +540,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 	}
 
 	@Then("User tries to select one pincode from the list")
-	public void user_tries_to_select_one_pincode_from_the_list() {
+	public void user_tries_to_select_one_pincode_from_the_list() throws Throwable {
 		try {
 			waitForElementToBeClickable(newenquirywebpage.getLocationSelection());
 			newenquirywebpage.clickLocationSelection();
@@ -551,7 +552,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 	}
 
 	@Then("User tries to clicks on Add Selected button in Pincode search Screen")
-	public void user_tries_to_clicks_on_add_selected_button_in_pincode_search_screen() {
+	public void user_tries_to_clicks_on_add_selected_button_in_pincode_search_screen() throws Throwable {
 		try {
 			waitForElementToBeClickable(newenquirywebpage.getAddSelectedButton());
 			newenquirywebpage.clickAddSelectedButton();
@@ -563,7 +564,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 	}
 
 	@Given("I enters valid data in Address")
-	public void i_enters_valid_data_in_address() {
+	public void i_enters_valid_data_in_address() throws Throwable {
 		try {
 			if (testData != null) {
 				waitForVisibilityOfElement(newenquirywebpage.getAddress());
@@ -579,7 +580,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 	}
 
 	@Given("I enters valid data in Village")
-	public void i_enters_valid_data_in_village() {
+	public void i_enters_valid_data_in_village() throws Throwable {
 		try {
 			if (testData != null) {
 				waitForVisibilityOfElement(newenquirywebpage.getVillage());
@@ -608,7 +609,7 @@ public class NewEnquiryWebWalkinStepDefinition {
 	}
 
 	@Given("I selects valid data Enquiry Category")
-	public void i_selects_valid_data_enquiry_category() throws Exception {
+	public void i_selects_valid_data_enquiry_category() throws Throwable {
 		try {
 			if (testData != null) {
 				String EnquiryCategory = ExcelUtility.getMappedValue(testData.get("custType"));
@@ -927,9 +928,10 @@ public class NewEnquiryWebWalkinStepDefinition {
 		} catch (Exception e) {
 			System.err.println("Error during Save button click: " + e.getMessage());
 			throw new RuntimeException("Failed to clicks on Save button.", e);
-		}Thread.sleep(10000);
+		}
+		Thread.sleep(10000);
 	}
-	
+
 	@When("user tries to fetch and Print the Enquiry Id In Excel Sheet")
 	public void user_tries_to_fetch_and_print_the_enquiry_id_in_excel_sheet() throws Throwable {
 		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
@@ -980,69 +982,70 @@ public class NewEnquiryWebWalkinStepDefinition {
 			}
 		}
 	}
-	
-@When("update the gdms_stage and enquiry number columns data in the database based on the result")
-public void update_the_gdms_stage_and_enquiry_number_columns_data_in_the_database_based_on_the_result() throws Throwable {
-	String filePath = "C:\\Users\\ADMIN\\Downloads\\output.xlsx";
-	String sheetName = "Enquiry Lead Creation";
 
-	// Load Excel data into allTestData
-	allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
+	@When("update the gdms_stage and enquiry number columns data in the database based on the result")
+	public void update_the_gdms_stage_and_enquiry_number_columns_data_in_the_database_based_on_the_result()
+			throws Throwable {
+		String filePath = "src/test/resources/config/NewEnquiryWeb.xlsx";
+		String sheetName = "Enquiry Lead Creation";
 
-	if (allTestData == null || allTestData.isEmpty()) {
-		throw new RuntimeException("No data found in Excel sheet: " + sheetName);
-	}
+		// Load Excel data into allTestData
+		allTestData = ExcelReading.getAllDataFromExcel(filePath, sheetName);
 
-	for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
-		System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
-
-		// Fetch and log current row data
-		testData = allTestData.get(currentDataRowIndex);
-		System.out.println("Current Test Data: " + testData);
-
-		// Load database credentials from properties file
-		Properties properties = new Properties();
-		FileInputStream fis = new FileInputStream(
-				"D:\\E2E_Automation_WithGrids_RestAssured\\src\\test\\resources\\config\\project.properties"); // path
-		properties.load(fis);
-
-		String dbUrl = properties.getProperty("db.url");
-		String dbUsername = properties.getProperty("db.username");
-		String dbPassword = properties.getProperty("db.password");
-
-		// Now, let's update the database based on Excel data
-		String leadId = testData.get("leadId");
-		String errorLogs = testData.get("Error Logs");
-		String enquiryNumber = testData.get("EnquiryNumber");
-
-		if (leadId == null || enquiryNumber == null) {
-			System.err.println("Skipping row due to missing leadId, or enquiryNumber.");
-			continue;
+		if (allTestData == null || allTestData.isEmpty()) {
+			throw new RuntimeException("No data found in Excel sheet: " + sheetName);
 		}
 
-		// Determine the gdms_stage value based on errorLogs
-		String gdmsStage = "PASSED".equalsIgnoreCase(errorLogs) ? "Done" : "Failed";
-		String gdms_id = "Enquiry Not Available".equalsIgnoreCase(enquiryNumber) ? null : enquiryNumber;
-		String updateQuery = "UPDATE dms_lead_stage_ref " + "SET gdms_stage = ?, gdms_id = ? "
-				+ "WHERE lead_id = ? " + "AND stage_id = (" + "    SELECT id " + "    FROM dms_master_lead_stage "
-				+ "    WHERE lead_stage_key = 'enquiry' " + "    AND active IS TRUE" + ");";
+		for (int currentDataRowIndex = 0; currentDataRowIndex < allTestData.size(); currentDataRowIndex++) {
+			System.out.println("\nProcessing Row: " + (currentDataRowIndex + 1));
 
-		// Connect to the database and update the values
-		try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-				PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+			// Fetch and log current row data
+			testData = allTestData.get(currentDataRowIndex);
+			System.out.println("Current Test Data: " + testData);
 
-			preparedStatement.setString(1, gdmsStage);
-			preparedStatement.setString(2, gdms_id); // Use the enquiry number as gdms_id
-			preparedStatement.setInt(3, Integer.parseInt(leadId));
+			// Load database credentials from properties file
+			Properties properties = new Properties();
+			FileInputStream fis = new FileInputStream(
+					"src/test/resources/config/project.properties"); // path
+			properties.load(fis);
 
-			// Execute update
-			int rowsUpdated = preparedStatement.executeUpdate();
-			System.out.println("Rows updated for Lead ID " + leadId + ": " + rowsUpdated);
-		} catch (SQLException e) {
-			System.err.println(
-					"Error while updating gdms_stage and enquiry number in the database: " + e.getMessage());
-			e.printStackTrace();
+			String dbUrl = properties.getProperty("db.url");
+			String dbUsername = properties.getProperty("db.username");
+			String dbPassword = properties.getProperty("db.password");
+
+			// Now, let's update the database based on Excel data
+			String leadId = testData.get("leadId");
+			String errorLogs = testData.get("Error Logs");
+			String enquiryNumber = testData.get("EnquiryNumber");
+
+			if (leadId == null || enquiryNumber == null) {
+				System.err.println("Skipping row due to missing leadId, or enquiryNumber.");
+				continue;
+			}
+
+			// Determine the gdms_stage value based on errorLogs
+			String gdmsStage = "PASSED".equalsIgnoreCase(errorLogs) ? "Done" : "Failed";
+			String gdms_id = "Enquiry Not Available".equalsIgnoreCase(enquiryNumber) ? null : enquiryNumber;
+			String updateQuery = "UPDATE dms_lead_stage_ref " + "SET gdms_stage = ?, gdms_id = ? "
+					+ "WHERE lead_id = ? " + "AND stage_id = (" + "    SELECT id " + "    FROM dms_master_lead_stage "
+					+ "    WHERE lead_stage_key = 'enquiry' " + "    AND active IS TRUE" + ");";
+
+			// Connect to the database and update the values
+			try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+					PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+
+				preparedStatement.setString(1, gdmsStage);
+				preparedStatement.setString(2, gdms_id); // Use the enquiry number as gdms_id
+				preparedStatement.setInt(3, Integer.parseInt(leadId));
+
+				// Execute update
+				int rowsUpdated = preparedStatement.executeUpdate();
+				System.out.println("Rows updated for Lead ID " + leadId + ": " + rowsUpdated);
+			} catch (SQLException e) {
+				System.err.println(
+						"Error while updating gdms_stage and enquiry number in the database: " + e.getMessage());
+				e.printStackTrace();
+			}
 		}
 	}
-}
 }

@@ -35,6 +35,8 @@ public class ExWarrantyAndSOTStepDefinition {
 		PageFactory.initElements(driver, sot);
 		this.newEnquiryWebPage = new NewEnquiryWebPage(driver);
 		PageFactory.initElements(driver, newEnquiryWebPage);
+		this.dmsLogin = new DMSLoginPage(driver);
+		PageFactory.initElements(driver, dmsLogin);
 	}
 
 	@Given("User reads data from the Excel sheet regarding ExWarranty feature")
@@ -280,7 +282,7 @@ public class ExWarrantyAndSOTStepDefinition {
 	}
 
 	@When("User select Place Of Supply")
-	public void user_select_place_of_supply() throws InterruptedException {
+	public void user_select_place_of_supply() throws Throwable {
 		try {
 			Thread.sleep(3000);
 			String PlaceOfSupply = testData.get("placeOfSupply");

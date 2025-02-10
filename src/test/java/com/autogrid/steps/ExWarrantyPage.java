@@ -1,91 +1,77 @@
 package com.autogrid.steps;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.autogrid.utils.CommonActions;
+import com.autogrid.utils.ExcelReading;
 import com.autogrid.utils.LaunchDriver;
 
 public class ExWarrantyPage {
 	private static final Logger logger = LoggerFactory.getLogger(ExWarrantyPage.class);
 	private final CommonActions commonActions;
-	WebDriver driver;
+	private final WebDriver driver;
+    private final String featureName = "ExWarranty Screen Locators"; // Updated for ExWarranty Page
 
 	public ExWarrantyPage(WebDriver driver) {
 		this.commonActions = new CommonActions(driver);
 		PageFactory.initElements(driver, this);
+		this.driver = driver;
 	}
+	
+	/**
+     * Fetches the WebElement dynamically from Excel.
+     *
+     * @param elementName - The logical name of the element from Excel.
+     * @return WebElement - The located web element.
+     * @throws IOException If there is an issue with reading the Excel file.
+     */
+    private WebElement getElement(String elementName) throws IOException {
+        try {
+            Map<String, String> locator = ExcelReading.getLocator(featureName, elementName);
+            String locatorType = locator.get("type");
+            String locatorValue = locator.get("value");
 
-	// XPath for web elements
-	@FindBy(xpath = "//*[text()='Service']")
-	private WebElement ServiceIcon;
+            switch (locatorType.toLowerCase()) {
+                case "xpath":
+                    return driver.findElement(By.xpath(locatorValue));
+                case "css":
+                    return driver.findElement(By.cssSelector(locatorValue));
+                case "id":
+                    return driver.findElement(By.id(locatorValue));
+                case "name":
+                    return driver.findElement(By.name(locatorValue));
+                case "class":
+                    return driver.findElement(By.className(locatorValue));
+                case "linktext":
+                    return driver.findElement(By.linkText(locatorValue));
+                default:
+                    throw new IllegalArgumentException("Invalid locator type: " + locatorType);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error locating element '" + elementName + "': " + e.getMessage());
+        }
+    }
 
-	@FindBy(xpath = "//*[text()='Extended Warranty']")
-	private WebElement ExtendedWarrantySubMenu;
-
-	@FindBy(xpath = "(//*[text()='Extended Warranty Submit'])[2]")
-	private WebElement ExtendedWarrantySubmitLink;
-
-	@FindBy(xpath = "//span[text()='Extended Warranty Submit']")
-	private WebElement ExtendedWarrantySubmitHeader;
-
-	@FindBy(xpath = "//input[@id='sKeyword']")
-	private WebElement VIN;
-
-	@FindBy(xpath = "//input[@class='k-formatted-value form_numeric ar k-input']")
-	private WebElement OdometerReading;
-
-	@FindBy(xpath = "//*[@id='frm1']/div[2]/dl[8]/dd[1]/span/span[1]")
-	private WebElement EmployeeNameDrpDwn;
-
-	@FindBy(xpath = "//button[@id='btnInquire']")
-	private WebElement InquireIcon;
-
-	@FindBy(xpath = "//span[@aria-owns='placeOfSupply_listbox']//span[@class='k-input']")
-	private WebElement PlaceOfSupplyDrpDwn;
-
-	@FindBy(xpath = "//*[@id='grid']/div[2]/table/tbody/tr[5]/td[3]")
-	private WebElement RequiredExtWarrantyType;
-
-	@FindBy(xpath = "//button[@id='btnSubmit']")
-	private WebElement SubmitBtn;
-
-	@FindBy(xpath = "//button[@id='btnClear']")
-	private WebElement ClearBtn;
-
-	@FindBy(xpath = "//*[@src='/ser/serf/selectExtendedWarrantySubmitMain.dms']")
-	private WebElement iFrameForExtWarranty;
-
-	@FindBy(xpath = "//button[text()='close']")
-	private WebElement close;
-
-	@FindBy(xpath = "//div/div/div/div[1]/div[2]/table/tbody/tr/td[3]")
-	private WebElement ExWarrantySchemeData;
-
-	@FindBy(xpath = "//p[contains(text(),'Customer No. does not exist. Please enter the CustomerNo')]")
-	private WebElement isCustomerNotExistPopupVisible;
-
+    private void waitForVisibilityOfElement(WebElement element) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+	
 	public void clickServiceIcon() {
 		try {
-
-			commonActions.explicitWait("//*[text()='Service']");
-			ServiceIcon.click();
-
-//    	JavascriptExecutor jse = (JavascriptExecutor)LaunchDriver.getDriver();
-//    	jse.executeScript("arguments[0].click();",ServiceIcon);
-//		  
-//		  Actions act=new Actions(LaunchDriver.getDriver());
-//		  act.click(ServiceIcon).perform();
-
+			waitForVisibilityOfElement(getElement("ServiceIcon"));
+			getElement("ServiceIcon").click();
 		} catch (Exception e) {
 			System.err.println("Failed to click Service Icon" + e.getMessage());
 		}
@@ -93,9 +79,7 @@ public class ExWarrantyPage {
 
 	public void clickExtWarrantySubMenu() {
 		try {
-
-			ExtendedWarrantySubMenu.click();
-
+			getElement("ExtendedWarrantySubMenu").click();
 		} catch (Exception e) {
 			System.err.println("Failed to click Extended Warranty Sub Menu" + e.getMessage());
 		}
@@ -103,8 +87,7 @@ public class ExWarrantyPage {
 
 	public void clickOnExtdWarrantySubmitLink() {
 		try {
-			ExtendedWarrantySubmitLink.click();
-
+			getElement("ExtendedWarrantySubmitLink").click();
 		} catch (Exception e) {
 			System.err.println("Failed to click Extended WArranty Submit Link" + e.getMessage());
 		}
@@ -113,32 +96,26 @@ public class ExWarrantyPage {
 //method to check if ExtendedWarrantySubmitHeader is displayed
 	public boolean extdWarrantySbtHeaderisDisplayed() {
 		try {
-
-			return ExtendedWarrantySubmitHeader.isDisplayed();
-
+			return getElement("ExtendedWarrantySubmitHeader").isDisplayed();
 		} catch (Exception e) {
-
 			return false;
 		}
 	}
 
 	public void interactWithIframeExtW() {
-
 		try {
-			LaunchDriver.getDriver().switchTo().frame(iFrameForExtWarranty);
+			LaunchDriver.getDriver().switchTo().frame(getElement("iFrameForExtWarranty"));
 			System.out.println("Successfully interacted with iFrame of ExtWarranty");
 		} catch (Exception e) {
-
 			System.err.println("Error in interacting with iFrame of ExWarranty" + e.getMessage());
 		}
-
 	}
 
 	public void enterVIN(String vin) {
 		try {
-			commonActions.explicitWait("//input[@id='sKeyword']");
-			VIN.clear();
-			VIN.sendKeys(vin);
+			waitForVisibilityOfElement(getElement("VIN"));
+			getElement("VIN").clear();
+			getElement("VIN").sendKeys(vin);
 		} catch (Exception e) {
 			System.err.println("Error in entering VIN " + e.getMessage());
 		}
@@ -146,8 +123,7 @@ public class ExWarrantyPage {
 
 	public void clickOnInquire() {
 		try {
-			InquireIcon.click();
-
+			getElement("InquireIcon").click();
 		} catch (Exception e) {
 			System.err.println("Error in clicking Inquire icon" + e.getMessage());
 		}
@@ -155,28 +131,25 @@ public class ExWarrantyPage {
 
 	public void enterCurrentOdoMtrReading(String odoMtrReading) {
 		try {
-			commonActions.explicitWait("//input[@class='k-formatted-value form_numeric ar k-input']");
-			if (OdometerReading.isDisplayed()) {
-				// OdometerReading.sendKeys(odoMtrReading);
-
+			waitForVisibilityOfElement(getElement("OdometerReading"));
+			if (getElement("OdometerReading").isDisplayed()) {
 				JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-				js.executeScript("arguments[0].value='" + odoMtrReading + "';", OdometerReading);
+				js.executeScript("arguments[0].value='" + odoMtrReading + "';", getElement("OdometerReading"));
 			} else {
-				System.out.println(OdometerReading + "Element is not visible");
+				System.out.println(getElement("OdometerReading") + "Element is not visible");
 			}
 		} catch (Exception e) {
 			System.err.println("Error in entering OdomtrReading" + e.getMessage());
 		}
 	}
 
-	public void selectEmployeeName(String employeeName) {
-		EmployeeNameDrpDwn.click();
+	public void selectEmployeeName(String employeeName) throws Throwable {
+		getElement("EmployeeNameDrpDwn").click();
 		commonActions.explicitWait("//ul[@id='extbEmpNo_listbox']//li");
 		WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
 		List<WebElement> employeeList = wait.until(
 				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//ul[@id='extbEmpNo_listbox']//li")));
 		try {
-
 			for (WebElement empName : employeeList) {
 
 				if (empName.getText().trim().toUpperCase().equals(employeeName.trim().toUpperCase())) {
@@ -184,22 +157,15 @@ public class ExWarrantyPage {
 					System.out.println("Employee Name after Click: " + empName.getText().trim().toUpperCase());
 					break;
 				}
-
 			}
-
-			// JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-			// js.executeScript("arguments[0].value='" + employeeName + "';",
-			// EmployeeNameDrpDwn);
 		} catch (Exception e) {
 			System.err.println("Error in selecting employee Name" + e.getMessage());
 		}
-
 	}
 
-	public void selectPlaceOfSupply(String placeOfSupply) {
-		PlaceOfSupplyDrpDwn.click();
+	public void selectPlaceOfSupply(String placeOfSupply) throws Throwable {
+		getElement("PlaceOfSupplyDrpDwn").click();
 		commonActions.explicitWait("//ul[@id='placeOfSupply_listbox']//li");
-
 		WebDriverWait wait = new WebDriverWait(LaunchDriver.getDriver(), Duration.ofSeconds(10));
 		List<WebElement> SupplyStates = wait.until(
 				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//ul[@id='placeOfSupply_listbox']//li")));
@@ -212,11 +178,6 @@ public class ExWarrantyPage {
 					break;
 				}
 			}
-
-			// JavascriptExecutor js = (JavascriptExecutor) LaunchDriver.getDriver();
-			// js.executeScript("arguments[0].value='" + placeOfSupply + "';",
-			// PlaceOfSupplyDrpDwn);
-
 		} catch (Exception e) {
 			System.err.println("Error in selecting State Name" + e.getMessage());
 		}
@@ -261,7 +222,6 @@ public class ExWarrantyPage {
 					break;
 				}
 			}
-
 			// If no matching scheme is found, throw an exception
 			if (!schemeFound) {
 				throw new RuntimeException("Scheme description '" + SchemeDes + "' not found in the table.");
@@ -274,7 +234,7 @@ public class ExWarrantyPage {
 
 	public void clickSubmitBtn() {
 		try {
-			SubmitBtn.click();
+			getElement("SubmitBtn").click();
 		} catch (Exception e) {
 			System.err.println("Error in clicking Submit Button" + e.getMessage());
 		}
@@ -282,7 +242,7 @@ public class ExWarrantyPage {
 
 	public void clickClearBtn() {
 		try {
-			ClearBtn.click();
+			getElement("ClearBtn").click();
 		} catch (Exception e) {
 			System.err.println("Error in clicking clear button" + e.getMessage());
 		}
@@ -292,7 +252,7 @@ public class ExWarrantyPage {
 		try {
 			Thread.sleep(2000);
 			LaunchDriver.getDriver().switchTo().defaultContent();
-			close.click();
+			getElement("close").click();
 		} catch (Exception e) {
 			System.err.println("Error in clicking close button" + e.getMessage());
 		}
@@ -310,5 +270,4 @@ public class ExWarrantyPage {
 			return false;
 		}
 	}
-
 }

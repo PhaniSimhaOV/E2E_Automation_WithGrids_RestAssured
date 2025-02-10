@@ -10,14 +10,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.And;
-import java.util.Scanner;
-import java.util.List;
-import java.util.Arrays;
+
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
+import java.util.Scanner;
+
 
 public class DMSLoginStepDefinition {
 	CommonActions commonActions;
@@ -33,7 +35,6 @@ public class DMSLoginStepDefinition {
         this.tags = Arrays.asList(this.testCase.split(","));
 
         System.out.println("Tags to execute: " + this.tags);
-		
     }
 	
 	@Given("launch browser and enter url")
@@ -52,7 +53,7 @@ public class DMSLoginStepDefinition {
             String expectedTitle = "GDMS2.0";
             String actualTitle = dMSLoginPage.getPageTitle();
             Assert.assertEquals(actualTitle,expectedTitle,"Login page title does not match!");
-            System.out.println("Login page is displayed 1."+ this.testCase);
+            System.out.println("Login page is displayed."+ this.testCase);
         } catch (Exception e) {
 			throw new Exception("Error occurred while navigating to DMS login page : " + e.getMessage());
         }       
@@ -65,14 +66,14 @@ public class DMSLoginStepDefinition {
             String expectedTitle = "GDMS2.0";
             String actualTitle = dMSLoginPage.getPageTitle();
             Assert.assertEquals(actualTitle,expectedTitle, "Login page title does not match!");
-            System.out.println("Login page is displayed 2."+ this.testCase);
+            System.out.println("Login page is displayed."+ this.testCase);
 		} catch (Exception e) {
 			throw new Exception("Error occurred while validating the DMS login page header :" + e.getMessage());
 		}
 	}
 	
 	@Then("user should be able to see forgot password link on login screen")
-    public void user_should_be_able_to_see_forgot_password_link_on_login_screen() {
+    public void user_should_be_able_to_see_forgot_password_link_on_login_screen() throws Throwable {
         try {
             Assert.assertTrue(dMSLoginPage.isForgotPasswordLinkDisplayed(), "forgot password link is not displayed on the Login screen.");
             System.out.println("forgot password link is displayed on the Login screen.");
@@ -83,7 +84,7 @@ public class DMSLoginStepDefinition {
     }
 	
 	@And("user clicks on forgot password link")
-	public void user_clicks_on_forgot_password_link() {
+	public void user_clicks_on_forgot_password_link() throws Throwable {
 		try {
 			dMSLoginPage.ClicksForgotPasswordLink();
             System.out.println("forgot password link clicked.");
@@ -104,7 +105,7 @@ public class DMSLoginStepDefinition {
     }
 	
 	@And("user checks the Save ID checkbox")
-	public void user_checks_the_save_id_checkbox() {
+	public void user_checks_the_save_id_checkbox() throws Throwable {
 		try {
 			dMSLoginPage.checkSaveIDCheckbox();
             System.out.println("Checked the Save ID checkbox successfully.");
@@ -115,7 +116,7 @@ public class DMSLoginStepDefinition {
     }
 	
 	@Then("the Save ID checkbox should be checked")
-    public void the_save_id_checkbox_should_be_checked() {
+    public void the_save_id_checkbox_should_be_checked() throws Throwable {
 		try {
             Assert.assertTrue(dMSLoginPage.isSaveIDCheckboxChecked(), "Save ID checkbox is not checked.");
             System.out.println("Save ID checkbox is verified to be checked.");
@@ -126,7 +127,7 @@ public class DMSLoginStepDefinition {
     }
 	
 	@Then("user should be able to see Save ID Check Box on login screen")
-    public void user_should_be_able_to_see_save_id_check_box_on_login_screen() {
+    public void user_should_be_able_to_see_save_id_check_box_on_login_screen() throws Throwable {
         try {
             Assert.assertTrue(dMSLoginPage.isSaveIDCheckBoxDisplayed(), "save ID check box is not displayed on the Login screen.");
             System.out.println("save ID check box is displayed on the Login screen.");
@@ -144,8 +145,7 @@ public class DMSLoginStepDefinition {
             System.out.println("Login button clicked.");
         } catch (Exception e) {
             System.err.println("Error during login button click: " + e.getMessage());
-        }
-		DeleteOTPFromDatabase();
+        }DeleteOTPFromDatabase();
     }
 	private void DeleteOTPFromDatabase() throws Throwable {
 		// Example: Call test methods for each step
@@ -192,7 +192,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@Then("user able to see validation message for UserID")
-	public void user_able_to_see_validation_message_for_userid() throws Exception {
+	public void user_able_to_see_validation_message_for_userid() throws Throwable {
 		try {
 			Thread.sleep(2000);
             String expectedMessage = "Please input User ID.";
@@ -205,7 +205,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@When("user enters username")
-	public void user_enters_username() {
+	public void user_enters_username() throws Throwable {
 		try {
 			Thread.sleep(2000);
             String username = this.tags.get(0);
@@ -217,7 +217,7 @@ public class DMSLoginStepDefinition {
 	}
 	
 	@When("user enter username without entering password")
-	public void user_enter_username_without_entering_password(){
+	public void user_enter_username_without_entering_password() throws Throwable{
 		try {
 			Thread.sleep(2000);
             String username = this.tags.get(0);
@@ -229,7 +229,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@Then("user able to see validation message for password")
-	public void user_able_to_see_validation_message_for_password() throws Exception {
+	public void user_able_to_see_validation_message_for_password() throws Throwable {
 		try {
 			Thread.sleep(3000);
             String expectedMessage = "Please input Password.";
@@ -242,7 +242,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@When("user enter username and password without entering OTP")
-	public void user_enter_username_and_password_without_entering_otp() {
+	public void user_enter_username_and_password_without_entering_otp() throws Throwable {
 		try {
 			Thread.sleep(3000);
             String username = this.tags.get(0);
@@ -257,7 +257,7 @@ public class DMSLoginStepDefinition {
 	}
 	
 	@Then("user able to see validation message for OTP")
-	public void user_able_to_see_validation_message_for_otp() throws Exception {
+	public void user_able_to_see_validation_message_for_otp() throws Throwable {
 		try {
             String expectedMessage = "Enter OTP value.";
             String actualMessage = dMSLoginPage.getEnterOTPValidationMessage();
@@ -269,7 +269,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@When("user enters invalid username")
-	public void user_enters_invalid_username() {
+	public void user_enters_invalid_username() throws Throwable {
 		try {
             String username = "S5";
             dMSLoginPage.enterUsername(username);
@@ -280,7 +280,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@When("user enters valid password")
-	public void user_enters_valid_password() {
+	public void user_enters_valid_password() throws Throwable {
 		try {
 			String password = this.tags.get(1);
             dMSLoginPage.enterPassword(password);
@@ -291,7 +291,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@When("clicks on Send OTP")
-	public void clicks_on_send_otp() {
+	public void clicks_on_send_otp() throws Throwable {
 		try {
 			dMSLoginPage.clickSendOTPButton();
             System.out.println("Send OTP button clicked.");
@@ -301,7 +301,7 @@ public class DMSLoginStepDefinition {
     }
 
 	@Then("user able to see validation message for username")
-	public void user_able_to_see_validation_message_for_username() throws Exception {
+	public void user_able_to_see_validation_message_for_username() throws Throwable {
 		try {
             String expectedMessage = "Please input User ID.";
             String actualMessage = dMSLoginPage.getUsernameValidationMessage();
@@ -313,7 +313,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@When("user enters a valid username")
-	public void user_enters_a_valid_username() {
+	public void user_enters_a_valid_username() throws Throwable {
 		try {
             String username = this.tags.get(0);
             dMSLoginPage.enterUsername(username);
@@ -324,7 +324,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@And("user enters a invalid password")
-	public void user_enters_a_invalid_password(){
+	public void user_enters_a_invalid_password() throws Throwable{
 		try {
 			String password = this.tags.get(0);
             dMSLoginPage.enterPassword(password);
@@ -335,7 +335,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@Then("user should be able to see validation message for password")
-	public void user_should_be_able_to_see_validation_message_for_password() throws Exception {
+	public void user_should_be_able_to_see_validation_message_for_password() throws Throwable {
 		try {
             String expectedMessage = "Please input Password.";
             String actualMessage = dMSLoginPage.getPasswordValidationMessage();
@@ -347,7 +347,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@When("user enters a invalid OTP")
-	public void user_enters_a_invalid_otp() {
+	public void user_enters_a_invalid_otp() throws Throwable {
 		try {
 			Thread.sleep(10000);
 			String otp = this.tags.get(0);
@@ -359,7 +359,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@Then("user should be able to see validation message for OTP")
-	public void user_should_be_able_to_see_validation_message_for_otp() throws Exception {
+	public void user_should_be_able_to_see_validation_message_for_otp() throws Throwable {
 		try {
             String expectedMessage = "Enter OTP value.";
             String actualMessage = dMSLoginPage.getEnterOTPValidationMessage();
@@ -371,7 +371,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@When("user enters a valid OTP")
-	public void user_enters_a_valid_otp() {
+	public void user_enters_a_valid_otp() throws Throwable {
 		try {
 	            Thread.sleep(3000); // Temporary sleep to allow the pop-up to load; replace with WebDriverWait for better reliability
 	            System.out.println("Enter the OTP received (displayed on the pop-up): ");
@@ -387,7 +387,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@When("user enters invalid username which is not registered")
-	public void user_enters_invalid_username_which_is_not_registered() {
+	public void user_enters_invalid_username_which_is_not_registered() throws Throwable {
 		try {
             String username = "S5";
             dMSLoginPage.enterUsername(username);
@@ -398,7 +398,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@When("user enter invalid password")
-	public void user_enter_invalid_password() {
+	public void user_enter_invalid_password() throws Throwable {
 		try {
 			String password = this.tags.get(0);
             dMSLoginPage.enterPassword(password);
@@ -409,7 +409,7 @@ public class DMSLoginStepDefinition {
 	}
 	
 	@Then("user should be able to see validation message as Please Check User ID or Password")
-	public void user_should_be_able_to_see_validation_message_as_please_check_user_id_or_password() throws Exception {
+	public void user_should_be_able_to_see_validation_message_as_please_check_user_id_or_password() throws Throwable {
 		try {
             String expectedMessage = "Please Check User ID or Password.";
             String actualMessage = dMSLoginPage.getUsernameValidationMessage();
@@ -421,7 +421,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@When("user enter a valid username")
-	public void user_enter_a_valid_username() {
+	public void user_enter_a_valid_username() throws Throwable {
 		try {
             String username = this.tags.get(0);
             dMSLoginPage.enterUsername(username);
@@ -432,7 +432,7 @@ public class DMSLoginStepDefinition {
 	}
 	
 	@Then("user should be able to see validation message as Incorrect OTP Or Time Exceeded")
-	public void user_should_be_able_to_see_validation_message_as_incorrect_otp_or_time_exceeded() throws Exception {
+	public void user_should_be_able_to_see_validation_message_as_incorrect_otp_or_time_exceeded() throws Throwable {
 		try {
             String expectedMessage = "Incorrect OTP Or Time Exceeded.";
             String actualMessage = dMSLoginPage.getUsernameValidationMessage();
@@ -444,7 +444,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@When("user enter a valid password")
-	public void user_enter_a_valid_password() {
+	public void user_enter_a_valid_password() throws Throwable {
 		try {
 			String password = this.tags.get(1);
             dMSLoginPage.enterPassword(password);
@@ -455,7 +455,7 @@ public class DMSLoginStepDefinition {
 	}
 
 	@Then("user should be able to see Home Icon on the dashboard")
-    public void user_should_be_able_to_see_home_icon_on_dashboard() {
+    public void user_should_be_able_to_see_home_icon_on_dashboard() throws Throwable {
         try {
             Assert.assertTrue(dMSLoginPage.isHomepageIconDisplayed(), "Home Icon is not displayed on the dashboard.");
             System.out.println("Home Icon is displayed on the dashboard.");

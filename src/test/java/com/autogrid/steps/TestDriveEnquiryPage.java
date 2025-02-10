@@ -4,9 +4,7 @@ import com.autogrid.utils.ExcelReading;
 import io.cucumber.java.eo.Se;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.*;
-
 import com.autogrid.utils.LaunchDriver;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -19,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.autogrid.utils.CommonActions;
-
 import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -31,156 +28,122 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
 import static com.autogrid.utils.LaunchDriver.getDriver;
 import static org.testng.AssertJUnit.assertNotNull;
 
 public class TestDriveEnquiryPage {
-
-    WebDriver driver;
     private static final Logger logger = LoggerFactory.getLogger(DMSLoginPage.class);
     private final CommonActions commonActions;
-    private Map<String, String> testData; // Stores data from Excel
-    private List<Map<String, String>> allTestData; // List to store all data rows from Excel
-    private int currentDataRowIndex = 0;
+    private final WebDriver driver;
+    private final String featureName = "Test Drive Enquiry Locators "; // Updated for Test Drive Enquiry Web Page
 
     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 
     public TestDriveEnquiryPage(WebDriver driver) throws Exception {
         this.commonActions = new CommonActions(driver);
         PageFactory.initElements(driver, this);
+		this.driver = driver;
+    }
+    /**
+     * Fetches the WebElement dynamically from Excel.
+     *
+     * @param elementName - The logical name of the element from Excel.
+     * @return WebElement - The located web element.
+     * @throws IOException If there is an issue with reading the Excel file.
+     */
+    private WebElement getElement(String elementName) throws IOException {
+        try {
+            Map<String, String> locator = ExcelReading.getLocator(featureName, elementName);
+            String locatorType = locator.get("type");
+            String locatorValue = locator.get("value");
 
+            switch (locatorType.toLowerCase()) {
+                case "xpath":
+                    return driver.findElement(By.xpath(locatorValue));
+                case "css":
+                    return driver.findElement(By.cssSelector(locatorValue));
+                case "id":
+                    return driver.findElement(By.id(locatorValue));
+                case "name":
+                    return driver.findElement(By.name(locatorValue));
+                case "class":
+                    return driver.findElement(By.className(locatorValue));
+                case "linktext":
+                    return driver.findElement(By.linkText(locatorValue));
+                default:
+                    throw new IllegalArgumentException("Invalid locator type: " + locatorType);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error locating element '" + elementName + "': " + e.getMessage());
+        }
     }
 
-    @FindBy(xpath = "//a[text()='Sales']")
-    private WebElement SalesBtn;
-    @FindBy(xpath = "//*[@id='gnb']/li[3]/div/ul/li[2]/a")
-    private WebElement CustomerEnquirybtn;
-    @FindBy(xpath = "//*[@id=\"gnb\"]/li[3]/div/ul/li[2]/ul/li[1]/a")
-    private WebElement CustomerEnquiryLink;
-    @FindBy(xpath = "//a[text()='Walk-in Enquiry ']")
-    private WebElement walkInEnquiryBtn;
-    @FindBy(xpath = "//input[@id=\"mobileNo\"]")
-    private WebElement mobilenumberBtn;
-    @FindBy(xpath = "//*[@id=\"visitFromDate\"]")
-    private WebElement visitDatebtn;
-    @FindBy(xpath = "//*[@id=\"visitToDate\"]")
-    private WebElement viistToDateBtn;
-    @FindBy(xpath = "//button[@id=\"btnSearch\"]")
-    private WebElement searchBtn;
-    @FindBy(xpath = "//*[@id=\"resizableContainer\"]/section[2]/div/div/div/table/tbody/tr/td[2]")
-    private WebElement selectTableRow;
-    @FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[6]/dd[1]/span/span/span[1]")
-    private WebElement TDofferDropDown;
-    @FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[6]/dd[2]/span/span/span[1]")
-    private WebElement TDVinDropDown;
-    @FindBy(xpath = "//*[@id=\"eqryForm\"]/div/dl[6]/dd[3]/span/span/span[1]")
-    private WebElement CertificateOFDepositDropDwon;
-    @FindBy(xpath = "//*[text()=\"Follow Up\"]")
-    private WebElement followUpTab;
-    @FindBy(xpath = "//*[@id=\"nextFollowUpDate\"]")
-    private WebElement followUpTimeTestBtn;
-    @FindBy(xpath = "//textarea[@id=\"eqfuRmrks\"]")
-    private WebElement FollowUpTestArea;
-    @FindBy(xpath = "//*[@id=\"followUpInfoForm\"]/div[2]/dl[1]/dd[2]/span/span/span[1]")
-    private WebElement FollowUpTypeDropDown;
-    @FindBy(xpath = "//*[@id=\"followUpInfoForm\"]/div[2]/dl[4]/dd[2]/span/span/span[1]")
-    private WebElement nextFollowUpTypedropdown;
-    @FindBy(xpath = "//*[@id=\"followUpInfoForm\"]/div[2]/dl[5]/dd[1]/span/span")
-    private WebElement EnquiryTypedropDown;
-    @FindBy(xpath = "//*[@id=\"btnFollowUpSave\"]")
-    private WebElement btnFollowUpSave;
-    @FindBy(xpath = "//*[@id=\"btnTD\"]")
-    private WebElement TestDriveappointmentbtn;
-    @FindBy(xpath = "//*[@id=\"schedulerIn\"]/div/ul/li[4]/a/span[1]")
-    private WebElement calenderTestdrivebtn;
-    @FindBy(xpath = "//button[@id=\"btnSave\"]")
-    private WebElement saveTestDrivebtn;
-    @FindBy(xpath = "//*[@id=\"btnBasicSave\"]")
-    private WebElement basicSaveBtn;
-    @FindBy(xpath = "//a[@aria-label='Close']")
-    private WebElement closeBtn;
-    @FindBy(xpath = "//button[@class=\"tab_close\"]")
-    private WebElement tabClosebtn;
-    @FindBy(xpath = "//iframe[@name='tabMenuFrame1']")
-    private WebElement iframe1;
-    @FindBy(xpath = "//iframe[@name='tabMenuFrame4']")
-    private WebElement iframe4;
-    @FindBy(xpath = "//*[@id=\"selectCustomerMeetingPopup\"]/iframe")
-    private WebElement iframewindow;
-    @FindBy(xpath = "//iframe[@name='tabMenuFrame3']")
-    private WebElement iframe3;
-    @FindBy(xpath = "//iframe[@name='tabMenuFrame2']")
-    private WebElement iframe2;
-    @FindBy(xpath = "//*[@class='k-window-content k-content k-window-iframecontent']")
-    private WebElement iframeBasicTab;
-
-    public void iframe4() {
+    public void iframe4() throws Throwable {
         getDriver().switchTo().defaultContent();
-        getDriver().switchTo().frame(iframe4);
+        getDriver().switchTo().frame(getElement("iframe4"));
         System.out.println("Successfully interacted with the element inside the iframe.");
     }
 
-    public void iframe2() {
+    public void iframe2() throws Throwable {
         getDriver().switchTo().defaultContent();
-        getDriver().switchTo().frame(iframe2);
+        getDriver().switchTo().frame(getElement("iframe2"));
         System.out.println("Successfully interacted with the element inside the iframe.");
     }
 
-    public void iframe3() {
+    public void iframe3() throws Throwable {
         getDriver().switchTo().defaultContent();
-        getDriver().switchTo().frame(iframe3);
+        getDriver().switchTo().frame(getElement("iframe3"));
         System.out.println("Successfully interacted with the element inside the iframe.");
     }
 
-    public void iframeWindow() {
-        getDriver().switchTo().frame(iframewindow);
+    public void iframeWindow() throws Throwable {
+        getDriver().switchTo().frame(getElement("iframewindow"));
         System.out.println("Successfully interacted with the element inside the iframe.");
     }
 
-    public void Sales() throws InterruptedException {
+    public void Sales() throws InterruptedException, Throwable {
         Thread.sleep(3000);
-        SalesBtn.click();
+        getElement("SalesBtn").click();
         System.out.println("Sales button is clicked successfully");
     }
 
-    public void CustomerEnquiry() {
-        CustomerEnquirybtn.click();
+    public void CustomerEnquiry() throws Throwable {
+    	getElement("CustomerEnquirybtn").click();
         System.out.println("Customer Enquiry is clicked successfully");
     }
 
-    public void CustomerEnquiryLink() {
-        CustomerEnquiryLink.click();
+    public void CustomerEnquiryLink() throws Throwable {
+    	getElement("CustomerEnquiryLink").click();
         System.out.println("Customer Enquiry link is clicked successfully");
     }
 
-    public void walkinEnquiry() {
+    public void walkinEnquiry() throws Throwable {
         iframe2();
-        walkInEnquiryBtn.click();
+        getElement("walkInEnquiryBtn").click();
         System.out.println("User selects the walk in enquiry tab successfully");
     }
 
-    public void mobileNumberData(String Mobile) {
+    public void mobileNumberData(String Mobile) throws Throwable {
 
-        mobilenumberBtn.sendKeys(Mobile);
+    	getElement("mobilenumberBtn").sendKeys(Mobile);
         LocalDate today = LocalDate.now();
         LocalDate ninetyDaysBefore = today.minusDays(90);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String todayDateStr = today.format(formatter);
         String ninetyDaysBeforeDateStr = ninetyDaysBefore.format(formatter);
         System.out.println("User enters the mobile number successfully");
-        visitDatebtn.clear();
-        visitDatebtn.sendKeys(ninetyDaysBeforeDateStr);
-        viistToDateBtn.clear();
-        viistToDateBtn.sendKeys(todayDateStr);
+        getElement("visitDatebtn").clear();
+        getElement("visitDatebtn").sendKeys(ninetyDaysBeforeDateStr);
+        getElement("viistToDateBtn").clear();
+        getElement("viistToDateBtn").sendKeys(todayDateStr);
         System.out.println("User enters the date successfully");
-        searchBtn.click();
+        getElement("searchBtn").click();
         System.out.println("User searched for the entry successfully");
     }
 
-    public void selecttheEntry() {
+    public void selecttheEntry() throws Throwable {
         Actions actions = new Actions(getDriver());
-        actions.doubleClick(selectTableRow).perform();
+        actions.doubleClick(getElement("selectTableRow")).perform();
         System.out.println("Successfully selects the entry which is displayed in the table");
     }
 
@@ -212,23 +175,23 @@ public class TestDriveEnquiryPage {
         }
     }
 
-    public void BasicInfo(String TDOfferValue, String TDVinValue, String CertificateOFDeposit) throws InterruptedException {
+    public void BasicInfo(String TDOfferValue, String TDVinValue, String CertificateOFDeposit) throws InterruptedException, Throwable {
         Thread.sleep(3000);
         iframe2();
         Thread.sleep(3000);
         iframeWindow();
 
         // Call selectDropdownIfVisible for each dropdown
-        selectDropdownIfVisible(getDriver(), TDofferDropDown, TDOfferValue, "//*[@id=\"testDriveTakenFlag1_listbox\"]/li[text()='" + TDOfferValue + "']");
+        selectDropdownIfVisible(getDriver(), getElement("TDofferDropDown"), TDOfferValue, "//*[@id=\"testDriveTakenFlag1_listbox\"]/li[text()='" + TDOfferValue + "']");
 
-        selectDropdownIfVisible(getDriver(), TDVinDropDown, TDVinValue, "//*[@id=\"testDriveTakenFlag2_listbox\"]/li[text()='" + TDVinValue + "')]");
+        selectDropdownIfVisible(getDriver(), getElement("TDVinDropDown"), TDVinValue, "//*[@id=\"testDriveTakenFlag2_listbox\"]/li[text()='" + TDVinValue + "')]");
 
-        selectDropdownIfVisible(getDriver(), CertificateOFDepositDropDwon, CertificateOFDeposit, "//*[@id=\"certOfDeposit-list\"]/div[2]/ul/li[text()='" + CertificateOFDeposit + "']");
+        selectDropdownIfVisible(getDriver(), getElement("CertificateOFDepositDropDwon"), CertificateOFDeposit, "//*[@id=\"certOfDeposit-list\"]/div[2]/ul/li[text()='" + CertificateOFDeposit + "']");
 
     }
 
-    public void TestDriveAppointmentTab(String test_drive_datetime) throws InterruptedException {
-            TestDriveappointmentbtn.click();
+    public void TestDriveAppointmentTab(String test_drive_datetime) throws InterruptedException, Throwable {
+    	getElement("TestDriveappointmentbtn").click();
             System.out.println("Test Drive appointment button clicked successfully");
             iframe3();
             // Format target date
@@ -295,8 +258,8 @@ public class TestDriveEnquiryPage {
 
 
                 // Save the test drive
-                assertNotNull("Save button element not found", saveTestDrivebtn);
-                saveTestDrivebtn.click();
+                assertNotNull("Save button element not found", getElement("saveTestDrivebtn"));
+                getElement("saveTestDrivebtn").click();
                 System.out.println("Successfully clicked on save button");
 
                 Thread.sleep(8000);
@@ -319,32 +282,32 @@ public class TestDriveEnquiryPage {
         }
 
 
-        public void FollowUPTab () {
+        public void FollowUPTab () throws Throwable {
             iframe2();
             //LaunchDriver.getDriver().switchTo().frame(iframeBasicTab);
             getDriver().switchTo().frame(getDriver().findElement(By.xpath("//*[@class='k-content-frame']")));
-            followUpTab.click();
+            getElement("followUpTab").click();
             System.out.println("Successfully clicked on follow up tab");
         }
 
         public void FollowUpTabDetails (String NextFollowUptime, String TextFollow, String FollowUptype, String
-        nextFollowUpType, String EnquiryTypeValue){
+        nextFollowUpType, String EnquiryTypeValue) throws Throwable{
             String inputDateTime = NextFollowUptime;
             System.out.println(inputDateTime);
             String nextFollowUptime = inputDateTime.replaceAll("[^0-9]", "");
-            followUpTimeTestBtn.sendKeys(nextFollowUptime);
-            FollowUpTestArea.sendKeys(TextFollow);
-            selectDropdownIfVisible(getDriver(), FollowUpTypeDropDown, FollowUptype, "//ul[@id=\"eqfuFlupType_listbox\"]/li[text()='" + FollowUptype + "']");
-            selectDropdownIfVisible(getDriver(), nextFollowUpTypedropdown, nextFollowUpType, "//*[@id=\"eqfuNtfuType_listbox\"]/li[text()='" + nextFollowUpType + "']");
+            getElement("followUpTimeTestBtn").sendKeys(nextFollowUptime);
+            getElement("FollowUpTestArea").sendKeys(TextFollow);
+            selectDropdownIfVisible(getDriver(), getElement("FollowUpTypeDropDown"), FollowUptype, "//ul[@id=\"eqfuFlupType_listbox\"]/li[text()='" + FollowUptype + "']");
+            selectDropdownIfVisible(getDriver(), getElement("nextFollowUpTypedropdown"), nextFollowUpType, "//*[@id=\"eqfuNtfuType_listbox\"]/li[text()='" + nextFollowUpType + "']");
             // selectDropdownIfVisible(getDriver(),EnquiryTypedropDown,EnquiryTypeValue,"");
-            btnFollowUpSave.click();
+            getElement("btnFollowUpSave").click();
             getDriver().findElement(By.xpath("//*[text()='Basic Info.']")).click();
         }
 
 
-        public void closeOptntabs () {
-            closeBtn.click();
-            tabClosebtn.click();
+        public void closeOptntabs () throws Throwable {
+        	getElement("closeBtn").click();
+        	getElement("tabClosebtn").click();
             System.out.println("Successfully closed all the ope tabs");
         }
 
